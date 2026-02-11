@@ -1,0 +1,65 @@
+[gd_scene load_steps=7 format=3 uid="uid://byehl0v8mev7k"]
+
+[ext_resource type="Script" uid="uid://c5oq6u8fxu2gk" path="res://scripts/MapMana.gd" id="1_ll262"]
+[ext_resource type="Texture2D" uid="uid://dqdeesmyy5rf7" path="res://assets/sprites/map_bg_frame.png" id="3_jd6yb"]
+[ext_resource type="Script" uid="uid://b2kbq336afajv" path="res://scripts/MapUIControl.gd" id="3_ngqnh"]
+[ext_resource type="PackedScene" uid="uid://4xr8o0bbp1f0" path="res://scenes/worker.tscn" id="4_0mepe"]
+[ext_resource type="Texture2D" uid="uid://baccidsumrq16" path="res://assets/sprites/UI/button_map_mapA.png" id="4_g05b4"]
+[ext_resource type="Texture2D" uid="uid://bu0rxuwvti61f" path="res://assets/sprites/map_bg_mapA.png" id="4_ll262"]
+
+[node name="MapScene" type="Node2D"]
+
+[node name="MapMana" type="Node2D" parent="."]
+script = ExtResource("1_ll262")
+
+[node name="Worker" parent="." instance=ExtResource("4_0mepe")]
+position = Vector2(462, 173)
+
+[node name="bgMapA2" type="Sprite2D" parent="."]
+z_index = 1
+position = Vector2(480, 180)
+texture = ExtResource("3_jd6yb")
+
+[node name="bgMapA" type="Sprite2D" parent="."]
+position = Vector2(480, 180)
+texture = ExtResource("4_ll262")
+
+[node name="Control" type="Control" parent="."]
+z_index = 10
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+script = ExtResource("3_ngqnh")
+
+[node name="AssignWorkerButton" type="Button" parent="Control"]
+custom_minimum_size = Vector2(50, 50)
+layout_mode = 0
+offset_left = 639.0
+offset_top = 12.0
+offset_right = 696.0
+offset_bottom = 62.0
+text = "assign"
+
+[node name="MapAButton" type="Button" parent="Control"]
+custom_minimum_size = Vector2(50, 50)
+layout_mode = 0
+offset_left = 607.0
+offset_top = 62.0
+offset_right = 670.0
+offset_bottom = 112.0
+text = "A"
+icon = ExtResource("4_g05b4")
+
+[node name="Test_SkipButton" type="Button" parent="Control"]
+self_modulate = Color(18.892157, 3.609068, 1.2127409, 1)
+layout_mode = 0
+offset_left = 266.0
+offset_top = 75.0
+offset_right = 307.0
+offset_bottom = 106.0
+text = "Skip"
+
+[connection signal="pressed" from="Control/AssignWorkerButton" to="Control" method="_on_assign_worker_button_pressed"]
+[connection signal="pressed" from="Control/MapAButton" to="Control" method="_on_MapAButton_pressed"]
+[connection signal="pressed" from="Control/Test_SkipButton" to="MapMana" method="_on_test_skip_button_pressed"]

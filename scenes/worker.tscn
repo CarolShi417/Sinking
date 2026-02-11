@@ -1,0 +1,38 @@
+[gd_scene load_steps=6 format=3 uid="uid://4xr8o0bbp1f0"]
+
+[ext_resource type="Script" uid="uid://b7g8fi0iye2eb" path="res://scripts/WorkerMovement.gd" id="1_sb737"]
+[ext_resource type="Texture2D" uid="uid://ch575p0c2ahri" path="res://assets/sprites/worker.png" id="2_vwx2a"]
+[ext_resource type="Texture2D" uid="uid://qscjvbr8lt8i" path="res://assets/sprites/worker_idle_02.png" id="3_leqb2"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_sb737"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2_vwx2a")
+}, {
+"duration": 1.0,
+"texture": ExtResource("3_leqb2")
+}],
+"loop": true,
+"name": &"idle",
+"speed": 5.0
+}]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_vwx2a"]
+radius = 41.0
+height = 116.0
+
+[node name="CharacterBody2D" type="CharacterBody2D"]
+z_index = 5
+scale = Vector2(0.2, 0.2)
+script = ExtResource("1_sb737")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+position = Vector2(1, -58)
+sprite_frames = SubResource("SpriteFrames_sb737")
+animation = &"idle"
+autoplay = "idle"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(-2, -58)
+shape = SubResource("CapsuleShape2D_vwx2a")

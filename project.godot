@@ -1,0 +1,39 @@
+; Engine configuration file.
+; It's best edited using the editor UI and not directly,
+; since the parameters that go here are not all obvious.
+;
+; Format:
+;   [section] ; section goes between []
+;   param=value ; assign values to parameters
+
+config_version=5
+
+[application]
+
+config/name="SINKING"
+run/main_scene="uid://6qv3hp53uysd"
+config/features=PackedStringArray("4.5", "Forward Plus")
+config/icon="res://icon.svg"
+
+[autoload]
+
+GameState="*res://scripts/GameState.gd"
+
+[display]
+
+window/size/viewport_width=1920
+window/size/viewport_height=300
+window/size/resizable=false
+window/size/borderless=true
+window/size/always_on_top=true
+window/size/transparent=true
+window/size/no_focus=true
+window/per_pixel_transparency/allowed=true
+
+[rendering]
+
+textures/canvas_textures/default_texture_filter=3
+renderer/rendering_method="gl_compatibility"
+renderer/rendering_method.mobile="gl_compatibility"
+environment/defaults/default_clear_color=Color(0.3019608, 0.3019608, 0.3019608, 0)
+viewport/transparent_background=true
