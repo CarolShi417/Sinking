@@ -1,0 +1,39 @@
+63f7b34db8d8cdea90c76aacccf841ec
+::res://::1770773805
+export_presets.cfg::TextFile::-1::1770773781::0::1::::<><><>0<>0<><>::
+icon.svg::CompressedTexture2D::1719813754079971804::1770773781::1770773806::1::::<><><>0<>0<>791e1351a8bb2b098971cd2bd5be20ca<>res://.godot/imported/icon.svg-218a8f2b3041327d8a5756f3a245f83b.ctex::
+Main Scene.tscn::PackedScene::7618166995753051349::1770773780::0::1::::<><><>0<>0<><>::
+README.md::TextFile::-1::1770773780::0::1::::<><><>0<>0<><>::
+::res://assets/::1770773780
+::res://assets/sprites/::1770773781
+bg_main.png::CompressedTexture2D::534894872402597230::1770773781::1770773806::1::::<><><>0<>0<>15d756be6e5b8b10b2364b21376ec719<>res://.godot/imported/bg_main.png-8f2f6c5ecc0f99819bd3e7c032c940ac.ctex::
+bg_map.png::CompressedTexture2D::2612396014349554270::1770773781::1770773806::1::::<><><>0<>0<>38e2af829217fbe5d5748205ac231618<>res://.godot/imported/bg_map.png-a06838d3f5c711e68f68957b1618e897.ctex::
+button_map_mapA.png::CompressedTexture2D::5067018090092083649::1770773781::1770773806::1::::<><><>0<>0<>9c2cad6a85f405a465182311545e1309<>res://.godot/imported/button_map_mapA.png-0f33e81a606d498a025e9574b3decb4a.ctex::
+knight.png::CompressedTexture2D::3777049730206288948::1770773781::1770773806::1::::<><><>0<>0<>c285ae174d7b4cbee4a42e9f4309011f<>res://.godot/imported/knight.png-7c67c83d34932624952797d9e971a644.ctex::
+main_bg_black.png::CompressedTexture2D::2979583059483883358::1770773781::1770773806::1::::<><><>0<>0<>85a89309c588979261f5ce71c80ee2ca<>res://.godot/imported/main_bg_black.png-dc4533c4196d209d0338962f9559a12b.ctex::
+main_bg_building.png::CompressedTexture2D::7658644331120410885::1770773781::1770773806::1::::<><><>0<>0<>05f145835e8d8dd097e362c775e0810c<>res://.godot/imported/main_bg_building.png-ca7747f97aa5868eac3f42e997066f43.ctex::
+main_bg_UI.png::CompressedTexture2D::2296056479244665490::1770773781::1770773806::1::::<><><>0<>0<>f602eee8072ec188ec11805830de9207<>res://.godot/imported/main_bg_UI.png-ae82135a66fec002a132e65513ccddad.ctex::
+main_UI.png::CompressedTexture2D::2635999149464090868::1770773781::1770773806::1::::<><><>0<>0<>13c55bd64ba4eb30527c205183be0a56<>res://.godot/imported/main_UI.png-c153bcc18c5f8d107c5818bc445be8d7.ctex::
+main_wholeView.png::CompressedTexture2D::2152208121044580444::1770773781::1770773806::1::::<><><>0<>0<>4378363ffc9b2bfa0922fd32d3f16da0<>res://.godot/imported/main_wholeView.png-bf48016240b10cdf2a8a66abb902f568.ctex::
+map.png::CompressedTexture2D::6885719592908536054::1770773781::1770773806::1::::<><><>0<>0<>b5a1f1617525e9b6bda71f863adfa75f<>res://.godot/imported/map.png-be9947d5ffeb191b13fd9b30c78e236f.ctex::
+map_bg_frame.png::CompressedTexture2D::8288727658778362878::1770773781::1770773806::1::::<><><>0<>0<>56033fa724e7d4fd31e4fedbe4ad3301<>res://.godot/imported/map_bg_frame.png-757cc4672b296b8b741e61f11a6184b5.ctex::
+map_bg_mapA.png::CompressedTexture2D::3842881347874671109::1770773781::1770773806::1::::<><><>0<>0<>f07f5ee5e4993a0f2363488c15e21a26<>res://.godot/imported/map_bg_mapA.png-01f21d984a5ba83c99719bfa73fea04d.ctex::
+map_wholeView.png::CompressedTexture2D::6243148721958200239::1770773781::1770773806::1::::<><><>0<>0<>3d115bde7ea9d4c40302b963aa2120dc<>res://.godot/imported/map_wholeView.png-303fdb51e6dd26d22bebbea3186ba4a9.ctex::
+worker.png::CompressedTexture2D::5328091949657218966::1770773781::1770773806::1::::<><><>0<>0<>53e81764b19a5be8a2c7b2cc191a9f32<>res://.godot/imported/worker.png-984ddd19cc74c2d16467e07a2032c1e0.ctex::
+worker_idle_02.png::CompressedTexture2D::1160318909264385278::1770773781::1770773806::1::::<><><>0<>0<>8777e37a7c60e42a960c12de1083e9ef<>res://.godot/imported/worker_idle_02.png-c67200dc9da519952eefd7ab56f98361.ctex::
+world_tileset.png::CompressedTexture2D::2816273150832401249::1770773781::1770773806::1::::<><><>0<>0<>0acea4926202e3dbbb29fd6776b7fdff<>res://.godot/imported/world_tileset.png-61a32465f33c3d9d3bfecb75b6485009.ctex::
+::res://assets/sprites/UI/::1770773781
+button_map_mapA.png::CompressedTexture2D::2390685345839954715::1770773780::1770773806::1::::<><><>0<>0<>34596f21c5f846c4d55bd351dfd5eaf6<>res://.godot/imported/button_map_mapA.png-e89e9901247bc8b8c4a66c6a547670eb.ctex::
+::res://scenes/::1770773781
+game.tscn::PackedScene::2210209648158204967::1770773781::0::1::::<><><>0<>0<><>::uid://bqqr7xipkxims::::res://scripts/GameState.gd<>uid://bifojy26oms6a::::res://scenes/Main Scene.tscn<>uid://cdjumq36jq8o8::::res://scripts/MainCameraMovement.gd<>uid://byehl0v8mev7k::::res://scenes/Map Scene.tscn<>uid://7yhykiy8p6ly::::res://assets/sprites/main_bg_UI.png
+Main Scene.tscn::PackedScene::2959120735309356614::1770773781::0::1::::<><><>0<>0<><>::uid://crpugobdylrm1::::res://scripts/MainMana.gd<>uid://4xr8o0bbp1f0::::res://scenes/worker.tscn<>uid://biplkedrl6kx7::::res://assets/sprites/main_bg_black.png<>uid://dhd50uxpcjubl::::res://assets/sprites/main_bg_building.png<>uid://dqo2dxt1on6lq::::res://scripts/MainUIControl.gd<>uid://7yhykiy8p6ly::::res://assets/sprites/main_bg_UI.png
+Map Scene.tscn::PackedScene::4079656451744670430::1770773781::0::1::::<><><>0<>0<><>::uid://c5oq6u8fxu2gk::::res://scripts/MapMana.gd<>uid://dqdeesmyy5rf7::::res://assets/sprites/map_bg_frame.png<>uid://b2kbq336afajv::::res://scripts/MapUIControl.gd<>uid://4xr8o0bbp1f0::::res://scenes/worker.tscn<>uid://baccidsumrq16::::res://assets/sprites/UI/button_map_mapA.png<>uid://bu0rxuwvti61f::::res://assets/sprites/map_bg_mapA.png
+worker.tscn::PackedScene::2084049047916609427::1770773781::0::1::::<><><>0<>0<><>::uid://b7g8fi0iye2eb::::res://scripts/WorkerMovement.gd<>uid://ch575p0c2ahri::::res://assets/sprites/worker.png<>uid://qscjvbr8lt8i::::res://assets/sprites/worker_idle_02.png
+::res://scripts/::1770773781
+GameState.gd::GDScript::3543562781339859202::1770773781::0::1::::<>Node<><>0<>0<><>::
+MainCameraMovement.gd::GDScript::5003223952518343921::1770773781::0::1::::<>Camera2D<><>0<>0<><>::
+MainMana.gd::GDScript::5998243167202945134::1770773781::0::1::::<>Node2D<><>0<>0<><>::
+MainUIControl.gd::GDScript::8312830792619981514::1770773781::0::1::::<>Control<><>0<>0<><>::
+MapMana.gd::GDScript::6908435898283604658::1770773781::0::1::::<>Node2D<><>0<>0<><>::
+MapUIControl.gd::GDScript::4302254044472840655::1770773781::0::1::::<>Control<><>0<>0<><>::
+WorkerMovement.gd::GDScript::4646862995567969365::1770773781::0::1::::<>CharacterBody2D<><>0<>0<><>::
