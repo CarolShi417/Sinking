@@ -1,1 +1,4 @@
-res://scenes/game.tscn
+res://scenes/Map Scene.tscn
+res://scripts/GameState.gd
+res://scripts/MainUIControl.gd
+res://scripts/MapUIControl.gd

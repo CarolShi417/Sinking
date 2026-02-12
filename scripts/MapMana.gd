@@ -64,7 +64,7 @@ func start_work():
 	work_time = 0.0
 	rest_time = 0.0
 	worker.show()
-	worker.position = Vector2(480,170)  # 设置初始坐标
+	worker.position = Vector2(480,300)  # 设置初始坐标
 	worker.start_move()
 
 #用于加速时间的按钮

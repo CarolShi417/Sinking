@@ -18,21 +18,21 @@ var total_fragment_C := 0
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 #func _process(delta: float) -> void:
 
-# 碎片增加
+# 获得碎片
 func gain_fragment(a: int, b: int):
 	total_fragment_A += a
 	total_fragment_B += b
-	fragment_changed.emit("A", total_fragment_A)
+	fragment_changed.emit("A", total_fragment_A)#发射信号 碎片总数量变化
 	fragment_changed.emit("B", total_fragment_B)
 	print("当前碎片A数量为", total_fragment_A, "碎片B数量为",  total_fragment_B)
 	
-	
+#消耗碎片	
 func consume_fragment_A(amount: int) -> bool:
 	#判断当前碎片数量是否充足
 	if total_fragment_A < amount:
 		return false
 	
 	total_fragment_A -= amount
-	fragment_changed.emit("A", total_fragment_A)
+	fragment_changed.emit("A", total_fragment_A)#发射信号 碎片总数量变化
 	return true
 	

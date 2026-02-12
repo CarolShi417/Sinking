@@ -2,6 +2,7 @@ extends Control
 
 @onready var label_total_fragment = $HBoxContainer/TotalFragment
 
+
 var total_A := 0# 本地缓存的 A 碎片数量（用于 UI 显示）
 var total_B := 0# 本地缓存的 B 碎片数量（用于 UI 显示）
 

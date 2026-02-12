@@ -4,7 +4,9 @@
 [ext_resource type="PackedScene" uid="uid://bifojy26oms6a" path="res://scenes/Main Scene.tscn" id="1_uwrxv"]
 [ext_resource type="Script" uid="uid://cdjumq36jq8o8" path="res://scripts/MainCameraMovement.gd" id="2_lnu2h"]
 [ext_resource type="PackedScene" uid="uid://byehl0v8mev7k" path="res://scenes/Map Scene.tscn" id="2_yqjtg"]
-[ext_resource type="Texture2D" uid="uid://7yhykiy8p6ly" path="res://assets/sprites/main_bg_UI.png" id="3_lbhrr"]
+
+[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_lbhrr"]
+load_path = "res://.godot/imported/main_bg_UI.png-41e48daa1e5d7bbc4433eaa85747a2b0.ctex"
 
 [node name="Game" type="Node2D"]
 
@@ -26,7 +28,7 @@ size_flags_horizontal = 0
 [node name="bg UI" type="Sprite2D" parent="HBoxContainer/MainContainer"]
 visible = false
 position = Vector2(472, 68)
-texture = ExtResource("3_lbhrr")
+texture = SubResource("CompressedTexture2D_lbhrr")
 
 [node name="SubViewport" type="SubViewport" parent="HBoxContainer/MainContainer"]
 transparent_bg = true

@@ -3,6 +3,8 @@ extends Control
 @onready var button_assignWorkerToMapA = $AssignWorkerButton
 @onready var test_button_skip = $Test_SkipButton
 
+@onready var fragment_gain_map = $Control/FragmentGainInExploration
+
 signal assign_worker_to_mapA
 
 var button_assignWorkerToMapA_visible := false #button可见性 一开始不可见
