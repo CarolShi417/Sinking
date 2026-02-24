@@ -16,15 +16,16 @@ animations = [{
 }]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_vwx2a"]
-radius = 23.0
-height = 96.0
+radius = 57.0
+height = 114.0
 
-[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_4n0ys"]
-radius = 23.0
-height = 96.0
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_sb737"]
+radius = 79.0
+height = 160.0
 
 [node name="CharacterBody2D" type="CharacterBody2D"]
 z_index = 5
+input_pickable = true
 script = ExtResource("1_sb737")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
@@ -41,6 +42,9 @@ shape = SubResource("CapsuleShape2D_vwx2a")
 script = ExtResource("3_sb737")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="HoverArea"]
-position = Vector2(2, -56)
-shape = SubResource("CapsuleShape2D_4n0ys")
-debug_color = Color(0.8543189, 0.0008028209, 0.89100504, 0.41960785)
+z_index = 20
+position = Vector2(1, -56)
+shape = SubResource("CapsuleShape2D_sb737")
+debug_color = Color(0.8825655, 0.0003398031, 0.81741947, 0.41960785)
+
+[connection signal="mouse_entered" from="." to="." method="_on_mouse_entered"]

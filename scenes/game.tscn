@@ -1,9 +1,10 @@
-[gd_scene load_steps=6 format=3 uid="uid://6qv3hp53uysd"]
+[gd_scene load_steps=7 format=3 uid="uid://6qv3hp53uysd"]
 
 [ext_resource type="Script" uid="uid://bqqr7xipkxims" path="res://scripts/system/GameState.gd" id="1_iywne"]
 [ext_resource type="PackedScene" uid="uid://bifojy26oms6a" path="res://scenes/Main Scene.tscn" id="1_uwrxv"]
 [ext_resource type="Script" uid="uid://cdjumq36jq8o8" path="res://scripts/MainCameraMovement.gd" id="2_lnu2h"]
 [ext_resource type="PackedScene" uid="uid://byehl0v8mev7k" path="res://scenes/Map Scene.tscn" id="2_yqjtg"]
+[ext_resource type="PackedScene" uid="uid://4xr8o0bbp1f0" path="res://scenes/worker.tscn" id="4_iywne"]
 
 [sub_resource type="CompressedTexture2D" id="CompressedTexture2D_lbhrr"]
 
@@ -14,6 +15,7 @@ clip_contents = true
 offset_right = 1924.0
 offset_bottom = 300.0
 size_flags_horizontal = 4
+mouse_filter = 2
 
 [node name="Management" type="Node" parent="HBoxContainer"]
 script = ExtResource("1_iywne")
@@ -23,6 +25,7 @@ script = ExtResource("1_iywne")
 [node name="MainContainer" type="SubViewportContainer" parent="HBoxContainer"]
 layout_mode = 2
 size_flags_horizontal = 0
+mouse_filter = 2
 
 [node name="bg UI" type="Sprite2D" parent="HBoxContainer/MainContainer"]
 visible = false
@@ -43,6 +46,10 @@ script = ExtResource("2_lnu2h")
 
 [node name="MapContainer" type="SubViewportContainer" parent="HBoxContainer"]
 layout_mode = 2
+
+[node name="Worker" parent="HBoxContainer/MapContainer" instance=ExtResource("4_iywne")]
+z_index = 10
+position = Vector2(399, 280)
 
 [node name="SubViewport" type="SubViewport" parent="HBoxContainer/MapContainer"]
 transparent_bg = true

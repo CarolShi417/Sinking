@@ -1,10 +1,8 @@
-res://scenes/game.tscn
-res://scripts/MapMana.gd
-res://scenes/Main Scene.tscn
+res://scenes/worker.tscn
+res://scripts/hover_area.gd
 res://scenes/Map Scene.tscn
-res://scripts/system/GameState.gd
 res://scripts/system/MapMana.gd
-res://scripts/system/MainMana.gd
+res://scripts/sprite_2d.gd
+res://scenes/Main Scene.tscn
+res://scenes/game.tscn
 res://scripts/WorkerMovement.gd
-res://scripts/MapUIControl.gd
-res://scripts/Monitor.gd

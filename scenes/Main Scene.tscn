@@ -1,18 +1,20 @@
-[gd_scene load_steps=6 format=3 uid="uid://bifojy26oms6a"]
+[gd_scene load_steps=8 format=3 uid="uid://bifojy26oms6a"]
 
 [ext_resource type="Script" uid="uid://crpugobdylrm1" path="res://scripts/system/MainMana.gd" id="1_q0vdo"]
-[ext_resource type="PackedScene" uid="uid://4xr8o0bbp1f0" path="res://scenes/worker.tscn" id="1_qta5i"]
 [ext_resource type="Texture2D" uid="uid://biplkedrl6kx7" path="res://assets/sprites/main/main_bg_black.png" id="4_4mf87"]
 [ext_resource type="Texture2D" uid="uid://bpxckev58574y" path="res://assets/sprites/main/main_tent.png" id="4_q0vdo"]
+[ext_resource type="Texture2D" uid="uid://yrdc066awn0g" path="res://icon.svg" id="5_4mf87"]
 [ext_resource type="Script" uid="uid://dqo2dxt1on6lq" path="res://scripts/MainUIControl.gd" id="6_4mf87"]
+[ext_resource type="Script" uid="uid://drd37gk38d2n5" path="res://scripts/hover_area.gd" id="6_a6v3m"]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_axjx3"]
+radius = 109.0
+height = 218.0
 
 [node name="MainScene" type="Node2D"]
 
 [node name="MainManagement" type="Node2D" parent="."]
 script = ExtResource("1_q0vdo")
-
-[node name="Worker" parent="." instance=ExtResource("1_qta5i")]
-position = Vector2(515, 273)
 
 [node name="bg Black" type="Sprite2D" parent="."]
 visible = false
@@ -37,6 +39,7 @@ offset_left = 26.0
 offset_top = 233.0
 offset_right = 66.0
 offset_bottom = 273.0
+mouse_filter = 2
 script = ExtResource("6_4mf87")
 
 [node name="HBoxContainer" type="HBoxContainer" parent="Control"]
@@ -49,3 +52,20 @@ offset_bottom = -180.0
 [node name="TotalFragment" type="Label" parent="Control/HBoxContainer"]
 layout_mode = 2
 text = "Current Fragment"
+
+[node name="Sprite2D2" type="Sprite2D" parent="."]
+visible = false
+z_index = 20
+position = Vector2(643, 200)
+texture = ExtResource("5_4mf87")
+
+[node name="Area2D" type="Area2D" parent="Sprite2D2"]
+visible = false
+position = Vector2(621, 283)
+script = ExtResource("6_a6v3m")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Sprite2D2/Area2D"]
+visible = false
+z_index = 20
+position = Vector2(-622, -272)
+shape = SubResource("CapsuleShape2D_axjx3")

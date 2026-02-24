@@ -11,7 +11,9 @@ var running := false #判断是否运行worker
 var moving := false #判断worker是否移动
 var direction := 1 #1=右
 
-
+#func _ready() -> void:
+	#mouse_entered.connect(_on_mouse_entered)
+	
 #如何移动
 func _physics_process(_delta): #Godot 每一帧“物理更新”都会自动调用这个函数
 	if moving:

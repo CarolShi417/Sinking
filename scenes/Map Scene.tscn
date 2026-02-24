@@ -1,23 +1,24 @@
-[gd_scene load_steps=10 format=3 uid="uid://byehl0v8mev7k"]
+[gd_scene load_steps=12 format=3 uid="uid://byehl0v8mev7k"]
 
+[ext_resource type="Texture2D" uid="uid://yrdc066awn0g" path="res://icon.svg" id="1_hoftg"]
 [ext_resource type="Script" uid="uid://c5oq6u8fxu2gk" path="res://scripts/system/MapMana.gd" id="1_ll262"]
 [ext_resource type="Texture2D" uid="uid://xsiwxu67ifq1" path="res://assets/sprites/map/map_monitor.png" id="3_ll262"]
 [ext_resource type="Script" uid="uid://b2kbq336afajv" path="res://scripts/MapUIControl.gd" id="3_ngqnh"]
-[ext_resource type="PackedScene" uid="uid://4xr8o0bbp1f0" path="res://scenes/worker.tscn" id="4_0mepe"]
+[ext_resource type="Script" uid="uid://dmd43mufbd6bc" path="res://scripts/sprite_2d.gd" id="3_thxfw"]
 [ext_resource type="Script" uid="uid://bn42v0aocptpn" path="res://scripts/Monitor.gd" id="4_7lltf"]
 [ext_resource type="Texture2D" uid="uid://bim31hv1kj1w5" path="res://assets/sprites/map/map_location map.png" id="4_8agqf"]
 [ext_resource type="Texture2D" uid="uid://hs21ne444o05" path="res://assets/sprites/map/map_workplace.png" id="5_7lltf"]
 [ext_resource type="Texture2D" uid="uid://cphjcyu2a1k0w" path="res://assets/sprites/map/map_组合后示意图.png" id="6_hoftg"]
 [ext_resource type="Texture2D" uid="uid://cke6sp6c85y10" path="res://assets/sprites/map/map_button_mapA.png" id="8_thxfw"]
 
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_hoftg"]
+radius = 109.0
+height = 218.0
+
 [node name="MapScene" type="Node2D"]
 
 [node name="MapMana" type="Node2D" parent="."]
 script = ExtResource("1_ll262")
-
-[node name="Worker" parent="." instance=ExtResource("4_0mepe")]
-z_index = 3
-position = Vector2(415, 283)
 
 [node name="bg workplace" type="Sprite2D" parent="."]
 z_index = 5
@@ -36,6 +37,7 @@ layout_mode = 3
 anchors_preset = 0
 offset_right = 40.0
 offset_bottom = 40.0
+mouse_filter = 1
 script = ExtResource("3_ngqnh")
 
 [node name="AssignWorkerButton" type="Button" parent="Control"]
@@ -93,9 +95,28 @@ texture = ExtResource("4_8agqf")
 [node name="FragmentProgressContainer" type="HBoxContainer" parent="."]
 offset_right = 40.0
 offset_bottom = 40.0
+mouse_filter = 2
 
 [node name="ColorRect" type="ColorRect" parent="FragmentProgressContainer"]
 layout_mode = 2
+
+[node name="Sprite2D" type="Sprite2D" parent="." node_paths=PackedStringArray("area")]
+visible = false
+z_index = 20
+position = Vector2(656, 152)
+texture = ExtResource("1_hoftg")
+script = ExtResource("3_thxfw")
+area = NodePath("Area2D")
+
+[node name="Area2D" type="Area2D" parent="Sprite2D"]
+visible = false
+position = Vector2(621, 283)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Sprite2D/Area2D"]
+visible = false
+z_index = 20
+position = Vector2(-622, -272)
+shape = SubResource("CapsuleShape2D_hoftg")
 
 [connection signal="pressed" from="Control/AssignWorkerButton" to="Control" method="_on_assign_worker_button_pressed"]
 [connection signal="pressed" from="Control/MapAButton" to="Control" method="_on_MapAButton_pressed"]
