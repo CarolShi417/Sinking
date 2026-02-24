@@ -3,7 +3,7 @@ extends Control
 @onready var button_assignWorkerToMapA = $AssignWorkerButton
 @onready var test_button_skip = $Test_SkipButton
 
-@onready var fragment_gain_map = $Control/FragmentGainInExploration
+@onready var fragment_progress_on_Working = $"../FragmentProgressContainer"
 
 signal assign_worker_to_mapA
 

@@ -10,11 +10,10 @@ const RIGHT_LIMIT := 950.0
 var running := false #判断是否运行worker
 var moving := false #判断worker是否移动
 var direction := 1 #1=右
-var isWorking := false #判断是否派出了worker
 
 
 #如何移动
-func _physics_process(delta): #Godot 每一帧“物理更新”都会自动调用这个函数
+func _physics_process(_delta): #Godot 每一帧“物理更新”都会自动调用这个函数
 	if moving:
 		velocity.x = speed * direction
 	else:
@@ -33,21 +32,21 @@ func _physics_process(delta): #Godot 每一帧“物理更新”都会自动调�
 
 #确定是否移动，持续时间
 func start_move():
-	if isWorking:
-		return   # 防止重复启动
+	if running:
+		return
+		
+	running = true
 	
-	isWorking = true
-	
-	while isWorking: #循环		
-		moving = true #开始移动
-		await get_tree().create_timer(5.0).timeout# 持续5秒
+	while running:
+		moving = true#开始移动
+		await get_tree().create_timer(5.0).timeout# 持续移动的时间
 		
-		moving = false #停止移动
-		await get_tree().create_timer(10.0).timeout# 停止10秒
+		moving = false
+		await get_tree().create_timer(10.0).timeout# 停止移动的时间
 		
-		direction *= -1# 换方向
+		direction *= -1 #换方向
 		
-func stop_move():
-	isWorking = false
+func stop_move():	
+	running = false
+	moving = false
 	velocity = Vector2.ZERO
-	print("下班")

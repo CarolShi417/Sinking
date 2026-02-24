@@ -1,12 +1,11 @@
 [gd_scene load_steps=6 format=3 uid="uid://6qv3hp53uysd"]
 
-[ext_resource type="Script" uid="uid://bqqr7xipkxims" path="res://scripts/GameState.gd" id="1_iywne"]
+[ext_resource type="Script" uid="uid://bqqr7xipkxims" path="res://scripts/system/GameState.gd" id="1_iywne"]
 [ext_resource type="PackedScene" uid="uid://bifojy26oms6a" path="res://scenes/Main Scene.tscn" id="1_uwrxv"]
 [ext_resource type="Script" uid="uid://cdjumq36jq8o8" path="res://scripts/MainCameraMovement.gd" id="2_lnu2h"]
 [ext_resource type="PackedScene" uid="uid://byehl0v8mev7k" path="res://scenes/Map Scene.tscn" id="2_yqjtg"]
 
 [sub_resource type="CompressedTexture2D" id="CompressedTexture2D_lbhrr"]
-load_path = "res://.godot/imported/main_bg_UI.png-41e48daa1e5d7bbc4433eaa85747a2b0.ctex"
 
 [node name="Game" type="Node2D"]
 

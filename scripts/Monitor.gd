@@ -7,6 +7,6 @@ func _ready() -> void:
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta: float) -> void:
+func _process(_delta) -> void:
 	# 每帧把放大镜移动到鼠标位置
 	global_position = get_global_mouse_position()

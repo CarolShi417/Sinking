@@ -1,6 +1,6 @@
 [gd_scene load_steps=10 format=3 uid="uid://byehl0v8mev7k"]
 
-[ext_resource type="Script" uid="uid://c5oq6u8fxu2gk" path="res://scripts/MapMana.gd" id="1_ll262"]
+[ext_resource type="Script" uid="uid://c5oq6u8fxu2gk" path="res://scripts/system/MapMana.gd" id="1_ll262"]
 [ext_resource type="Texture2D" uid="uid://xsiwxu67ifq1" path="res://assets/sprites/map/map_monitor.png" id="3_ll262"]
 [ext_resource type="Script" uid="uid://b2kbq336afajv" path="res://scripts/MapUIControl.gd" id="3_ngqnh"]
 [ext_resource type="PackedScene" uid="uid://4xr8o0bbp1f0" path="res://scenes/worker.tscn" id="4_0mepe"]
@@ -70,25 +70,32 @@ layout_mode = 0
 offset_right = 40.0
 offset_bottom = 23.0
 
-[node name="SubViewportContainer" type="SubViewportContainer" parent="."]
+[node name="MonitorScreenContainer" type="SubViewportContainer" parent="."]
 offset_left = 16.0
 offset_top = 128.0
 offset_right = 56.0
 offset_bottom = 168.0
 
-[node name="SubViewport" type="SubViewport" parent="SubViewportContainer"]
+[node name="SubViewport" type="SubViewport" parent="MonitorScreenContainer"]
 handle_input_locally = false
 size = Vector2i(940, 200)
 render_target_update_mode = 4
 
-[node name="Monitor" type="Sprite2D" parent="SubViewportContainer/SubViewport"]
+[node name="Monitor" type="Sprite2D" parent="MonitorScreenContainer/SubViewport"]
 z_index = 4
 texture = ExtResource("3_ll262")
 script = ExtResource("4_7lltf")
 
-[node name="bg location map" type="Sprite2D" parent="SubViewportContainer/SubViewport"]
+[node name="bg location map" type="Sprite2D" parent="MonitorScreenContainer/SubViewport"]
 position = Vector2(470, 65)
 texture = ExtResource("4_8agqf")
+
+[node name="FragmentProgressContainer" type="HBoxContainer" parent="."]
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="ColorRect" type="ColorRect" parent="FragmentProgressContainer"]
+layout_mode = 2
 
 [connection signal="pressed" from="Control/AssignWorkerButton" to="Control" method="_on_assign_worker_button_pressed"]
 [connection signal="pressed" from="Control/MapAButton" to="Control" method="_on_MapAButton_pressed"]
