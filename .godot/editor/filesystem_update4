@@ -1,8 +1,9 @@
-res://scenes/worker.tscn
+res://scripts/system/MapMana.gd
+res://scenes/game.tscn
 res://scripts/hover_area.gd
 res://scenes/Map Scene.tscn
-res://scripts/system/MapMana.gd
-res://scripts/sprite_2d.gd
-res://scenes/Main Scene.tscn
-res://scenes/game.tscn
-res://scripts/WorkerMovement.gd
+res://scripts/MapUIControl.gd
+res://scripts/system/GameState.gd
+res://scenes/scene/game.tscn
+res://scenes/UI/Assigned Button.tscn
+res://scenes/scene/Map Scene.tscn

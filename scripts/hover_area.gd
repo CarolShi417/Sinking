@@ -10,9 +10,9 @@ func _ready():
 #鼠标进入感应区
 func _on_mouse_entered():
 	hover_changed.emit(true)
-	print("Mouse Entered HoverArea")
+	#print("Mouse Entered HoverArea")
 
 #鼠标离开感应区
 func _on_mouse_exited():
 	hover_changed.emit(false)
-	print("Mouse Exited")
+	#print("Mouse Exited")

@@ -1,9 +1,9 @@
 [gd_scene load_steps=7 format=3 uid="uid://6qv3hp53uysd"]
 
 [ext_resource type="Script" uid="uid://bqqr7xipkxims" path="res://scripts/system/GameState.gd" id="1_iywne"]
-[ext_resource type="PackedScene" uid="uid://bifojy26oms6a" path="res://scenes/Main Scene.tscn" id="1_uwrxv"]
+[ext_resource type="PackedScene" uid="uid://bifojy26oms6a" path="res://scenes/scene/Main Scene.tscn" id="1_uwrxv"]
 [ext_resource type="Script" uid="uid://cdjumq36jq8o8" path="res://scripts/MainCameraMovement.gd" id="2_lnu2h"]
-[ext_resource type="PackedScene" uid="uid://byehl0v8mev7k" path="res://scenes/Map Scene.tscn" id="2_yqjtg"]
+[ext_resource type="PackedScene" uid="uid://byehl0v8mev7k" path="res://scenes/scene/Map Scene.tscn" id="2_yqjtg"]
 [ext_resource type="PackedScene" uid="uid://4xr8o0bbp1f0" path="res://scenes/worker.tscn" id="4_iywne"]
 
 [sub_resource type="CompressedTexture2D" id="CompressedTexture2D_lbhrr"]

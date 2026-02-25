@@ -16,9 +16,9 @@ signal fragment_changed(type, value)
 #信号 worker状态变化
 
 # 存储碎片数量
-var total_fragment_A := 0
-var total_fragment_B := 0
-var total_fragment_C := 0
+var total_fragment_A := 0.0
+var total_fragment_B := 0.0
+var total_fragment_C := 0.0
 
 # 存储建筑等级
 
@@ -40,7 +40,7 @@ func set_worker_state(state):
 	worker_state_changed.emit(worker_state)# 通知所有监听者：worker 状态变了
 		
 # 获得碎片
-func gain_fragment(a: int, b: int):
+func gain_fragment(a: float, b: float):
 	total_fragment_A += a
 	total_fragment_B += b
 	fragment_changed.emit("A", total_fragment_A)#发射信号 碎片总数量变化
@@ -48,7 +48,7 @@ func gain_fragment(a: int, b: int):
 	print("当前碎片A数量为", total_fragment_A, "碎片B数量为",  total_fragment_B)
 	
 # 消耗碎片	
-func consume_fragment_A(amount: int) -> bool:
+func consume_fragment_A(amount: float) -> bool:
 	#判断当前碎片数量是否充足
 	if total_fragment_A < amount:
 		return false

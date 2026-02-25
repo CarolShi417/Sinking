@@ -1,6 +1,7 @@
-[gd_scene load_steps=8 format=3 uid="uid://bifojy26oms6a"]
+[gd_scene load_steps=9 format=3 uid="uid://bifojy26oms6a"]
 
 [ext_resource type="Script" uid="uid://crpugobdylrm1" path="res://scripts/system/MainMana.gd" id="1_q0vdo"]
+[ext_resource type="PackedScene" uid="uid://4xr8o0bbp1f0" path="res://scenes/worker.tscn" id="2_a6v3m"]
 [ext_resource type="Texture2D" uid="uid://biplkedrl6kx7" path="res://assets/sprites/main/main_bg_black.png" id="4_4mf87"]
 [ext_resource type="Texture2D" uid="uid://bpxckev58574y" path="res://assets/sprites/main/main_tent.png" id="4_q0vdo"]
 [ext_resource type="Texture2D" uid="uid://yrdc066awn0g" path="res://icon.svg" id="5_4mf87"]
@@ -15,6 +16,10 @@ height = 218.0
 
 [node name="MainManagement" type="Node2D" parent="."]
 script = ExtResource("1_q0vdo")
+
+[node name="Worker" parent="." instance=ExtResource("2_a6v3m")]
+z_index = 10
+position = Vector2(399, 280)
 
 [node name="bg Black" type="Sprite2D" parent="."]
 visible = false

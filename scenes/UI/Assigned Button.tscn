@@ -1,0 +1,11 @@
+[gd_scene format=3 uid="uid://c08nuqvfydeih"]
+
+[node name="AssignWorkerButton" type="Button"]
+z_index = 11
+custom_minimum_size = Vector2(50, 50)
+offset_left = 762.0
+offset_top = 69.0
+offset_right = 819.0
+offset_bottom = 119.0
+scale = Vector2(1, 1.08)
+text = "assign"
