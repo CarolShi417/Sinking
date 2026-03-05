@@ -1,0 +1,49 @@
+[gd_scene load_steps=5 format=3 uid="uid://6qv3hp53uysd"]
+
+[ext_resource type="PackedScene" uid="uid://bifojy26oms6a" path="res://scenes/scene/过程/Main Scene.tscn" id="2_6rri8"]
+[ext_resource type="Script" uid="uid://cdjumq36jq8o8" path="res://scenes/components/MainCameraMovement.gd" id="3_coqcy"]
+[ext_resource type="PackedScene" uid="uid://4xr8o0bbp1f0" path="res://scenes/characters/worker.tscn" id="4_7qo82"]
+[ext_resource type="PackedScene" uid="uid://byehl0v8mev7k" path="res://scenes/scene/过程/Map Scene.tscn" id="5_mpixu"]
+
+[node name="Game" type="Node2D"]
+
+[node name="HBoxContainer" type="HBoxContainer" parent="."]
+clip_contents = true
+offset_right = 1928.0
+offset_bottom = 240.0
+size_flags_horizontal = 4
+mouse_filter = 2
+
+[node name="Management" type="Node" parent="HBoxContainer"]
+
+[node name="MainContainer" type="SubViewportContainer" parent="HBoxContainer"]
+layout_mode = 2
+mouse_filter = 2
+
+[node name="SubViewport" type="SubViewport" parent="HBoxContainer/MainContainer"]
+transparent_bg = true
+handle_input_locally = false
+size = Vector2i(960, 240)
+render_target_update_mode = 4
+
+[node name="MainScene" parent="HBoxContainer/MainContainer/SubViewport" instance=ExtResource("2_6rri8")]
+position = Vector2(0, -60)
+
+[node name="Camera2D" type="Camera2D" parent="HBoxContainer/MainContainer/SubViewport"]
+anchor_mode = 0
+script = ExtResource("3_coqcy")
+
+[node name="MapContainer" type="SubViewportContainer" parent="HBoxContainer"]
+layout_mode = 2
+
+[node name="Worker" parent="HBoxContainer/MapContainer" instance=ExtResource("4_7qo82")]
+position = Vector2(400, 220)
+
+[node name="SubViewport" type="SubViewport" parent="HBoxContainer/MapContainer"]
+transparent_bg = true
+handle_input_locally = false
+size = Vector2i(960, 240)
+render_target_update_mode = 4
+
+[node name="MapScene" parent="HBoxContainer/MapContainer/SubViewport" instance=ExtResource("5_mpixu")]
+position = Vector2(1, -57)

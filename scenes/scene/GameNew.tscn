@@ -1,0 +1,32 @@
+[gd_scene load_steps=8 format=3 uid="uid://3mfqqjaqst50"]
+
+[ext_resource type="PackedScene" uid="uid://crdvwcxh43g73" path="res://scenes/scene/MainTexture.tscn" id="1_fwgef"]
+[ext_resource type="PackedScene" uid="uid://cw8e3mqdgtt6x" path="res://scenes/scene/MapTexture.tscn" id="2_06xou"]
+[ext_resource type="PackedScene" uid="uid://lkxmcbrinayj" path="res://scenes/UI/GameScreenUI.tscn" id="3_06xou"]
+[ext_resource type="PackedScene" uid="uid://cs41nqr4b7tlo" path="res://scenes/characters/worker_new.tscn" id="4_vx1xh"]
+[ext_resource type="Script" uid="uid://ukv5gifjgpuy" path="res://scenes/scene/TimeCiclingController.gd" id="5_gnx44"]
+[ext_resource type="Script" uid="uid://c52d1sxetl600" path="res://scenes/scene/state_controller.gd" id="5_ilr2a"]
+[ext_resource type="Script" uid="uid://r3pw0fdrg1ts" path="res://scenes/scene/button_assign_controller.gd" id="6_ilr2a"]
+
+[node name="GameNew" type="Node2D"]
+
+[node name="MainTexture" parent="." instance=ExtResource("1_fwgef")]
+z_index = 1
+
+[node name="MapTexture" parent="." instance=ExtResource("2_06xou")]
+
+[node name="GameScreenUI" parent="." instance=ExtResource("3_06xou")]
+z_index = 20
+
+[node name="WorkerNew" parent="." instance=ExtResource("4_vx1xh")]
+position = Vector2(446, 185)
+
+[node name="StateController" type="Node" parent="." node_paths=PackedStringArray("time_circling")]
+script = ExtResource("5_ilr2a")
+time_circling = NodePath("TimeCircling")
+
+[node name="ButtonAssignController" type="Node" parent="StateController"]
+script = ExtResource("6_ilr2a")
+
+[node name="TimeCircling" type="Node" parent="StateController"]
+script = ExtResource("5_gnx44")

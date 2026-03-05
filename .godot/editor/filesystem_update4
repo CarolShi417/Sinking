@@ -1,9 +1,19 @@
-res://scripts/system/MapMana.gd
-res://scenes/game.tscn
-res://scripts/hover_area.gd
-res://scenes/Map Scene.tscn
-res://scripts/MapUIControl.gd
-res://scripts/system/GameState.gd
-res://scenes/scene/game.tscn
-res://scenes/UI/Assigned Button.tscn
-res://scenes/scene/Map Scene.tscn
+res://Tilesets/ground_tile_set.tres
+res://scenes/UI/game_ui_theme.tres
+res://scenes/UI/real_time_fragment_gain_display.tscn
+res://scenes/characters/worker.tscn
+res://scripts/globals/data_types.gd
+res://scenes/characters/WorkerNew.tscn
+res://scenes/scene/GameNew.tscn
+res://scenes/scene/TimeCiclingController.gd
+res://scenes/UI/GameScreenUI.tscn
+res://scenes/UI/map_select_panel.tscn
+res://scenes/UI/MapSelectPanel.gd
+res://scenes/scene/过程/Map Scene.tscn
+res://scenes/UI/MapASelectPanel.gd
+res://scenes/UI/RealTimeFragmentGainDisplay.tscn
+res://scenes/scene/过程/Main Scene.tscn
+res://scenes/scene/state_controller.gd
+res://scenes/scene/button_assign_controller.gd
+res://scenes/scene/过程/Game.tscn
+res://scripts/globals/GameState.gd

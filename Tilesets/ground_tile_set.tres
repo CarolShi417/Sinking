@@ -1,0 +1,19 @@
+[gd_resource type="TileSet" load_steps=3 format=3 uid="uid://cyh0h2iveht6q"]
+
+[ext_resource type="Texture2D" uid="uid://ciduyolcyutkv" path="res://assets/sprites/main/main_bg_building.png" id="1_r57gb"]
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_v41cw"]
+texture = ExtResource("1_r57gb")
+texture_region_size = Vector2i(60, 60)
+0:5/0 = 0
+1:5/0 = 0
+2:5/0 = 0
+3:5/0 = 0
+4:5/0 = 0
+5:5/0 = 0
+6:5/0 = 0
+7:5/0 = 0
+8:5/0 = 0
+
+[resource]
+sources/1 = SubResource("TileSetAtlasSource_v41cw")

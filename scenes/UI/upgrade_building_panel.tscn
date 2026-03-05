@@ -1,0 +1,41 @@
+[gd_scene load_steps=5 format=3 uid="uid://dyk6wuh28xf6l"]
+
+[ext_resource type="Theme" uid="uid://ddgo3b8f6fttt" path="res://scenes/UI/game_ui_theme.tres" id="1_cs1wy"]
+[ext_resource type="Texture2D" uid="uid://dfhj6dvj1wi3o" path="res://assets/UI/Sprite sheet for Basic Pack.png" id="2_2jvbf"]
+[ext_resource type="Script" uid="uid://bdaa5r667ads3" path="res://scenes/UI/UpgradeBuildingButton.gd" id="3_3ocvg"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_3ocvg"]
+atlas = ExtResource("2_2jvbf")
+region = Rect2(837, 132, 22, 24)
+
+[node name="UpgradeBuildingPanel" type="PanelContainer"]
+offset_right = 100.0
+offset_bottom = 8.0
+theme = ExtResource("1_cs1wy")
+theme_type_variation = &"UpgradeBuildingPanel"
+
+[node name="MarginContainer" type="MarginContainer" parent="."]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+
+[node name="Label" type="Label" parent="MarginContainer"]
+z_index = 1
+layout_mode = 2
+size_flags_horizontal = 4
+theme_type_variation = &"BuildingLabel"
+text = "Fragment Analyzer A
+Effect
+D
+D
+D"
+
+[node name="Button" type="Button" parent="MarginContainer"]
+z_index = 10
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+icon = SubResource("AtlasTexture_3ocvg")
+script = ExtResource("3_3ocvg")
+
+[connection signal="pressed" from="MarginContainer/Button" to="MarginContainer/Button" method="_on_pressed"]

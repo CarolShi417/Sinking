@@ -1,0 +1,174 @@
+[gd_scene load_steps=12 format=3 uid="uid://byehl0v8mev7k"]
+
+[ext_resource type="Texture2D" uid="uid://b2df2u1gmhrln" path="res://assets/sprites/map/map_location map_dark.png" id="2_4cko8"]
+[ext_resource type="Texture2D" uid="uid://xsiwxu67ifq1" path="res://assets/sprites/map/map_monitor.png" id="3_ll262"]
+[ext_resource type="Script" uid="uid://b2kbq336afajv" path="res://scenes/components/MapUIControl.gd" id="3_ngqnh"]
+[ext_resource type="Script" uid="uid://bn42v0aocptpn" path="res://scenes/components/Monitor.gd" id="4_7lltf"]
+[ext_resource type="Texture2D" uid="uid://bim31hv1kj1w5" path="res://assets/sprites/map/map_location map.png" id="4_8agqf"]
+[ext_resource type="Texture2D" uid="uid://cys007nk82j3m" path="res://assets/sprites/map/Battery/Battery-2.png" id="5_4cko8"]
+[ext_resource type="Texture2D" uid="uid://hs21ne444o05" path="res://assets/sprites/map/map_workplace.png" id="5_7lltf"]
+[ext_resource type="Texture2D" uid="uid://b0gxdmaxblnpw" path="res://assets/sprites/map/map_location map_B.png" id="5_b17h1"]
+[ext_resource type="Texture2D" uid="uid://c2xabhqii8p7n" path="res://assets/sprites/map/map_location map_C.png" id="6_4cko8"]
+[ext_resource type="Texture2D" uid="uid://cphjcyu2a1k0w" path="res://assets/sprites/map/map_组合后示意图.png" id="6_hoftg"]
+[ext_resource type="Texture2D" uid="uid://cke6sp6c85y10" path="res://assets/sprites/map/map_button_mapA.png" id="8_thxfw"]
+
+[node name="MapScene" type="Node2D"]
+
+[node name="MapMana" type="Node2D" parent="."]
+
+[node name="bg dark" type="Sprite2D" parent="."]
+visible = false
+z_index = 5
+position = Vector2(584, 198)
+texture = ExtResource("2_4cko8")
+
+[node name="bg workplace" type="Sprite2D" parent="."]
+z_index = 5
+position = Vector2(480, 180)
+texture = ExtResource("5_7lltf")
+
+[node name="bg 示意图" type="Sprite2D" parent="."]
+visible = false
+z_index = 3
+position = Vector2(481, 180)
+texture = ExtResource("6_hoftg")
+
+[node name="Battery" type="Sprite2D" parent="."]
+z_index = 6
+position = Vector2(126, 95)
+texture = ExtResource("5_4cko8")
+
+[node name="bgLocationMaps" type="Node2D" parent="."]
+
+[node name="bg location map A" type="Sprite2D" parent="bgLocationMaps"]
+z_index = 4
+position = Vector2(480, 200)
+texture = ExtResource("4_8agqf")
+
+[node name="bg location map B" type="Sprite2D" parent="bgLocationMaps"]
+visible = false
+z_index = 4
+position = Vector2(480, 200)
+texture = ExtResource("5_b17h1")
+
+[node name="bg location map C" type="Sprite2D" parent="bgLocationMaps"]
+visible = false
+z_index = 4
+position = Vector2(480, 200)
+texture = ExtResource("6_4cko8")
+
+[node name="Monitor" type="Sprite2D" parent="."]
+z_index = 4
+texture = ExtResource("3_ll262")
+script = ExtResource("4_7lltf")
+
+[node name="MonitorScreenContainer" type="SubViewportContainer" parent="."]
+visible = false
+offset_left = 16.0
+offset_top = 128.0
+offset_right = 956.0
+offset_bottom = 328.0
+
+[node name="SubViewport" type="SubViewport" parent="MonitorScreenContainer"]
+handle_input_locally = false
+size = Vector2i(940, 200)
+render_target_update_mode = 0
+
+[node name="MapUI" type="Control" parent="."]
+z_index = 10
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+mouse_filter = 1
+script = ExtResource("3_ngqnh")
+
+[node name="Test_SkipButton" type="Button" parent="MapUI"]
+self_modulate = Color(18.892157, 3.609068, 1.2127409, 1)
+layout_mode = 0
+offset_left = 283.0
+offset_top = 84.0
+offset_right = 324.0
+offset_bottom = 115.0
+text = "Skip"
+
+[node name="FragmentGainInExploration" type="Label" parent="MapUI"]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 23.0
+
+[node name="MapButtons" type="Control" parent="MapUI"]
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="MapAButton" type="Button" parent="MapUI/MapButtons"]
+layout_mode = 0
+offset_left = 761.0
+offset_top = 69.0
+offset_right = 817.0
+offset_bottom = 125.0
+text = "A"
+icon = ExtResource("8_thxfw")
+icon_alignment = 1
+
+[node name="AssignWorkerAButton" type="Button" parent="MapUI/MapButtons"]
+layout_mode = 0
+offset_left = 761.0
+offset_top = 69.0
+offset_right = 818.0
+offset_bottom = 125.0
+text = "assign"
+
+[node name="MapBButton" type="Button" parent="MapUI/MapButtons"]
+layout_mode = 0
+offset_left = 827.0
+offset_top = 69.0
+offset_right = 883.0
+offset_bottom = 125.0
+text = "B"
+icon = ExtResource("8_thxfw")
+icon_alignment = 1
+
+[node name="AssignWorkerBButton" type="Button" parent="MapUI/MapButtons"]
+layout_mode = 0
+offset_left = 827.0
+offset_top = 69.0
+offset_right = 884.0
+offset_bottom = 125.0
+text = "assign"
+
+[node name="MapCButton" type="Button" parent="MapUI/MapButtons"]
+layout_mode = 0
+offset_left = 892.0
+offset_top = 69.0
+offset_right = 948.0
+offset_bottom = 125.0
+text = "C"
+icon = ExtResource("8_thxfw")
+icon_alignment = 1
+
+[node name="AssignWorkerCButton" type="Button" parent="MapUI/MapButtons"]
+layout_mode = 0
+offset_left = 892.0
+offset_top = 69.0
+offset_right = 949.0
+offset_bottom = 125.0
+text = "assign"
+
+[node name="FragmentGainingTimeline" type="HBoxContainer" parent="MapUI"]
+z_index = 6
+layout_mode = 0
+offset_left = 18.0
+offset_top = 135.0
+offset_right = 58.0
+offset_bottom = 175.0
+scale = Vector2(0.5, 0.5)
+
+[connection signal="pressed" from="MapUI/Test_SkipButton" to="MapMana" method="_on_test_skip_button_pressed"]
+[connection signal="pressed" from="MapUI/MapButtons/MapAButton" to="MapUI" method="_on_map_a_button_pressed"]
+[connection signal="pressed" from="MapUI/MapButtons/AssignWorkerAButton" to="MapUI" method="_on_assign_worker_a_button_pressed"]
+[connection signal="pressed" from="MapUI/MapButtons/MapBButton" to="MapUI" method="_on_map_b_button_pressed"]
+[connection signal="pressed" from="MapUI/MapButtons/AssignWorkerBButton" to="MapUI" method="_on_assign_worker_b_button_pressed"]
+[connection signal="pressed" from="MapUI/MapButtons/MapCButton" to="MapUI" method="_on_map_c_button_pressed"]
+[connection signal="pressed" from="MapUI/MapButtons/AssignWorkerCButton" to="MapUI" method="_on_assign_worker_c_button_pressed"]

@@ -1,0 +1,54 @@
+[gd_scene load_steps=7 format=3 uid="uid://dmvgpntduh0lt"]
+
+[ext_resource type="Texture2D" uid="uid://l7o0do0pvstt" path="res://assets/sprites/map/map_progress_bar.png" id="1_a4hvh"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_m3jtv"]
+atlas = ExtResource("1_a4hvh")
+region = Rect2(0, 0, 960, 60)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_njlla"]
+atlas = ExtResource("1_a4hvh")
+region = Rect2(0, 60, 960, 60)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_gyaah"]
+atlas = ExtResource("1_a4hvh")
+region = Rect2(0, 120, 960, 60)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_s8t7m"]
+atlas = ExtResource("1_a4hvh")
+region = Rect2(0, 180, 960, 60)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_j4oq3"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_m3jtv")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_njlla")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_gyaah")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_s8t7m")
+}],
+"loop": false,
+"name": &"appear",
+"speed": 8.0
+}]
+
+[node name="RealTimeFragmentGainDisplay" type="Node2D"]
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+position = Vector2(355, 14)
+sprite_frames = SubResource("SpriteFrames_j4oq3")
+animation = &"appear"
+frame = 3
+frame_progress = 1.0
+
+[node name="FragmentGainingTimeline" type="HBoxContainer" parent="."]
+z_index = 6
+offset_right = 40.0
+offset_bottom = 40.0
+scale = Vector2(0.5, 0.5)

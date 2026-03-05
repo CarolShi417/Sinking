@@ -1,0 +1,33 @@
+[gd_scene load_steps=5 format=3 uid="uid://lkxmcbrinayj"]
+
+[ext_resource type="Script" uid="uid://da4tme36i2q0r" path="res://scenes/UI/BuildingUI.gd" id="1_txjve"]
+[ext_resource type="PackedScene" uid="uid://dyk6wuh28xf6l" path="res://scenes/UI/upgrade_building_panel.tscn" id="2_txjve"]
+[ext_resource type="PackedScene" uid="uid://dmvgpntduh0lt" path="res://scenes/UI/RealTimeFragmentGainDisplay.tscn" id="3_6vit6"]
+[ext_resource type="PackedScene" uid="uid://ce8f1svngx6pc" path="res://scenes/UI/map_select_panel.tscn" id="3_gunxf"]
+
+[node name="GameScreenUI" type="Control" node_paths=PackedStringArray("building_upgrade_panel")]
+layout_mode = 3
+anchors_preset = 0
+script = ExtResource("1_txjve")
+building_upgrade_panel = NodePath("UpgradeBuildingPanel")
+
+[node name="PanelContainer" type="PanelContainer" parent="."]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="UpgradeBuildingPanel" parent="." instance=ExtResource("2_txjve")]
+layout_mode = 0
+
+[node name="MapSelectPanel" parent="." instance=ExtResource("3_gunxf")]
+layout_mode = 1
+anchors_preset = 0
+anchor_left = 0.0
+anchor_right = 0.0
+offset_left = 1755.0
+offset_right = 1918.0
+grow_horizontal = 1
+
+[node name="RealTimeFragmentGainDisplay" parent="." instance=ExtResource("3_6vit6")]
+z_index = 8
+position = Vector2(1082, 90)

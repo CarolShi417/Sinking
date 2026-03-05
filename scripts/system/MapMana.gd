@@ -22,7 +22,6 @@ const work_speed_monitor_multiplier := 1.20 #monitor状态增益
 var current_speed := work_speed_normal
 var hover_active := false
 
-# ===== Resting State =====
 
 # 正常状态获取碎片数量
 var fragment_A_per_time_mapA := 30
@@ -33,18 +32,33 @@ var fragment_C_per_time_mapA := 10
 var total_fragment_A_in_mapA := 0.0
 signal step_tick(level: String) #每5秒发送一次信号 用于更新UI
 
-#测试用 最好挪到UIControl里面
+# ===== Resting State =====
+@onready var bg_dark: Sprite2D = $"../bg dark"
+
+# 测试用 最好挪到UIControl里面
 @onready var test_skip_button = $"../Control/Test_SkipButton"
 var debug_timer := 0.0
 
 # 游戏开始运行
 func _ready() -> void:
 	_create_timers()# 创建所有 Timer
+	
 	worker_working.hide()
-	worker_working.position = Vector2(480,300)  # 设置初始坐标
+	worker_working.position = Vector2(480,240)  # 设置初始坐标
+	
+	#bg_dark.hide()
+	
 	control.assign_worker_to_mapA.connect(_on_assign_worker_to_mapA) #接收信号：mapA按钮按下
-	GameState.worker_state_changed.connect(_on_worker_state_changed)
-	hover_area.hover_changed.connect(_on_worker_hover)
+	
+	GameState.worker_state_changed.connect(_on_worker_state_changed) #接收信号：GameState改变
+	_on_worker_state_changed(GameState.worker_state) # 游戏开始时执行一次
+	
+	hover_area.hover_changed.connect(_on_worker_hover) #接收信号：鼠标悬停
+	
+	control.skip_this_work.connect(_on_skip_this_work)
+	
+func _process(_delta) -> void:
+	pass
 	
 func _create_timers():
 	# 工作计时器（一次性）
@@ -66,8 +80,21 @@ func _create_timers():
 	step_timer.timeout.connect(_on_step_tick)
 	add_child(step_timer)
 
+# 接收信号 如果worker状态改变，print当前状态
 func _on_worker_state_changed(state):
-	print("worker state changed:", state)	
+	print("worker state changed:",
+		GameState.get_worker_state_name(state))	
+	match state:
+
+		GameState.WorkerState.Working:
+			hover_area.set_enabled(true)
+			bg_dark.hide()
+
+		GameState.WorkerState.Resting:
+			hover_area.set_enabled(false)
+			bg_dark.show()
+
+	hover_active = false
 		
 # Debug：监听 worker 状态变化
 func _on_assign_worker_to_mapA():
@@ -78,7 +105,7 @@ func _on_work_finished():
 	stop_work()
 	
 func stop_work():
-	print("时间到")	
+	print("stop work")	
 	# 停止所有 Working 相关 timer
 	step_timer.stop()
 	work_timer.stop()
@@ -96,13 +123,18 @@ func stop_work():
 	
 	# 启动休息倒计时
 	rest_timer.start(rest_duration)	
+		
+	# 重置碎片获取以及UI
+	total_fragment_A_in_mapA = 0.0
+	current_speed = work_speed_normal
+	
 
 func start_work():
-	print("开始工作")
+	print("start work")
 	GameState.set_worker_state(GameState.WorkerState.Working)
 	
 	#重置碎片值
-	total_fragment_A_in_mapA = 0.0
+	#total_fragment_A_in_mapA = 0.0
 	
 	# 开始 worker 行为
 	worker_working.show()
@@ -111,7 +143,6 @@ func start_work():
 	# 开始计时
 	work_timer.start(work_duration)# 启动工作总时长计时
 	step_timer.start()# 启动 5 秒 tick 循环
-	
 	
 	
 # ========================================
@@ -134,6 +165,7 @@ func _on_step_tick():
 	print("speed:", current_speed)
 	print(" gained this step:", gained_per_5_seconds,
 		  " total:", total_fragment_A_in_mapA)
+	print("当前hover状态为", hover_active)
 
 # 判断当前获取fragment speed是否高
 func get_speed_level() -> String:
@@ -142,11 +174,10 @@ func get_speed_level() -> String:
 	else:
 		return "low"	
 		
-#接受hover_area的信号，将hover_active的bool值和信号保持一致
+#接受hover_area的信号，仅在workstate的时候启动
 func _on_worker_hover(active):
-	#print("HOVER:", active)
 	hover_active = active
-	
+		
 # 根据 hover 状态更新速度
 func update_work_speed():
 	if hover_active:
@@ -154,9 +185,9 @@ func update_work_speed():
 	else:
 		current_speed = work_speed_normal
 	
+# ========================================
 #用于加速时间的按钮
-#func _on_test_skip_button_pressed() -> void:
-	#if GameState.worker_state == GameState.WorkerState.Working:
-		#work_time = work_duration
-	#else:
-		#rest_time = rest_duration
+# ========================================
+func _on_skip_this_work() -> void:
+	if GameState.worker_state == GameState.WorkerState.Working:
+		stop_work()

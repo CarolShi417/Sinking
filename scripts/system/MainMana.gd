@@ -9,8 +9,9 @@ func _ready() -> void:
 	print(worker_resting.position) 
 	worker_resting.start_move()
 
-func _on_worker_state_changed(state):
-	print("worker state changed:", state)
+#func _on_worker_state_changed(state):
+	#print("worker state changed:",
+		#GameState.get_worker_state_name(state))
 	
 func _process(_delta) -> void:
 	if GameState.worker_state == GameState.WorkerState.Resting:
