@@ -2,7 +2,7 @@
 
 [ext_resource type="Theme" uid="uid://ddgo3b8f6fttt" path="res://scenes/UI/game_ui_theme.tres" id="1_cs1wy"]
 [ext_resource type="Texture2D" uid="uid://dfhj6dvj1wi3o" path="res://assets/UI/Sprite sheet for Basic Pack.png" id="2_2jvbf"]
-[ext_resource type="Script" uid="uid://bdaa5r667ads3" path="res://scenes/UI/UpgradeBuildingButton.gd" id="3_3ocvg"]
+[ext_resource type="Script" uid="uid://bdaa5r667ads3" path="res://scenes/UI/upgrade_building_button.gd" id="3_3ocvg"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_3ocvg"]
 atlas = ExtResource("2_2jvbf")

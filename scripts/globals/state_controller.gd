@@ -2,11 +2,16 @@ extends Node
 
 @export var time_circling: Node
 
+
+
 # Called when the node enters the scene tree for the first time.
 func _ready():
 
 	# 游戏开始默认 Resting
 	enter_resting()
+	
+	# 碎片系统接收计时器信号
+	time_circling.step_tick.connect(FragmentSystem._on_step_tick)
 
 # ===============================
 # 请求进入 Working

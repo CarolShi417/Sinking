@@ -17,8 +17,9 @@ config/icon="res://icon.svg"
 
 [autoload]
 
-GameState="*res://scripts/globals/GameState.gd"
+GameState="*res://scripts/globals/game_state.gd"
 BuildingHoverArea="*res://building_hover_area.gd"
+FragmentSystem="*res://scripts/globals/fragment_system.gd"
 
 [display]
 
@@ -43,12 +44,15 @@ folder_colors={
 "res://Tilesets/": "yellow",
 "res://assets/": "orange",
 "res://scenes/": "green",
-"res://scripts/": "purple"
+"res://scenes/过程/": "gray",
+"res://scripts/": "purple",
+"res://scripts/过程/": "gray"
 }
 
 [global_group]
 
 PanelContainerA=""
+TestButton=""
 
 [rendering]
 

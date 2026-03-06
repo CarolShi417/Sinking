@@ -2,8 +2,8 @@
 
 [ext_resource type="Texture2D" uid="uid://b2df2u1gmhrln" path="res://assets/sprites/map/map_location map_dark.png" id="2_4cko8"]
 [ext_resource type="Texture2D" uid="uid://xsiwxu67ifq1" path="res://assets/sprites/map/map_monitor.png" id="3_ll262"]
-[ext_resource type="Script" uid="uid://b2kbq336afajv" path="res://scenes/components/MapUIControl.gd" id="3_ngqnh"]
-[ext_resource type="Script" uid="uid://bn42v0aocptpn" path="res://scenes/components/Monitor.gd" id="4_7lltf"]
+[ext_resource type="Script" uid="uid://b2kbq336afajv" path="res://scripts/过程/MapUIControl.gd" id="3_ngqnh"]
+[ext_resource type="Script" uid="uid://bn42v0aocptpn" path="res://scenes/过程/Monitor.gd" id="4_7lltf"]
 [ext_resource type="Texture2D" uid="uid://bim31hv1kj1w5" path="res://assets/sprites/map/map_location map.png" id="4_8agqf"]
 [ext_resource type="Texture2D" uid="uid://cys007nk82j3m" path="res://assets/sprites/map/Battery/Battery-2.png" id="5_4cko8"]
 [ext_resource type="Texture2D" uid="uid://hs21ne444o05" path="res://assets/sprites/map/map_workplace.png" id="5_7lltf"]

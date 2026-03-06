@@ -1,5 +1,6 @@
 extends Node
 
+@onready var test_button_speedup = get_tree().get_first_node_in_group("TestButton")
 
 # ===============================
 # 工作 / 休息时间
@@ -17,9 +18,12 @@ var work_timer : Timer
 var rest_timer : Timer
 var step_timer : Timer
 
+# 时间倍率
+#var time_scale : float = 1.0
+
 
 # 信号
-signal step_tick
+signal step_tick(duration)
 
 # 引用
 @onready var state_controller = get_parent()
@@ -33,6 +37,9 @@ func _ready():
 
 	_create_timers()
 
+	# 接收测试button的signal
+	test_button_speedup.fast_button_pressed.connect(_speedup_timers)
+		
 
 
 
@@ -113,4 +120,10 @@ func _on_step_tick():
 
 	print("STEP TICK")
 
-	step_tick.emit()
+	step_tick.emit(step_duration)
+
+func _speedup_timers():
+	if Engine.time_scale == 1:
+		Engine.time_scale = 20
+	else:
+		Engine.time_scale = 1

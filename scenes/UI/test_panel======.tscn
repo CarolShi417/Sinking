@@ -1,0 +1,42 @@
+[gd_scene load_steps=3 format=3 uid="uid://dtj5iutud5bat"]
+
+[ext_resource type="Theme" uid="uid://ddgo3b8f6fttt" path="res://scenes/UI/game_ui_theme.tres" id="1_y4xpt"]
+[ext_resource type="Script" uid="uid://y8k2uikqr5au" path="res://scenes/UI/test_button_fast_time.gd" id="2_cr6x4"]
+
+[node name="MapSelectPanel" type="PanelContainer"]
+offset_right = 166.0
+offset_bottom = 70.0
+theme = ExtResource("1_y4xpt")
+theme_type_variation = &"MapButtonPanel"
+
+[node name="MarginContainer" type="MarginContainer" parent="."]
+layout_mode = 2
+theme_type_variation = &"MarginContainer"
+
+[node name="HBoxContainer" type="HBoxContainer" parent="MarginContainer"]
+layout_mode = 2
+size_flags_horizontal = 0
+
+[node name="AssignButtonA" type="Button" parent="MarginContainer/HBoxContainer" groups=["TestButton"]]
+clip_contents = true
+custom_minimum_size = Vector2(45, 45)
+layout_mode = 2
+theme_type_variation = &"TestButton"
+text = "fast"
+script = ExtResource("2_cr6x4")
+
+[node name="AssignButtonB" type="Button" parent="MarginContainer/HBoxContainer"]
+clip_contents = true
+custom_minimum_size = Vector2(45, 45)
+layout_mode = 2
+theme_type_variation = &"TestButton"
+text = "skip"
+
+[node name="AssignButtonC" type="Button" parent="MarginContainer/HBoxContainer"]
+clip_contents = true
+custom_minimum_size = Vector2(45, 45)
+layout_mode = 2
+theme_type_variation = &"TestButton"
+text = "none"
+
+[connection signal="pressed" from="MarginContainer/HBoxContainer/AssignButtonA" to="MarginContainer/HBoxContainer/AssignButtonA" method="_on_pressed"]
