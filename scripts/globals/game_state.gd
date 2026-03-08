@@ -1,10 +1,12 @@
 extends Node
 
 signal state_changed
+signal behavior_changed
 
 var current_state : DataTypes.GameState = DataTypes.GameState.Resting
+var current_behavior_state : DataTypes.BehaviorState = DataTypes.BehaviorState.idle
 
-
+# ====管理resting和working====
 func set_state(new_state: DataTypes.GameState):
 
 	if current_state == new_state:
@@ -15,3 +17,15 @@ func set_state(new_state: DataTypes.GameState):
 	print("GameState → ", new_state)
 
 	state_changed.emit(new_state)
+	
+# ====管理idle和gather和walk和dead====
+func set_behavior(new_behavior: DataTypes.BehaviorState):
+
+	if current_behavior_state == new_behavior:
+		return
+
+	current_behavior_state = new_behavior
+
+	print("BehaviorState → ", new_behavior)
+
+	behavior_changed.emit(new_behavior)

@@ -1,6 +1,6 @@
 [gd_scene load_steps=5 format=3 uid="uid://bifojy26oms6a"]
 
-[ext_resource type="PackedScene" uid="uid://4xr8o0bbp1f0" path="res://scenes/characters/worker.tscn" id="2_a6v3m"]
+[ext_resource type="PackedScene" uid="uid://4xr8o0bbp1f0" path="res://scenes/过程/worker.tscn" id="2_a6v3m"]
 [ext_resource type="Texture2D" uid="uid://biplkedrl6kx7" path="res://assets/sprites/main/main_bg_black.png" id="4_4mf87"]
 [ext_resource type="Texture2D" uid="uid://dygco8uwb4flh" path="res://assets/sprites/main/main_tent_test.png" id="4_8e1m4"]
 [ext_resource type="Script" uid="uid://dqo2dxt1on6lq" path="res://scripts/过程/MainUIControl.gd" id="6_4mf87"]

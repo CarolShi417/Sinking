@@ -1,4 +1,4 @@
-[gd_resource type="Theme" load_steps=13 format=3 uid="uid://ddgo3b8f6fttt"]
+[gd_resource type="Theme" load_steps=14 format=3 uid="uid://ddgo3b8f6fttt"]
 
 [ext_resource type="FontFile" uid="uid://caji7scvx16ur" path="res://assets/UI/Fonts/pixelFont-7-8x14-sproutLands.ttf" id="1_63rmd"]
 [ext_resource type="Texture2D" uid="uid://dfhj6dvj1wi3o" path="res://assets/UI/Sprite sheet for Basic Pack.png" id="1_rpqwa"]
@@ -23,6 +23,8 @@ region = Rect2(76, 460, 0, 0)
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_rvk2n"]
 texture = SubResource("AtlasTexture_vespo")
 
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_vespo"]
+
 [sub_resource type="AtlasTexture" id="AtlasTexture_63rmd"]
 atlas = ExtResource("1_rpqwa")
 region = Rect2(59, 11, 26, 26)
@@ -35,6 +37,7 @@ region_rect = Rect2(3, 3, 20, 20)
 BuildingLabel/base_type = &"Label"
 BuildingLabel/font_sizes/font_size = 20
 BuildingLabel/fonts/font = ExtResource("1_63rmd")
+FragmentHBoxeContainer/base_type = &"HBoxContainer"
 MapButton/base_type = &"Button"
 MapButton/styles/hover = SubResource("StyleBoxTexture_vespo")
 MapButton/styles/normal = SubResource("StyleBoxTexture_hrplk")
@@ -51,5 +54,7 @@ TestButton/base_type = &"Button"
 TestButton/colors/icon_hover_color = Color(0.51783216, 0.5178322, 0.5178321, 1)
 TestButton/colors/icon_normal_color = Color(0.2592937, 0.2592937, 0.2592937, 1)
 TestButton/colors/icon_pressed_color = Color(0, 0, 0, 1)
+TransparentPanel/base_type = &"PanelContainer"
+TransparentPanel/styles/panel = SubResource("StyleBoxEmpty_vespo")
 UpgradeBuildingPanel/base_type = &"PanelContainer"
 UpgradeBuildingPanel/styles/panel = SubResource("StyleBoxTexture_k5kyg")

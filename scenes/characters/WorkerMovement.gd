@@ -1,22 +1,26 @@
 extends CharacterBody2D
 
-@export var speed := 100.0 #公开变量
+@export var speed : float = 100.0 #公开变量
 
 # 移动边界
-const LEFT_LIMIT := 10.0
-const RIGHT_LIMIT := 950.0
+var LEFT_LIMIT := 10.0
+var RIGHT_LIMIT := 930.0
 
 #移动状态和方向
-var running := false #判断是否运行worker
-var moving := false #判断worker是否移动
+var running : bool = false #判断是否运行worker
+var moving : bool = false #判断worker是否移动
 var direction := 1 #1=右
 
-#func _ready() -> void:
+func _ready() -> void:
 	#mouse_entered.connect(_on_mouse_entered)
 	
+	# 监听状态变化
+	GameState.state_changed.connect(_on_state_changed)
+	position = Vector2(450,180)
+
 #如何移动
 func _physics_process(_delta): #Godot 每一帧“物理更新”都会自动调用这个函数
-	if moving:
+	if GameState.current_behavior_state == DataTypes.BehaviorState.walk:
 		velocity.x = speed * direction
 	else:
 		velocity.x = 0
@@ -26,29 +30,29 @@ func _physics_process(_delta): #Godot 每一帧“物理更新”都会自动调
 	# ===== 边界检测 =====
 	if position.x <= LEFT_LIMIT:
 		position.x = LEFT_LIMIT
-		direction = 1   # 强制向右
+		direction = 1   # 强制向右		
+		print("现在往右走，direction为", direction)
 
 	if position.x >= RIGHT_LIMIT:
 		position.x = RIGHT_LIMIT
 		direction = -1  # 强制向左
+		print("现在往左走，direction为", direction)
+		
 
-#确定是否移动，持续时间
-func start_move():
-	if running:
-		return
+# state切换引起worker切换
+func _on_state_changed(state):
+
+	if state == DataTypes.GameState.Resting:
+
+		position = Vector2(450,180)
+		LEFT_LIMIT = 10
+		RIGHT_LIMIT = 930
+		z_index = 2
+
+	elif state == DataTypes.GameState.Working:
+
+		position = Vector2(1450,222)
+		LEFT_LIMIT = 1000
+		RIGHT_LIMIT = 1900
+		z_index = 10
 		
-	running = true
-	
-	while running:
-		moving = true#开始移动
-		await get_tree().create_timer(5.0).timeout# 持续移动的时间
-		
-		moving = false
-		await get_tree().create_timer(10.0).timeout# 停止移动的时间
-		
-		direction *= -1 #换方向
-		
-func stop_move():	
-	running = false
-	moving = false
-	velocity = Vector2.ZERO

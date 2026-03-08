@@ -12,6 +12,7 @@ func _ready():
 	
 	# 碎片系统接收计时器信号
 	time_circling.step_tick.connect(FragmentSystem._on_step_tick)
+	
 
 # ===============================
 # 请求进入 Working

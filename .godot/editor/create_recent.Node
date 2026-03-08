@@ -1,14 +1,14 @@
-Control
 Node
+HBoxContainer
+VBoxContainer
 PanelContainer
+Control
 Button
 MarginContainer
 Container
 Sprite2D
-HBoxContainer
 AnimatedSprite2D
 Node2D
 TileMapLayer
 Label
 CollisionShape2D
-Area2D

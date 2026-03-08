@@ -40,12 +40,16 @@ func _on_step_tick(duration):
 
 	total_fragment_a_work_in_mapA += gained_per_5_seconds
 	
-	print("本次探索获取到碎片数量为",  total_fragment_a_work_in_mapA)
+	#print("本次探索获取到碎片数量为",  total_fragment_a_work_in_mapA)
 	
 	fragment_gain_per_step.emit()
 
 # rest state下重置碎片设定
 func _on_state_changed(state):
 	if state == DataTypes.GameState.Resting:
+		total_fragment_a += total_fragment_a_work_in_mapA
+		#发送信号给UI，让UI更新Label
+		#print("total_fragment_a数量为", total_fragment_a)
 		total_fragment_a_work_in_mapA = 0.00
+		
 		current_speed = work_speed_normal

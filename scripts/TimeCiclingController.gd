@@ -118,7 +118,7 @@ func _on_rest_finished():
 
 func _on_step_tick():
 
-	print("STEP TICK")
+	#print("STEP TICK")
 
 	step_tick.emit(step_duration)
 
