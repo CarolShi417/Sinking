@@ -23,9 +23,10 @@ z_index = 20
 z_index = 2
 position = Vector2(1240, 222)
 
-[node name="StateController" type="Node" parent="." node_paths=PackedStringArray("time_circling")]
+[node name="StateController" type="Node" parent="." node_paths=PackedStringArray("time_circling", "button_controller")]
 script = ExtResource("5_mq4ji")
 time_circling = NodePath("TimeCircling")
+button_controller = NodePath("ButtonAssignController")
 
 [node name="ButtonAssignController" type="Node" parent="StateController"]
 script = ExtResource("6_k2ewu")

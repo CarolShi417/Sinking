@@ -2,14 +2,13 @@ extends Node
 
 @onready var state_controller = get_parent()
 
-
 @onready var panel_container_A = get_tree().get_first_node_in_group("PanelContainerA")
+
+signal on_assign_worker
 
 func _ready():
 
-	panel_container_A.button_assignWorkerToMapA_pressed.connect(_on_assign_worker)
+	panel_container_A.button_assignWorkerToMapA_pressed.connect(_on_button_assignWorkerToMapA_pressed)
 
-
-
-func _on_assign_worker():
-	state_controller.request_work()
+func _on_button_assignWorkerToMapA_pressed():
+	on_assign_worker.emit()
