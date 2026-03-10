@@ -41,7 +41,7 @@ func start_idle_timer():
 	else:
 		duration = work_idle_duration
 
-	print("idle duration:", duration)
+	#print("idle duration:", duration)
 
 	behavior_timer.start(duration)
 	
@@ -58,7 +58,7 @@ func start_walk_timer():
 	else:
 		duration = work_walk_duration
 
-	print("walk duration:", duration)
+	#print("walk duration:", duration)
 
 	behavior_timer.start(duration)
 
@@ -68,7 +68,7 @@ func start_gather_timer():
 	current_behavior = DataTypes.BehaviorState.gather
 	GameState.set_behavior(current_behavior)
 
-	print("gather duration:", work_gather_duration)
+	#print("gather duration:", work_gather_duration)
 
 	behavior_timer.start(work_gather_duration)
 	

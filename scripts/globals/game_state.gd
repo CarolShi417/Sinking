@@ -14,7 +14,7 @@ func set_state(new_state: DataTypes.GameState):
 
 	current_state = new_state
 
-	print("GameState → ", new_state)
+	#print("GameState → ", new_state)
 
 	state_changed.emit(new_state)
 	
@@ -26,6 +26,6 @@ func set_behavior(new_behavior: DataTypes.BehaviorState):
 
 	current_behavior_state = new_behavior
 
-	print("BehaviorState → ", new_behavior)
+	#print("BehaviorState → ", new_behavior)
 
 	behavior_changed.emit(new_behavior)

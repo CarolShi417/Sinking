@@ -1,0 +1,19 @@
+[gd_scene load_steps=6 format=3 uid="uid://7p424v4db4cm"]
+
+[ext_resource type="Texture2D" uid="uid://xsiwxu67ifq1" path="res://assets/sprites/map/map_monitor.png" id="1_k14co"]
+[ext_resource type="Script" uid="uid://cd4480pybxblk" path="res://scenes/components/item_finder.gd" id="2_808bc"]
+[ext_resource type="Shader" uid="uid://cx1vg4dak5vo" path="res://scenes/shader/MaskShader.gdshader" id="2_aae25"]
+[ext_resource type="Texture2D" uid="uid://pf5koaonhea6" path="res://assets/sprites/map/map_monitor_in_zone.png" id="3_808bc"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_uh4ke"]
+shader = ExtResource("2_aae25")
+
+[node name="ItemFinder" type="Sprite2D"]
+z_index = 80
+texture_filter = 1
+texture = ExtResource("1_k14co")
+script = ExtResource("2_808bc")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+material = SubResource("ShaderMaterial_uh4ke")
+texture = ExtResource("3_808bc")

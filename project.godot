@@ -53,6 +53,10 @@ folder_colors={
 
 PanelContainerA=""
 TestButton=""
+maps=""
+WorkerResting=""
+WorkerWorking=""
+HoverArea=""
 
 [rendering]
 

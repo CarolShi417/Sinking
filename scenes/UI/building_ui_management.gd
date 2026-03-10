@@ -27,7 +27,7 @@ func _ready():
 	hover_area.hover_exited.connect(_on_hover_exited)
 
 func _on_hover_entered():	
-	print("UI received hover_entered")
+	#print("UI received hover_entered")
 	building_upgrade_panel.show()
 	building_upgrade_panel.position = building.position + Vector2(0, -100)
 

@@ -1,4 +1,4 @@
-[gd_scene load_steps=45 format=3 uid="uid://cs41nqr4b7tlo"]
+[gd_scene load_steps=45 format=3 uid="uid://iv4qvdu1lq0w"]
 
 [ext_resource type="Script" uid="uid://b7g8fi0iye2eb" path="res://scenes/characters/WorkerMovement.gd" id="1_32nm8"]
 [ext_resource type="Texture2D" uid="uid://cmqumrc2drsub" path="res://assets/sprites/worker/Worker_right/Worker_gather_right.png" id="2_5qb4r"]
@@ -244,15 +244,15 @@ animations = [{
 }]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_vwx2a"]
-radius = 57.0
+radius = 38.0
 height = 114.0
 
-[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_sb737"]
-radius = 79.0
-height = 160.0
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_5f488"]
+radius = 59.0
+height = 118.0
 
 [node name="WorkerNew" type="CharacterBody2D"]
-z_index = 5
+z_index = 40
 input_pickable = true
 script = ExtResource("1_32nm8")
 
@@ -267,17 +267,16 @@ visible = false
 position = Vector2(2, -56)
 shape = SubResource("CapsuleShape2D_vwx2a")
 
-[node name="HoverArea" type="Area2D" parent="."]
+[node name="HoverArea" type="Area2D" parent="." groups=["HoverArea"]]
+z_index = 40
 script = ExtResource("3_tvm1o")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="HoverArea"]
-visible = false
-z_index = 20
-position = Vector2(1, -56)
-shape = SubResource("CapsuleShape2D_sb737")
+z_index = 40
+y_sort_enabled = true
+position = Vector2(-1, -53)
+shape = SubResource("CapsuleShape2D_5f488")
 debug_color = Color(0.8825655, 0.0003398031, 0.81741947, 0.41960785)
-
-[node name="WorkerMovement" type="Node" parent="."]
 
 [node name="StateMachine" type="Node" parent="." node_paths=PackedStringArray("initial_node_state")]
 script = ExtResource("6_mkwbn")

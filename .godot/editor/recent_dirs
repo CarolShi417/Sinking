@@ -1,3 +1,8 @@
+res://scenes/Monitor
+res://scripts
+res://scenes/characters
+res://scenes/shader
+res://scenes/components
 res://assets/sprites/worker/worker_left
 res://assets/sprites/worker/Worker_right
 res://scenes/UI
@@ -5,7 +10,6 @@ res://scripts/globals
 res://assets/sprites/worker
 res://assets/sprites/map
 res://Tilesets
-res://scenes/components
 res://assets/sprites/main
 res://scenes/scene
 res://scenes

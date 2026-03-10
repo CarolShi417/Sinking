@@ -3,10 +3,12 @@ extends Sprite2D
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
-	pass # Replace with function body.
+	Input.mouse_mode = Input.MOUSE_MODE_HIDDEN
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(_delta) -> void:
+#func _process(_delta) -> void:
 	# 每帧把放大镜移动到鼠标位置
-	global_position = get_global_mouse_position()
+func _input(event: InputEvent) -> void:
+	if event is InputEventMouseMotion:
+		global_position = get_global_mouse_position()

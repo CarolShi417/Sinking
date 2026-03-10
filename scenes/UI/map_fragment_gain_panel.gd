@@ -4,19 +4,25 @@ extends Node2D
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
-	pass # Replace with function body.
 	FragmentSystem.fragment_gain_per_step.connect(_on_fragment_step)
 	
 	GameState.state_changed.connect(_on_state_changed)
 
 
-func _on_fragment_step():
+func _on_fragment_step(level: String):
 
 	var rect := ColorRect.new()
 
-	rect.color = Color.WHITE
-
-	rect.custom_minimum_size = Vector2(7, 15)
+	# 确认timeline颜色
+	match level:
+		"high":
+			rect.color = Color.RED
+		"low":
+			rect.color = Color.WHITE
+		_:
+			rect.color = Color.GRAY
+			
+	rect.custom_minimum_size = Vector2(10, 20)
 
 	fragment_gain_timeline_display.add_child(rect)
 
