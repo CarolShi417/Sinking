@@ -1,0 +1,104 @@
+[gd_scene load_steps=15 format=3 uid="uid://dtckgvf4r6ir7"]
+
+[ext_resource type="Texture2D" uid="uid://tsxl7t45238g" path="res://assets/sprites/map/Battery/battery_79-60.png" id="1_o5to2"]
+[ext_resource type="Texture2D" uid="uid://co2ody880rbsy" path="res://assets/sprites/map/Battery/battery_0.png" id="1_xhikr"]
+[ext_resource type="Texture2D" uid="uid://c28qnfqtp11r6" path="res://assets/sprites/map/Battery/battery_100-80.png" id="2_dsvry"]
+[ext_resource type="Texture2D" uid="uid://csfi78djw2h72" path="res://assets/sprites/map/Battery/battery_19-1.png" id="2_v7go0"]
+[ext_resource type="Script" uid="uid://dy4b0hgnyixi8" path="res://scripts/state_machine/node_state_machine.gd" id="3_kcwhr"]
+[ext_resource type="Texture2D" uid="uid://btcx6mv8h15xx" path="res://assets/sprites/map/Battery/battery_39-20.png" id="3_lfle5"]
+[ext_resource type="Texture2D" uid="uid://dph8vgeinorcb" path="res://assets/sprites/map/Battery/battery_59-40.png" id="4_bl5yl"]
+[ext_resource type="Script" uid="uid://ctt4sh7hng0rx" path="res://scenes/San/80_100.gd" id="4_ceyei"]
+[ext_resource type="Script" uid="uid://bcrl4uppn2e6p" path="res://scenes/San/60_79.gd" id="5_o5to2"]
+[ext_resource type="Script" uid="uid://bqa1s1kjtreuy" path="res://scenes/San/40_59.gd" id="6_dsvry"]
+[ext_resource type="Script" uid="uid://lwx31ys7bagm" path="res://scenes/San/20_39.gd" id="9_lfle5"]
+[ext_resource type="Script" uid="uid://bjhn01kewdhgt" path="res://scenes/San/1_19.gd" id="10_bl5yl"]
+[ext_resource type="Script" uid="uid://mfus1608dqyh" path="res://scenes/San/0.gd" id="11_5edp5"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_v7go0"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("1_xhikr")
+}],
+"loop": true,
+"name": &"0",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2_v7go0")
+}],
+"loop": true,
+"name": &"1",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("3_lfle5")
+}],
+"loop": true,
+"name": &"20",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("4_bl5yl")
+}],
+"loop": true,
+"name": &"40",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("1_o5to2")
+}],
+"loop": true,
+"name": &"60",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2_dsvry")
+}],
+"loop": true,
+"name": &"80",
+"speed": 5.0
+}]
+
+[node name="SanPanel" type="Control"]
+layout_mode = 3
+anchors_preset = 0
+size_flags_horizontal = 4
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+sprite_frames = SubResource("SpriteFrames_v7go0")
+animation = &"0"
+autoplay = "80"
+
+[node name="StateMachine" type="Node" parent="." node_paths=PackedStringArray("initial_node_state")]
+script = ExtResource("3_kcwhr")
+initial_node_state = NodePath("80-100")
+
+[node name="80-100" type="Node" parent="StateMachine" node_paths=PackedStringArray("sprite")]
+script = ExtResource("4_ceyei")
+sprite = NodePath("../../AnimatedSprite2D")
+
+[node name="60-79" type="Node" parent="StateMachine" node_paths=PackedStringArray("sprite")]
+script = ExtResource("5_o5to2")
+sprite = NodePath("../../AnimatedSprite2D")
+
+[node name="40-59" type="Node" parent="StateMachine" node_paths=PackedStringArray("sprite")]
+script = ExtResource("6_dsvry")
+sprite = NodePath("../../AnimatedSprite2D")
+
+[node name="20-39" type="Node" parent="StateMachine" node_paths=PackedStringArray("sprite")]
+script = ExtResource("9_lfle5")
+sprite = NodePath("../../AnimatedSprite2D")
+
+[node name="1-19" type="Node" parent="StateMachine" node_paths=PackedStringArray("sprite")]
+script = ExtResource("10_bl5yl")
+sprite = NodePath("../../AnimatedSprite2D")
+
+[node name="0" type="Node" parent="StateMachine" node_paths=PackedStringArray("sprite")]
+script = ExtResource("11_5edp5")
+sprite = NodePath("../../AnimatedSprite2D")

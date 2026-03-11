@@ -162,10 +162,10 @@ func _on_step_tick():
 	emit_signal("step_tick", speed_level)#发送信号给Control
 	
 	#测试
-	print("speed:", current_speed)
-	print(" gained this step:", gained_per_5_seconds,
-		  " total:", total_fragment_A_in_mapA)
-	print("当前hover状态为", hover_active)
+	#print("speed:", current_speed)
+	#print(" gained this step:", gained_per_5_seconds,
+		  #" total:", total_fragment_A_in_mapA)
+	#print("当前hover状态为", hover_active)
 
 # 判断当前获取fragment speed是否高
 func get_speed_level() -> String:

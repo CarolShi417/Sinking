@@ -1,7 +1,8 @@
+Node
+AnimatedSprite2D
 Control
 Sprite2D
 Node2D
-Node
 SubViewport
 SubViewportContainer
 Container
@@ -11,4 +12,3 @@ Polygon2D
 Area2D
 HBoxContainer
 VBoxContainer
-PanelContainer

@@ -11,15 +11,14 @@ config_version=5
 [application]
 
 config/name="SINKING"
-run/main_scene="uid://6qv3hp53uysd"
 config/features=PackedStringArray("4.5", "Forward Plus")
 config/icon="res://icon.svg"
 
 [autoload]
 
 GameState="*res://scripts/globals/game_state.gd"
-BuildingHoverArea="*res://building_hover_area.gd"
 FragmentSystem="*res://scripts/globals/fragment_system.gd"
+SanSystem="*res://scripts/globals/san_system.gd"
 
 [display]
 
@@ -56,7 +55,7 @@ TestButton=""
 maps=""
 WorkerResting=""
 WorkerWorking=""
-HoverArea=""
+UpgradeBuildingButtonGroup=""
 
 [rendering]
 

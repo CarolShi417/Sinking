@@ -287,15 +287,11 @@ script = ExtResource("10_f1jdw")
 worker = NodePath("../..")
 animated_sprite_2d = NodePath("../../AnimatedSprite2D")
 
-[node name="Walk" type="Node" parent="StateMachine" node_paths=PackedStringArray("worker", "animated_sprite_2d")]
+[node name="Walk" type="Node" parent="StateMachine"]
 script = ExtResource("12_m0mx3")
-worker = NodePath("../..")
-animated_sprite_2d = NodePath("../../AnimatedSprite2D")
 
-[node name="Gather" type="Node" parent="StateMachine" node_paths=PackedStringArray("worker", "animated_sprite_2d")]
+[node name="Gather" type="Node" parent="StateMachine"]
 script = ExtResource("12_5f488")
-worker = NodePath("../..")
-animated_sprite_2d = NodePath("../../AnimatedSprite2D")
 
 [node name="BehaviorTimeCircling" type="Node" parent="." node_paths=PackedStringArray("state_machine")]
 script = ExtResource("11_5w2lh")

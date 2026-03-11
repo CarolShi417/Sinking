@@ -1,12 +1,11 @@
-[gd_scene load_steps=9 format=3 uid="uid://lkxmcbrinayj"]
+[gd_scene load_steps=8 format=3 uid="uid://lkxmcbrinayj"]
 
 [ext_resource type="Script" uid="uid://sowh2mf56xdo" path="res://scenes/UI/map_ui_management.gd" id="1_3ig11"]
-[ext_resource type="Script" uid="uid://j2yxcsy0xm1u" path="res://scenes/UI/building_ui_management.gd" id="1_4xrqv"]
-[ext_resource type="Script" uid="uid://da4tme36i2q0r" path="res://scenes/UI/upgrade_building_panel.gd" id="1_txjve"]
-[ext_resource type="PackedScene" uid="uid://dyk6wuh28xf6l" path="res://scenes/UI/upgrade_building_panel.tscn" id="2_txjve"]
 [ext_resource type="PackedScene" uid="uid://dmvgpntduh0lt" path="res://scenes/UI/RealTimeFragmentGainDisplay.tscn" id="3_6vit6"]
 [ext_resource type="PackedScene" uid="uid://ce8f1svngx6pc" path="res://scenes/UI/map_select_panel.tscn" id="3_gunxf"]
 [ext_resource type="PackedScene" uid="uid://dtj5iutud5bat" path="res://scenes/UI/test_panel======.tscn" id="4_xbc8b"]
+[ext_resource type="PackedScene" uid="uid://dtckgvf4r6ir7" path="res://scenes/UI/san_panel.tscn" id="5_3ig11"]
+[ext_resource type="Texture2D" uid="uid://hs21ne444o05" path="res://assets/sprites/map/map_workplace.png" id="7_1dlqw"]
 [ext_resource type="PackedScene" uid="uid://c4m7np0j0dowy" path="res://scenes/UI/main_total_fragment_panel.tscn" id="7_afh4d"]
 
 [node name="GameScreenUI" type="Control"]
@@ -20,17 +19,6 @@ layout_mode = 3
 anchors_preset = 0
 script = ExtResource("1_3ig11")
 real_time_fragment_gain_display = NodePath("../../RealTimeFragmentGainDisplay")
-
-[node name="BuildingUIManagement" type="Control" parent="GameUIManagement" node_paths=PackedStringArray("building_upgrade_panel")]
-layout_mode = 3
-anchors_preset = 0
-script = ExtResource("1_4xrqv")
-building_upgrade_panel = NodePath("../../UpgradeBuildingPanel")
-
-[node name="UpgradeBuildingPanel" parent="." instance=ExtResource("2_txjve")]
-z_index = 100
-layout_mode = 0
-script = ExtResource("1_txjve")
 
 [node name="MapSelectPanel" parent="." instance=ExtResource("3_gunxf")]
 z_index = 50
@@ -54,6 +42,23 @@ offset_top = 200.0
 offset_right = 485.0
 offset_bottom = 320.0
 
+[node name="SanPanel" parent="." instance=ExtResource("5_3ig11")]
+z_index = 50
+layout_mode = 1
+offset_left = 1086.0
+offset_top = 35.0
+offset_right = 1086.0
+offset_bottom = 35.0
+
 [node name="RealTimeFragmentGainDisplay" parent="." instance=ExtResource("3_6vit6")]
 z_index = 50
 position = Vector2(1082, 74)
+
+[node name="UpgradeBuildingPanel2" type="Node" parent="."]
+
+[node name="MapFrame" type="Sprite2D" parent="."]
+visible = false
+z_index = 40
+position = Vector2(1920, 0)
+texture = ExtResource("7_1dlqw")
+offset = Vector2(-480, 120)

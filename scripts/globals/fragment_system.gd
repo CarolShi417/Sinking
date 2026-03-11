@@ -1,6 +1,8 @@
 extends Node
 
 #@onready var hover_area = get_tree().root.get_node("MapTexture/MapTexture/ScreenArea/maps/WorkerWorking/HoverArea")
+@onready var worker_work = get_tree().get_first_node_in_group("WorkerWorking")
+
 # ===============================
 # 碎片总数量,碎片用a b c表示，map用A B C表示
 # ===============================
@@ -31,19 +33,21 @@ signal fragment_gain_per_step
 func _ready() -> void:
 	GameState.state_changed.connect(_on_state_changed)
 	
-	#接收鼠标悬停在小人上的signal
-	#hover_area.hover_changed.connect(_speedup_gain_fragments) #接收信号：鼠标悬停
-	#print("hover_area:", hover_area)
-	#
 	await get_tree().process_frame
-#
-	var hover_area = get_tree().root.get_node("/root/GameNew/MapTexture/ScreenArea/maps/WorkerWorking/HoverArea")
-
+	# ===============================
+	#获取upgradebutton的signal
+	# ===============================
+	var upgrade_building_button = get_tree().get_first_node_in_group("UpgradeBuildingButtonGroup")
+	#for upgrade_building_button in upgrade_building_buttons:
+	upgrade_building_button.UpgradeButton_0to1_Pressed.connect(fragment_analyzer_upgrade_lv0_to_lv1)
+	
+	# ===============================
+	#接收鼠标悬停在小人上的signal
+	# ===============================	
+	var hover_area = worker_work.get_node("HoverArea")	
 	if hover_area:
 		hover_area.hover_changed.connect(_speedup_gain_fragments)
-		#print("HoverArea connected")
-	#else:
-		#print("HoverArea not found")
+		
 		
 func _on_step_tick(duration):
 	update_work_speed() # 更新当前获取碎片速度
@@ -78,7 +82,7 @@ func get_speed_level() -> String:
 		
 func _speedup_gain_fragments(active):
 	hover_active = active
-	print("hover_active:", active)
+	#print("hover_active:", active)
 
 #根据 hover 状态更新速度
 func update_work_speed():
@@ -86,3 +90,14 @@ func update_work_speed():
 		current_speed = work_speed_normal * work_speed_monitor_multiplier
 	else:
 		current_speed = work_speed_normal
+
+# ===============================
+# 升级建筑消耗fragment
+# ===============================
+func fragment_analyzer_upgrade_lv0_to_lv1(amount):
+	if total_fragment_a >= amount:
+		total_fragment_a -= amount
+		print("total_fragment_a", total_fragment_a)
+	else:
+		print("碎片不足")
+	

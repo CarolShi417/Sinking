@@ -25,12 +25,10 @@ layout_mode = 2
 size_flags_horizontal = 4
 theme_type_variation = &"BuildingLabel"
 text = "Fragment Analyzer A
-Effect
-D
-D
-D"
+A * 10
+Effect: Fragment A +10%"
 
-[node name="Button" type="Button" parent="MarginContainer"]
+[node name="Button" type="Button" parent="MarginContainer" groups=["UpgradeBuildingButtonGroup"]]
 z_index = 10
 layout_mode = 2
 size_flags_horizontal = 4

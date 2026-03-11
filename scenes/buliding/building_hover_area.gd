@@ -9,5 +9,9 @@ func _on_mouse_entered() -> void:
 	#print("鼠标选中了建筑1")
 
 
+
+	
+
+
 func _on_mouse_exited() -> void:
 	hover_exited.emit()

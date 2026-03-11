@@ -1,13 +1,12 @@
 extends NodeState
 
-@onready var sprite : AnimatedSprite2D = $"../../AnimatedSprite2D"
-@onready var upgrade_building_button = get_tree().current_scene.get_node(
-	"GameScreenUI/UpgradeBuildingPanel/MarginContainer/Button"
-	)
+@export var sprite: AnimatedSprite2D
+@onready var upgrade_building_button = get_node("../../Control/UpgradeBuildingPanel/MarginContainer/Button")
+
 func _ready():
-	upgrade_building_button.UpgradeButtonPressed.connect(_upgrade_building)
+	upgrade_building_button.UpgradeButton_0to1_Pressed.connect(_upgrade_building)
 	
-func _upgrade_building():
+func _upgrade_building():	
 	sprite.play("LV1")
 	
 	

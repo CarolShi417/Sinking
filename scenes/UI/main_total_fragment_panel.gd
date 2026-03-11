@@ -10,5 +10,5 @@ func _ready() -> void:
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta) -> void:
+func _process(_delta) -> void:
 	total_fragment_a_display.text = str(int(FragmentSystem.total_fragment_a))

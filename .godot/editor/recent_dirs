@@ -1,3 +1,8 @@
+res://assets/sprites/map/Battery
+res://scenes/San
+res://scenes/UI
+res://scripts/globals
+res://scenes/buliding
 res://scenes/Monitor
 res://scripts
 res://scenes/characters
@@ -5,8 +10,6 @@ res://scenes/shader
 res://scenes/components
 res://assets/sprites/worker/worker_left
 res://assets/sprites/worker/Worker_right
-res://scenes/UI
-res://scripts/globals
 res://assets/sprites/worker
 res://assets/sprites/map
 res://Tilesets

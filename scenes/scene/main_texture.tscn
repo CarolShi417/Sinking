@@ -1,13 +1,13 @@
 [gd_scene load_steps=3 format=4 uid="uid://crdvwcxh43g73"]
 
-[ext_resource type="PackedScene" uid="uid://cqjq584lodj7q" path="res://scenes/buliding/arch_component.tscn" id="1_m7yro"]
+[ext_resource type="PackedScene" uid="uid://cqjq584lodj7q" path="res://scenes/buliding/building_component.tscn" id="1_m7yro"]
 [ext_resource type="TileSet" uid="uid://cyh0h2iveht6q" path="res://Tilesets/ground_tile_set.tres" id="2_m7yro"]
 
 [node name="MainTexture" type="Node2D"]
 
 [node name="Building" type="Node2D" parent="."]
 
-[node name="ArchComponent" parent="Building" instance=ExtResource("1_m7yro")]
+[node name="FragmentAnalyzer" parent="Building" instance=ExtResource("1_m7yro")]
 position = Vector2(220, 185)
 
 [node name="Ground" type="TileMapLayer" parent="."]

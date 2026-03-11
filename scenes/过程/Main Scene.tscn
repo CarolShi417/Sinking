@@ -1,6 +1,5 @@
-[gd_scene load_steps=5 format=3 uid="uid://bifojy26oms6a"]
+[gd_scene load_steps=4 format=3 uid="uid://clr1oxor1xmtr"]
 
-[ext_resource type="PackedScene" uid="uid://4xr8o0bbp1f0" path="res://scenes/过程/worker.tscn" id="2_a6v3m"]
 [ext_resource type="Texture2D" uid="uid://biplkedrl6kx7" path="res://assets/sprites/main/main_bg_black.png" id="4_4mf87"]
 [ext_resource type="Texture2D" uid="uid://dygco8uwb4flh" path="res://assets/sprites/main/main_tent_test.png" id="4_8e1m4"]
 [ext_resource type="Script" uid="uid://dqo2dxt1on6lq" path="res://scripts/过程/MainUIControl.gd" id="6_4mf87"]
@@ -9,9 +8,19 @@
 
 [node name="MainManagement" type="Node2D" parent="."]
 
-[node name="Worker" parent="." instance=ExtResource("2_a6v3m")]
+[node name="Worker" parent="."]
+_import_path = NodePath("")
+unique_name_in_owner = false
+process_mode = 0
+process_priority = 0
+process_physics_priority = 0
+process_thread_group = 0
+physics_interpolation_mode = 0
+auto_translate_mode = 0
+editor_description = ""
 z_index = 10
 position = Vector2(399, 280)
+script = null
 
 [node name="bg Black" type="Sprite2D" parent="."]
 visible = false

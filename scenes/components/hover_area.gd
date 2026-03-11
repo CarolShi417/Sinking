@@ -22,14 +22,14 @@ func _on_mouse_entered():
 	if !enabled:
 		return
 	hover_changed.emit(true)
-	print("Mouse Entered")
+	#print("Mouse Entered")
 
 #鼠标离开感应区
 func _on_mouse_exited():
 	if !enabled:
 		return
 	hover_changed.emit(false)
-	print("Mouse Exited")
+	#print("Mouse Exited")
 	
 func _on_state_changed(state):
 	if state == DataTypes.GameState.Resting:

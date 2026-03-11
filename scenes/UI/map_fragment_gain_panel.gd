@@ -22,7 +22,7 @@ func _on_fragment_step(level: String):
 		_:
 			rect.color = Color.GRAY
 			
-	rect.custom_minimum_size = Vector2(10, 20)
+	rect.custom_minimum_size = Vector2(7, 20)
 
 	fragment_gain_timeline_display.add_child(rect)
 

@@ -1,6 +1,6 @@
 extends NodeState
 
-@onready var sprite : AnimatedSprite2D = $"../../AnimatedSprite2D"
+@export var sprite: AnimatedSprite2D
 func _on_process(_delta : float) -> void:
 	pass
 
