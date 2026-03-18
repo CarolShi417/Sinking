@@ -15,3 +15,7 @@ res://scenes/UI/san_panel.gd
 res://scenes/Scene/game_new.tscn
 res://scripts/globals/fragment_system.gd
 res://scripts/globals/state_controller.gd
+res://scenes/characters/animationBehavior/dead.gd
+res://scenes/characters/animationBehavior/gather.gd
+res://scenes/characters/alive.gd
+res://scripts/globals/game_state.gd

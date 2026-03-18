@@ -1,8 +1,8 @@
+Node
 Label
 MarginContainer
 PanelContainer
 VBoxContainer
-Node
 AnimatedSprite2D
 Control
 Sprite2D
@@ -12,4 +12,3 @@ SubViewportContainer
 Container
 TileMapLayer
 BackBufferCopy
-Polygon2D
