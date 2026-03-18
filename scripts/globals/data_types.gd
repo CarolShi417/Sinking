@@ -9,5 +9,8 @@ enum GameState {
 enum BehaviorState {
 	idle,
 	walk,
-	gather
+	gather,
+	dying,
+	dead_rest,
+	alive_rest
 }

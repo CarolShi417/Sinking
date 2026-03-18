@@ -1,8 +1,9 @@
 res://assets/sprites/worker/worker_left
+res://scenes/characters/animationBehavior
 res://assets/sprites/worker/Worker_right
+res://scripts/globals
 res://scenes/UI
 E:/Godot Projects/Export/20260313_export_windows
-res://scripts/globals
 res://scenes/Scene
 res://assets/sprites/map/Battery
 res://scenes/San

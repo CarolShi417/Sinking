@@ -41,14 +41,26 @@ func _ready() -> void:
 	# 初始化时主动广播一次 SAN，方便 UI 在开局同步显示。
 	_emit_san_changed()
 
-func _on_san_tick(duration: float) -> void:
-	var san_change := get_current_san_change_per_second() * duration
+#此信号由StateController转发出
+func _on_san_tick(_duration):
+	var san_change := _get_rate()
 	if is_zero_approx(san_change):
 		return
 
 	apply_san_change(san_change)
 
+func _get_rate() -> float:
+	if GameState.current_state == DataTypes.GameState.Working:
+		if hover_active:
+			return working_hover_san_change_per_second
+		return 0.0
 
+	if GameState.current_state == DataTypes.GameState.Resting:
+		if GameState.is_in_first_rest:
+			return 0.0
+		return resting_san_change_per_second
+	return 0.0
+	
 # 统一计算“每秒 SAN 会变化多少”。
 func get_current_san_change_per_second() -> float:
 	if GameState.current_state == DataTypes.GameState.Working:

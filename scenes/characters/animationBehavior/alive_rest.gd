@@ -9,11 +9,11 @@ func _on_process(_delta : float) -> void:
 
 
 func _on_physics_process(_delta : float) -> void:
-	if GameState.current_state == DataTypes.GameState.Dead:
+	if GameState.current_behavior_state == DataTypes.BehaviorState.alive_rest:
 		if worker.direction == 1:
-			animated_sprite_2d.play("dead_right")
+			animated_sprite_2d.play("alive_rest_right")
 		elif worker.direction == -1:
-			animated_sprite_2d.play("dead_left")
+			animated_sprite_2d.play("alive_rest_left")
 
 func _on_next_transitions() -> void:
 	pass

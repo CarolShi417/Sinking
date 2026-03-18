@@ -9,7 +9,7 @@ extends Node
 
 const WORK_DURATION := 600.0
 const REST_DURATION := 300.0
-const DEAD_DURATION := 300.0
+const DEAD_DURATION := 302.0
 const work_step_duration := 5.0
 const san_step_duration := 1.0
 
@@ -87,7 +87,7 @@ func start_work_timer():
 	dead_timer.stop()
 	work_timer.start(WORK_DURATION)
 	step_timer.start()
-	
+	san_timer.start()#work开，因为会降san
 
 # ===============================
 # 启动休息计时
@@ -97,14 +97,13 @@ func start_rest_timer():
 	dead_timer.stop()
 	step_timer.stop()
 	rest_timer.start(REST_DURATION)
+	san_timer.start()#rest开，因为会升san
 	
 # ===============================
 # 启动死亡计时器
 # ===============================
 func start_dead_timer():
-	work_timer.stop()
-	rest_timer.stop()
-	step_timer.stop()
+	_stop_all_timers()
 	dead_timer.start(DEAD_DURATION)
 
 # ===============================
@@ -161,7 +160,7 @@ func _on_assign_worker():
 # ===============================
 # dead状态，停止所有计时器
 # ===============================
-func stop_all_timers():
+func _stop_all_timers():
 	work_timer.stop()
 	rest_timer.stop()
 	step_timer.stop()

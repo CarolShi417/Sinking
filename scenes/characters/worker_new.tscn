@@ -1,4 +1,4 @@
-[gd_scene load_steps=73 format=3 uid="uid://iv4qvdu1lq0w"]
+[gd_scene load_steps=84 format=3 uid="uid://iv4qvdu1lq0w"]
 
 [ext_resource type="Script" uid="uid://b7g8fi0iye2eb" path="res://scenes/characters/WorkerMovement.gd" id="1_32nm8"]
 [ext_resource type="Texture2D" uid="uid://cmqumrc2drsub" path="res://assets/sprites/worker/Worker_right/Worker_gather_right.png" id="2_5qb4r"]
@@ -12,11 +12,12 @@
 [ext_resource type="Script" uid="uid://dy4b0hgnyixi8" path="res://scripts/state_machine/node_state_machine.gd" id="6_mkwbn"]
 [ext_resource type="Texture2D" uid="uid://ck4c1ajucnm2n" path="res://assets/sprites/worker/worker_left/Worker_walk_left.png" id="6_srk7o"]
 [ext_resource type="Script" uid="uid://dsfq0b7g2o6va" path="res://scenes/characters/animationBehavior/idle.gd" id="10_f1jdw"]
-[ext_resource type="Script" uid="uid://c082wheqm0lf1" path="res://scenes/characters/behavior_time_circling.gd" id="11_5w2lh"]
+[ext_resource type="Script" uid="uid://c082wheqm0lf1" path="res://scripts/globals/behavior_time_circling.gd" id="11_5w2lh"]
 [ext_resource type="Script" uid="uid://cet28s35gc13x" path="res://scenes/characters/animationBehavior/gather.gd" id="12_5f488"]
 [ext_resource type="Script" uid="uid://cb2b11sp2rtcp" path="res://scenes/characters/animationBehavior/walk.gd" id="12_m0mx3"]
-[ext_resource type="Script" uid="uid://l1def2d8dhc8" path="res://scenes/characters/animationBehavior/dead.gd" id="15_6hodq"]
-[ext_resource type="Script" uid="uid://cyttufjyc3tf6" path="res://scenes/characters/alive.gd" id="16_6hodq"]
+[ext_resource type="Script" uid="uid://l1def2d8dhc8" path="res://scenes/characters/animationBehavior/dying.gd" id="15_6hodq"]
+[ext_resource type="Script" uid="uid://cyttufjyc3tf6" path="res://scenes/characters/animationBehavior/alive_rest.gd" id="16_6hodq"]
+[ext_resource type="Script" uid="uid://dkd0ujhbs0fq1" path="res://scenes/characters/animationBehavior/dead_rest.gd" id="16_mb5qm"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_4pu0w"]
 atlas = ExtResource("2_med5e")
@@ -81,6 +82,46 @@ region = Rect2(120, 0, 120, 120)
 [sub_resource type="AtlasTexture" id="AtlasTexture_jj41e"]
 atlas = ExtResource("2_m0mx3")
 region = Rect2(0, 0, 120, 120)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_yihcr"]
+atlas = ExtResource("2_med5e")
+region = Rect2(840, 0, 120, 120)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_n8fnh"]
+atlas = ExtResource("2_m0mx3")
+region = Rect2(840, 0, 120, 120)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_8v71n"]
+atlas = ExtResource("2_med5e")
+region = Rect2(0, 0, 120, 120)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_8o5eq"]
+atlas = ExtResource("2_med5e")
+region = Rect2(120, 0, 120, 120)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_dvl3e"]
+atlas = ExtResource("2_med5e")
+region = Rect2(240, 0, 120, 120)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_3br3h"]
+atlas = ExtResource("2_med5e")
+region = Rect2(360, 0, 120, 120)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_30lvo"]
+atlas = ExtResource("2_med5e")
+region = Rect2(480, 0, 120, 120)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_whxcm"]
+atlas = ExtResource("2_med5e")
+region = Rect2(600, 0, 120, 120)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_oa2kl"]
+atlas = ExtResource("2_med5e")
+region = Rect2(720, 0, 120, 120)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_bbwnp"]
+atlas = ExtResource("2_med5e")
+region = Rect2(840, 0, 120, 120)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_33h0q"]
 atlas = ExtResource("2_m0mx3")
@@ -253,9 +294,9 @@ animations = [{
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_lohof")
 }],
-"loop": true,
-"name": &"alive_left",
-"speed": 5.0
+"loop": false,
+"name": &"alive_rest_left",
+"speed": 8.0
 }, {
 "frames": [{
 "duration": 1.0,
@@ -282,9 +323,54 @@ animations = [{
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_jj41e")
 }],
-"loop": true,
-"name": &"alive_right",
-"speed": 5.0
+"loop": false,
+"name": &"alive_rest_right",
+"speed": 8.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_yihcr")
+}],
+"loop": false,
+"name": &"dead_rest_left",
+"speed": 8.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_n8fnh")
+}],
+"loop": false,
+"name": &"dead_rest_right",
+"speed": 8.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_8v71n")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_8o5eq")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_dvl3e")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_3br3h")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_30lvo")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_whxcm")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_oa2kl")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_bbwnp")
+}],
+"loop": false,
+"name": &"dying_left",
+"speed": 8.0
 }, {
 "frames": [{
 "duration": 1.0,
@@ -311,9 +397,9 @@ animations = [{
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_1vdw8")
 }],
-"loop": true,
-"name": &"dead_right",
-"speed": 5.0
+"loop": false,
+"name": &"dying_right",
+"speed": 8.0
 }, {
 "frames": [{
 "duration": 1.0,
@@ -330,7 +416,7 @@ animations = [{
 }],
 "loop": true,
 "name": &"gather_left",
-"speed": 5.0
+"speed": 8.0
 }, {
 "frames": [{
 "duration": 1.0,
@@ -364,7 +450,7 @@ animations = [{
 }],
 "loop": true,
 "name": &"idle_left",
-"speed": 5.0
+"speed": 8.0
 }, {
 "frames": [{
 "duration": 1.0,
@@ -404,7 +490,7 @@ animations = [{
 }],
 "loop": true,
 "name": &"walk_left",
-"speed": 5.0
+"speed": 8.0
 }, {
 "frames": [{
 "duration": 1.0,
@@ -446,7 +532,7 @@ script = ExtResource("1_32nm8")
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 position = Vector2(1, -58)
 sprite_frames = SubResource("SpriteFrames_sb737")
-animation = &"alive_left"
+animation = &"gather_left"
 autoplay = "idle_right"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
@@ -484,10 +570,17 @@ script = ExtResource("12_5f488")
 worker = NodePath("../..")
 animated_sprite_2d = NodePath("../../AnimatedSprite2D")
 
-[node name="Dead" type="Node" parent="StateMachine"]
+[node name="Dying" type="Node" parent="StateMachine" node_paths=PackedStringArray("worker", "animated_sprite_2d")]
 script = ExtResource("15_6hodq")
+worker = NodePath("../..")
+animated_sprite_2d = NodePath("../../AnimatedSprite2D")
 
-[node name="Alive" type="Node" parent="StateMachine" node_paths=PackedStringArray("worker", "animated_sprite_2d")]
+[node name="Dead_rest" type="Node" parent="StateMachine" node_paths=PackedStringArray("worker", "animated_sprite_2d")]
+script = ExtResource("16_mb5qm")
+worker = NodePath("../..")
+animated_sprite_2d = NodePath("../../AnimatedSprite2D")
+
+[node name="Alive_rest" type="Node" parent="StateMachine" node_paths=PackedStringArray("worker", "animated_sprite_2d")]
 script = ExtResource("16_6hodq")
 worker = NodePath("../..")
 animated_sprite_2d = NodePath("../../AnimatedSprite2D")

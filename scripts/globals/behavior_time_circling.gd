@@ -1,5 +1,7 @@
 extends Node
 
+signal dead_flow_finished #向state发送死亡流程结束信号，让state切换为dead
+
 var behavior_timer: Timer
 var current_behavior : DataTypes.BehaviorState
 
@@ -27,6 +29,49 @@ func _create_behavior_timers():
 
 	add_child(behavior_timer)
 	
+# ===============================
+# 死亡时，状态有所不同
+# ===============================
+func _on_state_changed(state):	
+	#停止行为计时器
+	behavior_timer.stop()
+	
+	match state:
+		
+		DataTypes.GameState.Resting:
+			start_idle_timer()
+
+		DataTypes.GameState.Working:
+			start_idle_timer()
+
+		DataTypes.GameState.Dead:
+			_start_dead_flow()
+
+# ===============================
+# 切换worker状态，连接不同动画
+# ===============================
+func _on_behavior_changed(new_behavior):
+
+	match new_behavior:
+		DataTypes.BehaviorState.idle:
+			state_machine.transition_to("Idle")
+
+		DataTypes.BehaviorState.walk:
+			state_machine.transition_to("Walk")
+
+		DataTypes.BehaviorState.gather:
+			state_machine.transition_to("Gather")
+		
+		DataTypes.BehaviorState.gather:
+			state_machine.transition_to("Dying")
+		
+		DataTypes.BehaviorState.gather:
+			state_machine.transition_to("Dead_rest")
+			
+		DataTypes.BehaviorState.gather:
+			state_machine.transition_to("Alive_rest")
+		
+		
 # =====================
 # 开始behavior计时
 # =====================
@@ -99,11 +144,9 @@ func _rest_cycle():
 		DataTypes.BehaviorState.walk:
 			start_idle_timer()
 
-
 # =====================
 # Working循环
 # =====================
-
 func _work_cycle():
 
 	match current_behavior:
@@ -117,30 +160,22 @@ func _work_cycle():
 		DataTypes.BehaviorState.walk:
 			start_idle_timer()
 			
-# ===============================
-# 死亡时，状态有所不同
-# ===============================
-func _on_state_changed(state):
-	if state == DataTypes.GameState.Dead:
-		behavior_timer.stop()
-		GameState.set_behavior(DataTypes.BehaviorState.idle)
-	elif state == DataTypes.GameState.Resting:
-		start_idle_timer()
-	elif state == DataTypes.GameState.Working:
-		start_idle_timer()
-		
-# ===============================
-# 切换worker状态，连接不同动画
-# ===============================
-func _on_behavior_changed(new_behavior):
+func _start_dead_flow():
 
-	match new_behavior:
+	# 1. dying（2秒）
+	current_behavior = DataTypes.BehaviorState.dying
+	GameState.set_behavior(current_behavior)
+	await get_tree().create_timer(2.0).timeout
 
-		DataTypes.BehaviorState.idle:
-			state_machine.transition_to("Idle")
+	# 2. dead_rest（5分钟）
+	current_behavior = DataTypes.BehaviorState.dead_rest
+	GameState.set_behavior(current_behavior)
+	await get_tree().create_timer(300.0).timeout
 
-		DataTypes.BehaviorState.walk:
-			state_machine.transition_to("Walk")
+	# 3. alive_rest（0.5秒）
+	current_behavior = DataTypes.BehaviorState.alive_rest
+	GameState.set_behavior(current_behavior)
+	await get_tree().create_timer(0.5).timeout
 
-		DataTypes.BehaviorState.gather:
-			state_machine.transition_to("Gather")
+	# 4. 回到Resting状态
+	dead_flow_finished.emit()

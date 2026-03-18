@@ -19,3 +19,6 @@ res://scenes/characters/animationBehavior/dead.gd
 res://scenes/characters/animationBehavior/gather.gd
 res://scenes/characters/alive.gd
 res://scripts/globals/game_state.gd
+res://scenes/characters/animationBehavior/alive_rest.gd
+res://scenes/characters/animationBehavior/dead_rest.gd
+res://scripts/globals/behavior_time_circling.gd
