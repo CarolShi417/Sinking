@@ -1,10 +1,12 @@
-[gd_scene load_steps=8 format=3 uid="uid://lkxmcbrinayj"]
+[gd_scene load_steps=10 format=3 uid="uid://lkxmcbrinayj"]
 
 [ext_resource type="Script" uid="uid://sowh2mf56xdo" path="res://scenes/UI/map_ui_management.gd" id="1_3ig11"]
 [ext_resource type="PackedScene" uid="uid://dmvgpntduh0lt" path="res://scenes/UI/RealTimeFragmentGainDisplay.tscn" id="3_6vit6"]
 [ext_resource type="PackedScene" uid="uid://ce8f1svngx6pc" path="res://scenes/UI/map_select_panel.tscn" id="3_gunxf"]
 [ext_resource type="PackedScene" uid="uid://dtj5iutud5bat" path="res://scenes/UI/test_panel======.tscn" id="4_xbc8b"]
 [ext_resource type="PackedScene" uid="uid://dtckgvf4r6ir7" path="res://scenes/UI/san_panel.tscn" id="5_3ig11"]
+[ext_resource type="Script" uid="uid://rvacyh3g7kf5" path="res://scenes/UI/san_panel.gd" id="6_1dlqw"]
+[ext_resource type="PackedScene" uid="uid://quqmxjcygng7" path="res://scenes/UI/san_number_panel.tscn" id="6_afh4d"]
 [ext_resource type="Texture2D" uid="uid://hs21ne444o05" path="res://assets/sprites/map/map_workplace.png" id="7_1dlqw"]
 [ext_resource type="PackedScene" uid="uid://c4m7np0j0dowy" path="res://scenes/UI/main_total_fragment_panel.tscn" id="7_afh4d"]
 
@@ -42,12 +44,21 @@ offset_top = 200.0
 offset_right = 485.0
 offset_bottom = 320.0
 
-[node name="SanPanel" parent="." instance=ExtResource("5_3ig11")]
+[node name="SanControl" parent="." instance=ExtResource("5_3ig11")]
 z_index = 50
 layout_mode = 1
 offset_left = 1086.0
 offset_top = 35.0
 offset_right = 1086.0
+offset_bottom = 35.0
+script = ExtResource("6_1dlqw")
+
+[node name="SanNumberPanel" parent="SanControl" instance=ExtResource("6_afh4d")]
+z_index = 50
+layout_mode = 0
+offset_left = -115.0
+offset_top = -35.0
+offset_right = 115.0
 offset_bottom = 35.0
 
 [node name="RealTimeFragmentGainDisplay" parent="." instance=ExtResource("3_6vit6")]

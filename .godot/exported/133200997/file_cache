@@ -1,0 +1,21 @@
+res://scenes/buliding/building_component.tscn::418b9bd016d5d862a40dcbe0ce47fd76::1773377749::res://.godot/exported/133200997/export-12432b6509bf6a2245ca0bff4d33f906-building_component.scn
+res://scenes/buliding/upgrade_building_panel.tscn::9d00bd3c0b68eef938d9055d5e4a804e::1773300881::res://.godot/exported/133200997/export-3c89a568518832d25016886593b8503b-upgrade_building_panel.scn
+res://scenes/buliding/upgrade_building_panel_text.tscn::e1745aedc69162f626ab81ef62450bcb::1772633052::res://.godot/exported/133200997/export-7e34fecc29f8f4dccecd84eca5434248-upgrade_building_panel_text.scn
+res://scenes/characters/worker_new.tscn::6423ca0e2a9d7e48f8e3a52f2dba0ec5::1773282052::res://.godot/exported/133200997/export-72efeec63f44cd724a49f5d5ec717b10-worker_new.scn
+res://scenes/components/item_finder.tscn::cdd10f39be13d94a6838adec3da17409::1773141835::res://.godot/exported/133200997/export-0def20aa43dfaa5b2935750729997a75-item_finder.scn
+res://scenes/components/test.tres::91d36b6e91c1aa441243e236df76f732::1773128906::res://.godot/exported/133200997/export-8ec411e04a0eba27f4cb2d7b54760193-test.res
+res://scenes/Scene/game_new.tscn::2e942febc82b1e1d64b29d83fdd52ea7::1773377720::res://.godot/exported/133200997/export-ff1d4a8bdcba7fb65547d0d94cf4e6c1-game_new.scn
+res://scenes/Scene/main_texture.tscn::e1aac9e99bc3f7b0d9079de98fe9752f::1773244690::res://.godot/exported/133200997/export-35dffcfd7d1f78f3f0c75dcb82c09bed-main_texture.scn
+res://scenes/Scene/maps.tscn::0cc5b4ed191f2ff6dd2e9209b1b5d4ed::1773239358::res://.godot/exported/133200997/export-78b2e2f5cf770d7e68921f23c9acf8c0-maps.scn
+res://scenes/Scene/map_texture.tscn::cc9818ca88556731215faa349ae304ef::1773244211::res://.godot/exported/133200997/export-5961e5a9b49e83d5c31b184a3f23ec93-map_texture.scn
+res://scenes/UI/Assigned Button.tscn::3779eb10b2a0e1f0b4903df7cbaf6122::1772007024::res://.godot/exported/133200997/export-5ff801f23bcbf56ac31a9ee1fac32125-Assigned Button.scn
+res://scenes/UI/GameScreenUI.tscn::bba65d234fbdc57ee2d195a4f6535b77::1773245032::res://.godot/exported/133200997/export-02439020a9413de715c0a5728281ed6e-GameScreenUI.scn
+res://scenes/UI/game_ui_theme.tres::eac3b5c7ebc384955bc2faa0d0efca13::1773377605::res://.godot/exported/133200997/export-3a79db42a7a04dd02bb8b12dfd189c41-game_ui_theme.res
+res://scenes/UI/main_total_fragment_panel.tscn::6990e65f07efb86bacfdd87358ecd46a::1772952942::res://.godot/exported/133200997/export-484fb85c86966539890381a9725aca6c-main_total_fragment_panel.scn
+res://scenes/UI/map_select_panel.tscn::6b00d559385110f8e22274dbfa3d8043::1773070825::res://.godot/exported/133200997/export-52370ccd9522958dddca60c07e4ff23e-map_select_panel.scn
+res://scenes/UI/RealTimeFragmentGainDisplay.tscn::86c98e5b6050bcfe0fa88a32b8d48936::1773150947::res://.godot/exported/133200997/export-5c690b0b904fb8b4d8355d569e26eadf-RealTimeFragmentGainDisplay.scn
+res://scenes/UI/san_panel.tscn::826ec417550fa150d5f73cbc723c614b::1773246399::res://.godot/exported/133200997/export-49d5c1385a4652483d371af045a015dc-san_panel.scn
+res://scenes/UI/test_panel======.tscn::db36bafe4905c7d7ec39a4c6692486eb::1772804581::res://.godot/exported/133200997/export-4afd1bc202f6b9cd4d63a5d6c6c70f94-test_panel======.scn
+res://scenes/过程/Main Scene.tscn::0837776f40ed4bf654d05103084e631f::1773223466::res://.godot/exported/133200997/export-366f8025ebb46a8eb4f56eddc13f1799-Main Scene.scn
+res://scenes/过程/Map Scene.tscn::d0129c48f3351310ec020effc1538440::1773149560::res://.godot/exported/133200997/export-8dec83909fbf99f2811f2017264a8a15-Map Scene.scn
+res://Tilesets/ground_tile_set.tres::7a15f27378f5d53112470797a5848809::1773377616::res://.godot/exported/133200997/export-f38aedcfa3c9fe198697b6973b2e3bf9-ground_tile_set.res

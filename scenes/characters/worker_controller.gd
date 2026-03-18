@@ -5,13 +5,20 @@ extends Node
 
 func _ready():
 	GameState.state_changed.connect(_on_state_changed)
-	worker_rest.show()
-	worker_work.hide()
 	worker_rest.z_index = 40
 	worker_work.z_index = 11
 	worker_rest.position = Vector2(450,180)
 	worker_work.position = Vector2(1400,150)
+	
+	if GameState.current_state == DataTypes.GameState.Resting:
 
+		worker_rest.show()
+		worker_work.hide()
+
+		worker_rest.position = Vector2(450,180)
+		worker_rest.LEFT_LIMIT = 10
+		worker_rest.RIGHT_LIMIT = 930
+		print("LEFT_LIMIT", worker_rest.LEFT_LIMIT, "RIGHT_LIMIT", worker_rest.RIGHT_LIMIT)
 
 func _on_state_changed(state):
 	if state == DataTypes.GameState.Resting:
@@ -22,6 +29,7 @@ func _on_state_changed(state):
 		worker_rest.position = Vector2(450,180)
 		worker_rest.LEFT_LIMIT = 10
 		worker_rest.RIGHT_LIMIT = 930
+		print("LEFT_LIMIT", worker_rest.LEFT_LIMIT, "RIGHT_LIMIT", worker_rest.RIGHT_LIMIT)
 
 	elif state == DataTypes.GameState.Working:
 
@@ -31,5 +39,14 @@ func _on_state_changed(state):
 		worker_work.position = Vector2(1400,230)
 		worker_work.LEFT_LIMIT = 1000
 		worker_work.RIGHT_LIMIT = 1900
+		
+	elif state == DataTypes.GameState.Dead:
+		worker_rest.show()
+		worker_work.hide()
 
+		worker_rest.position = Vector2(450,180)
+		worker_rest.LEFT_LIMIT = 10
+		worker_rest.RIGHT_LIMIT = 930
+
+	
 	

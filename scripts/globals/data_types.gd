@@ -2,12 +2,12 @@ class_name DataTypes
 
 enum GameState {
 	Resting,
-	Working
+	Working,
+	Dead
 }
 
 enum BehaviorState {
 	idle,
 	walk,
-	gather,
-	dead
+	gather
 }

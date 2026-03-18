@@ -11,6 +11,7 @@ config_version=5
 [application]
 
 config/name="SINKING"
+run/main_scene="uid://3mfqqjaqst50"
 config/features=PackedStringArray("4.5", "Forward Plus")
 config/icon="res://icon.svg"
 
@@ -19,6 +20,7 @@ config/icon="res://icon.svg"
 GameState="*res://scripts/globals/game_state.gd"
 FragmentSystem="*res://scripts/globals/fragment_system.gd"
 SanSystem="*res://scripts/globals/san_system.gd"
+ExportSettingController="*res://scripts/globals/export_setting_controller.gd"
 
 [display]
 

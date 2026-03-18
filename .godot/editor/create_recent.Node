@@ -1,3 +1,7 @@
+Label
+MarginContainer
+PanelContainer
+VBoxContainer
 Node
 AnimatedSprite2D
 Control
@@ -9,6 +13,3 @@ Container
 TileMapLayer
 BackBufferCopy
 Polygon2D
-Area2D
-HBoxContainer
-VBoxContainer

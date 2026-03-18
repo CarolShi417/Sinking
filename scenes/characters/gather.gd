@@ -1,17 +1,19 @@
 extends NodeState
 
-@export var sprite: AnimatedSprite2D
+@export var worker: CharacterBody2D
+@export var animated_sprite_2d: AnimatedSprite2D
 
-func _ready():
-	GameState.state_changed.connect(_on_state_changed)
-	
 
-#func _on_process(_delta : float) -> void:	
-	
-func _on_state_changed(state):
-	if state == DataTypes.GameState.Working:
-		if SanSystem.san >= 40 and SanSystem.san <= 59:
-			sprite.play("40")
+func _on_process(_delta : float) -> void:
+	pass
+
+
+func _on_physics_process(_delta : float) -> void:
+	if GameState.current_behavior_state == DataTypes.BehaviorState.gather:
+		if worker.direction == 1:
+			animated_sprite_2d.play("gather_right")
+		elif worker.direction == -1:
+			animated_sprite_2d.play("gather_left")
 
 func _on_next_transitions() -> void:
 	pass

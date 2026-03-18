@@ -1,4 +1,8 @@
 extends Node
+# ===============================
+# 发送信号
+# ===============================
+signal fragment_gain_per_step
 
 #@onready var hover_area = get_tree().root.get_node("MapTexture/MapTexture/ScreenArea/maps/WorkerWorking/HoverArea")
 @onready var worker_work = get_tree().get_first_node_in_group("WorkerWorking")
@@ -20,10 +24,7 @@ const work_speed_normal := 0.20 #正常获取碎片效率为0.2个/秒
 const work_speed_monitor_multiplier := 1.20 #monitor状态增益
 var current_speed := work_speed_normal
 var hover_active := false
-# ===============================
-# 发送信号
-# ===============================
-signal fragment_gain_per_step
+
 
 #signal step_tick(level: String) #每5秒发送一次信号 用于更新UI
 
@@ -50,6 +51,9 @@ func _ready() -> void:
 		
 		
 func _on_step_tick(duration):
+	#只有working状态才计算碎片
+	if GameState.current_state != DataTypes.GameState.Working:
+		return
 	update_work_speed() # 更新当前获取碎片速度
 	
 	var gained_per_5_seconds : float = current_speed * duration
@@ -62,16 +66,19 @@ func _on_step_tick(duration):
 	fragment_gain_per_step.emit(speed_level)
 	
 	
-# rest state下重置碎片设定
+# rest/dead state下重置碎片
 func _on_state_changed(state):
 	if state == DataTypes.GameState.Resting:
 		total_fragment_a += total_fragment_a_work_in_mapA
 		#发送信号给UI，让UI更新Label
 		#print("total_fragment_a数量为", total_fragment_a)
 		total_fragment_a_work_in_mapA = 0.00
-		
-		current_speed = work_speed_normal
-		
+	elif state == DataTypes.GameState.Dead:
+		total_fragment_a_work_in_mapA = 0.00
+		total_fragment_a *= 0.5
+	#重置状态	
+	current_speed = work_speed_normal
+	hover_active = false	
 
 # 判断当前获取fragment speed是否高
 func get_speed_level() -> String:

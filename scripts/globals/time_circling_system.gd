@@ -1,7 +1,8 @@
 extends Node
 
+
 @onready var test_button_speedup = get_tree().get_first_node_in_group("TestButton")
-@onready var panel_container_A = get_tree().get_first_node_in_group("PanelContainerA")
+
 # ===============================
 # 工作 / 休息时间
 # ===============================
@@ -32,7 +33,7 @@ var is_first_assign: bool = false;
 func _ready():
 
 	_create_timers()
-
+	GameState.state_changed.connect(_on_state_changed)
 	# 接收测试button的signal
 	test_button_speedup.fast_button_pressed.connect(_speedup_timers)
 		
@@ -112,8 +113,21 @@ func _speedup_timers():
 func _on_assign_worker():
 	if !is_first_assign:
 		is_first_assign = true
-		print("第一次按下")
+		#print("第一次按下")
 		# 第一次的逻辑
-	else:
-		print("之后按下")
+	#else:
+		#print("之后按下")
 		# 后续逻辑
+		
+# ===============================
+# dead状态，停止所有计时器
+# ===============================
+func stop_all_timers():
+	work_timer.stop()
+	rest_timer.stop()
+	step_timer.stop()
+
+
+func _on_state_changed(state):
+	if state == DataTypes.GameState.Dead:
+		stop_all_timers()

@@ -13,4 +13,3 @@ func _ready():
 
 func toggle_highlight(on: bool):
 	modulate = '#d2dae2' if on else '#808e9b'
-	print("....")

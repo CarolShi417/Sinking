@@ -1,0 +1,20 @@
+[gd_scene load_steps=2 format=3 uid="uid://quqmxjcygng7"]
+
+[ext_resource type="Theme" uid="uid://ddgo3b8f6fttt" path="res://scenes/UI/game_ui_theme.tres" id="1_i0h3h"]
+
+[node name="SanNumberPanel" type="PanelContainer"]
+theme = ExtResource("1_i0h3h")
+theme_type_variation = &"HalfTransparentPanel"
+
+[node name="MarginContainer" type="MarginContainer" parent="."]
+custom_minimum_size = Vector2(228, 20)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+
+[node name="SanNumberLabel" type="Label" parent="MarginContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+theme = ExtResource("1_i0h3h")
+theme_type_variation = &"SanLabel"
+text = "00.00"

@@ -13,14 +13,14 @@ const work_gather_duration := 10.0
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
-	#GameState.state_changed.connect(_on_state_changed)
+	GameState.state_changed.connect(_on_state_changed)
 	GameState.behavior_changed.connect(_on_behavior_changed)
+	_create_behavior_timers()#
 	if GameState.current_state == DataTypes.GameState.Resting:
-		_create_behavior_timers()
 		start_idle_timer()
 
+#创建行为计时器
 func _create_behavior_timers():
-
 	behavior_timer = Timer.new()
 	behavior_timer.one_shot = true
 	behavior_timer.timeout.connect(_on_behavior_timeout)# Timer 结束时调用
@@ -116,7 +116,22 @@ func _work_cycle():
 
 		DataTypes.BehaviorState.walk:
 			start_idle_timer()
-
+			
+# ===============================
+# 死亡时，状态有所不同
+# ===============================
+func _on_state_changed(state):
+	if state == DataTypes.GameState.Dead:
+		behavior_timer.stop()
+		GameState.set_behavior(DataTypes.BehaviorState.idle)
+	elif state == DataTypes.GameState.Resting:
+		start_idle_timer()
+	elif state == DataTypes.GameState.Working:
+		start_idle_timer()
+		
+# ===============================
+# 切换worker状态，连接不同动画
+# ===============================
 func _on_behavior_changed(new_behavior):
 
 	match new_behavior:

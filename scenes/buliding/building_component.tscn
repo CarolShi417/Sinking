@@ -3,7 +3,7 @@
 [ext_resource type="Texture2D" uid="uid://ciduyolcyutkv" path="res://assets/sprites/main/main_bg_building.png" id="1_c3l1q"]
 [ext_resource type="Script" uid="uid://dpntd3do06vp5" path="res://scenes/buliding/lv_00_state.gd" id="2_u4vra"]
 [ext_resource type="Script" uid="uid://b0bre1loownnd" path="res://scenes/buliding/lv_01_state.gd" id="3_eho1d"]
-[ext_resource type="PackedScene" uid="uid://dyk6wuh28xf6l" path="res://scenes/UI/upgrade_building_panel.tscn" id="5_6ng3v"]
+[ext_resource type="PackedScene" uid="uid://dyk6wuh28xf6l" path="res://scenes/buliding/upgrade_building_panel.tscn" id="5_6ng3v"]
 [ext_resource type="Script" uid="uid://j2yxcsy0xm1u" path="res://scenes/buliding/building_ui_management.gd" id="5_c15ja"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_u4vra"]
@@ -39,7 +39,7 @@ animations = [{
 }]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_6ng3v"]
-size = Vector2(120, 117)
+size = Vector2(265, 185)
 
 [node name="BuildingComponent" type="Node2D"]
 
@@ -64,7 +64,7 @@ sprite = NodePath("../../AnimatedSprite2D")
 [node name="BuildingHoverArea" type="Area2D" parent="." groups=["buildingHoverArea"]]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="BuildingHoverArea"]
-position = Vector2(-1, -58.5)
+position = Vector2(71.5, -92.5)
 shape = SubResource("RectangleShape2D_6ng3v")
 
 [node name="Control" type="Control" parent="."]

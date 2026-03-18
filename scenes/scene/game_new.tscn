@@ -6,7 +6,7 @@
 [ext_resource type="PackedScene" uid="uid://iv4qvdu1lq0w" path="res://scenes/characters/worker_new.tscn" id="4_j5ily"]
 [ext_resource type="Script" uid="uid://c52d1sxetl600" path="res://scripts/globals/state_controller.gd" id="5_mq4ji"]
 [ext_resource type="Script" uid="uid://r3pw0fdrg1ts" path="res://scenes/UI/button_assign_controller.gd" id="6_k2ewu"]
-[ext_resource type="Script" uid="uid://ukv5gifjgpuy" path="res://scripts/globals/TimeCiclingController.gd" id="7_htw1a"]
+[ext_resource type="Script" uid="uid://ukv5gifjgpuy" path="res://scripts/globals/time_circling_system.gd" id="7_htw1a"]
 [ext_resource type="Script" uid="uid://b2uyiav6uo414" path="res://scenes/characters/worker_controller.gd" id="8_rq6sv"]
 
 [node name="GameNew" type="Node2D" groups=["GameScene"]]
