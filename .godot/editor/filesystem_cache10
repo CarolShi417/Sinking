@@ -1,5 +1,5 @@
 63f7b34db8d8cdea90c76aacccf841ec
-::res://::1773821653
+::res://::1773822234
 export_presets.cfg::TextFile::-1::1773377825::0::1::::<><><>0<>0<><>::
 icon.svg::CompressedTexture2D::1719813754079971804::1770773781::1770773806::1::::<><><>0<>0<>791e1351a8bb2b098971cd2bd5be20ca<>res://.godot/imported/icon.svg-218a8f2b3041327d8a5756f3a245f83b.ctex::
 README.md::TextFile::-1::1770773780::0::1::::<><><>0<>0<><>::
@@ -66,8 +66,7 @@ Sprite sheet for Basic Pack.png::CompressedTexture2D::7525258916549315094::17726
 ::res://assets/UI/Fonts/::1772627123
 pixelFont-7-8x14-sproutLands.ttf::FontFile::4791964598015677973::1772627123::1772627123::1::::<><><>0<>0<>439730b17c63bb972f6679dbe4d88bd9<>res://.godot/imported/pixelFont-7-8x14-sproutLands.ttf-be93edb4fba2bbbb623981f40d4879d0.fontdata::
 ::res://scenes/::1773245312
-::res://scenes/buliding/::1773377749
-building.gd::GDScript::4259863476098910360::1773223248::0::1::::<>Node2D<><>0<>0<><>::
+::res://scenes/buliding/::1773829338
 building_component.tscn::PackedScene::5915469089671179148::1773377749::0::1::::<><><>0<>0<><>::uid://ciduyolcyutkv::::res://assets/sprites/main/main_bg_building.png<>uid://dpntd3do06vp5::::res://scenes/buliding/lv_00_state.gd<>uid://b0bre1loownnd::::res://scenes/buliding/lv_01_state.gd<>uid://dyk6wuh28xf6l::::res://scenes/buliding/upgrade_building_panel.tscn<>uid://j2yxcsy0xm1u::::res://scenes/buliding/building_ui_management.gd
 building_hover_area.gd::GDScript::1937252677557782478::1773245779::0::1::::<>Area2D<><>0<>0<><>::
 building_ui_management.gd::GDScript::688936207166070272::1773243184::0::1::::<>Control<><>0<>0<><>::
@@ -76,21 +75,24 @@ lv_01_state.gd::GDScript::4144246867706257025::1773280418::0::1::::<>NodeState<>
 upgrade_building_button.gd::GDScript::2597041730661499436::1773300771::0::1::::<>Button<><>0<>0<><>::
 upgrade_building_panel.tscn::PackedScene::8866360652726746405::1773300881::0::1::::<><><>0<>0<><>::uid://ddgo3b8f6fttt::::res://scenes/UI/game_ui_theme.tres<>uid://dfhj6dvj1wi3o::::res://assets/UI/Sprite sheet for Basic Pack.png<>uid://bdaa5r667ads3::::res://scenes/buliding/upgrade_building_button.gd
 upgrade_building_panel_text.tscn::PackedScene::5862418201145349429::1772633052::0::1::::<><><>0<>0<><>::
-::res://scenes/characters/::1773821518
+::res://scenes/characters/::1773823429
 WorkerMovement.gd::GDScript::4646862995567969365::1773142165::0::1::::<>CharacterBody2D<><>0<>0<><>::
 worker_controller.gd::GDScript::4324278545055507541::1773821181::0::1::::<>Node<><>0<>0<><>::
-worker_new.tscn::PackedScene::606653156000891360::1773822215::0::1::::<><><>0<>0<><>::uid://b7g8fi0iye2eb::::res://scenes/characters/WorkerMovement.gd<>uid://cmqumrc2drsub::::res://assets/sprites/worker/Worker_right/Worker_gather_right.png<>uid://btyop0kwbh8vl::::res://assets/sprites/worker/worker_left/Worker_idle_left.png<>uid://drjkftoi2kywv::::res://assets/sprites/worker/Worker_right/Worker_die_right.png<>uid://epltqudko18g::::res://assets/sprites/worker/worker_left/character_die_left.png<>uid://cejbixp4ji44j::::res://assets/sprites/worker/worker_left/Worker_gather_left.png<>uid://vfbwdgp7bfuo::::res://assets/sprites/worker/Worker_right/Worker_idle_right.png<>uid://r31sa0nxpbvu::::res://assets/sprites/worker/Worker_right/Worker_walk_right.png<>uid://drd37gk38d2n5::::res://scenes/components/hover_area.gd<>uid://dy4b0hgnyixi8::::res://scripts/state_machine/node_state_machine.gd<>uid://ck4c1ajucnm2n::::res://assets/sprites/worker/worker_left/Worker_walk_left.png<>uid://dsfq0b7g2o6va::::res://scenes/characters/animationBehavior/idle.gd<>uid://c082wheqm0lf1::::res://scripts/globals/behavior_time_circling.gd<>uid://cet28s35gc13x::::res://scenes/characters/animationBehavior/gather.gd<>uid://cb2b11sp2rtcp::::res://scenes/characters/animationBehavior/walk.gd<>uid://l1def2d8dhc8::::res://scenes/characters/animationBehavior/dying.gd<>uid://cyttufjyc3tf6::::res://scenes/characters/animationBehavior/alive_rest.gd<>uid://dkd0ujhbs0fq1::::res://scenes/characters/animationBehavior/dead_rest.gd
-::res://scenes/characters/animationBehavior/::1773821003
-alive_rest.gd::GDScript::6497786408381011797::1773820969::0::1::::<>NodeState<><>0<>0<><>::
-dead_rest.gd::GDScript::7868897745013326486::1773821003::0::1::::<>NodeState<><>0<>0<><>::
-dying.gd::GDScript::825940700284830793::1773820932::0::1::::<>NodeState<><>0<>0<><>::
+worker_new.tscn::PackedScene::606653156000891360::1773823429::0::1::::<><><>0<>0<><>::uid://b7g8fi0iye2eb::::res://scenes/characters/WorkerMovement.gd<>uid://cmqumrc2drsub::::res://assets/sprites/worker/Worker_right/Worker_gather_right.png<>uid://btyop0kwbh8vl::::res://assets/sprites/worker/worker_left/Worker_idle_left.png<>uid://drjkftoi2kywv::::res://assets/sprites/worker/Worker_right/Worker_die_right.png<>uid://epltqudko18g::::res://assets/sprites/worker/worker_left/character_die_left.png<>uid://cejbixp4ji44j::::res://assets/sprites/worker/worker_left/Worker_gather_left.png<>uid://vfbwdgp7bfuo::::res://assets/sprites/worker/Worker_right/Worker_idle_right.png<>uid://r31sa0nxpbvu::::res://assets/sprites/worker/Worker_right/Worker_walk_right.png<>uid://drd37gk38d2n5::::res://scenes/components/hover_area.gd<>uid://dy4b0hgnyixi8::::res://scripts/state_machine/node_state_machine.gd<>uid://ck4c1ajucnm2n::::res://assets/sprites/worker/worker_left/Worker_walk_left.png<>uid://dsfq0b7g2o6va::::res://scenes/characters/animationBehavior/idle.gd<>uid://c082wheqm0lf1::::res://scripts/globals/behavior_controller.gd<>uid://cet28s35gc13x::::res://scenes/characters/animationBehavior/gather.gd<>uid://cb2b11sp2rtcp::::res://scenes/characters/animationBehavior/walk.gd<>uid://l1def2d8dhc8::::res://scenes/characters/animationBehavior/dying.gd<>uid://cyttufjyc3tf6::::res://scenes/characters/animationBehavior/alive_rest.gd<>uid://dkd0ujhbs0fq1::::res://scenes/characters/animationBehavior/dead_rest.gd
+::res://scenes/characters/animationBehavior/::1773823425
+alive_rest.gd::GDScript::6497786408381011797::1773823425::0::1::::<>NodeState<><>0<>0<><>::
+dead_rest.gd::GDScript::7868897745013326486::1773823417::0::1::::<>NodeState<><>0<>0<><>::
+dying.gd::GDScript::825940700284830793::1773823412::0::1::::<>NodeState<><>0<>0<><>::
 gather.gd::GDScript::5094519199315040103::1773278615::0::1::::<>NodeState<><>0<>0<><>::
 idle.gd::GDScript::8433999344332442662::1773245483::0::1::::<>NodeState<><>0<>0<><>::
 walk.gd::GDScript::4898876952150028087::1773278616::0::1::::<>NodeState<><>0<>0<><>::
-::res://scenes/components/::1773281715
+::res://scenes/components/::1773827127
 hover_area.gd::GDScript::8360423079295036268::1773245779::0::1::::<>Area2D<><>0<>0<><>::
 item_finder.gd::GDScript::5045095914505633676::1773136844::0::1::::<>Sprite2D<><>0<>0<><>::
 item_finder.tscn::PackedScene::2278819228893348700::1773141835::0::1::::<><><>0<>0<><>::uid://xsiwxu67ifq1::::res://assets/sprites/map/map_monitor.png<>uid://cd4480pybxblk::::res://scenes/components/item_finder.gd<>uid://cx1vg4dak5vo::::res://scenes/shader/MaskShader.gdshader<>uid://pf5koaonhea6::::res://assets/sprites/map/map_monitor_in_zone.png
+random_stone_component.gd::GDScript::5125841961019765738::1773827101::0::1::::<>Node2D<><>0<>0<><>::
+random_stone_component.tscn::PackedScene::7928638501155643562::1773827127::0::1::::<><><>0<>0<><>::uid://5a2bnqegcgji::::res://assets/sprites/map/map_random_stone.png<>uid://cfa84rv4csl6q::::res://scenes/components/random_stone_component.gd
+random_stone_generation.gd::GDScript::8637027621142722660::1773827079::0::1::::<>Node2D<><>0<>0<><>::
 sprite_2d.gd::GDScript::8009532764422392936::1773281715::0::1::::<>Sprite2D<><>0<>0<><>::
 test.tres::TileSet::6491387139444074315::1773128906::0::1::::<><><>0<>0<><>::uid://dfhj6dvj1wi3o::::res://assets/UI/Sprite sheet for Basic Pack.png
 ::res://scenes/Monitor/::1773146688
@@ -102,23 +104,23 @@ hover_detect_controller.gd::GDScript::648379800628956887::1773146688::0::1::::<>
 40_59.gd::GDScript::3511054349493965992::1773246230::0::1::::<>Node<><>0<>0<><>::
 60_79.gd::GDScript::2562613542070894853::1773245848::0::1::::<>Node<><>0<>0<><>::
 80_100.gd::GDScript::6147445928349346717::1773245845::0::1::::<>Node<><>0<>0<><>::
-::res://scenes/Scene/::1773821134
-game_new.tscn::PackedScene::1990393166878888625::1773821134::0::1::::<><><>0<>0<><>::uid://crdvwcxh43g73::::res://scenes/Scene/main_texture.tscn<>uid://cw8e3mqdgtt6x::::res://scenes/Scene/map_texture.tscn<>uid://lkxmcbrinayj::::res://scenes/UI/GameScreenUI.tscn<>uid://iv4qvdu1lq0w::::res://scenes/characters/worker_new.tscn<>uid://c52d1sxetl600::::res://scripts/globals/state_controller.gd<>uid://r3pw0fdrg1ts::::res://scenes/UI/button_assign_controller.gd<>uid://ukv5gifjgpuy::::res://scripts/globals/time_circling_system.gd<>uid://b2uyiav6uo414::::res://scenes/characters/worker_controller.gd
+::res://scenes/Scene/::1773827079
+game_new.tscn::PackedScene::1990393166878888625::1773826937::0::1::::<><><>0<>0<><>::uid://crdvwcxh43g73::::res://scenes/Scene/main_texture.tscn<>uid://cw8e3mqdgtt6x::::res://scenes/Scene/map_texture.tscn<>uid://lkxmcbrinayj::::res://scenes/UI/GameScreenUI.tscn<>uid://iv4qvdu1lq0w::::res://scenes/characters/worker_new.tscn<>uid://c52d1sxetl600::::res://scripts/globals/state_controller.gd<>uid://r3pw0fdrg1ts::::res://scenes/UI/button_assign_controller.gd<>uid://ukv5gifjgpuy::::res://scripts/globals/time_circling_system.gd<>uid://b2uyiav6uo414::::res://scenes/characters/worker_controller.gd
 main_texture.tscn::PackedScene::5973559327744047556::1773244690::0::1::::<><><>0<>0<><>::uid://cqjq584lodj7q::::res://scenes/buliding/building_component.tscn<>uid://cyh0h2iveht6q::::res://Tilesets/ground_tile_set.tres
-maps.tscn::PackedScene::1525960756695799452::1773239358::0::1::::<><><>0<>0<><>::uid://b2df2u1gmhrln::::res://assets/sprites/map/map_location map_dark.png<>uid://bottjw54uinpc::::res://scenes/Scene/maps_texture.gd<>uid://b0gxdmaxblnpw::::res://assets/sprites/map/map_location map_B.png<>uid://b5cep7kga0gjp::::res://assets/sprites/map/map_location map_A.png<>uid://c2xabhqii8p7n::::res://assets/sprites/map/map_location map_C.png<>uid://iv4qvdu1lq0w::::res://scenes/characters/worker_new.tscn
+maps.tscn::PackedScene::1525960756695799452::1773827079::0::1::::<><><>0<>0<><>::uid://b2df2u1gmhrln::::res://assets/sprites/map/map_location map_dark.png<>uid://bottjw54uinpc::::res://scenes/Scene/maps_texture.gd<>uid://b0gxdmaxblnpw::::res://assets/sprites/map/map_location map_B.png<>uid://b5cep7kga0gjp::::res://assets/sprites/map/map_location map_A.png<>uid://c2xabhqii8p7n::::res://assets/sprites/map/map_location map_C.png<>uid://iv4qvdu1lq0w::::res://scenes/characters/worker_new.tscn<>uid://dvb3t28uip7i3::::res://scenes/components/random_stone_generation.gd<>uid://dk7xruqxfnjos::::res://scenes/components/random_stone_component.tscn
 maps_texture.gd::GDScript::3409458570162916692::1773129713::0::1::::<>Sprite2D<><>0<>0<><>::
 map_texture.tscn::PackedScene::6385413918649456601::1773244211::0::1::::<><><>0<>0<><>::uid://v0gl6ot6gr7y::::res://scenes/Scene/maps.tscn<>uid://dsj56r84u3kj0::::res://assets/sprites/map/map_location map_dark_with transparent.png<>uid://hs21ne444o05::::res://assets/sprites/map/map_workplace.png<>uid://7p424v4db4cm::::res://scenes/components/item_finder.tscn
 monitor_focus_area.gdshader::Shader::3317869968999219843::1773822215::0::1::::<><><>0<>0<><>::
-::res://scenes/shader/::1773803480
+::res://scenes/shader/::1773822215
 MaskShader.gdshader::Shader::189474879179534144::1773822215::0::1::::<><><>0<>0<><>::
-::res://scenes/UI/::1773808282
+::res://scenes/UI/::1773824978
 Assigned Button.tscn::PackedScene::6596512834078913311::1772007024::0::1::::<><><>0<>0<><>::
 button_assign_controller.gd::GDScript::1251964282284695136::1773024106::0::1::::<>Node<><>0<>0<><>::
 GameScreenUI.tscn::PackedScene::794139085294550785::1773808282::0::1::::<><><>0<>0<><>::uid://sowh2mf56xdo::::res://scenes/UI/map_ui_management.gd<>uid://dmvgpntduh0lt::::res://scenes/UI/RealTimeFragmentGainDisplay.tscn<>uid://ce8f1svngx6pc::::res://scenes/UI/map_select_panel.tscn<>uid://dtj5iutud5bat::::res://scenes/UI/test_panel======.tscn<>uid://dtckgvf4r6ir7::::res://scenes/UI/san_panel.tscn<>uid://rvacyh3g7kf5::::res://scenes/UI/san_panel.gd<>uid://quqmxjcygng7::::res://scenes/UI/san_number_panel.tscn<>uid://hs21ne444o05::::res://assets/sprites/map/map_workplace.png<>uid://c4m7np0j0dowy::::res://scenes/UI/main_total_fragment_panel.tscn
 game_ui_theme.tres::Theme::7383114992416545117::1773822215::0::1::::<><><>0<>0<><>::uid://caji7scvx16ur::::res://assets/UI/Fonts/pixelFont-7-8x14-sproutLands.ttf<>uid://dfhj6dvj1wi3o::::res://assets/UI/Sprite sheet for Basic Pack.png<>uid://l7o0do0pvstt::::res://assets/sprites/map/map_progress_bar.png<>uid://cke6sp6c85y10::::res://assets/sprites/map/map_button_mapA.png
 main_total_fragment_panel.gd::GDScript::5092174381448293778::1773224103::0::1::::<>PanelContainer<><>0<>0<><>::
 main_total_fragment_panel.tscn::PackedScene::6835057351939973700::1772952942::0::1::::<><><>0<>0<><>::uid://ddgo3b8f6fttt::::res://scenes/UI/game_ui_theme.tres<>uid://cesxmrrjgvh11::::res://scenes/UI/main_total_fragment_panel.gd
-map_a_select_panel.gd::GDScript::8790387352223546244::1773024960::0::1::::<>PanelContainer<><>0<>0<><>::
+map_a_select_panel.gd::GDScript::8790387352223546244::1773824978::0::1::::<>PanelContainer<><>0<>0<><>::
 map_fragment_gain_panel.gd::GDScript::1091922135089321870::1773150947::0::1::::<>Node2D<><>0<>0<><>::
 map_select_panel.tscn::PackedScene::5122072201888478068::1773070825::0::1::::<><><>0<>0<><>::uid://ddgo3b8f6fttt::::res://scenes/UI/game_ui_theme.tres<>uid://dxienpc1r73u3::::res://scenes/UI/map_a_select_panel.gd<>uid://q138gv7tdb3k::::res://assets/sprites/map/map_button_mapAssign.png
 map_ui_management.gd::GDScript::1293650185376235464::1772805757::0::1::::<>Node<><>0<>0<><>::
@@ -136,15 +138,16 @@ Map Scene.tscn::PackedScene::4079656451744670430::1773149560::0::1::::<><><>0<>0
 ::res://scripts/case/::1773224197
 building_ui_panel.gd::GDScript::3161938275117020746::1773224197::0::1::::<>Node<><>0<>0<><>::
 Template.gd::GDScript::4460971702896375370::1773144690::0::1::::<>Node<><>0<>0<><>::
-::res://scripts/globals/::1773821518
-behavior_time_circling.gd::GDScript::6597365945078253560::1773821518::0::1::::<>Node<><>0<>0<><>::
+::res://scripts/globals/::1773829359
+behavior_controller.gd::GDScript::6597365945078253560::1773824440::0::1::::<>Node<><>0<>0<><>::
 data_types.gd::GDScript::4815281284259593414::1773819581::0::1::::DataTypes<>RefCounted<><>0<>0<><>::
 export_setting_controller.gd::GDScript::6555964761759837443::1773377720::0::1::::<>Node<><>0<>0<><>::
 fragment_system.gd::GDScript::6079343245021932311::1773808798::0::1::::<>Node<><>0<>0<><>::
 game_state.gd::GDScript::759661396707977322::1773813882::0::1::::<>Node<><>0<>0<><>::
-san_system.gd::GDScript::7448911734915741799::1773816849::0::1::::<>Node<><>0<>0<><>::
-state_controller.gd::GDScript::6934474438665019567::1773820721::0::1::::<>Node<><>0<>0<><>::
-time_circling_system.gd::GDScript::1425749608704482268::1773819690::0::1::::<>Node<><>0<>0<><>::
+building_component.gd::GDScript::6301336093452306688::1773829359::0::1::::<>Node<><>0<>0<><>::
+san_system.gd::GDScript::7448911734915741799::1773824664::0::1::::<>Node<><>0<>0<><>::
+state_controller.gd::GDScript::6934474438665019567::1773822503::0::1::::<>Node<><>0<>0<><>::
+time_circling_system.gd::GDScript::1425749608704482268::1773824440::0::1::::<>Node<><>0<>0<><>::
 ::res://scripts/state_machine/::1773071098
 node_state.gd::GDScript::1327425730247310234::1772622139::0::1::::NodeState<>Node<><>0<>0<><>::
 node_state_machine.gd::GDScript::8903766992655554157::1773071098::0::1::::NodeStateMachine<>Node<><>0<>0<><>::
@@ -154,5 +157,5 @@ MainMana.gd::GDScript::5998243167202945134::1772072218::0::1::::<>Node2D<><>0<>0
 MainUIControl.gd::GDScript::8312830792619981514::1772013440::0::1::::<>Control<><>0<>0<><>::
 MapMana.gd::GDScript::6908435898283604658::1773245903::0::1::::<>Node2D<><>0<>0<><>::
 MapUIControl.gd::GDScript::4302254044472840655::1772075112::0::1::::<>Control<><>0<>0<><>::
-::res://Tilesets/::1773803480
+::res://Tilesets/::1773822215
 ground_tile_set.tres::TileSet::6473356115802570258::1773822215::0::1::::<><><>0<>0<><>::uid://ciduyolcyutkv::::res://assets/sprites/main/main_bg_building.png

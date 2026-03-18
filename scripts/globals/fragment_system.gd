@@ -35,12 +35,6 @@ func _ready() -> void:
 	GameState.state_changed.connect(_on_state_changed)
 	
 	await get_tree().process_frame
-	# ===============================
-	#获取upgradebutton的signal
-	# ===============================
-	var upgrade_building_button = get_tree().get_first_node_in_group("UpgradeBuildingButtonGroup")
-	#for upgrade_building_button in upgrade_building_buttons:
-	upgrade_building_button.UpgradeButton_0to1_Pressed.connect(fragment_analyzer_upgrade_lv0_to_lv1)
 	
 	# ===============================
 	#接收鼠标悬停在小人上的signal
@@ -98,13 +92,15 @@ func update_work_speed():
 	else:
 		current_speed = work_speed_normal
 
-# ===============================
-# 升级建筑消耗fragment
-# ===============================
-func fragment_analyzer_upgrade_lv0_to_lv1(amount):
-	if total_fragment_a >= amount:
-		total_fragment_a -= amount
-		print("total_fragment_a", total_fragment_a)
-	else:
-		print("碎片不足")
-	
+
+func can_spend_fragment_a(amount: float) -> bool:
+	return total_fragment_a >= amount
+
+
+func spend_fragment_a(amount: float) -> bool:
+	if !can_spend_fragment_a(amount):
+		return false
+
+	total_fragment_a -= amount
+	print("total_fragment_a", total_fragment_a)
+	return true

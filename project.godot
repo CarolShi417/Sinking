@@ -21,6 +21,7 @@ GameState="*res://scripts/globals/game_state.gd"
 FragmentSystem="*res://scripts/globals/fragment_system.gd"
 SanSystem="*res://scripts/globals/san_system.gd"
 ExportSettingController="*res://scripts/globals/export_setting_controller.gd"
+BuildingSystem="*res://scripts/globals/building_system.gd"
 
 [display]
 

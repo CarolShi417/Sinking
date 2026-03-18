@@ -1,8 +1,6 @@
 extends PanelContainer
 
 @export var button_mapA: Button
-
-
 @export var button_assignWorkerToMapA: Button
 
 

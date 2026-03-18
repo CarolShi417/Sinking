@@ -1,0 +1,11 @@
+[gd_scene load_steps=3 format=3 uid="uid://dk7xruqxfnjos"]
+
+[ext_resource type="Texture2D" uid="uid://5a2bnqegcgji" path="res://assets/sprites/map/map_random_stone.png" id="1_bgfy0"]
+[ext_resource type="Script" uid="uid://cfa84rv4csl6q" path="res://scenes/components/random_stone_component.gd" id="1_wfry8"]
+
+[node name="StoneComponent" type="Node2D"]
+script = ExtResource("1_wfry8")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+z_index = 45
+texture = ExtResource("1_bgfy0")

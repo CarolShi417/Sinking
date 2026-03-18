@@ -4,12 +4,17 @@ signal dead_flow_finished #向state发送死亡流程结束信号，让state切�
 
 var behavior_timer: Timer
 var current_behavior : DataTypes.BehaviorState
+var dead_flow_running := false#确保死亡状态不要重复执行
 
+# 各Behavior持续时间
 const rest_idle_duration := 5.0
 const rest_walk_duration := 5.0
 const work_idle_duration := 5.0
 const work_walk_duration := 5.0
 const work_gather_duration := 10.0
+const dying_duration := 2.0
+const dead_rest_duration := 300.0
+const alive_rest_duration := 0.5
 
 @onready var state_machine: Node = $"../StateMachine"
 
@@ -27,7 +32,10 @@ func _create_behavior_timers():
 	behavior_timer.one_shot = true
 	behavior_timer.timeout.connect(_on_behavior_timeout)# Timer 结束时调用
 
+	
 	add_child(behavior_timer)
+	
+	
 	
 # ===============================
 # 死亡时，状态有所不同
@@ -35,7 +43,9 @@ func _create_behavior_timers():
 func _on_state_changed(state):	
 	#停止行为计时器
 	behavior_timer.stop()
-	
+	#确保当前状态为死亡状态
+	if state != DataTypes.GameState.Dead:
+		dead_flow_running = false
 	match state:
 		
 		DataTypes.GameState.Resting:
@@ -45,6 +55,10 @@ func _on_state_changed(state):
 			start_idle_timer()
 
 		DataTypes.GameState.Dead:
+			if dead_flow_running:
+				return
+			
+			dead_flow_running = true
 			_start_dead_flow()
 
 # ===============================
@@ -62,13 +76,13 @@ func _on_behavior_changed(new_behavior):
 		DataTypes.BehaviorState.gather:
 			state_machine.transition_to("Gather")
 		
-		DataTypes.BehaviorState.gather:
+		DataTypes.BehaviorState.dying:
 			state_machine.transition_to("Dying")
 		
-		DataTypes.BehaviorState.gather:
+		DataTypes.BehaviorState.dead_rest:
 			state_machine.transition_to("Dead_rest")
 			
-		DataTypes.BehaviorState.gather:
+		DataTypes.BehaviorState.alive_rest:
 			state_machine.transition_to("Alive_rest")
 		
 		
@@ -165,17 +179,18 @@ func _start_dead_flow():
 	# 1. dying（2秒）
 	current_behavior = DataTypes.BehaviorState.dying
 	GameState.set_behavior(current_behavior)
-	await get_tree().create_timer(2.0).timeout
+	await get_tree().create_timer(dying_duration).timeout
 
 	# 2. dead_rest（5分钟）
 	current_behavior = DataTypes.BehaviorState.dead_rest
 	GameState.set_behavior(current_behavior)
-	await get_tree().create_timer(300.0).timeout
+	await get_tree().create_timer(dead_rest_duration).timeout
 
 	# 3. alive_rest（0.5秒）
 	current_behavior = DataTypes.BehaviorState.alive_rest
 	GameState.set_behavior(current_behavior)
-	await get_tree().create_timer(0.5).timeout
+	await get_tree().create_timer(alive_rest_duration).timeout
 
 	# 4. 回到Resting状态
-	dead_flow_finished.emit()
+	if GameState.current_state == DataTypes.GameState.Dead:
+		dead_flow_finished.emit()

@@ -9,7 +9,7 @@ extends Node
 
 const WORK_DURATION := 600.0
 const REST_DURATION := 300.0
-const DEAD_DURATION := 302.0
+const DEAD_DURATION := 302.5
 const work_step_duration := 5.0
 const san_step_duration := 1.0
 

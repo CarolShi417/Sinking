@@ -1,0 +1,65 @@
+extends Node2D
+
+signal upgrade_requested(building_id: String)
+signal upgraded(building_id: String, new_level: int)
+
+@export var building_id := ""
+
+@onready var sprite: AnimatedSprite2D = $AnimatedSprite2D
+@onready var hover_area: Area2D = $BuildingHoverArea
+@onready var upgrade_panel: PanelContainer = $Control/UpgradeBuildingPanel
+@onready var info_label: Label = $Control/UpgradeBuildingPanel/MarginContainer/VBoxContainer/Label
+@onready var upgrade_button: Button = $Control/UpgradeBuildingPanel/MarginContainer/VBoxContainer/Button
+
+func _ready() -> void:
+	_resolve_building_id()
+	upgrade_panel.hide()
+	hover_area.mouse_entered.connect(_on_building_hover_area_mouse_entered)
+	hover_area.mouse_exited.connect(_on_building_hover_area_mouse_exited)
+	upgrade_button.pressed.connect(_on_upgrade_button_pressed)
+	BuildingSystem.building_upgraded.connect(_on_building_upgraded)
+	_refresh_view()
+
+func _resolve_building_id() -> void:
+	if !building_id.is_empty():
+		return
+
+	building_id = String(name).to_snake_case()
+	
+func _refresh_view() -> void:
+	var level := BuildingSystem.get_current_level(building_id)
+	sprite.play(BuildingSystem.get_animation_name(building_id, level))
+
+	var building_name := BuildingSystem.get_building_name(building_id)
+	var upgrade_cost := BuildingSystem.get_upgrade_cost(building_id)
+	var effect_desc := BuildingSystem.get_upgrade_desc(building_id)
+
+	if upgrade_cost >= 0:
+		info_label.text = "%s\n- Fragment A * %d\nEffect: %s" % [building_name, upgrade_cost, effect_desc]
+	else:
+		info_label.text = "%s\nMAX LEVEL" % building_name
+
+	upgrade_button.disabled = !BuildingSystem.can_upgrade(building_id)
+
+
+func _on_building_hover_area_mouse_exited() -> void:
+	upgrade_panel.hide()
+
+
+func _on_building_hover_area_mouse_entered() -> void:
+	_refresh_view()
+	upgrade_panel.show()
+	upgrade_panel.position = Vector2(0, -200)
+
+
+func _on_upgrade_button_pressed() -> void:
+	upgrade_requested.emit(building_id)
+	if BuildingSystem.try_upgrade(building_id):
+		var new_level := BuildingSystem.get_current_level(building_id)
+		upgraded.emit(building_id, new_level)
+		_refresh_view()
+
+
+func _on_building_upgraded(changed_building_id: String, _new_level: int) -> void:
+	if changed_building_id == building_id:
+		_refresh_view()
