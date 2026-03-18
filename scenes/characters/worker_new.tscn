@@ -12,7 +12,7 @@
 [ext_resource type="Script" uid="uid://dy4b0hgnyixi8" path="res://scripts/state_machine/node_state_machine.gd" id="6_mkwbn"]
 [ext_resource type="Texture2D" uid="uid://ck4c1ajucnm2n" path="res://assets/sprites/worker/worker_left/Worker_walk_left.png" id="6_srk7o"]
 [ext_resource type="Script" uid="uid://dsfq0b7g2o6va" path="res://scenes/characters/animationBehavior/idle.gd" id="10_f1jdw"]
-[ext_resource type="Script" uid="uid://c082wheqm0lf1" path="res://scripts/globals/behavior_time_circling.gd" id="11_5w2lh"]
+[ext_resource type="Script" uid="uid://c082wheqm0lf1" path="res://scripts/globals/behavior_controller.gd" id="11_5w2lh"]
 [ext_resource type="Script" uid="uid://cet28s35gc13x" path="res://scenes/characters/animationBehavior/gather.gd" id="12_5f488"]
 [ext_resource type="Script" uid="uid://cb2b11sp2rtcp" path="res://scenes/characters/animationBehavior/walk.gd" id="12_m0mx3"]
 [ext_resource type="Script" uid="uid://l1def2d8dhc8" path="res://scenes/characters/animationBehavior/dying.gd" id="15_6hodq"]
@@ -585,8 +585,7 @@ script = ExtResource("16_6hodq")
 worker = NodePath("../..")
 animated_sprite_2d = NodePath("../../AnimatedSprite2D")
 
-[node name="BehaviorTimeCircling" type="Node" parent="." node_paths=PackedStringArray("state_machine")]
+[node name="BehaviorController" type="Node" parent="." groups=["BehaviorController"]]
 script = ExtResource("11_5w2lh")
-state_machine = NodePath("../StateMachine")
 
 [connection signal="mouse_entered" from="." to="." method="_on_mouse_entered"]

@@ -11,7 +11,7 @@ const work_idle_duration := 5.0
 const work_walk_duration := 5.0
 const work_gather_duration := 10.0
 
-@export var state_machine: Node
+@onready var state_machine: Node = $"../StateMachine"
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:

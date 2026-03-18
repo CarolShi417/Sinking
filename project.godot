@@ -21,7 +21,6 @@ GameState="*res://scripts/globals/game_state.gd"
 FragmentSystem="*res://scripts/globals/fragment_system.gd"
 SanSystem="*res://scripts/globals/san_system.gd"
 ExportSettingController="*res://scripts/globals/export_setting_controller.gd"
-BehaviorTimeCircling="*res://scripts/globals/behavior_time_circling.gd"
 
 [display]
 
@@ -59,6 +58,7 @@ maps=""
 WorkerResting=""
 WorkerWorking=""
 UpgradeBuildingButtonGroup=""
+BehaviorController=""
 
 [rendering]
 

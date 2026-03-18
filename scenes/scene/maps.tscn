@@ -48,3 +48,5 @@ offset = Vector2(-960, 0)
 [node name="WorkerWorking" parent="." groups=["WorkerWorking"] instance=ExtResource("6_dk63h")]
 z_as_relative = false
 position = Vector2(1447, 198)
+
+[node name="Node2D" type="Node2D" parent="."]
