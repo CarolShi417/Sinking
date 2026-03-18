@@ -23,10 +23,11 @@ z_index = 2
 [node name="GameScreenUI" parent="." instance=ExtResource("3_mlhe7")]
 z_index = 20
 
-[node name="StateController" type="Node" parent="." node_paths=PackedStringArray("time_circling", "button_controller")]
+[node name="StateController" type="Node" parent="." node_paths=PackedStringArray("time_circling", "button_controller", "worker_controller")]
 script = ExtResource("5_mq4ji")
 time_circling = NodePath("TimeCircling")
 button_controller = NodePath("ButtonAssignController")
+worker_controller = NodePath("../WorkerController")
 
 [node name="ButtonAssignController" type="Node" parent="StateController"]
 script = ExtResource("6_k2ewu")

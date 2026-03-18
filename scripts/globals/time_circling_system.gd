@@ -9,7 +9,9 @@ extends Node
 
 const WORK_DURATION := 600.0
 const REST_DURATION := 300.0
+const DEAD_DURATION := 300.0
 const step_duration := 5.0
+const san_tick_interval := 1.0
 
 # ===============================
 # Timer
@@ -17,14 +19,15 @@ const step_duration := 5.0
 var work_timer : Timer
 var rest_timer : Timer
 var step_timer : Timer
-
-# 时间倍率
-#var time_scale : float = 1.0
+var san_timer : Timer
+var dead_timer : Timer
 
 # 信号
 signal step_tick(duration)
+signal san_tick(duration)
 signal work_finished
 signal rest_finished
+signal dead_recovery_finished
 
 # 按下assign按钮，启动timer
 var is_first_assign: bool = false;
@@ -35,7 +38,9 @@ func _ready():
 	_create_timers()
 	GameState.state_changed.connect(_on_state_changed)
 	# 接收测试button的signal
-	test_button_speedup.fast_button_pressed.connect(_speedup_timers)
+	if test_button_speedup:
+		test_button_speedup.fast_button_pressed.connect(_speedup_timers)
+	san_timer.start()
 		
 
 # ===============================
@@ -62,11 +67,25 @@ func _create_timers():
 	step_timer.timeout.connect(_on_step_tick)
 	add_child(step_timer)
 
+	# SAN Timer（每1秒触发一次）
+	san_timer = Timer.new()
+	san_timer.one_shot = false
+	san_timer.wait_time = san_tick_interval
+	san_timer.timeout.connect(_on_san_tick)
+	add_child(san_timer)
+
+	# Dead 计时器
+	dead_timer = Timer.new()
+	dead_timer.one_shot = true
+	dead_timer.timeout.connect(_on_dead_recovery_finished)
+	add_child(dead_timer)
+
 # ===============================
 # 启动工作计时
 # ===============================
 func start_work_timer():
 	rest_timer.stop()
+	dead_timer.stop()
 	work_timer.start(WORK_DURATION)
 	step_timer.start()
 	
@@ -76,9 +95,16 @@ func start_work_timer():
 # ===============================
 func start_rest_timer():
 	work_timer.stop()
+	dead_timer.stop()
 	step_timer.stop()
 	rest_timer.start(REST_DURATION)
 
+
+func start_dead_timer():
+	work_timer.stop()
+	rest_timer.stop()
+	step_timer.stop()
+	dead_timer.start(DEAD_DURATION)
 
 # ===============================
 # 工作结束，用于计时结束事件触发
@@ -94,12 +120,18 @@ func _on_rest_finished():
 	rest_finished.emit()
 	
 
+func _on_dead_recovery_finished():
+	dead_recovery_finished.emit()
+
 # ===============================
 # 每5秒触发，用于计时结束事件触发
 # ===============================
 func _on_step_tick():
-	#print("STEP TICK")
 	step_tick.emit(step_duration)
+
+
+func _on_san_tick():
+	san_tick.emit(san_tick_interval)
 
 # ===============================
 # 加速时间，engine整体加速
@@ -113,11 +145,6 @@ func _speedup_timers():
 func _on_assign_worker():
 	if !is_first_assign:
 		is_first_assign = true
-		#print("第一次按下")
-		# 第一次的逻辑
-	#else:
-		#print("之后按下")
-		# 后续逻辑
 		
 # ===============================
 # dead状态，停止所有计时器
@@ -126,8 +153,11 @@ func stop_all_timers():
 	work_timer.stop()
 	rest_timer.stop()
 	step_timer.stop()
+	dead_timer.stop()
 
 
 func _on_state_changed(state):
 	if state == DataTypes.GameState.Dead:
-		stop_all_timers()
+		work_timer.stop()
+		rest_timer.stop()
+		step_timer.stop()

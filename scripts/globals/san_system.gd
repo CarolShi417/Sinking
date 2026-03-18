@@ -15,16 +15,12 @@ const SAN_MIN := 0.0
 const SAN_MAX := 100.0
 # SAN 基础设定
 # 当前规则：
-# 1. Working + Hover：每秒扣 5 SAN
-# 2. Working + 非 Hover：SAN 不变
-# 3. Resting：每秒回 5 SAN
+# 1. Working：每秒扣 5 SAN
+# 2. 只有离开第一次 Rest 后，后续 Resting 才每秒回 5 SAN
+# 3. Hover 先保留为状态输入，后续如果要做额外惩罚可以直接在这里叠加
 # ===============================
-const san_tick_interval := 1.0
-const working_hover_san_change_per_second := -5.0
+const working_san_change_per_second := -5.0
 const resting_san_change_per_second := 5.0
-var san_timer : Timer
-var has_entered_working_once := false
-var resting_recovery_enabled := false
 
 # ========================
 # 一些会影响san的bonus被动
@@ -35,7 +31,6 @@ var resting_recovery_enabled := false
 func _ready() -> void:
 	# 监听全局状态；离开 Working 时要清掉 hover，避免状态残留。
 	GameState.state_changed.connect(_on_state_changed)
-	_create_san_timer()
 	
 	# 等场景树准备好后，连接 HoverArea 的信号。
 	await get_tree().process_frame
@@ -47,22 +42,9 @@ func _ready() -> void:
 	_emit_san_changed()
 
 
-# Called every frame. 'delta' is the elapsed time since the previous frame.
-#func _process(delta: float) -> void:
-	#pass
-	
-#创建san计时器
-func _create_san_timer() -> void:
-	san_timer = Timer.new()
-	san_timer.one_shot = false
-	san_timer.wait_time = san_tick_interval
-	san_timer.timeout.connect(_on_san_timer_timeout)
-	add_child(san_timer)
-	san_timer.start()
-
-# SAN 现在独立按每秒结算，不再跟 fragment 共用 step_tick。
-func _on_san_timer_timeout() -> void:
-	var san_change := get_current_san_change_per_second() * san_tick_interval
+# TimeCircling 统一驱动 SAN 结算。
+func _on_san_tick(duration: float) -> void:
+	var san_change := get_current_san_change_per_second() * duration
 	if is_zero_approx(san_change):
 		return
 
@@ -72,11 +54,9 @@ func _on_san_timer_timeout() -> void:
 # 统一计算“当前这一秒 SAN 会变化多少”。
 func get_current_san_change_per_second() -> float:
 	if GameState.current_state == DataTypes.GameState.Working:
-		if hover_active:
-			return working_hover_san_change_per_second
-		return 0.0
+		return working_san_change_per_second
 
-	if GameState.current_state == DataTypes.GameState.Resting:
+	if GameState.current_state == DataTypes.GameState.Resting and !GameState.is_in_first_rest:
 		return resting_san_change_per_second
 
 	return 0.0
@@ -105,15 +85,9 @@ func set_hover_active(active: bool) -> void:
 	hover_active = active
 	
 # 只要离开 Working，就清掉 hover 状态，避免下一次沿用旧值。
-# 同时记录是否已经进入过 Working，避免游戏开局第一个 Resting 就开始自动回 SAN。
 func _on_state_changed(state):
-	if state == DataTypes.GameState.Working:
-		has_entered_working_once = true
-		resting_recovery_enabled = false
-	else:
+	if state != DataTypes.GameState.Working:
 		hover_active = false
-	if state == DataTypes.GameState.Resting:
-		resting_recovery_enabled = has_entered_working_once
 
 # 对外统一广播当前 SAN。
 func _emit_san_changed() -> void:

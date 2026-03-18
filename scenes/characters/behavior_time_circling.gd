@@ -9,10 +9,14 @@ const work_idle_duration := 5.0
 const work_walk_duration := 5.0
 const work_gather_duration := 10.0
 
-@export var state_machine: Node
+@onready var state_machine: Node = get_node_or_null("../StateMachine")
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
+	if state_machine == null:
+		push_error("BehaviorTimeCircling 找不到 ../StateMachine")
+		return
+
 	GameState.state_changed.connect(_on_state_changed)
 	GameState.behavior_changed.connect(_on_behavior_changed)
 	_create_behavior_timers()#
@@ -41,8 +45,6 @@ func start_idle_timer():
 	else:
 		duration = work_idle_duration
 
-	#print("idle duration:", duration)
-
 	behavior_timer.start(duration)
 	
 
@@ -58,8 +60,6 @@ func start_walk_timer():
 	else:
 		duration = work_walk_duration
 
-	#print("walk duration:", duration)
-
 	behavior_timer.start(duration)
 
 
@@ -67,8 +67,6 @@ func start_gather_timer():
 
 	current_behavior = DataTypes.BehaviorState.gather
 	GameState.set_behavior(current_behavior)
-
-	#print("gather duration:", work_gather_duration)
 
 	behavior_timer.start(work_gather_duration)
 	
@@ -124,6 +122,7 @@ func _on_state_changed(state):
 	if state == DataTypes.GameState.Dead:
 		behavior_timer.stop()
 		GameState.set_behavior(DataTypes.BehaviorState.idle)
+		state_machine.transition_to("Dead")
 	elif state == DataTypes.GameState.Resting:
 		start_idle_timer()
 	elif state == DataTypes.GameState.Working:
@@ -133,6 +132,8 @@ func _on_state_changed(state):
 # 切换worker状态，连接不同动画
 # ===============================
 func _on_behavior_changed(new_behavior):
+	if GameState.current_state == DataTypes.GameState.Dead:
+		return
 
 	match new_behavior:
 

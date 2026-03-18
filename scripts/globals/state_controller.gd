@@ -2,8 +2,7 @@ extends Node
 
 @export var time_circling: Node
 @export var button_controller: Node
-
-const DEAD_DURATION := 300.0
+@export var worker_controller: Node
 
 var is_first_assigned : bool = false # 用于判定是否是第一次按下assign按钮
 
@@ -13,10 +12,12 @@ func _ready():
 	# 游戏开始默认 Resting
 	enter_resting()
 	
-	
 	time_circling.step_tick.connect(FragmentSystem._on_step_tick)# 碎片系统接收计时器信号
+	time_circling.san_tick.connect(SanSystem._on_san_tick)
 	time_circling.work_finished.connect(_on_work_finished)
 	time_circling.rest_finished.connect(_on_rest_finished)
+	time_circling.dead_recovery_finished.connect(_on_dead_recovery_finished)
+	worker_controller.dead_sequence_finished.connect(_on_dead_sequence_finished)
 	SanSystem.san_depleted.connect(_on_san_depleted)#接收san归零信号
 	
 	button_controller.on_assign_worker.connect(_on_assign_worker)# 碎片系统接收按钮器信号
@@ -30,12 +31,7 @@ func request_work():
 	if GameState.current_state == DataTypes.GameState.Working:
 		return
 
-	# 未来可以加 San 判断
-	# if SanController.san <= 0:
-	#     return
-
 	enter_working()
-	
 	
 	
 # ===============================
@@ -58,6 +54,7 @@ func _on_assign_worker():
 		
 	if !is_first_assigned:
 		is_first_assigned = true
+		GameState.mark_first_rest_completed()
 		enter_working()
 	else:
 		if GameState.current_state == DataTypes.GameState.Resting:
@@ -83,6 +80,16 @@ func _on_rest_finished():
 func _on_san_depleted():
 	if GameState.current_state == DataTypes.GameState.Working:
 		enter_dead()
+
+
+func _on_dead_recovery_finished():
+	if GameState.current_state == DataTypes.GameState.Dead:
+		worker_controller.start_alive_recovery()
+
+
+func _on_dead_sequence_finished():
+	if GameState.current_state == DataTypes.GameState.Dead:
+		enter_resting()
 	
 				
 # ===============================
@@ -114,10 +121,5 @@ func enter_dead():
 	GameState.set_state(DataTypes.GameState.Dead)
 	print("STATE → Dead")
 	time_circling.stop_all_timers()
-	start_dead_recovery()
-
-
-func start_dead_recovery():
-	await get_tree().create_timer(DEAD_DURATION).timeout
-	if GameState.current_state == DataTypes.GameState.Dead:
-		enter_resting()
+	worker_controller.start_dead_sequence()
+	time_circling.start_dead_timer()

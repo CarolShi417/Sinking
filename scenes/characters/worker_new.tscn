@@ -1,4 +1,4 @@
-[gd_scene load_steps=54 format=3 uid="uid://iv4qvdu1lq0w"]
+[gd_scene load_steps=56 format=3 uid="uid://iv4qvdu1lq0w"]
 
 [ext_resource type="Script" uid="uid://b7g8fi0iye2eb" path="res://scenes/characters/WorkerMovement.gd" id="1_32nm8"]
 [ext_resource type="Texture2D" uid="uid://cmqumrc2drsub" path="res://assets/sprites/worker/Worker_right/Worker_gather_right.png" id="2_5qb4r"]
@@ -14,6 +14,9 @@
 [ext_resource type="Script" uid="uid://c082wheqm0lf1" path="res://scenes/characters/behavior_time_circling.gd" id="11_5w2lh"]
 [ext_resource type="Script" uid="uid://cet28s35gc13x" path="res://scenes/characters/gather.gd" id="12_5f488"]
 [ext_resource type="Script" uid="uid://cb2b11sp2rtcp" path="res://scenes/characters/walk.gd" id="12_m0mx3"]
+[ext_resource type="Script" path="res://scenes/characters/dead.gd" id="13_dead"]
+[ext_resource type="Script" path="res://scenes/characters/dead_pose.gd" id="14_dead_pose"]
+[ext_resource type="Script" path="res://scenes/characters/revive.gd" id="15_revive"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_33h0q"]
 atlas = ExtResource("2_m0mx3")
@@ -362,12 +365,21 @@ worker = NodePath("../..")
 animated_sprite_2d = NodePath("../../AnimatedSprite2D")
 
 [node name="Dead" type="Node" parent="StateMachine" node_paths=PackedStringArray("worker", "animated_sprite_2d")]
-script = ExtResource("12_5f488")
+script = ExtResource("13_dead")
 worker = NodePath("../..")
 animated_sprite_2d = NodePath("../../AnimatedSprite2D")
 
-[node name="BehaviorTimeCircling" type="Node" parent="." node_paths=PackedStringArray("state_machine")]
+[node name="DeadPose" type="Node" parent="StateMachine" node_paths=PackedStringArray("worker", "animated_sprite_2d")]
+script = ExtResource("14_dead_pose")
+worker = NodePath("../..")
+animated_sprite_2d = NodePath("../../AnimatedSprite2D")
+
+[node name="Revive" type="Node" parent="StateMachine" node_paths=PackedStringArray("worker", "animated_sprite_2d")]
+script = ExtResource("15_revive")
+worker = NodePath("../..")
+animated_sprite_2d = NodePath("../../AnimatedSprite2D")
+
+[node name="BehaviorTimeCircling" type="Node" parent="."]
 script = ExtResource("11_5w2lh")
-state_machine = NodePath("../StateMachine")
 
 [connection signal="mouse_entered" from="." to="." method="_on_mouse_entered"]
