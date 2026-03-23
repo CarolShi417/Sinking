@@ -19,7 +19,7 @@ const SAN_MAX := 100.0
 # 2. Working + 非 Hover：SAN 不变
 # 3. Resting：每秒回 5 SAN（第一次无效）
 # ===============================
-const working_hover_san_change_per_second := -2.0
+const working_hover_san_change_per_second := -1
 const resting_san_change_per_second := 0.083
 
 # ========================

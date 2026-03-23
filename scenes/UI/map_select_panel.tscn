@@ -2,7 +2,7 @@
 
 [ext_resource type="Theme" uid="uid://ddgo3b8f6fttt" path="res://scenes/UI/game_ui_theme.tres" id="1_bqvx4"]
 [ext_resource type="Script" uid="uid://dxienpc1r73u3" path="res://scenes/UI/map_a_select_panel.gd" id="3_31mp7"]
-[ext_resource type="Texture2D" uid="uid://q138gv7tdb3k" path="res://assets/sprites/map/map_button_mapAssign.png" id="3_oyxia"]
+[ext_resource type="Texture2D" uid="uid://q138gv7tdb3k" path="res://assets/UI/map_chooseMapButton/map_button_mapAssign.png" id="3_oyxia"]
 
 [node name="MapSelectPanel" type="PanelContainer"]
 anchors_preset = 1

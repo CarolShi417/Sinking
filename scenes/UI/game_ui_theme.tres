@@ -2,8 +2,8 @@
 
 [ext_resource type="FontFile" uid="uid://caji7scvx16ur" path="res://assets/UI/Fonts/pixelFont-7-8x14-sproutLands.ttf" id="1_63rmd"]
 [ext_resource type="Texture2D" uid="uid://dfhj6dvj1wi3o" path="res://assets/UI/Sprite sheet for Basic Pack.png" id="1_rpqwa"]
-[ext_resource type="Texture2D" uid="uid://l7o0do0pvstt" path="res://assets/sprites/map/map_progress_bar.png" id="2_k5kyg"]
-[ext_resource type="Texture2D" uid="uid://cke6sp6c85y10" path="res://assets/sprites/map/map_button_mapA.png" id="2_vespo"]
+[ext_resource type="Texture2D" uid="uid://cke6sp6c85y10" path="res://assets/UI/map_chooseMapButton/map_button_mapA.png" id="2_vespo"]
+[ext_resource type="Texture2D" uid="uid://l7o0do0pvstt" path="res://assets/UI/map_fragment&timeProgress/map_progress_bar.png" id="3_vespo"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_vespo"]
 bg_color = Color(0.6, 0.6, 0.6, 0.5882353)
@@ -20,7 +20,7 @@ texture = ExtResource("2_vespo")
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_k5kyg"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_vespo"]
-atlas = ExtResource("2_k5kyg")
+atlas = ExtResource("3_vespo")
 region = Rect2(76, 460, 0, 0)
 
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_rvk2n"]
@@ -63,6 +63,10 @@ TestButton/base_type = &"Button"
 TestButton/colors/icon_hover_color = Color(0.51783216, 0.5178322, 0.5178321, 1)
 TestButton/colors/icon_normal_color = Color(0.2592937, 0.2592937, 0.2592937, 1)
 TestButton/colors/icon_pressed_color = Color(0, 0, 0, 1)
+Test_centered_label/base_type = &"Label"
+Test_centered_label/colors/font_color = Color(0, 0, 0, 1)
+Test_centered_label/font_sizes/font_size = 30
+Test_centered_label/fonts/font = ExtResource("1_63rmd")
 TransparentPanel/base_type = &"PanelContainer"
 TransparentPanel/styles/panel = SubResource("StyleBoxEmpty_vespo")
 UpgradeBuildingPanel/base_type = &"PanelContainer"

@@ -34,11 +34,10 @@ var hover_active := false
 func _ready() -> void:
 	GameState.state_changed.connect(_on_state_changed)
 	
-	await get_tree().process_frame
-	
 	# ===============================
 	#接收鼠标悬停在小人上的signal
 	# ===============================	
+	await get_tree().process_frame
 	var hover_area = worker_work.get_node("HoverArea")	
 	if hover_area:
 		hover_area.hover_changed.connect(_speedup_gain_fragments)

@@ -1,0 +1,74 @@
+[gd_scene load_steps=10 format=3 uid="uid://lkxmcbrinayj"]
+
+[ext_resource type="Script" uid="uid://sowh2mf56xdo" path="res://scenes/UI/map_ui_management.gd" id="1_3ig11"]
+[ext_resource type="PackedScene" uid="uid://dmvgpntduh0lt" path="res://scenes/UI/time_fragment_gain_display.tscn" id="3_6vit6"]
+[ext_resource type="PackedScene" uid="uid://ce8f1svngx6pc" path="res://scenes/UI/map_select_panel.tscn" id="3_gunxf"]
+[ext_resource type="PackedScene" uid="uid://dtj5iutud5bat" path="res://scenes/UI/test_panel======.tscn" id="4_xbc8b"]
+[ext_resource type="PackedScene" uid="uid://dtckgvf4r6ir7" path="res://scenes/UI/san_panel.tscn" id="5_3ig11"]
+[ext_resource type="Script" uid="uid://rvacyh3g7kf5" path="res://scenes/UI/san_panel.gd" id="6_1dlqw"]
+[ext_resource type="PackedScene" uid="uid://quqmxjcygng7" path="res://scenes/UI/san_number_panel.tscn" id="6_afh4d"]
+[ext_resource type="Texture2D" uid="uid://hs21ne444o05" path="res://assets/sprites/map/map_workplace.png" id="7_1dlqw"]
+[ext_resource type="PackedScene" uid="uid://c4m7np0j0dowy" path="res://scenes/UI/main_total_fragment_panel.tscn" id="7_afh4d"]
+
+[node name="GameScreenUI" type="Control"]
+layout_mode = 3
+anchors_preset = 0
+size_flags_horizontal = 4
+
+[node name="GameUIManagement" type="Node" parent="."]
+
+[node name="MapUIManagement" type="Control" parent="GameUIManagement" node_paths=PackedStringArray("real_time_fragment_gain_display")]
+layout_mode = 3
+anchors_preset = 0
+script = ExtResource("1_3ig11")
+real_time_fragment_gain_display = NodePath("../../RealTimeFragmentGainDisplay")
+
+[node name="MapSelectPanel" parent="." instance=ExtResource("3_gunxf")]
+z_index = 50
+layout_mode = 1
+anchors_preset = 0
+anchor_left = 0.0
+anchor_right = 0.0
+offset_left = 1755.0
+offset_right = 1918.0
+grow_horizontal = 1
+
+[node name="TestPanel=========" parent="." instance=ExtResource("4_xbc8b")]
+z_index = 50
+layout_mode = 0
+offset_left = 1236.0
+offset_right = 1402.0
+
+[node name="MainTotalFragmentPanel" parent="." instance=ExtResource("7_afh4d")]
+layout_mode = 0
+offset_top = 200.0
+offset_right = 485.0
+offset_bottom = 320.0
+
+[node name="SanControl" parent="." instance=ExtResource("5_3ig11")]
+z_index = 50
+layout_mode = 1
+offset_left = 1086.0
+offset_top = 35.0
+offset_right = 1086.0
+offset_bottom = 35.0
+script = ExtResource("6_1dlqw")
+
+[node name="SanNumberPanel" parent="SanControl" instance=ExtResource("6_afh4d")]
+z_index = 50
+layout_mode = 0
+offset_left = -115.0
+offset_top = -35.0
+offset_right = 115.0
+offset_bottom = 35.0
+
+[node name="RealTimeFragmentGainDisplay" parent="." instance=ExtResource("3_6vit6")]
+z_index = 50
+position = Vector2(1082, 74)
+
+[node name="MapFrame" type="Sprite2D" parent="."]
+visible = false
+z_index = 40
+position = Vector2(1920, 0)
+texture = ExtResource("7_1dlqw")
+offset = Vector2(-480, 120)

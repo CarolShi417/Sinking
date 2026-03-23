@@ -22,8 +22,8 @@ func _on_hover_changed(active: bool):
 	hover_active = active
 
 	# ✅ 只有 Working + hover 才生成
-	if hover_active and GameState.current_state == DataTypes.GameState.Working:
-		generate_stone()		
+	#if hover_active and GameState.current_state == DataTypes.GameState.Working:
+		#generate_stone()		
 
 # 生成石子 后面可以加很多个石子
 func generate_stone():

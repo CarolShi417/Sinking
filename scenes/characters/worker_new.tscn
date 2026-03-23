@@ -1,6 +1,6 @@
 [gd_scene load_steps=84 format=3 uid="uid://iv4qvdu1lq0w"]
 
-[ext_resource type="Script" uid="uid://b7g8fi0iye2eb" path="res://scenes/characters/WorkerMovement.gd" id="1_32nm8"]
+[ext_resource type="Script" uid="uid://b7g8fi0iye2eb" path="res://scenes/characters/worker_movement.gd" id="1_32nm8"]
 [ext_resource type="Texture2D" uid="uid://cmqumrc2drsub" path="res://assets/sprites/worker/Worker_right/Worker_gather_right.png" id="2_5qb4r"]
 [ext_resource type="Texture2D" uid="uid://btyop0kwbh8vl" path="res://assets/sprites/worker/worker_left/Worker_idle_left.png" id="2_62p8u"]
 [ext_resource type="Texture2D" uid="uid://drjkftoi2kywv" path="res://assets/sprites/worker/Worker_right/Worker_die_right.png" id="2_m0mx3"]
@@ -532,8 +532,10 @@ script = ExtResource("1_32nm8")
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 position = Vector2(1, -58)
 sprite_frames = SubResource("SpriteFrames_sb737")
-animation = &"gather_left"
+animation = &"gather_right"
 autoplay = "idle_right"
+frame = 3
+frame_progress = 0.025646634
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 visible = false

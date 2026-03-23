@@ -44,11 +44,10 @@ enabled=PackedStringArray("res://addons/godot-inspector-lock-main/plugin.cfg")
 
 folder_colors={
 "res://Tilesets/": "yellow",
-"res://assets/": "orange",
+"res://assets/UI/": "yellow",
+"res://assets/sprites/": "orange",
 "res://scenes/": "green",
-"res://scenes/过程/": "gray",
-"res://scripts/": "purple",
-"res://scripts/过程/": "gray"
+"res://scripts/": "purple"
 }
 
 [global_group]

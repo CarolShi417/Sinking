@@ -1,0 +1,46 @@
+[gd_scene load_steps=5 format=3 uid="uid://bpsyh6efc6man"]
+
+[ext_resource type="Script" uid="uid://cexka0a4jaa2k" path="res://scenes/UI/start/start_menu.gd" id="1_co1y6"]
+[ext_resource type="Theme" uid="uid://ddgo3b8f6fttt" path="res://scenes/UI/game_ui_theme.tres" id="2_7jcfq"]
+[ext_resource type="Texture2D" uid="uid://b2d0vd1pqybw0" path="res://assets/sprites/opening_comic/opening_comic_01.png" id="2_35qqp"]
+[ext_resource type="FontFile" uid="uid://caji7scvx16ur" path="res://assets/UI/Fonts/pixelFont-7-8x14-sproutLands.ttf" id="3_35qqp"]
+
+[node name="StartMenu" type="Control"]
+layout_mode = 3
+anchors_preset = 0
+script = ExtResource("1_co1y6")
+
+[node name="CenterContainer" type="CenterContainer" parent="."]
+layout_mode = 1
+offset_right = 1920.0
+offset_bottom = 240.0
+
+[node name="TextureRect" type="TextureRect" parent="CenterContainer"]
+layout_mode = 2
+texture = ExtResource("2_35qqp")
+stretch_mode = 6
+
+[node name="PanelContainer" type="PanelContainer" parent="CenterContainer"]
+custom_minimum_size = Vector2(50, 150)
+layout_mode = 2
+theme = ExtResource("2_7jcfq")
+theme_type_variation = &"TransparentPanel"
+
+[node name="Label" type="Label" parent="CenterContainer/PanelContainer"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("3_35qqp")
+theme_override_font_sizes/font_size = 60
+text = "SINKING"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Button" type="Button" parent="CenterContainer/PanelContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 8
+theme = ExtResource("2_7jcfq")
+theme_type_variation = &"TestButton"
+text = "START"
+icon_alignment = 1
+
+[connection signal="pressed" from="CenterContainer/PanelContainer/Button" to="." method="_on_button_pressed"]
