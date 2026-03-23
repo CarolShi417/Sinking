@@ -1,0 +1,34 @@
+[gd_scene load_steps=5 format=3 uid="uid://cnn63261015jl"]
+
+[ext_resource type="Script" uid="uid://dvrten3htp0t2" path="res://scenes/UI/start/overall_screen_ui.gd" id="1_ljbyj"]
+[ext_resource type="PackedScene" uid="uid://bpsyh6efc6man" path="res://scenes/UI/start/start_menu.tscn" id="1_v5kbm"]
+[ext_resource type="PackedScene" uid="uid://4btqj0mbigwe" path="res://scenes/UI/start/opening_comic.tscn" id="2_ljbyj"]
+[ext_resource type="PackedScene" uid="uid://cmld5go3ad5fc" path="res://scenes/UI/dialogue_control.tscn" id="4_m5peo"]
+
+[node name="OverallScreenUI" type="Control"]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+script = ExtResource("1_ljbyj")
+
+[node name="StartMenu" parent="." instance=ExtResource("1_v5kbm")]
+visible = false
+z_index = 201
+layout_mode = 1
+
+[node name="OpeningComic" parent="." instance=ExtResource("2_ljbyj")]
+visible = false
+layout_mode = 0
+
+[node name="DialogueControl" parent="." instance=ExtResource("4_m5peo")]
+z_index = 200
+custom_minimum_size = Vector2(1920, 240)
+layout_mode = 1
+anchors_preset = 0
+anchor_right = 0.0
+anchor_bottom = 0.0
+offset_right = 1920.0
+offset_bottom = 240.0
+grow_horizontal = 1
+grow_vertical = 1

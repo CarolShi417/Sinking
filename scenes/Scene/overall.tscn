@@ -1,14 +1,15 @@
-[gd_scene load_steps=3 format=3 uid="uid://dov0g81akr1ae"]
+[gd_scene load_steps=4 format=3 uid="uid://dov0g81akr1ae"]
 
 [ext_resource type="PackedScene" uid="uid://3mfqqjaqst50" path="res://scenes/Scene/game.tscn" id="1_cqslk"]
-[ext_resource type="PackedScene" uid="uid://cnn63261015jl" path="res://scenes/UI/start/start_screen_ui.tscn" id="2_cqslk"]
+[ext_resource type="Script" uid="uid://dt24113gw7833" path="res://scenes/Scene/overall.gd" id="1_g76iu"]
+[ext_resource type="PackedScene" uid="uid://cnn63261015jl" path="res://scenes/UI/start/overall_screen_ui.tscn" id="2_cqslk"]
 
 [node name="Overall" type="Node2D"]
+script = ExtResource("1_g76iu")
 
-[node name="GameNew" parent="." instance=ExtResource("1_cqslk")]
+[node name="Game" parent="." instance=ExtResource("1_cqslk")]
 
-[node name="StartScreenUI" parent="." instance=ExtResource("2_cqslk")]
-visible = false
+[node name="OverallScreenUI" parent="." instance=ExtResource("2_cqslk")]
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0

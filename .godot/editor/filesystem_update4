@@ -1,11 +1,11 @@
-res://scenes/UI/start/start_screen_ui.tscn
+res://scenes/UI/dialogue_control.tscn
 res://scenes/UI/game_ui_theme.tres
 res://Tilesets/ground_tile_set.tres
 res://scenes/shader/MaskShader.gdshader
 res://scenes/Scene/monitor_focus_area.gdshader
-res://scenes/UI/start/start_screen_ui.gd
+res://scenes/UI/start/start_screen_ui.tscn
 res://scenes/Scene/overall.tscn
-res://scenes/UI/start/start_menu.tscn
-res://scenes/UI/start/opening_comic.tscn
-res://scenes/UI/start/opening_comic.gd
-res://scenes/UI/game_screen_ui.tscn
+res://scenes/Scene/overall.gd
+res://scenes/UI/start/overall_screen_ui.gd
+res://scenes/UI/start/overall_screen_ui.tscn
+res://scenes/UI/dialogue_control.gd

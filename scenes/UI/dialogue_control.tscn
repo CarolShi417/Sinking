@@ -1,0 +1,46 @@
+[gd_scene load_steps=5 format=3 uid="uid://cmld5go3ad5fc"]
+
+[ext_resource type="Texture2D" uid="uid://cke6sp6c85y10" path="res://assets/UI/map_chooseMapButton/map_button_mapA.png" id="1_1bdll"]
+[ext_resource type="Script" uid="uid://de0cr6ridtfek" path="res://scenes/UI/dialogue_control.gd" id="1_rpbhd"]
+[ext_resource type="Texture2D" uid="uid://hs21ne444o05" path="res://assets/sprites/map/map_workplace.png" id="1_yv5uc"]
+[ext_resource type="Theme" uid="uid://ddgo3b8f6fttt" path="res://scenes/UI/game_ui_theme.tres" id="2_s4cul"]
+
+[node name="DialogueControl" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_rpbhd")
+
+[node name="PanelContainer" type="PanelContainer" parent="."]
+custom_minimum_size = Vector2(960, 180)
+layout_mode = 0
+offset_left = 960.0
+offset_top = 60.0
+offset_right = 1920.0
+offset_bottom = 240.0
+size_flags_horizontal = 4
+
+[node name="HBoxContainer" type="HBoxContainer" parent="PanelContainer"]
+layout_mode = 2
+size_flags_horizontal = 0
+
+[node name="Avatar" type="TextureRect" parent="PanelContainer/HBoxContainer"]
+custom_minimum_size = Vector2(200, 50)
+layout_mode = 2
+size_flags_horizontal = 0
+texture = ExtResource("1_1bdll")
+
+[node name="Label" type="Label" parent="PanelContainer/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 0
+theme = ExtResource("2_s4cul")
+text = "There will have some dialogue here"
+
+[node name="MapFrame" type="Sprite2D" parent="."]
+z_index = 40
+position = Vector2(1920, 0)
+texture = ExtResource("1_yv5uc")
+offset = Vector2(-480, 120)

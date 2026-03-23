@@ -1,6 +1,6 @@
+res://scenes/UI
 res://scenes/UI/start
 res://scenes/Scene
-res://scenes/UI
 res://scripts/globals
 res://scenes/components
 res://assets/sprites/worker/worker_left
