@@ -9,4 +9,4 @@ func _ready():
 
 
 func _on_san_changed(san):
-	sanLabel.text = str(san)
+	sanLabel.text = str(round(san))

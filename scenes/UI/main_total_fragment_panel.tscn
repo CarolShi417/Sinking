@@ -1,7 +1,10 @@
-[gd_scene load_steps=3 format=3 uid="uid://c4m7np0j0dowy"]
+[gd_scene load_steps=6 format=3 uid="uid://c4m7np0j0dowy"]
 
 [ext_resource type="Theme" uid="uid://ddgo3b8f6fttt" path="res://scenes/UI/game_ui_theme.tres" id="1_q4biy"]
 [ext_resource type="Script" uid="uid://cesxmrrjgvh11" path="res://scenes/UI/main_total_fragment_panel.gd" id="2_e511h"]
+[ext_resource type="Texture2D" uid="uid://cklk6kxasisph" path="res://assets/UI/fragments/fragment_icon_A.png" id="3_adkgj"]
+[ext_resource type="Texture2D" uid="uid://dun36w1qmw3p2" path="res://assets/UI/fragments/fragment_icon_B.png" id="4_1cejd"]
+[ext_resource type="Texture2D" uid="uid://b2m4ppjj1jrck" path="res://assets/UI/fragments/fragment_icon_C.png" id="5_vbffg"]
 
 [node name="MainTotalFragmentPanel" type="PanelContainer" node_paths=PackedStringArray("total_fragment_a_display", "total_fragment_b_display", "total_fragment_c_display")]
 offset_right = 451.0
@@ -16,25 +19,25 @@ total_fragment_c_display = NodePath("MarginContainer/HBoxContainer/HBoxContainer
 
 [node name="MarginContainer" type="MarginContainer" parent="."]
 layout_mode = 2
-size_flags_horizontal = 4
+size_flags_horizontal = 0
 size_flags_vertical = 0
 theme_override_constants/margin_left = 10
 theme_override_constants/margin_top = 10
+theme_override_constants/margin_right = 10
+theme_override_constants/margin_bottom = 10
 
 [node name="HBoxContainer" type="HBoxContainer" parent="MarginContainer"]
 layout_mode = 2
+size_flags_horizontal = 4
 theme = ExtResource("1_q4biy")
 theme_override_constants/separation = 20
 
 [node name="HBoxContainer1" type="HBoxContainer" parent="MarginContainer/HBoxContainer"]
 layout_mode = 2
 
-[node name="FragmentA" type="Label" parent="MarginContainer/HBoxContainer/HBoxContainer1"]
-z_index = 1
+[node name="TextureRect" type="TextureRect" parent="MarginContainer/HBoxContainer/HBoxContainer1"]
 layout_mode = 2
-size_flags_horizontal = 4
-theme_type_variation = &"BuildingLabel"
-text = "Fragment a: "
+texture = ExtResource("3_adkgj")
 
 [node name="NumberA" type="Label" parent="MarginContainer/HBoxContainer/HBoxContainer1"]
 z_index = 1
@@ -46,12 +49,9 @@ text = "00"
 [node name="HBoxContainer2" type="HBoxContainer" parent="MarginContainer/HBoxContainer"]
 layout_mode = 2
 
-[node name="FragmentB" type="Label" parent="MarginContainer/HBoxContainer/HBoxContainer2"]
-z_index = 1
+[node name="TextureRect2" type="TextureRect" parent="MarginContainer/HBoxContainer/HBoxContainer2"]
 layout_mode = 2
-size_flags_horizontal = 4
-theme_type_variation = &"BuildingLabel"
-text = "Fragment b: "
+texture = ExtResource("4_1cejd")
 
 [node name="NumberB" type="Label" parent="MarginContainer/HBoxContainer/HBoxContainer2"]
 z_index = 1
@@ -63,12 +63,9 @@ text = "00"
 [node name="HBoxContainer3" type="HBoxContainer" parent="MarginContainer/HBoxContainer"]
 layout_mode = 2
 
-[node name="FragmentC" type="Label" parent="MarginContainer/HBoxContainer/HBoxContainer3"]
-z_index = 1
+[node name="TextureRect3" type="TextureRect" parent="MarginContainer/HBoxContainer/HBoxContainer3"]
 layout_mode = 2
-size_flags_horizontal = 4
-theme_type_variation = &"BuildingLabel"
-text = "Fragment c: "
+texture = ExtResource("5_vbffg")
 
 [node name="NumberC" type="Label" parent="MarginContainer/HBoxContainer/HBoxContainer3"]
 z_index = 1

@@ -52,13 +52,13 @@ folder_colors={
 
 [global_group]
 
-PanelContainerA=""
 TestButton=""
 maps=""
 WorkerResting=""
 WorkerWorking=""
 UpgradeBuildingButtonGroup=""
 BehaviorController=""
+mapAselect=""
 
 [rendering]
 

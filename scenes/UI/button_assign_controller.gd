@@ -8,7 +8,7 @@ signal on_assign_worker
 
 func _ready():
 
-	panel_container_A.button_assignWorkerToMapA_pressed.connect(_on_button_assignWorkerToMapA_pressed)
+	panel_container_A.assign_pressed.connect(_on_button_assignWorkerToMapA_pressed)
 
 func _on_button_assignWorkerToMapA_pressed():
 	on_assign_worker.emit()

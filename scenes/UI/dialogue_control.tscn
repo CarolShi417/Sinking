@@ -1,6 +1,6 @@
 [gd_scene load_steps=5 format=3 uid="uid://cmld5go3ad5fc"]
 
-[ext_resource type="Texture2D" uid="uid://cke6sp6c85y10" path="res://assets/UI/map_chooseMapButton/map_button_mapA.png" id="1_1bdll"]
+[ext_resource type="Texture2D" uid="uid://cke6sp6c85y10" path="res://assets/UI/map_selectMapButton/map_button_mapA.png" id="1_1bdll"]
 [ext_resource type="Script" uid="uid://de0cr6ridtfek" path="res://scenes/UI/dialogue_control.gd" id="1_rpbhd"]
 [ext_resource type="Texture2D" uid="uid://hs21ne444o05" path="res://assets/sprites/map/map_workplace.png" id="1_yv5uc"]
 [ext_resource type="Theme" uid="uid://ddgo3b8f6fttt" path="res://scenes/UI/game_ui_theme.tres" id="2_s4cul"]

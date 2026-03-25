@@ -5,7 +5,7 @@
 [ext_resource type="Texture2D" uid="uid://b0gxdmaxblnpw" path="res://assets/sprites/map/map_location map_B.png" id="2_1xwrj"]
 [ext_resource type="Texture2D" uid="uid://b5cep7kga0gjp" path="res://assets/sprites/map/map_location map_A.png" id="2_lbiiq"]
 [ext_resource type="Texture2D" uid="uid://c2xabhqii8p7n" path="res://assets/sprites/map/map_location map_C.png" id="3_h5j7k"]
-[ext_resource type="PackedScene" uid="uid://iv4qvdu1lq0w" path="res://scenes/characters/worker_new.tscn" id="6_dk63h"]
+[ext_resource type="PackedScene" uid="uid://iv4qvdu1lq0w" path="res://scenes/characters/worker.tscn" id="6_dk63h"]
 [ext_resource type="Script" uid="uid://dvb3t28uip7i3" path="res://scenes/components/random_stone_generation.gd" id="7_2xxgi"]
 [ext_resource type="PackedScene" uid="uid://dk7xruqxfnjos" path="res://scenes/components/random_stone_component.tscn" id="7_j52nj"]
 
@@ -17,6 +17,7 @@ mapC = NodePath("mapC")
 Dark = NodePath("bg dark")
 
 [node name="mapA" type="Sprite2D" parent="."]
+visible = false
 z_index = 3
 position = Vector2(1920, 60)
 texture = ExtResource("2_lbiiq")
@@ -40,7 +41,6 @@ centered = false
 offset = Vector2(-960, 0)
 
 [node name="bg dark" type="Sprite2D" parent="."]
-visible = false
 z_index = 5
 position = Vector2(1920, 60)
 texture = ExtResource("1_2hxyc")

@@ -1,8 +1,11 @@
-[gd_scene load_steps=4 format=3 uid="uid://ce8f1svngx6pc"]
+[gd_scene load_steps=7 format=3 uid="uid://ce8f1svngx6pc"]
 
 [ext_resource type="Theme" uid="uid://ddgo3b8f6fttt" path="res://scenes/UI/game_ui_theme.tres" id="1_bqvx4"]
-[ext_resource type="Script" uid="uid://dxienpc1r73u3" path="res://scenes/UI/map_a_select_panel.gd" id="3_31mp7"]
-[ext_resource type="Texture2D" uid="uid://q138gv7tdb3k" path="res://assets/UI/map_chooseMapButton/map_button_mapAssign.png" id="3_oyxia"]
+[ext_resource type="Script" uid="uid://dxienpc1r73u3" path="res://scenes/UI/map_select_panel.gd" id="3_31mp7"]
+[ext_resource type="Texture2D" uid="uid://q138gv7tdb3k" path="res://assets/UI/map_selectMapButton/map_button_mapAssign.png" id="3_oyxia"]
+[ext_resource type="Texture2D" uid="uid://cke6sp6c85y10" path="res://assets/UI/map_selectMapButton/map_button_mapA.png" id="4_4rkel"]
+[ext_resource type="Texture2D" uid="uid://cbfa2hld2htgv" path="res://assets/UI/map_selectMapButton/map_button_mapB.png" id="5_e4k20"]
+[ext_resource type="Texture2D" uid="uid://dobx1dqk5t620" path="res://assets/UI/map_selectMapButton/map_button_mapC.png" id="6_34kuy"]
 
 [node name="MapSelectPanel" type="PanelContainer"]
 anchors_preset = 1
@@ -22,56 +25,74 @@ theme_type_variation = &"MarginContainer"
 layout_mode = 2
 size_flags_horizontal = 4
 
-[node name="PanelContainerA" type="PanelContainer" parent="MarginContainer/HBoxContainer" node_paths=PackedStringArray("button_mapA", "button_assignWorkerToMapA") groups=["PanelContainerA"]]
+[node name="map_A_select" type="PanelContainer" parent="MarginContainer/HBoxContainer" node_paths=PackedStringArray("button_map", "button_assign") groups=["PanelContainerA"]]
+layout_mode = 2
+size_flags_horizontal = 4
+script = ExtResource("3_31mp7")
+map_id = "A"
+button_map = NodePath("MapButtonA")
+button_assign = NodePath("AssignButtonA")
+
+[node name="AssignButtonA" type="Button" parent="MarginContainer/HBoxContainer/map_A_select"]
+visible = false
+clip_contents = true
+custom_minimum_size = Vector2(45, 45)
+layout_mode = 2
+theme_type_variation = &"MapButton"
+icon = ExtResource("3_oyxia")
+
+[node name="MapButtonA" type="Button" parent="MarginContainer/HBoxContainer/map_A_select"]
+clip_contents = true
+custom_minimum_size = Vector2(40, 45)
+layout_mode = 2
+size_flags_horizontal = 4
+theme = ExtResource("1_bqvx4")
+theme_type_variation = &"MapButton"
+icon = ExtResource("4_4rkel")
+
+[node name="map_B_select" type="PanelContainer" parent="MarginContainer/HBoxContainer" node_paths=PackedStringArray("button_map", "button_assign")]
 layout_mode = 2
 script = ExtResource("3_31mp7")
-button_mapA = NodePath("MapButtonA")
-button_assignWorkerToMapA = NodePath("AssignButtonA")
+map_id = "B"
+button_map = NodePath("MapButtonB")
+button_assign = NodePath("AssignButtonB")
 
-[node name="AssignButtonA" type="Button" parent="MarginContainer/HBoxContainer/PanelContainerA"]
+[node name="AssignButtonB" type="Button" parent="MarginContainer/HBoxContainer/map_B_select"]
+visible = false
+clip_contents = true
+custom_minimum_size = Vector2(45, 45)
+layout_mode = 2
+theme = ExtResource("1_bqvx4")
+theme_type_variation = &"MapButton"
+icon = ExtResource("3_oyxia")
+
+[node name="MapButtonB" type="Button" parent="MarginContainer/HBoxContainer/map_B_select"]
+clip_contents = true
+custom_minimum_size = Vector2(45, 45)
+layout_mode = 2
+theme = ExtResource("1_bqvx4")
+theme_type_variation = &"MapButton"
+icon = ExtResource("5_e4k20")
+
+[node name="map_C_select" type="PanelContainer" parent="MarginContainer/HBoxContainer" node_paths=PackedStringArray("button_map", "button_assign")]
+layout_mode = 2
+script = ExtResource("3_31mp7")
+map_id = "C"
+button_map = NodePath("MapButtonC")
+button_assign = NodePath("AssignButtonC")
+
+[node name="AssignButtonC" type="Button" parent="MarginContainer/HBoxContainer/map_C_select"]
+visible = false
 clip_contents = true
 custom_minimum_size = Vector2(45, 45)
 layout_mode = 2
 theme_type_variation = &"MapButton"
 icon = ExtResource("3_oyxia")
 
-[node name="MapButtonA" type="Button" parent="MarginContainer/HBoxContainer/PanelContainerA"]
+[node name="MapButtonC" type="Button" parent="MarginContainer/HBoxContainer/map_C_select"]
 clip_contents = true
 custom_minimum_size = Vector2(45, 45)
 layout_mode = 2
+theme = ExtResource("1_bqvx4")
 theme_type_variation = &"MapButton"
-
-[node name="PanelContainerB" type="PanelContainer" parent="MarginContainer/HBoxContainer"]
-layout_mode = 2
-
-[node name="AssignButtonB" type="Button" parent="MarginContainer/HBoxContainer/PanelContainerB"]
-clip_contents = true
-custom_minimum_size = Vector2(45, 45)
-layout_mode = 2
-theme_type_variation = &"MapButton"
-icon = ExtResource("3_oyxia")
-
-[node name="MapButtonB" type="Button" parent="MarginContainer/HBoxContainer/PanelContainerB"]
-clip_contents = true
-custom_minimum_size = Vector2(45, 45)
-layout_mode = 2
-theme_type_variation = &"MapButton"
-
-[node name="PanelContainerC" type="PanelContainer" parent="MarginContainer/HBoxContainer"]
-layout_mode = 2
-
-[node name="AssignButtonC" type="Button" parent="MarginContainer/HBoxContainer/PanelContainerC"]
-clip_contents = true
-custom_minimum_size = Vector2(45, 45)
-layout_mode = 2
-theme_type_variation = &"MapButton"
-icon = ExtResource("3_oyxia")
-
-[node name="MapButtonC" type="Button" parent="MarginContainer/HBoxContainer/PanelContainerC"]
-clip_contents = true
-custom_minimum_size = Vector2(45, 45)
-layout_mode = 2
-theme_type_variation = &"MapButton"
-
-[connection signal="pressed" from="MarginContainer/HBoxContainer/PanelContainerA/AssignButtonA" to="MarginContainer/HBoxContainer/PanelContainerA" method="_on_assign_button_a_pressed"]
-[connection signal="pressed" from="MarginContainer/HBoxContainer/PanelContainerA/MapButtonA" to="MarginContainer/HBoxContainer/PanelContainerA" method="_on_map_button_a_pressed"]
+icon = ExtResource("6_34kuy")

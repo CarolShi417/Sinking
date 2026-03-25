@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://cbfa2hld2htgv"
-path="res://.godot/imported/map_button_mapB.png-5fe24e80835f18678ad48f817593ef69.ctex"
+uid="uid://8ms5d8lgftpw"
+path="res://.godot/imported/B&W Sprite sheet for Basic Pack.png-eeb4a70f64b65f493185a09700e0c4ca.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/UI/map_chooseMapButton/map_button_mapB.png"
-dest_files=["res://.godot/imported/map_button_mapB.png-5fe24e80835f18678ad48f817593ef69.ctex"]
+source_file="res://assets/UI/B&W Sprite sheet for Basic Pack.png"
+dest_files=["res://.godot/imported/B&W Sprite sheet for Basic Pack.png-eeb4a70f64b65f493185a09700e0c4ca.ctex"]
 
 [params]
 
