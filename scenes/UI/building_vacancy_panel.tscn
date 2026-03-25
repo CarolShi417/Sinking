@@ -1,0 +1,13 @@
+[gd_scene format=3 uid="uid://cwrg7r2pmj264"]
+
+[node name="BuildingVacancyPanel" type="PanelContainer"]
+z_index = 100
+offset_right = 40.0
+offset_bottom = 40.0
+size_flags_horizontal = 4
+
+[node name="MarginContainer" type="MarginContainer" parent="."]
+layout_mode = 2
+
+[node name="HBoxContainer" type="HBoxContainer" parent="MarginContainer"]
+layout_mode = 2

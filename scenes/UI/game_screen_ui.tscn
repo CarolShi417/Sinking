@@ -1,8 +1,10 @@
-[gd_scene load_steps=10 format=3 uid="uid://lkxmcbrinayj"]
+[gd_scene load_steps=12 format=3 uid="uid://lkxmcbrinayj"]
 
 [ext_resource type="Script" uid="uid://sowh2mf56xdo" path="res://scenes/UI/map_ui_management.gd" id="1_3ig11"]
 [ext_resource type="PackedScene" uid="uid://dmvgpntduh0lt" path="res://scenes/UI/time_fragment_gain_display.tscn" id="3_6vit6"]
 [ext_resource type="PackedScene" uid="uid://ce8f1svngx6pc" path="res://scenes/UI/map_select_panel.tscn" id="3_gunxf"]
+[ext_resource type="PackedScene" uid="uid://befcfb48i4yfx" path="res://scenes/UI/map_information_panel.tscn" id="3_soecl"]
+[ext_resource type="PackedScene" uid="uid://cwrg7r2pmj264" path="res://scenes/UI/building_vacancy_panel.tscn" id="4_plqit"]
 [ext_resource type="PackedScene" uid="uid://dtj5iutud5bat" path="res://scenes/UI/test_panel======.tscn" id="4_xbc8b"]
 [ext_resource type="PackedScene" uid="uid://dtckgvf4r6ir7" path="res://scenes/UI/san_panel.tscn" id="5_3ig11"]
 [ext_resource type="Script" uid="uid://rvacyh3g7kf5" path="res://scenes/UI/san_panel.gd" id="6_1dlqw"]
@@ -33,13 +35,28 @@ offset_left = 1755.0
 offset_right = 1918.0
 grow_horizontal = 1
 
+[node name="MapInformationPanel" parent="." instance=ExtResource("3_soecl")]
+z_index = 500
+layout_mode = 1
+anchors_preset = 0
+anchor_left = 0.0
+anchor_right = 0.0
+offset_left = 1622.0
+offset_top = 74.0
+offset_right = 1922.0
+offset_bottom = 224.0
+grow_horizontal = 1
+
+[node name="BuildingVacancyPanel" parent="." instance=ExtResource("4_plqit")]
+layout_mode = 0
+
 [node name="TestPanel=========" parent="." instance=ExtResource("4_xbc8b")]
 z_index = 50
 layout_mode = 0
 offset_left = 1236.0
 offset_right = 1402.0
 
-[node name="MainTotalFragmentPanel" parent="." instance=ExtResource("7_afh4d")]
+[node name="TotalFragmentPanel" parent="." instance=ExtResource("7_afh4d")]
 layout_mode = 0
 offset_top = 181.0
 offset_right = 485.0

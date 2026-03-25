@@ -1,0 +1,27 @@
+[gd_scene load_steps=3 format=3 uid="uid://befcfb48i4yfx"]
+
+[ext_resource type="Theme" uid="uid://ddgo3b8f6fttt" path="res://scenes/UI/game_ui_theme.tres" id="1_2vl86"]
+[ext_resource type="Script" uid="uid://beef5v7ctau2d" path="res://scenes/UI/map_information_panel.gd" id="1_4wntt"]
+
+[node name="MapInformationPanel" type="PanelContainer"]
+custom_minimum_size = Vector2(300, 150)
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -158.0
+offset_bottom = 101.0
+grow_horizontal = 0
+size_flags_horizontal = 4
+theme = ExtResource("1_2vl86")
+script = ExtResource("1_4wntt")
+
+[node name="MarginContainer" type="MarginContainer" parent="."]
+layout_mode = 2
+size_flags_horizontal = 4
+
+[node name="Label" type="Label" parent="MarginContainer"]
+layout_mode = 2
+size_flags_horizontal = 0
+theme = ExtResource("1_2vl86")
+theme_type_variation = &"Information"
+horizontal_alignment = 1

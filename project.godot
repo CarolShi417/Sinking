@@ -58,7 +58,7 @@ WorkerResting=""
 WorkerWorking=""
 UpgradeBuildingButtonGroup=""
 BehaviorController=""
-mapAselect=""
+MapSelect=""
 
 [rendering]
 

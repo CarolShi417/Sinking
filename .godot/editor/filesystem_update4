@@ -6,3 +6,12 @@ res://scenes/Scene/monitor_focus_area.gdshader
 res://scenes/Scene/maps_controller.gd
 res://scenes/UI/map_select_panel.tscn
 res://scenes/UI/map_select_panel.gd
+res://scenes/UI/button_assign_controller.gd
+res://scenes/UI/map_information_panel.tscn
+res://scenes/UI/game_screen_ui.tscn
+res://scenes/Scene/game.tscn
+res://scenes/UI/map_information_panel.gd
+res://scenes/UI/map_select_panel_controller.gd
+res://scenes/UI/building_vacancy_panel.tscn
+res://scenes/buliding/upgrade_building_panel.tscn
+res://scenes/UI/main_total_fragment_panel.tscn

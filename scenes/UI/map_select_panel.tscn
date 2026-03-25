@@ -1,21 +1,27 @@
-[gd_scene load_steps=7 format=3 uid="uid://ce8f1svngx6pc"]
+[gd_scene load_steps=9 format=3 uid="uid://ce8f1svngx6pc"]
 
 [ext_resource type="Theme" uid="uid://ddgo3b8f6fttt" path="res://scenes/UI/game_ui_theme.tres" id="1_bqvx4"]
+[ext_resource type="Script" uid="uid://d3rpxqdc8501r" path="res://scenes/UI/map_select_panel_controller.gd" id="2_e4k20"]
 [ext_resource type="Script" uid="uid://dxienpc1r73u3" path="res://scenes/UI/map_select_panel.gd" id="3_31mp7"]
 [ext_resource type="Texture2D" uid="uid://q138gv7tdb3k" path="res://assets/UI/map_selectMapButton/map_button_mapAssign.png" id="3_oyxia"]
 [ext_resource type="Texture2D" uid="uid://cke6sp6c85y10" path="res://assets/UI/map_selectMapButton/map_button_mapA.png" id="4_4rkel"]
+[ext_resource type="Texture2D" uid="uid://c8jk6apvglcj3" path="res://assets/UI/map_selectMapButton/map_button_locked.png" id="5_34kuy"]
 [ext_resource type="Texture2D" uid="uid://cbfa2hld2htgv" path="res://assets/UI/map_selectMapButton/map_button_mapB.png" id="5_e4k20"]
 [ext_resource type="Texture2D" uid="uid://dobx1dqk5t620" path="res://assets/UI/map_selectMapButton/map_button_mapC.png" id="6_34kuy"]
 
-[node name="MapSelectPanel" type="PanelContainer"]
+[node name="MapSelectPanel" type="PanelContainer" node_paths=PackedStringArray("map_A_panel", "map_B_panel", "map_C_panel")]
 anchors_preset = 1
 anchor_left = 1.0
 anchor_right = 1.0
-offset_left = -163.0
-offset_bottom = 70.0
+offset_left = -172.0
+offset_bottom = 73.0
 grow_horizontal = 0
 theme = ExtResource("1_bqvx4")
 theme_type_variation = &"MapButtonPanel"
+script = ExtResource("2_e4k20")
+map_A_panel = NodePath("MarginContainer/HBoxContainer/map_A_select")
+map_B_panel = NodePath("MarginContainer/HBoxContainer/map_B_select")
+map_C_panel = NodePath("MarginContainer/HBoxContainer/map_C_select")
 
 [node name="MarginContainer" type="MarginContainer" parent="."]
 layout_mode = 2
@@ -25,11 +31,13 @@ theme_type_variation = &"MarginContainer"
 layout_mode = 2
 size_flags_horizontal = 4
 
-[node name="map_A_select" type="PanelContainer" parent="MarginContainer/HBoxContainer" node_paths=PackedStringArray("button_map", "button_assign") groups=["PanelContainerA"]]
+[node name="map_A_select" type="PanelContainer" parent="MarginContainer/HBoxContainer" node_paths=PackedStringArray("button_map", "button_assign") groups=["MapSelect"]]
 layout_mode = 2
 size_flags_horizontal = 4
 script = ExtResource("3_31mp7")
 map_id = "A"
+map_icon_unlocked = ExtResource("4_4rkel")
+map_icon_locked = ExtResource("5_34kuy")
 button_map = NodePath("MapButtonA")
 button_assign = NodePath("AssignButtonA")
 
@@ -50,10 +58,13 @@ theme = ExtResource("1_bqvx4")
 theme_type_variation = &"MapButton"
 icon = ExtResource("4_4rkel")
 
-[node name="map_B_select" type="PanelContainer" parent="MarginContainer/HBoxContainer" node_paths=PackedStringArray("button_map", "button_assign")]
+[node name="map_B_select" type="PanelContainer" parent="MarginContainer/HBoxContainer" node_paths=PackedStringArray("button_map", "button_assign") groups=["MapSelect"]]
 layout_mode = 2
 script = ExtResource("3_31mp7")
 map_id = "B"
+starts_unlocked = false
+map_icon_unlocked = ExtResource("5_e4k20")
+map_icon_locked = ExtResource("5_34kuy")
 button_map = NodePath("MapButtonB")
 button_assign = NodePath("AssignButtonB")
 
@@ -74,10 +85,13 @@ theme = ExtResource("1_bqvx4")
 theme_type_variation = &"MapButton"
 icon = ExtResource("5_e4k20")
 
-[node name="map_C_select" type="PanelContainer" parent="MarginContainer/HBoxContainer" node_paths=PackedStringArray("button_map", "button_assign")]
+[node name="map_C_select" type="PanelContainer" parent="MarginContainer/HBoxContainer" node_paths=PackedStringArray("button_map", "button_assign") groups=["MapSelect"]]
 layout_mode = 2
 script = ExtResource("3_31mp7")
 map_id = "C"
+starts_unlocked = false
+map_icon_unlocked = ExtResource("6_34kuy")
+map_icon_locked = ExtResource("5_34kuy")
 button_map = NodePath("MapButtonC")
 button_assign = NodePath("AssignButtonC")
 
@@ -96,3 +110,5 @@ layout_mode = 2
 theme = ExtResource("1_bqvx4")
 theme_type_variation = &"MapButton"
 icon = ExtResource("6_34kuy")
+
+[connection signal="mouse_entered" from="MarginContainer/HBoxContainer/map_A_select/MapButtonA" to="." method="_on_map_button_a_mouse_entered"]

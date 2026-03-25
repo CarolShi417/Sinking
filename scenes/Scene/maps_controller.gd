@@ -1,9 +1,8 @@
 extends Sprite2D
 
 
-@onready var map_A_select = get_tree().get_first_node_in_group("mapAselect")
-@onready var map_B_select = get_tree().get_first_node_in_group("mapBselect")
-@onready var map_C_select = get_tree().get_first_node_in_group("mapCselect")
+@onready var map_select = get_tree().get_first_node_in_group("MapSelect")
+var current_map_id: String = ""
 @export var mapA: Sprite2D
 @export var mapB: Sprite2D
 @export var mapC: Sprite2D
@@ -13,42 +12,40 @@ extends Sprite2D
 func _ready():
 	GameState.state_changed.connect(_on_state_changed)# 监听状态变化
 	
-	await get_tree().process_frame
-	map_A_select.map_select_pressed.connect(_show_map_A)
-	map_B_select.map_select_pressed.connect(_show_map_B)
-	map_C_select.map_select_pressed.connect(_show_map_C)
+	#await get_tree().process_frame
+	map_select.map_select_pressed.connect(_show_map)
+	
 	_hide_all_maps()
 #
 func _on_state_changed(state):
 	if state == DataTypes.GameState.Working:
-		_show_map_A()
-		_show_map_B()
-		_show_map_C()
+		_show_map(current_map_id)
 	elif state == DataTypes.GameState.Resting:
 		_hide_all_maps()
 
-func _show_map_A():
+func _show_map(map_id):
+	current_map_id = map_id
 	Dark.hide()
-	mapA.show()
-	mapB.hide()
-	mapC.hide()
-	print("显示mapA")
 
-func _show_map_B():
-	Dark.hide()
-	mapA.hide()
-	mapB.show()
-	mapC.hide()
-	
-func _show_map_C():
-	Dark.hide()
+	# 先全部隐藏
 	mapA.hide()
 	mapB.hide()
-	mapC.show()
+	mapC.hide()
+
+	# 再根据 id 显示
+	match map_id:
+		"A":
+			mapA.show()
+			print("显示 mapA")
+		"B":
+			mapB.show()
+			print("显示 mapB")
+		"C":
+			mapC.show()
 	
 func _hide_all_maps():
 	Dark.show()
 	mapA.hide()
 	mapB.hide()
 	mapC.hide()
-	print("隐藏所有地图")
+	#print("隐藏所有地图")
