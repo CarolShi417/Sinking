@@ -25,20 +25,43 @@ func _resolve_building_id() -> void:
 		return
 
 	building_id = String(name).to_snake_case()
-	
+
+#更新建筑
 func _refresh_view() -> void:
+	# 获取当前等级
 	var level := BuildingSystem.get_current_level(building_id)
+	# 播放对应等级动画
 	sprite.play(BuildingSystem.get_animation_name(building_id, level))
-
+	
+	# 获取基础信息
 	var building_name := BuildingSystem.get_building_name(building_id)
-	var upgrade_cost := BuildingSystem.get_upgrade_cost(building_id)
+	var upgrade_costs := BuildingSystem.get_upgrade_cost(building_id)
 	var effect_desc := BuildingSystem.get_upgrade_desc(building_id)
-
-	if upgrade_cost >= 0:
-		info_label.text = "%s\n- Fragment A * %d\nEffect: %s" % [building_name, upgrade_cost, effect_desc]
-	else:
+	
+	# 判断是否已满级
+	if upgrade_costs == null or upgrade_costs.size() == 0:
 		info_label.text = "%s\nMAX LEVEL" % building_name
+		upgrade_button.disabled = true
+		return
+	
+	# 如果没有满级，消耗fragment
+	var cost_parts: Array[String] = []
 
+	for fragment_type in ["A", "B", "C"]:
+		var amount: float = upgrade_costs.get(fragment_type, 0.0)
+		if amount > 0:
+			cost_parts.append("Fragment %s * %d" % [fragment_type, int(amount)])
+
+	# ===============================
+	# 更新UI文本
+	# ===============================
+	info_label.text = "%s\n- %s\nEffect: %s" % [
+		building_name,
+		", ".join(cost_parts),
+		effect_desc
+	]
+	
+	# 按钮是否可点击
 	upgrade_button.disabled = !BuildingSystem.can_upgrade(building_id)
 
 

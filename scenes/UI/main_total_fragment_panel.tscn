@@ -13,9 +13,9 @@ size_flags_horizontal = 0
 theme = ExtResource("1_q4biy")
 theme_type_variation = &"TransparentPanel"
 script = ExtResource("2_e511h")
-total_fragment_a_display = NodePath("MarginContainer/HBoxContainer/HBoxContainer1/NumberA")
-total_fragment_b_display = NodePath("MarginContainer/HBoxContainer/HBoxContainer2/NumberB")
-total_fragment_c_display = NodePath("MarginContainer/HBoxContainer/HBoxContainer3/NumberC")
+total_fragment_a_display = NodePath("MarginContainer/HBoxContainer/HBoxContainerA/NumberA")
+total_fragment_b_display = NodePath("MarginContainer/HBoxContainer/HBoxContainerB/NumberB")
+total_fragment_c_display = NodePath("MarginContainer/HBoxContainer/HBoxContainerC/NumberC")
 
 [node name="MarginContainer" type="MarginContainer" parent="."]
 layout_mode = 2
@@ -32,44 +32,44 @@ size_flags_horizontal = 4
 theme = ExtResource("1_q4biy")
 theme_override_constants/separation = 20
 
-[node name="HBoxContainer1" type="HBoxContainer" parent="MarginContainer/HBoxContainer"]
+[node name="HBoxContainerA" type="HBoxContainer" parent="MarginContainer/HBoxContainer"]
 layout_mode = 2
 
-[node name="TextureRect" type="TextureRect" parent="MarginContainer/HBoxContainer/HBoxContainer1"]
+[node name="FragmentAIcon" type="TextureRect" parent="MarginContainer/HBoxContainer/HBoxContainerA"]
 layout_mode = 2
 texture = ExtResource("3_adkgj")
 
-[node name="NumberA" type="Label" parent="MarginContainer/HBoxContainer/HBoxContainer1"]
+[node name="NumberA" type="Label" parent="MarginContainer/HBoxContainer/HBoxContainerA"]
 z_index = 1
 layout_mode = 2
 size_flags_horizontal = 4
 theme_type_variation = &"BuildingLabel"
-text = "00"
+text = "0"
 
-[node name="HBoxContainer2" type="HBoxContainer" parent="MarginContainer/HBoxContainer"]
+[node name="HBoxContainerB" type="HBoxContainer" parent="MarginContainer/HBoxContainer"]
 layout_mode = 2
 
-[node name="TextureRect2" type="TextureRect" parent="MarginContainer/HBoxContainer/HBoxContainer2"]
+[node name="FragmentBIcon" type="TextureRect" parent="MarginContainer/HBoxContainer/HBoxContainerB"]
 layout_mode = 2
 texture = ExtResource("4_1cejd")
 
-[node name="NumberB" type="Label" parent="MarginContainer/HBoxContainer/HBoxContainer2"]
+[node name="NumberB" type="Label" parent="MarginContainer/HBoxContainer/HBoxContainerB"]
 z_index = 1
 layout_mode = 2
 size_flags_horizontal = 4
 theme_type_variation = &"BuildingLabel"
-text = "00"
+text = "0"
 
-[node name="HBoxContainer3" type="HBoxContainer" parent="MarginContainer/HBoxContainer"]
+[node name="HBoxContainerC" type="HBoxContainer" parent="MarginContainer/HBoxContainer"]
 layout_mode = 2
 
-[node name="TextureRect3" type="TextureRect" parent="MarginContainer/HBoxContainer/HBoxContainer3"]
+[node name="FragmentCIcon" type="TextureRect" parent="MarginContainer/HBoxContainer/HBoxContainerC"]
 layout_mode = 2
 texture = ExtResource("5_vbffg")
 
-[node name="NumberC" type="Label" parent="MarginContainer/HBoxContainer/HBoxContainer3"]
+[node name="NumberC" type="Label" parent="MarginContainer/HBoxContainer/HBoxContainerC"]
 z_index = 1
 layout_mode = 2
 size_flags_horizontal = 4
 theme_type_variation = &"BuildingLabel"
-text = "00"
+text = "0"

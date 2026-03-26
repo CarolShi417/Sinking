@@ -11,6 +11,8 @@ signal fragment_gain_per_step
 # 碎片总数量,碎片用a b c表示，map用A B C表示
 # ===============================
 var total_fragment_a := 0.00
+var total_fragment_b := 0.00
+var total_fragment_c := 0.00
 
 # ===============================
 # 每次work状态下的碎片总数量
@@ -91,15 +93,60 @@ func update_work_speed():
 	else:
 		current_speed = work_speed_normal
 
-
+# ===============================
+# 判断是否有足够碎片
+# ===============================
 func can_spend_fragment_a(amount: float) -> bool:
 	return total_fragment_a >= amount
-
-
+func can_spend_fragment_b(amount: float) -> bool:
+	return total_fragment_b >= amount
+func can_spend_fragment_c(amount: float) -> bool:
+	return total_fragment_c >= amount
+	
+# ===============================
+# 判断是否能同时扣除多种碎片
+# ===============================
+func can_spend_fragments(costs: Dictionary) -> bool:
+	return can_spend_fragment_a(costs.get("A", 0.0)) \
+		and can_spend_fragment_b(costs.get("B", 0.0)) \
+		and can_spend_fragment_c(costs.get("C", 0.0))
+		
+# ===============================
+# 扣除对应碎片
+# ===============================
 func spend_fragment_a(amount: float) -> bool:
 	if !can_spend_fragment_a(amount):
 		return false
 
 	total_fragment_a -= amount
-	print("total_fragment_a", total_fragment_a)
+	#print("total_fragment_a", total_fragment_a)
+	return true
+	
+func spend_fragment_b(amount: float) -> bool:
+	if !can_spend_fragment_b(amount):
+		return false
+
+	total_fragment_b -= amount
+	return true
+
+func spend_fragment_c(amount: float) -> bool:
+	if !can_spend_fragment_c(amount):
+		return false
+
+	total_fragment_c -= amount
+	return true
+
+# =========================
+# 扣除多种对应碎片
+# =========================
+func spend_fragments(costs: Dictionary) -> bool:
+	if !can_spend_fragments(costs):
+		return false
+
+	if !spend_fragment_a(costs.get("A", 0.0)):
+		return false
+	if !spend_fragment_b(costs.get("B", 0.0)):
+		return false
+	if !spend_fragment_c(costs.get("C", 0.0)):
+		return false
 	return true
