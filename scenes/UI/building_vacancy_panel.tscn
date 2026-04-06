@@ -1,13 +1,59 @@
-[gd_scene format=3 uid="uid://cwrg7r2pmj264"]
+[gd_scene load_steps=7 format=3 uid="uid://cwrg7r2pmj264"]
+
+[ext_resource type="Theme" uid="uid://ddgo3b8f6fttt" path="res://scenes/UI/game_ui_theme.tres" id="1_aa1lu"]
+[ext_resource type="Script" uid="uid://bifd0tb3w3b08" path="res://scenes/UI/building_vacancy_panel.gd" id="1_tm8fn"]
+[ext_resource type="Texture2D" uid="uid://7kgcf0m8pnri" path="res://assets/UI/main/main_building_icon_occupied.png" id="2_2jlel"]
+[ext_resource type="PackedScene" uid="uid://bunln36rurpap" path="res://scenes/UI/vacancy_building_icon.tscn" id="3_nlxl0"]
+[ext_resource type="Texture2D" uid="uid://dh4aqu61esul5" path="res://assets/UI/main/main_building_icon_empty.png" id="3_yrurm"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_tm8fn"]
+size = Vector2(134, 22)
 
 [node name="BuildingVacancyPanel" type="PanelContainer"]
+self_modulate = Color(1, 1, 1, 0)
 z_index = 100
-offset_right = 40.0
-offset_bottom = 40.0
+offset_right = 156.0
+offset_bottom = 24.0
 size_flags_horizontal = 4
+mouse_filter = 1
+script = ExtResource("1_tm8fn")
+empty_texture = ExtResource("2_2jlel")
+filled_texture = ExtResource("3_yrurm")
 
 [node name="MarginContainer" type="MarginContainer" parent="."]
 layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+theme = ExtResource("1_aa1lu")
+theme_type_variation = &"BuildingVacancyMargin"
 
 [node name="HBoxContainer" type="HBoxContainer" parent="MarginContainer"]
 layout_mode = 2
+
+[node name="Vacancy1" parent="MarginContainer/HBoxContainer" instance=ExtResource("3_nlxl0")]
+layout_mode = 2
+
+[node name="Vacancy2" type="TextureRect" parent="MarginContainer/HBoxContainer"]
+layout_mode = 2
+texture = ExtResource("2_2jlel")
+
+[node name="Vacancy3" type="TextureRect" parent="MarginContainer/HBoxContainer"]
+layout_mode = 2
+texture = ExtResource("2_2jlel")
+
+[node name="Vacancy4" type="TextureRect" parent="MarginContainer/HBoxContainer"]
+layout_mode = 2
+texture = ExtResource("2_2jlel")
+
+[node name="Vacancy5" type="TextureRect" parent="MarginContainer/HBoxContainer"]
+layout_mode = 2
+texture = ExtResource("2_2jlel")
+
+[node name="Area2D" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+position = Vector2(78, 12)
+shape = SubResource("RectangleShape2D_tm8fn")
+
+[connection signal="mouse_entered" from="Area2D" to="." method="_on_area_2d_mouse_entered"]
+[connection signal="mouse_exited" from="Area2D" to="." method="_on_area_2d_mouse_exited"]

@@ -1,4 +1,4 @@
-[gd_scene load_steps=12 format=3 uid="uid://lkxmcbrinayj"]
+[gd_scene load_steps=14 format=3 uid="uid://lkxmcbrinayj"]
 
 [ext_resource type="Script" uid="uid://sowh2mf56xdo" path="res://scenes/UI/map_ui_management.gd" id="1_3ig11"]
 [ext_resource type="PackedScene" uid="uid://dmvgpntduh0lt" path="res://scenes/UI/time_fragment_gain_display.tscn" id="3_6vit6"]
@@ -6,16 +6,19 @@
 [ext_resource type="PackedScene" uid="uid://befcfb48i4yfx" path="res://scenes/UI/map_information_panel.tscn" id="3_soecl"]
 [ext_resource type="PackedScene" uid="uid://cwrg7r2pmj264" path="res://scenes/UI/building_vacancy_panel.tscn" id="4_plqit"]
 [ext_resource type="PackedScene" uid="uid://dtj5iutud5bat" path="res://scenes/UI/test_panel======.tscn" id="4_xbc8b"]
+[ext_resource type="Texture2D" uid="uid://5wss2vm3fusa" path="res://assets/sprites/main/main_组合后示意图.png" id="4_xen8i"]
 [ext_resource type="PackedScene" uid="uid://dtckgvf4r6ir7" path="res://scenes/UI/san_panel.tscn" id="5_3ig11"]
-[ext_resource type="Script" uid="uid://rvacyh3g7kf5" path="res://scenes/UI/san_panel.gd" id="6_1dlqw"]
-[ext_resource type="PackedScene" uid="uid://quqmxjcygng7" path="res://scenes/UI/san_number_panel.tscn" id="6_afh4d"]
 [ext_resource type="Texture2D" uid="uid://hs21ne444o05" path="res://assets/sprites/map/map_workplace.png" id="7_1dlqw"]
 [ext_resource type="PackedScene" uid="uid://c4m7np0j0dowy" path="res://scenes/UI/main_total_fragment_panel.tscn" id="7_afh4d"]
+[ext_resource type="PackedScene" uid="uid://x68j6y6b1aai" path="res://scenes/UI/left_arrow.tscn" id="10_plqit"]
+[ext_resource type="Script" uid="uid://b80whgngwr3d5" path="res://scenes/UI/ArrowScrollforMain.gd" id="11_xen8i"]
+[ext_resource type="PackedScene" uid="uid://b21hm42ju0n1r" path="res://scenes/UI/building_vacancy_info_panel.tscn" id="13_7jgoq"]
 
 [node name="GameScreenUI" type="Control"]
 layout_mode = 3
 anchors_preset = 0
 size_flags_horizontal = 4
+mouse_filter = 1
 
 [node name="GameUIManagement" type="Node" parent="."]
 
@@ -35,6 +38,12 @@ offset_left = 1755.0
 offset_right = 1918.0
 grow_horizontal = 1
 
+[node name="Main组合后示意图" type="Sprite2D" parent="."]
+visible = false
+z_index = 100
+position = Vector2(486, 114)
+texture = ExtResource("4_xen8i")
+
 [node name="MapInformationPanel" parent="." instance=ExtResource("3_soecl")]
 z_index = 500
 layout_mode = 1
@@ -48,7 +57,19 @@ offset_bottom = 224.0
 grow_horizontal = 1
 
 [node name="BuildingVacancyPanel" parent="." instance=ExtResource("4_plqit")]
+layout_mode = 1
+offset_left = 807.0
+offset_top = 201.0
+offset_right = 963.0
+offset_bottom = 225.0
+
+[node name="BuildingVacancyInfoPanel" parent="." instance=ExtResource("13_7jgoq")]
+z_index = 100
 layout_mode = 0
+offset_left = 765.0
+offset_top = 121.0
+offset_right = 1008.0
+offset_bottom = 196.0
 
 [node name="TestPanel=========" parent="." instance=ExtResource("4_xbc8b")]
 z_index = 50
@@ -59,8 +80,8 @@ offset_right = 1402.0
 [node name="TotalFragmentPanel" parent="." instance=ExtResource("7_afh4d")]
 layout_mode = 0
 offset_top = 181.0
-offset_right = 485.0
-offset_bottom = 301.0
+offset_right = 249.0
+offset_bottom = 249.0
 
 [node name="SanControl" parent="." instance=ExtResource("5_3ig11")]
 z_index = 50
@@ -68,15 +89,6 @@ layout_mode = 1
 offset_left = 1086.0
 offset_top = 35.0
 offset_right = 1086.0
-offset_bottom = 35.0
-script = ExtResource("6_1dlqw")
-
-[node name="SanNumberPanel" parent="SanControl" instance=ExtResource("6_afh4d")]
-z_index = 50
-layout_mode = 0
-offset_left = -115.0
-offset_top = -35.0
-offset_right = 115.0
 offset_bottom = 35.0
 
 [node name="RealTimeFragmentGainDisplay" parent="." instance=ExtResource("3_6vit6")]
@@ -89,3 +101,17 @@ z_index = 40
 position = Vector2(1920, 0)
 texture = ExtResource("7_1dlqw")
 offset = Vector2(-480, 120)
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="LeftArrow" parent="CanvasLayer" instance=ExtResource("10_plqit")]
+z_index = 110
+script = ExtResource("11_xen8i")
+scroll_speed = 150.0
+
+[node name="RightArrow" parent="CanvasLayer" instance=ExtResource("10_plqit")]
+z_index = 110
+position = Vector2(916, 0)
+script = ExtResource("11_xen8i")
+scroll_direction = -1
+scroll_speed = 150.0

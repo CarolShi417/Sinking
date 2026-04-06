@@ -14,7 +14,15 @@
 [node name="WorkerResting" parent="." groups=["WorkerResting"] instance=ExtResource("4_j5ily")]
 position = Vector2(399, 188)
 
-[node name="MainTexture" parent="." instance=ExtResource("1_dt22u")]
+[node name="MainZoneClip" type="Control" parent="."]
+clip_contents = true
+layout_mode = 3
+anchors_preset = 0
+offset_right = 962.0
+offset_bottom = 239.0
+mouse_filter = 1
+
+[node name="MainTexture" parent="MainZoneClip" instance=ExtResource("1_dt22u")]
 z_index = 1
 
 [node name="MapTexture" parent="." instance=ExtResource("2_rq6sv")]

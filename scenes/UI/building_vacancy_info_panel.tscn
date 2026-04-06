@@ -1,0 +1,68 @@
+[gd_scene load_steps=2 format=3 uid="uid://b21hm42ju0n1r"]
+
+[ext_resource type="Theme" uid="uid://ddgo3b8f6fttt" path="res://scenes/UI/game_ui_theme.tres" id="1_r2ct4"]
+
+[node name="BuildingVacancyInfoPanel" type="PanelContainer"]
+self_modulate = Color(0, 0, 0, 1)
+offset_right = 243.0
+offset_bottom = 75.0
+
+[node name="MarginContainer" type="MarginContainer" parent="."]
+layout_mode = 2
+size_flags_horizontal = 4
+theme = ExtResource("1_r2ct4")
+theme_type_variation = &"InformationMargin"
+
+[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer"]
+layout_mode = 2
+
+[node name="BuildingOccupiedPanel" type="PanelContainer" parent="MarginContainer/VBoxContainer"]
+self_modulate = Color(0.74558026, 0.7455802, 0.74558014, 1)
+layout_mode = 2
+theme = ExtResource("1_r2ct4")
+theme_type_variation = &"HalfTransparentPanel"
+
+[node name="MarginContainer" type="MarginContainer" parent="MarginContainer/VBoxContainer/BuildingOccupiedPanel"]
+layout_mode = 2
+theme = ExtResource("1_r2ct4")
+theme_type_variation = &"InformationMargin"
+
+[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer/VBoxContainer/BuildingOccupiedPanel/MarginContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+
+[node name="Buildings Occupied" type="Label" parent="MarginContainer/VBoxContainer/BuildingOccupiedPanel/MarginContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+theme = ExtResource("1_r2ct4")
+theme_type_variation = &"InformationLabel_medium"
+text = "Buildings Occupied"
+horizontal_alignment = 1
+
+[node name="HBoxContainer" type="HBoxContainer" parent="MarginContainer/VBoxContainer/BuildingOccupiedPanel/MarginContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+
+[node name="UnlockBuildingNumber" type="Label" parent="MarginContainer/VBoxContainer/BuildingOccupiedPanel/MarginContainer/VBoxContainer/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+theme = ExtResource("1_r2ct4")
+theme_type_variation = &"InformationLabel_Highlight"
+text = "0"
+horizontal_alignment = 1
+
+[node name="_ 5" type="Label" parent="MarginContainer/VBoxContainer/BuildingOccupiedPanel/MarginContainer/VBoxContainer/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+theme = ExtResource("1_r2ct4")
+theme_type_variation = &"InformationLabel_medium"
+text = "/ 5"
+horizontal_alignment = 1
+
+[node name="Unlock new maps to build more" type="Label" parent="MarginContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+theme = ExtResource("1_r2ct4")
+theme_type_variation = &"InformationLabel_medium"
+text = "Unlock new maps to build more"
+horizontal_alignment = 1

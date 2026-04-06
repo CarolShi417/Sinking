@@ -10,7 +10,7 @@ signal fragment_gain_per_step
 # ===============================
 # 碎片总数量,碎片用a b c表示，map用A B C表示
 # ===============================
-var total_fragment_a := 0.00
+var total_fragment_a := 100.00
 var total_fragment_b := 0.00
 var total_fragment_c := 0.00
 

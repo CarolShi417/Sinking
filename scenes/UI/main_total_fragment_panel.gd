@@ -53,6 +53,6 @@ func _on_upgrade_failed_insufficient_fragments(missing_fragment_types: Array[Str
 func _flash_fragment_ui(icon: TextureRect, number_label: Label) -> void:
 	icon.modulate = ERROR_RED
 	number_label.modulate = ERROR_RED
-	await get_tree().create_timer(2.0).timeout
+	await get_tree().create_timer(0.5).timeout
 	icon.modulate = NORMAL_WHITE
 	number_label.modulate = NORMAL_WHITE

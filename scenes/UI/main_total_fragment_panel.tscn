@@ -66,6 +66,7 @@ layout_mode = 2
 [node name="FragmentCIcon" type="TextureRect" parent="MarginContainer/HBoxContainer/HBoxContainerC"]
 layout_mode = 2
 texture = ExtResource("5_vbffg")
+expand_mode = 2
 
 [node name="NumberC" type="Label" parent="MarginContainer/HBoxContainer/HBoxContainerC"]
 z_index = 1

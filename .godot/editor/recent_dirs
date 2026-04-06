@@ -1,4 +1,5 @@
 res://scenes/UI
+res://assets/sprites/main
 res://scenes/UI/start
 res://scenes/Scene
 res://scripts/globals
@@ -16,6 +17,5 @@ res://scenes/shader
 res://assets/sprites/worker
 res://assets/sprites/map
 res://Tilesets
-res://assets/sprites/main
 res://scenes/scene
 res://scenes

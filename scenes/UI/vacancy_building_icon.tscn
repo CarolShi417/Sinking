@@ -1,0 +1,6 @@
+[gd_scene load_steps=2 format=3 uid="uid://bunln36rurpap"]
+
+[ext_resource type="Texture2D" uid="uid://7kgcf0m8pnri" path="res://assets/UI/main/main_building_icon_occupied.png" id="1_wklep"]
+
+[node name="Vacancy1" type="TextureRect"]
+texture = ExtResource("1_wklep")

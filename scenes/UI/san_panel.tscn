@@ -1,8 +1,10 @@
-[gd_scene load_steps=15 format=3 uid="uid://dtckgvf4r6ir7"]
+[gd_scene load_steps=18 format=3 uid="uid://dtckgvf4r6ir7"]
 
+[ext_resource type="Script" uid="uid://rvacyh3g7kf5" path="res://scenes/UI/san_panel.gd" id="1_5edp5"]
 [ext_resource type="Texture2D" uid="uid://tsxl7t45238g" path="res://assets/UI/map_battery/battery_79-60.png" id="1_o5to2"]
 [ext_resource type="Texture2D" uid="uid://co2ody880rbsy" path="res://assets/UI/map_battery/battery_0.png" id="1_xhikr"]
 [ext_resource type="Texture2D" uid="uid://c28qnfqtp11r6" path="res://assets/UI/map_battery/battery_100-80.png" id="2_dsvry"]
+[ext_resource type="PackedScene" uid="uid://quqmxjcygng7" path="res://scenes/UI/san_number_panel.tscn" id="2_flvd0"]
 [ext_resource type="Texture2D" uid="uid://csfi78djw2h72" path="res://assets/UI/map_battery/battery_19-1.png" id="2_v7go0"]
 [ext_resource type="Script" uid="uid://dy4b0hgnyixi8" path="res://scripts/state_machine/node_state_machine.gd" id="3_kcwhr"]
 [ext_resource type="Texture2D" uid="uid://btcx6mv8h15xx" path="res://assets/UI/map_battery/battery_39-20.png" id="3_lfle5"]
@@ -65,15 +67,32 @@ animations = [{
 "speed": 5.0
 }]
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_73lfm"]
+size = Vector2(240, 60)
+
 [node name="SanPanel" type="Control"]
 layout_mode = 3
 anchors_preset = 0
 size_flags_horizontal = 4
+script = ExtResource("1_5edp5")
+
+[node name="SanNumberPanel" parent="." instance=ExtResource("2_flvd0")]
+z_index = 50
+layout_mode = 0
+offset_left = -120.0
+offset_top = -31.0
+offset_right = 120.0
+offset_bottom = 30.0
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 sprite_frames = SubResource("SpriteFrames_v7go0")
 animation = &"0"
 autoplay = "80"
+
+[node name="HoverArea" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="HoverArea"]
+shape = SubResource("RectangleShape2D_73lfm")
 
 [node name="StateMachine" type="Node" parent="." node_paths=PackedStringArray("initial_node_state")]
 script = ExtResource("3_kcwhr")
@@ -102,3 +121,6 @@ sprite = NodePath("../../AnimatedSprite2D")
 [node name="0" type="Node" parent="StateMachine" node_paths=PackedStringArray("sprite")]
 script = ExtResource("11_5edp5")
 sprite = NodePath("../../AnimatedSprite2D")
+
+[connection signal="mouse_entered" from="HoverArea" to="." method="_on_hover_area_mouse_entered"]
+[connection signal="mouse_exited" from="HoverArea" to="." method="_on_hover_area_mouse_exited"]

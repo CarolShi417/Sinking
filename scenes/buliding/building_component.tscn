@@ -4,9 +4,9 @@
 [ext_resource type="Texture2D" uid="uid://ciduyolcyutkv" path="res://assets/sprites/main/main_bg_building.png" id="1_c3l1q"]
 [ext_resource type="PackedScene" uid="uid://dyk6wuh28xf6l" path="res://scenes/buliding/upgrade_building_panel.tscn" id="5_6ng3v"]
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_u4vra"]
+[sub_resource type="AtlasTexture" id="AtlasTexture_yg63r"]
 atlas = ExtResource("1_c3l1q")
-region = Rect2(420, 180, 120, 120)
+region = Rect2(430, 240, 100, 60)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_8fbww"]
 atlas = ExtResource("1_c3l1q")
@@ -16,7 +16,7 @@ region = Rect2(240, 60, 240, 120)
 animations = [{
 "frames": [{
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_u4vra")
+"texture": SubResource("AtlasTexture_yg63r")
 }],
 "loop": true,
 "name": &"LV0",
@@ -37,35 +37,41 @@ animations = [{
 }]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_6ng3v"]
-size = Vector2(265, 185)
+size = Vector2(122, 88)
 
 [node name="BuildingComponent" type="Node2D"]
 script = ExtResource("1_8wufv")
-building_id = null
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 sprite_frames = SubResource("SpriteFrames_6v6or")
 animation = &"LV0"
 autoplay = "LV0"
-offset = Vector2(0, -60)
+offset = Vector2(0, -30)
 
 [node name="BuildingHoverArea" type="Area2D" parent="." groups=["buildingHoverArea"]]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="BuildingHoverArea"]
-position = Vector2(71.5, -92.5)
+position = Vector2(1, -44)
 shape = SubResource("RectangleShape2D_6ng3v")
 
 [node name="Control" type="Control" parent="."]
+z_index = 100
 layout_mode = 3
 anchors_preset = 0
 offset_right = 40.0
 offset_bottom = 40.0
-mouse_filter = 2
+mouse_filter = 1
 
 [node name="UpgradeBuildingPanel" parent="Control" instance=ExtResource("5_6ng3v")]
+z_index = 100
 layout_mode = 0
-offset_right = 218.0
-offset_bottom = 117.0
+offset_left = 25.0
+offset_top = -153.0
+offset_right = 243.0
+offset_bottom = -36.0
+mouse_filter = 1
 
 [connection signal="mouse_entered" from="BuildingHoverArea" to="Control" method="_on_building_hover_area_mouse_entered"]
 [connection signal="mouse_exited" from="BuildingHoverArea" to="Control" method="_on_building_hover_area_mouse_exited"]
+[connection signal="mouse_entered" from="Control/UpgradeBuildingPanel" to="." method="_on_upgrade_building_panel_mouse_entered"]
+[connection signal="mouse_exited" from="Control/UpgradeBuildingPanel" to="." method="_on_upgrade_building_panel_mouse_exited"]

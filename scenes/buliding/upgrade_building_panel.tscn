@@ -10,7 +10,7 @@ region = Rect2(837, 132, 22, 24)
 [node name="UpgradeBuildingPanel" type="PanelContainer"]
 offset_right = 175.0
 offset_bottom = 115.0
-mouse_filter = 2
+mouse_filter = 1
 theme = ExtResource("1_cs1wy")
 theme_type_variation = &"UpgradeBuildingPanel"
 
@@ -26,6 +26,7 @@ layout_mode = 2
 z_index = 1
 layout_mode = 2
 size_flags_horizontal = 4
+mouse_filter = 1
 theme_type_variation = &"BuildingLabel"
 
 [node name="Button" type="Button" parent="MarginContainer/VBoxContainer" groups=["UpgradeBuildingButtonGroup"]]
@@ -33,6 +34,6 @@ z_index = 10
 layout_mode = 2
 size_flags_horizontal = 4
 size_flags_vertical = 4
+mouse_filter = 1
 theme = ExtResource("1_cs1wy")
-theme_type_variation = &"Information"
 icon = SubResource("AtlasTexture_3ocvg")
