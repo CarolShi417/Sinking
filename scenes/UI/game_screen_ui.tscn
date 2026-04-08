@@ -29,6 +29,7 @@ script = ExtResource("1_3ig11")
 real_time_fragment_gain_display = NodePath("../../RealTimeFragmentGainDisplay")
 
 [node name="MapSelectPanel" parent="." instance=ExtResource("3_gunxf")]
+visible = true
 z_index = 50
 layout_mode = 1
 anchors_preset = 0

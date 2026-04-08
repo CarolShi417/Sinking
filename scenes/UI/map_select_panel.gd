@@ -58,16 +58,17 @@ func _on_map_pressed() -> void:
 	if is_unlocked == false:
 		return
 	#如果玩家已在其他地图被派出，return
+	
+	map_select_pressed.emit(map_id)
 	if blocked_by_other_assignment:
 		#显示对应地图样式
-		map_select_pressed.emit(map_id)
+		
 		#隐藏worker
 		return
 		
 	else:
 		button_map.hide()
 		button_assign.show()
-		map_select_pressed.emit(map_id)
 		#print("按钮按下")
 	
 # ===============================
@@ -80,7 +81,7 @@ func _on_assign_pressed() -> void:
 	button_map.show()
 	button_assign.hide()
 	#显示对应map
-	assign_pressed.emit() 
+	assign_pressed.emit(map_id) 
 	
 # ===============================
 # 只有Working状态，assign按钮才可以点击
@@ -113,8 +114,6 @@ func set_assigned(active: bool) -> void:
 
 func set_blocked_by_other_assignment(blocked: bool) -> void:
 	blocked_by_other_assignment = blocked
-	button_map.disabled = blocked
-	button_assign.disabled = blocked
 	if blocked:
 		button_assign.hide()
 		button_map.show()

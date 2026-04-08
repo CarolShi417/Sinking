@@ -21,8 +21,10 @@ func _ready():
 
 func _on_state_changed(state):
 	if state == DataTypes.GameState.Resting:
+		await get_tree().create_timer(2.0).timeout
 		_show_rest_worker()
 	elif state == DataTypes.GameState.Working:
+		await get_tree().create_timer(2.0).timeout
 		_show_work_worker()
 	elif state == DataTypes.GameState.Dead:
 		_worker_dead()

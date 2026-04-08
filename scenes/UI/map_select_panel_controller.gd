@@ -21,9 +21,11 @@ extends PanelContainer
 # ===============================
 signal map_hovered(map_id: String, active: bool, unlocked: bool) #鼠标悬停
 signal map_unhovered(map_id: String, active: bool) #鼠标离开
+signal map_selected(map_id: String)
 signal assignment_changed(map_id: String, has_assigned_once: bool, assignment_ongoing: bool)
 signal has_assigned()
 var current_assigned_map_id: String = ""
+var map_panels: Array[PanelContainer] = []
 
 func _ready() -> void:
 	
@@ -32,12 +34,27 @@ func _ready() -> void:
 	map_B_panel.hover_changed.connect(_on_hover_changed)
 	map_C_panel.hover_changed.connect(_on_hover_changed)
 	
+	#接收ABC panel的打开map信号
+	map_A_panel.map_select_pressed.connect(_on_map_selected)
+	map_B_panel.map_select_pressed.connect(_on_map_selected)
+	map_C_panel.map_select_pressed.connect(_on_map_selected)
+	
 	#接收ABC panel的assign信号	
 	map_A_panel.assign_pressed.connect(_has_assigned)
 	map_B_panel.assign_pressed.connect(_has_assigned)
 	map_C_panel.assign_pressed.connect(_has_assigned)
 	
 	# 初始状态：A开，B/C锁
+	map_panels = [map_A_panel, map_B_panel, map_C_panel]
+
+	for panel in map_panels:
+		if not panel.hover_changed.is_connected(_on_hover_changed):
+			panel.hover_changed.connect(_on_hover_changed)
+		if not panel.assign_pressed.is_connected(_has_assigned):
+			panel.assign_pressed.connect(_has_assigned)
+
+	# 初始状态：A 开，B/C 锁
+		
 	map_A_panel.set_unlocked(true)
 	map_B_panel.set_unlocked(false)
 	map_C_panel.set_unlocked(false)
@@ -57,6 +74,11 @@ func _on_hover_changed(map_id: String, active: bool, unlocked: bool) -> void:
 		map_unhovered.emit(map_id, false)
 		#print("鼠标离开")
 		
+# ===============================
+# 选择地图
+# ===============================
+func _on_map_selected(map_id: String):
+	map_selected.emit(map_id)
 # ===============================
 # 地图解锁条件
 # ===============================		
@@ -95,7 +117,7 @@ func _has_assigned(map_id: String):
 	has_assigned.emit()
 	current_assigned_map_id = map_id
 	# ABC同一时间有且只有一个可以被assigned
-	for panel in [map_A_panel, map_B_panel, map_C_panel]:
+	for panel in map_panels:
 		var is_current_panel = panel.map_id == map_id
 		panel.set_assigned(is_current_panel)
 		panel.set_blocked_by_other_assignment(not is_current_panel)
@@ -107,8 +129,9 @@ func _has_assigned(map_id: String):
 	)
 	
 func get_map_panel(_map_id: String):
-	for panel in [map_A_panel, map_B_panel, map_C_panel]:
-					return panel
+	for panel in map_panels:
+		if panel.map_id == _map_id:
+			return panel
 	return null
 
 func is_map_assigned_once(map_id: String) -> bool:

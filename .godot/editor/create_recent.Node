@@ -1,3 +1,5 @@
+Label
+Control
 VBoxContainer
 CollisionShape2D
 Area2D
@@ -8,7 +10,5 @@ TextureRect
 Polygon2D
 CollisionPolygon2D
 CanvasLayer
-Control
-Label
 Panel
 Node
