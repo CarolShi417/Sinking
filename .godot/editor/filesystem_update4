@@ -7,3 +7,7 @@ res://scenes/UI/map_information_panel.gd
 res://scenes/UI/map_select_panel.tscn
 res://scenes/UI/map_select_panel.gd
 res://scenes/UI/map_select_panel_controller.gd
+res://scenes/characters/worker.tscn
+res://scenes/Scene/game.tscn
+res://scenes/UI/button_assign_controller.gd
+res://scripts/case/Template.gd

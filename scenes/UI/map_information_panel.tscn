@@ -33,19 +33,3 @@ text = "[MAP INFO] FOREST
 Assign time: 10 MIN
 Gain: Fragments * 120"
 horizontal_alignment = 1
-
-[node name="ClickAgainLabel" type="Label" parent="MarginContainer/VBoxContainer"]
-layout_mode = 2
-size_flags_horizontal = 4
-theme = ExtResource("1_2vl86")
-theme_type_variation = &"InformationLabel_medium"
-text = "[ Click Again To Assign ]"
-horizontal_alignment = 1
-
-[node name="AssignOngoLabel" type="Label" parent="MarginContainer/VBoxContainer"]
-layout_mode = 2
-size_flags_horizontal = 4
-theme = ExtResource("1_2vl86")
-theme_type_variation = &"InformationLabel_medium"
-text = "[ Assignment Ongoing ]"
-horizontal_alignment = 1

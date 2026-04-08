@@ -8,6 +8,7 @@ extends Node
 # onready
 #test_button_speedup.fast_button_pressed.connect(_speedup_timers)
 
+#如何直接获取根目录节点： var panel = get_node("/root/Game/GameScreenUI/MapSelectPanel")
 
 
 #func _ready() -> void:

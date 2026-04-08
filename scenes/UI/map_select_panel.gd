@@ -29,6 +29,9 @@ signal map_select_pressed(map_id) #发送 点击A/B/C地图信号
 signal hover_changed(map_id: String, active: bool, unlocked: bool)
 
 var is_unlocked: bool = false # 当前地图是否解锁
+var is_assigned: bool = false # 是否派出
+var has_assigned_once: bool = false
+var blocked_by_other_assignment: bool = false
 
 func _ready() -> void:	
 	# 按钮初始化
@@ -51,8 +54,16 @@ func _ready() -> void:
 # 鼠标点击地图按钮
 # ===============================
 func _on_map_pressed() -> void:
+	#如果当前地图未解锁，return
 	if is_unlocked == false:
 		return
+	#如果玩家已在其他地图被派出，return
+	if blocked_by_other_assignment:
+		#显示对应地图样式
+		map_select_pressed.emit(map_id)
+		#隐藏worker
+		return
+		
 	else:
 		button_map.hide()
 		button_assign.show()
@@ -63,10 +74,13 @@ func _on_map_pressed() -> void:
 # 鼠标点击发配按钮
 # ===============================
 func _on_assign_pressed() -> void:
+	has_assigned_once = true
+	is_assigned = true
+	
 	button_map.show()
 	button_assign.hide()
 	#显示对应map
-	assign_pressed.emit(map_id) 
+	assign_pressed.emit() 
 	
 # ===============================
 # 只有Working状态，assign按钮才可以点击
@@ -94,7 +108,17 @@ func set_unlocked(unlocked: bool) -> void:
 		if map_icon_locked:
 			button_map.icon = map_icon_locked
 		
+func set_assigned(active: bool) -> void:
+	is_assigned = active
 
+func set_blocked_by_other_assignment(blocked: bool) -> void:
+	blocked_by_other_assignment = blocked
+	button_map.disabled = blocked
+	button_assign.disabled = blocked
+	if blocked:
+		button_assign.hide()
+		button_map.show()
+		
 # ===============================
 # 鼠标悬停事件
 # ===============================
