@@ -1,8 +1,8 @@
+res://scripts/globals
 res://scenes/UI
 res://assets/sprites/main
 res://scenes/UI/start
 res://scenes/Scene
-res://scripts/globals
 res://scenes/components
 res://assets/sprites/worker/worker_left
 res://scenes/characters/animationBehavior

@@ -1,7 +1,7 @@
+VBoxContainer
 CollisionShape2D
 Area2D
 MarginContainer
-VBoxContainer
 PanelContainer
 HBoxContainer
 TextureRect

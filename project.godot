@@ -22,6 +22,7 @@ FragmentSystem="*res://scripts/globals/fragment_system.gd"
 SanSystem="*res://scripts/globals/san_system.gd"
 ExportSettingController="*res://scripts/globals/export_setting_controller.gd"
 BuildingSystem="*res://scripts/globals/building_system.gd"
+MapInfoData="*res://scripts/globals/map_info_data.gd"
 
 [display]
 

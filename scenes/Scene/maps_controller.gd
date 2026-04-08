@@ -9,6 +9,7 @@ var current_map_id: String = ""
 @export var Dark: Sprite2D
 
 
+
 func _ready():
 	GameState.state_changed.connect(_on_state_changed)# 监听状态变化
 	

@@ -7,10 +7,10 @@ extends Node
 # 工作 / 休息 / 死亡 / SAN时间
 # ===============================
 
-const WORK_DURATION := 600.0
-const REST_DURATION := 300.0
-const DEAD_DURATION := 302.5
-const work_step_duration := 5.0
+const WORK_DURATION := 300.0
+const REST_DURATION := 150.0
+const DEAD_DURATION := 152.5
+const work_step_duration := 2.5
 const san_step_duration := 1.0
 
 # ===============================

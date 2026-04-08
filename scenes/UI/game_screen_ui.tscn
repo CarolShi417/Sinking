@@ -34,8 +34,8 @@ layout_mode = 1
 anchors_preset = 0
 anchor_left = 0.0
 anchor_right = 0.0
-offset_left = 1755.0
-offset_right = 1918.0
+offset_left = 1730.0
+offset_right = 1920.0
 grow_horizontal = 1
 
 [node name="Main组合后示意图" type="Sprite2D" parent="."]
@@ -64,7 +64,7 @@ offset_right = 963.0
 offset_bottom = 225.0
 
 [node name="BuildingVacancyInfoPanel" parent="." instance=ExtResource("13_7jgoq")]
-z_index = 100
+z_index = 120
 layout_mode = 0
 offset_left = 765.0
 offset_top = 121.0

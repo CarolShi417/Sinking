@@ -25,8 +25,11 @@ func initial_vacancies():
 # ===============================
 # 任一建筑升级，对应更新一个vacancy
 # ===============================			
-func _on_vacancy_filled():
-	occupied += 1
+func _on_vacancy_filled(_building_id: String, new_level: int):
+	if new_level != 1:
+		return
+
+	occupied = min(occupied + 1, capacity)
 	update_vacancies()
 	
 # 更新vacancy（核心）

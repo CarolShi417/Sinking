@@ -4,7 +4,6 @@
 [ext_resource type="Script" uid="uid://beef5v7ctau2d" path="res://scenes/UI/map_information_panel.gd" id="1_4wntt"]
 
 [node name="MapInformationPanel" type="PanelContainer"]
-custom_minimum_size = Vector2(300, 150)
 anchors_preset = 1
 anchor_left = 1.0
 anchor_right = 1.0
@@ -19,9 +18,34 @@ script = ExtResource("1_4wntt")
 layout_mode = 2
 size_flags_horizontal = 4
 
-[node name="Label" type="Label" parent="MarginContainer"]
+[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer"]
 layout_mode = 2
-size_flags_horizontal = 0
+size_flags_horizontal = 4
+size_flags_vertical = 4
+
+[node name="Label" type="Label" parent="MarginContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
 theme = ExtResource("1_2vl86")
-theme_type_variation = &"Information"
+theme_type_variation = &"InformationLabel_medium"
+text = "[MAP INFO] FOREST
+
+Assign time: 10 MIN
+Gain: Fragments * 120"
+horizontal_alignment = 1
+
+[node name="ClickAgainLabel" type="Label" parent="MarginContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+theme = ExtResource("1_2vl86")
+theme_type_variation = &"InformationLabel_medium"
+text = "[ Click Again To Assign ]"
+horizontal_alignment = 1
+
+[node name="AssignOngoLabel" type="Label" parent="MarginContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+theme = ExtResource("1_2vl86")
+theme_type_variation = &"InformationLabel_medium"
+text = "[ Assignment Ongoing ]"
 horizontal_alignment = 1
