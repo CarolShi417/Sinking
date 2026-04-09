@@ -1,7 +1,8 @@
-[gd_resource type="Theme" load_steps=11 format=3 uid="uid://ddgo3b8f6fttt"]
+[gd_resource type="Theme" load_steps=13 format=3 uid="uid://ddgo3b8f6fttt"]
 
 [ext_resource type="FontFile" uid="uid://caji7scvx16ur" path="res://assets/UI/Fonts/pixelFont-7-8x14-sproutLands.ttf" id="1_63rmd"]
 [ext_resource type="Texture2D" uid="uid://l7o0do0pvstt" path="res://assets/UI/map_fragment&timeProgress/map_progress_bar.png" id="3_vespo"]
+[ext_resource type="Texture2D" uid="uid://7kgcf0m8pnri" path="res://assets/UI/main/main_building_icon_occupied.png" id="4_rvk2n"]
 [ext_resource type="Texture2D" uid="uid://8ms5d8lgftpw" path="res://assets/UI/B&W Sprite sheet for Basic Pack.png" id="4_vespo"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_vespo"]
@@ -25,6 +26,9 @@ region = Rect2(153, 105, 30, 30)
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_k5kyg"]
 texture = SubResource("AtlasTexture_rvk2n")
 region_rect = Rect2(3, 3, 20, 20)
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_hrplk"]
+texture = ExtResource("4_rvk2n")
 
 [resource]
 BuildingLabel/base_type = &"Label"
@@ -82,3 +86,5 @@ TransparentPanel/base_type = &"PanelContainer"
 TransparentPanel/styles/panel = SubResource("StyleBoxEmpty_vespo")
 UpgradeBuildingPanel/base_type = &"PanelContainer"
 UpgradeBuildingPanel/styles/panel = SubResource("StyleBoxTexture_k5kyg")
+xxxxpanel/base_type = &"PanelContainer"
+xxxxpanel/styles/panel = SubResource("StyleBoxTexture_hrplk")

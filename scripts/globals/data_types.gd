@@ -12,5 +12,7 @@ enum BehaviorState {
 	gather,
 	dying,
 	dead_rest,
-	alive_rest
+	alive_rest,
+	send,   
+	receive
 }

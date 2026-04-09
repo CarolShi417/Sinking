@@ -3,8 +3,8 @@ extends Node
 @onready var worker_rest = get_tree().get_first_node_in_group("WorkerResting")
 @onready var worker_work = get_tree().get_first_node_in_group("WorkerWorking")
 
-const REST_POSITION := Vector2(450, 180)
-const WORK_POSITION := Vector2(1400, 230)
+const REST_POSITION := Vector2(450, 230)
+const WORK_POSITION := Vector2(1400, 225)
 
 func _ready():
 	GameState.state_changed.connect(_on_state_changed)
@@ -20,18 +20,17 @@ func _ready():
 		
 
 func _on_state_changed(state):
-	if state == DataTypes.GameState.Resting:
-		await get_tree().create_timer(2.0).timeout
+	if state == DataTypes.GameState.Resting:		
 		_show_rest_worker()
-	elif state == DataTypes.GameState.Working:
-		await get_tree().create_timer(2.0).timeout
+	elif state == DataTypes.GameState.Working:		
 		_show_work_worker()
 	elif state == DataTypes.GameState.Dead:
 		_worker_dead()
 		
 func _show_rest_worker() -> void:
-	worker_rest.show()
+	await get_tree().create_timer(1.5).timeout
 	worker_work.hide()
+	worker_rest.show()	
 	worker_rest.position = REST_POSITION
 	worker_rest.reset_movement(1)
 	worker_rest.LEFT_LIMIT = 10
@@ -39,6 +38,7 @@ func _show_rest_worker() -> void:
 
 
 func _show_work_worker() -> void:
+	await get_tree().create_timer(1.5).timeout
 	worker_rest.hide()
 	worker_work.show()
 	worker_work.position = WORK_POSITION

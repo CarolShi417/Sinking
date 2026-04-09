@@ -25,9 +25,9 @@ func _on_state_changed(state):
 		_hide_all_maps()
 
 func _show_map(map_id: String):
-	print("显示地图")
+	#print("显示地图")
 	current_map_id = map_id
-	print("current_map_id = " + current_map_id)
+	#print("current_map_id = " + current_map_id)
 	Dark.hide()
 
 	# 先全部隐藏
@@ -39,10 +39,10 @@ func _show_map(map_id: String):
 	match map_id:
 		"A":
 			mapA.show()
-			print("显示 mapA")
+			#print("显示 mapA")
 		"B":
 			mapB.show()
-			print("显示 mapB")
+			#print("显示 mapB")
 		"C":
 			mapC.show()
 	

@@ -1,0 +1,36 @@
+[gd_scene load_steps=3 format=3 uid="uid://0pncixdjor6v"]
+
+[ext_resource type="Theme" uid="uid://ddgo3b8f6fttt" path="res://scenes/UI/game_ui_theme.tres" id="1_u4hy1"]
+[ext_resource type="Script" uid="uid://beef5v7ctau2d" path="res://scenes/UI/map_information_panel.gd" id="2_icjoa"]
+
+[node name="MapInformationPanel" type="PanelContainer"]
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -158.0
+offset_bottom = 101.0
+grow_horizontal = 0
+size_flags_horizontal = 4
+theme = ExtResource("1_u4hy1")
+theme_type_variation = &"xxxxpanel"
+script = ExtResource("2_icjoa")
+
+[node name="MarginContainer" type="MarginContainer" parent="."]
+layout_mode = 2
+size_flags_horizontal = 4
+
+[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+
+[node name="Label" type="Label" parent="MarginContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+theme = ExtResource("1_u4hy1")
+theme_type_variation = &"InformationLabel_medium"
+text = "[MAP INFO] FOREST
+
+Assign time: 10 MIN
+Gain: Fragments * 120"
+horizontal_alignment = 1

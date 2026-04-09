@@ -86,13 +86,13 @@ func unlock_maps():
 	var a = FragmentSystem.total_fragment_a
 	var b = FragmentSystem.total_fragment_b
 	# ---- B 解锁 ----
-	if a >= 0 and b >= 0: #300,50
+	if a >= 300 and b >= 50: #300,50
 		if not map_B_panel.is_unlocked:
 			map_B_panel.set_unlocked(true)
 			_refresh_hover(map_B_panel)
 
 	# ---- C 解锁 ----
-	if a >= 0 and b >= 0:# 1000,200
+	if a >= 1000 and b >= 200:# 1000,200
 		if not map_C_panel.is_unlocked:
 			map_C_panel.set_unlocked(true)
 			_refresh_hover(map_C_panel)

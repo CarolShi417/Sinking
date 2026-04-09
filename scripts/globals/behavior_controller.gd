@@ -46,13 +46,14 @@ func _on_state_changed(state):
 	#确保当前状态为死亡状态
 	if state != DataTypes.GameState.Dead:
 		dead_flow_running = false
+		
 	match state:
 		
 		DataTypes.GameState.Resting:
-			start_idle_timer()
+			send_and_receive_flow()			
 
 		DataTypes.GameState.Working:
-			start_idle_timer()
+			send_and_receive_flow()			
 
 		DataTypes.GameState.Dead:
 			if dead_flow_running:
@@ -61,6 +62,25 @@ func _on_state_changed(state):
 			dead_flow_running = true
 			_start_dead_flow()
 
+# ===============================			
+# 派遣-接收动画
+# ===============================
+func send_and_receive_flow():
+	# 行为状态为 派遣
+	current_behavior = DataTypes.BehaviorState.send
+	GameState.set_behavior(current_behavior)
+	print(current_behavior)
+	# 等待动画播放完成
+	await get_tree().create_timer(1.5).timeout
+	
+	current_behavior = DataTypes.BehaviorState.receive
+	GameState.set_behavior(current_behavior)
+	print(current_behavior)
+	# 等待动画播放完成
+	await get_tree().create_timer(1.5).timeout
+	
+	start_idle_timer()
+	
 # ===============================
 # 切换worker状态，连接不同动画
 # ===============================
@@ -84,6 +104,12 @@ func _on_behavior_changed(new_behavior):
 			
 		DataTypes.BehaviorState.alive_rest:
 			state_machine.transition_to("Alive_rest")
+		
+		DataTypes.BehaviorState.send:
+			state_machine.transition_to("Send")
+
+		DataTypes.BehaviorState.receive:
+			state_machine.transition_to("Receive")
 		
 		
 # =====================
@@ -173,7 +199,10 @@ func _work_cycle():
 
 		DataTypes.BehaviorState.walk:
 			start_idle_timer()
-			
+
+# =====================
+# 死亡状态
+# =====================		
 func _start_dead_flow():
 
 	# 1. dying（2秒）
