@@ -1,5 +1,7 @@
 extends Node2D
+# 仅处理石子的运动
 
+signal stone_finished  # 通知 controller 石子已结束，可以重置
 # ===============================
 # 参数
 # ===============================
@@ -12,19 +14,19 @@ extends Node2D
 var velocity := Vector2.ZERO
 var is_grounded := false
 
-# ===============================
-# 初始化（设置45°方向）
-# ===============================
+
 func _ready():
-	# 45°斜向下（右下）
+	pass
+
+# 石子准备好开始运动
+func launch() -> void:
+	is_grounded = false
+	rotation = 0.0
 	velocity = Vector2(1, 1).normalized() * speed
-
-
 # ===============================
 # 每帧更新
 # ===============================
 func _process(delta):
-
 	if not is_grounded:
 		# 重力
 		velocity.y += gravity * delta
@@ -49,5 +51,5 @@ func _on_hit_ground():
 	velocity = Vector2.ZERO
 
 	# 5秒后消失
-	await get_tree().create_timer(life_time).timeout
-	queue_free()
+	#await get_tree().create_timer(life_time).timeout
+	stone_finished.emit() # 通知controller 石子已落地

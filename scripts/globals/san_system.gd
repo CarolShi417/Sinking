@@ -84,7 +84,7 @@ func apply_san_change(amount: float) -> void:
 	if is_equal_approx(previous_san, san):
 		return
 
-	print("SAN:", san)
+	# print("SAN:", san)
 	_emit_san_changed()
 
 	if is_zero_approx(san) and GameState.current_state == DataTypes.GameState.Working:

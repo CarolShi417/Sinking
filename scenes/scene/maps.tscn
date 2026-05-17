@@ -1,4 +1,4 @@
-[gd_scene load_steps=9 format=3 uid="uid://v0gl6ot6gr7y"]
+[gd_scene load_steps=8 format=3 uid="uid://v0gl6ot6gr7y"]
 
 [ext_resource type="Texture2D" uid="uid://b2df2u1gmhrln" path="res://assets/sprites/map/map_location map_dark.png" id="1_2hxyc"]
 [ext_resource type="Script" uid="uid://bottjw54uinpc" path="res://scenes/Scene/maps_controller.gd" id="1_h5j7k"]
@@ -6,8 +6,7 @@
 [ext_resource type="Texture2D" uid="uid://b5cep7kga0gjp" path="res://assets/sprites/map/map_location map_A.png" id="2_lbiiq"]
 [ext_resource type="Texture2D" uid="uid://c2xabhqii8p7n" path="res://assets/sprites/map/map_location map_C.png" id="3_h5j7k"]
 [ext_resource type="PackedScene" uid="uid://iv4qvdu1lq0w" path="res://scenes/characters/worker.tscn" id="6_dk63h"]
-[ext_resource type="Script" uid="uid://dvb3t28uip7i3" path="res://scenes/components/random_stone_generation.gd" id="7_2xxgi"]
-[ext_resource type="PackedScene" uid="uid://dk7xruqxfnjos" path="res://scenes/components/random_stone_component.tscn" id="7_j52nj"]
+[ext_resource type="PackedScene" uid="uid://koxah2mw2itg" path="res://scenes/components/fragment_animation_component.tscn" id="9_2xxgi"]
 
 [node name="maps" type="Sprite2D" node_paths=PackedStringArray("mapA", "mapB", "mapC", "Dark") groups=["maps"]]
 script = ExtResource("1_h5j7k")
@@ -50,7 +49,6 @@ offset = Vector2(-960, 0)
 z_as_relative = false
 position = Vector2(1447, 198)
 
-[node name="StoneGroup" type="Node2D" parent="."]
+[node name="Fragment" parent="." instance=ExtResource("9_2xxgi")]
 z_index = 45
-script = ExtResource("7_2xxgi")
-stone_component = ExtResource("7_j52nj")
+position = Vector2(1300, 199)

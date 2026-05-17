@@ -1,4 +1,4 @@
-[gd_resource type="Theme" load_steps=13 format=3 uid="uid://ddgo3b8f6fttt"]
+[gd_resource type="Theme" load_steps=16 format=3 uid="uid://ddgo3b8f6fttt"]
 
 [ext_resource type="FontFile" uid="uid://caji7scvx16ur" path="res://assets/UI/Fonts/pixelFont-7-8x14-sproutLands.ttf" id="1_63rmd"]
 [ext_resource type="Texture2D" uid="uid://l7o0do0pvstt" path="res://assets/UI/map_fragment&timeProgress/map_progress_bar.png" id="3_vespo"]
@@ -6,7 +6,10 @@
 [ext_resource type="Texture2D" uid="uid://8ms5d8lgftpw" path="res://assets/UI/B&W Sprite sheet for Basic Pack.png" id="4_vespo"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_vespo"]
-bg_color = Color(0.6, 0.6, 0.6, 0.5882353)
+bg_color = Color(0.6, 0.6, 0.6, 0.37254903)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_rvk2n"]
+bg_color = Color(0, 0, 0, 1)
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_k5kyg"]
 
@@ -18,6 +21,11 @@ region = Rect2(76, 460, 0, 0)
 texture = SubResource("AtlasTexture_vespo")
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_vespo"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_hrplk"]
+bg_color = Color(0.75398386, 0.75398386, 0.75398374, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_wgy6h"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_rvk2n"]
 atlas = ExtResource("4_vespo")
@@ -40,9 +48,9 @@ BuildingVacancyMargin/constants/margin_left = 0
 BuildingVacancyMargin/constants/margin_right = 0
 BuildingVacancyMargin/constants/margin_top = 0
 FragmentHBoxeContainer/base_type = &"HBoxContainer"
-HalfTransparentPanel/base_type = &"PanelContainer"
-HalfTransparentPanel/fonts/font = ExtResource("1_63rmd")
-HalfTransparentPanel/styles/panel = SubResource("StyleBoxFlat_vespo")
+InformationGrayPanelContain/base_type = &"PanelContainer"
+InformationGrayPanelContain/fonts/font = ExtResource("1_63rmd")
+InformationGrayPanelContain/styles/panel = SubResource("StyleBoxFlat_vespo")
 InformationLabel_Highlight/base_type = &"Label"
 InformationLabel_Highlight/colors/font_color = Color(1, 0, 0, 1)
 InformationLabel_Highlight/colors/font_outline_color = Color(0, 0, 0, 1)
@@ -55,7 +63,7 @@ InformationLabel_medium/base_type = &"Label"
 InformationLabel_medium/colors/font_color = Color(1, 1, 1, 1)
 InformationLabel_medium/colors/font_outline_color = Color(0, 0, 0, 1)
 InformationLabel_medium/colors/font_shadow_color = Color(0, 0, 0, 1)
-InformationLabel_medium/constants/line_spacing = 2
+InformationLabel_medium/constants/line_spacing = 4
 InformationLabel_medium/constants/outline_size = 2
 InformationLabel_medium/constants/shadow_offset_y = 2
 InformationLabel_medium/constants/shadow_outline_size = 5
@@ -66,6 +74,8 @@ InformationMargin/constants/margin_bottom = 7
 InformationMargin/constants/margin_left = 7
 InformationMargin/constants/margin_right = 7
 InformationMargin/constants/margin_top = 7
+InformationPanelContain/base_type = &"PanelContainer"
+InformationPanelContain/styles/panel = SubResource("StyleBoxFlat_rvk2n")
 MapButton/base_type = &"Button"
 MapButtonPanel/base_type = &"PanelContainer"
 MapButtonPanel/styles/panel = SubResource("StyleBoxEmpty_k5kyg")
@@ -84,6 +94,12 @@ Test_centered_label/font_sizes/font_size = 30
 Test_centered_label/fonts/font = ExtResource("1_63rmd")
 TransparentPanel/base_type = &"PanelContainer"
 TransparentPanel/styles/panel = SubResource("StyleBoxEmpty_vespo")
+UpgradeBuildingButton/base_type = &"Button"
+UpgradeBuildingButton/colors/icon_hover_color = Color(0, 0, 0, 1)
+UpgradeBuildingButton/font_sizes/font_size = 16
+UpgradeBuildingButton/fonts/font = ExtResource("1_63rmd")
+UpgradeBuildingButton/styles/hover = SubResource("StyleBoxFlat_hrplk")
+UpgradeBuildingButton/styles/pressed = SubResource("StyleBoxFlat_wgy6h")
 UpgradeBuildingPanel/base_type = &"PanelContainer"
 UpgradeBuildingPanel/styles/panel = SubResource("StyleBoxTexture_k5kyg")
 xxxxpanel/base_type = &"PanelContainer"

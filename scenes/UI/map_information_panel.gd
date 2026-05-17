@@ -18,7 +18,7 @@ func _ready():
 func _on_map_info_show(map_id: String, active: bool, unlocked: bool):
 	if not active:
 		hide()   # 鼠标离开隐藏面板
-		print("鼠标未悬停在button上")
+		#print("鼠标未悬停在button上")
 	else:
 		# 鼠标悬停显示面板
 		current_hover_map_id = map_id
@@ -58,7 +58,7 @@ Unlock requirement: %s
 				data.gain,
 				data.unlock_requirement
 			]
-			print("地图被锁定了")
+			# print("地图被锁定了")
 
 func _on_map_info_hide(_map_id: String, active: bool):
 	if not active:

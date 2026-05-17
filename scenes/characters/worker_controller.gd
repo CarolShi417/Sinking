@@ -1,9 +1,10 @@
 extends Node
+# resing, working, dead状态下两个worker的显示与隐藏
 
 @onready var worker_rest = get_tree().get_first_node_in_group("WorkerResting")
 @onready var worker_work = get_tree().get_first_node_in_group("WorkerWorking")
 
-const REST_POSITION := Vector2(450, 230)
+const REST_POSITION := Vector2(450, 190)
 const WORK_POSITION := Vector2(1400, 225)
 
 func _ready():
@@ -52,3 +53,4 @@ func _worker_dead() -> void:
 	worker_work.hide()
 	worker_rest.position = REST_POSITION	
 	worker_rest.reset_movement(1)
+	

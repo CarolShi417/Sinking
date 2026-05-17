@@ -1,0 +1,97 @@
+[gd_scene load_steps=15 format=3 uid="uid://koxah2mw2itg"]
+
+[ext_resource type="Texture2D" uid="uid://cea7tsnoc77b8" path="res://assets/UI/map_fragment&timeProgress/map_frag_explosion_3.png" id="1_e68db"]
+[ext_resource type="Script" uid="uid://cdd31le2w8sq" path="res://scenes/components/fragment_animation_component.gd" id="1_uoxis"]
+[ext_resource type="Texture2D" uid="uid://dt5hbjc7n7618" path="res://assets/UI/map_fragment&timeProgress/map_frag_flytoprogress.png" id="2_2gnfy"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_sosoy"]
+atlas = ExtResource("1_e68db")
+region = Rect2(0, 0, 72, 72)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_uoxis"]
+atlas = ExtResource("1_e68db")
+region = Rect2(72, 0, 72, 72)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_6lg2b"]
+atlas = ExtResource("1_e68db")
+region = Rect2(144, 0, 72, 72)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_y64mw"]
+atlas = ExtResource("1_e68db")
+region = Rect2(216, 0, 72, 72)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_yy211"]
+atlas = ExtResource("2_2gnfy")
+region = Rect2(0, 0, 72, 72)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_p21y3"]
+atlas = ExtResource("2_2gnfy")
+region = Rect2(72, 0, 72, 72)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_l0521"]
+atlas = ExtResource("2_2gnfy")
+region = Rect2(144, 0, 72, 72)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_trsfr"]
+atlas = ExtResource("2_2gnfy")
+region = Rect2(216, 0, 72, 72)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_7v1uf"]
+atlas = ExtResource("2_2gnfy")
+region = Rect2(288, 0, 72, 72)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_daiwh"]
+atlas = ExtResource("2_2gnfy")
+region = Rect2(360, 0, 72, 72)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_8bs0i"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_sosoy")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_uoxis")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_6lg2b")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_y64mw")
+}],
+"loop": false,
+"name": &"explode",
+"speed": 8.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_yy211")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_p21y3")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_l0521")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_trsfr")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_7v1uf")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_daiwh")
+}],
+"loop": false,
+"name": &"fly",
+"speed": 8.0
+}]
+
+[node name="Fragment" type="Node2D"]
+script = ExtResource("1_uoxis")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+sprite_frames = SubResource("SpriteFrames_8bs0i")
+animation = &"explode"
+frame = 3
+frame_progress = 1.0

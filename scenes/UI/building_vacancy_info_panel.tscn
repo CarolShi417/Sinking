@@ -6,6 +6,8 @@
 self_modulate = Color(0, 0, 0, 1)
 offset_right = 243.0
 offset_bottom = 75.0
+theme = ExtResource("1_r2ct4")
+theme_type_variation = &"InformationPanelContain"
 
 [node name="MarginContainer" type="MarginContainer" parent="."]
 layout_mode = 2
@@ -20,7 +22,7 @@ layout_mode = 2
 self_modulate = Color(0.74558026, 0.7455802, 0.74558014, 1)
 layout_mode = 2
 theme = ExtResource("1_r2ct4")
-theme_type_variation = &"HalfTransparentPanel"
+theme_type_variation = &"InformationGrayPanelContain"
 
 [node name="MarginContainer" type="MarginContainer" parent="MarginContainer/VBoxContainer/BuildingOccupiedPanel"]
 layout_mode = 2

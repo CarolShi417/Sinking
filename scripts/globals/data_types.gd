@@ -14,5 +14,6 @@ enum BehaviorState {
 	dead_rest,
 	alive_rest,
 	send,   
-	receive
+	receive,
+	scare
 }

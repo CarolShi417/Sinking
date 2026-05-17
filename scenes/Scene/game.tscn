@@ -1,4 +1,4 @@
-[gd_scene load_steps=9 format=3 uid="uid://3mfqqjaqst50"]
+[gd_scene load_steps=11 format=3 uid="uid://3mfqqjaqst50"]
 
 [ext_resource type="PackedScene" uid="uid://crdvwcxh43g73" path="res://scenes/Scene/main_texture.tscn" id="1_dt22u"]
 [ext_resource type="PackedScene" uid="uid://cw8e3mqdgtt6x" path="res://scenes/Scene/map_texture.tscn" id="2_rq6sv"]
@@ -8,6 +8,8 @@
 [ext_resource type="Script" uid="uid://r3pw0fdrg1ts" path="res://scenes/UI/button_assign_controller.gd" id="6_k2ewu"]
 [ext_resource type="Script" uid="uid://ukv5gifjgpuy" path="res://scripts/globals/time_circling_system.gd" id="7_htw1a"]
 [ext_resource type="Script" uid="uid://b2uyiav6uo414" path="res://scenes/characters/worker_controller.gd" id="8_rq6sv"]
+[ext_resource type="Script" uid="uid://dvb3t28uip7i3" path="res://scripts/globals/random_stone_controller.gd" id="9_tmwkl"]
+[ext_resource type="PackedScene" uid="uid://dk7xruqxfnjos" path="res://scenes/components/random_stone_component.tscn" id="10_f7bgk"]
 
 [node name="Game" type="Node2D" groups=["GameScene"]]
 
@@ -33,14 +35,19 @@ z_index = 20
 
 [node name="StateController" type="Node" parent="." node_paths=PackedStringArray("time_circling", "button_controller")]
 script = ExtResource("5_mq4ji")
-time_circling = NodePath("TimeCircling")
+time_circling = NodePath("TimeCirclingSystem")
 button_controller = NodePath("ButtonAssignController")
 
 [node name="ButtonAssignController" type="Node" parent="StateController"]
 script = ExtResource("6_k2ewu")
 
-[node name="TimeCircling" type="Node" parent="StateController"]
+[node name="TimeCirclingSystem" type="Node" parent="StateController"]
 script = ExtResource("7_htw1a")
 
 [node name="WorkerController" type="Node" parent="."]
 script = ExtResource("8_rq6sv")
+
+[node name="StoneController" type="Node" parent="."]
+script = ExtResource("9_tmwkl")
+
+[node name="StoneComponent" parent="StoneController" instance=ExtResource("10_f7bgk")]

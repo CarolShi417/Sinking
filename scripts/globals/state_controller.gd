@@ -11,8 +11,11 @@ func _ready():
 	# 游戏开始默认 Resting
 	enter_resting()
 	
+	#StateController统一接收time_circling信号，再发给其他
 	time_circling.step_tick.connect(FragmentSystem._on_step_tick)# 碎片系统接收计时器信号
 	time_circling.san_tick.connect(SanSystem._on_san_tick)
+	time_circling.random_stone_triggered.connect(RandomStoneController._on_random_stone_triggered)
+	
 	time_circling.work_finished.connect(_on_work_finished)
 	time_circling.rest_finished.connect(_on_rest_finished)
 	
@@ -77,15 +80,6 @@ func _on_san_depleted():
 	if GameState.current_state == DataTypes.GameState.Working:
 		enter_dead()
 
-# ===============================
-# dead state如何转化为resting state
-# ===============================
-#func _on_dead_recovery_finished():
-	#if GameState.current_state == DataTypes.GameState.Dead:
-		#worker_controller.start_alive_recovery()
-func _on_dead_sequence_finished():
-	if GameState.current_state == DataTypes.GameState.Dead:
-		enter_resting()
 				
 # ===============================
 # 真正进入 Working
@@ -118,7 +112,9 @@ func enter_dead():
 	time_circling._stop_all_timers()
 	#GameState.set_behavior(DataTypes.BehaviorState.dying)
 	time_circling.start_dead_timer()
-
+# ===============================
+# dead state如何转化为resting state
+# ===============================
 func _on_dead_flow_finished():
 	if GameState.current_state == DataTypes.GameState.Dead:
 		enter_resting()

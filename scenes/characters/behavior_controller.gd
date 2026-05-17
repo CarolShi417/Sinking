@@ -1,30 +1,54 @@
 extends Node
 
+@onready var state_machine: Node = $"../StateMachine"
+@onready var worker_work = get_tree().get_first_node_in_group("WorkerWorking")
+
 signal dead_flow_finished #向state发送死亡流程结束信号，让state切换为dead
 
 var behavior_timer: Timer
 var current_behavior : DataTypes.BehaviorState
-var dead_flow_running := false#确保死亡状态不要重复执行
+var dead_flow_running := false # 确保死亡状态不要重复执行
 
+var scare_flow_running = false # 防止 hover 抖动导致流程重复触发
+
+# ===============================
 # 各Behavior持续时间
+# ===============================
+# rest
 const rest_idle_duration := 5.0
 const rest_walk_duration := 5.0
+# work
 const work_idle_duration := 5.0
 const work_walk_duration := 5.0
 const work_gather_duration := 10.0
+# dead and alive
 const dying_duration := 2.0
 const dead_rest_duration := 300.0
 const alive_rest_duration := 0.5
+# scare
+const scare_duration := 2.0
+const scare_gather_duration := 2.0
 
-@onready var state_machine: Node = $"../StateMachine"
-
-# Called when the node enters the scene tree for the first time.
+# ===============================
+# 悬停判定是否切换state，供 scare - gather
+# ===============================
+var _is_hovering := false
+	
 func _ready() -> void:
 	GameState.state_changed.connect(_on_state_changed)
 	GameState.behavior_changed.connect(_on_behavior_changed)
 	_create_behavior_timers()#
 	if GameState.current_state == DataTypes.GameState.Resting:
 		start_idle_timer()
+		
+	# 鼠标hover在worker上时，为动画做准备
+	var hover_area = worker_work.get_node("HoverArea")	
+	if hover_area:
+		hover_area.hover_changed.connect(_on_hover_changed)
+	
+	#随机石子事件	
+	worker_work.stone_walk_started.connect(_on_stone_walk_started)
+	worker_work.stone_walk_finished.connect(_on_stone_walk_finished)
 
 #创建行为计时器
 func _create_behavior_timers():
@@ -110,6 +134,9 @@ func _on_behavior_changed(new_behavior):
 
 		DataTypes.BehaviorState.receive:
 			state_machine.transition_to("Receive")
+			
+		DataTypes.BehaviorState.scare:
+			state_machine.transition_to("Scare")
 		
 		
 # =====================
@@ -209,17 +236,90 @@ func _start_dead_flow():
 	current_behavior = DataTypes.BehaviorState.dying
 	GameState.set_behavior(current_behavior)
 	await get_tree().create_timer(dying_duration).timeout
-
+	if not dead_flow_running:
+		return
+		
 	# 2. dead_rest（5分钟）
 	current_behavior = DataTypes.BehaviorState.dead_rest
 	GameState.set_behavior(current_behavior)
 	await get_tree().create_timer(dead_rest_duration).timeout
-
+	if not dead_flow_running:
+		return
+		
 	# 3. alive_rest（0.5秒）
 	current_behavior = DataTypes.BehaviorState.alive_rest
 	GameState.set_behavior(current_behavior)
 	await get_tree().create_timer(alive_rest_duration).timeout
-
+	if not dead_flow_running:
+		return
+		
 	# 4. 回到Resting状态
 	if GameState.current_state == DataTypes.GameState.Dead:
 		dead_flow_finished.emit()
+
+# =====================
+# 惊吓状态（悬停时触发）
+# =====================	
+func _on_hover_changed(is_hovering: bool) -> void:
+	# dead， send，receive状态下不触发
+	if GameState.current_state == DataTypes.GameState.Dead:
+		return
+	if current_behavior == DataTypes.BehaviorState.send or current_behavior == DataTypes.BehaviorState.receive:
+		return
+		
+	_is_hovering = is_hovering
+	
+	# 其他状态下，触发
+	if is_hovering and not scare_flow_running:
+		start_scare_flow()
+	elif not is_hovering and scare_flow_running:
+		# hover 离开，打断 gather 循环
+		scare_flow_running = false
+		start_idle_timer()
+		
+func start_scare_flow() -> void:
+	scare_flow_running = true;
+	behavior_timer.stop()
+	
+	# 1. Scare（2秒）
+	GameState.set_behavior(DataTypes.BehaviorState.scare)
+	await get_tree().create_timer(scare_duration).timeout
+	if not scare_flow_running:
+		return
+ 
+	# 2. Gather，持续保持直到 hover 离开
+	current_behavior = DataTypes.BehaviorState.gather
+	GameState.set_behavior(current_behavior)
+	while scare_flow_running and _is_hovering:
+		await get_tree().process_frame
+ 
+	# 3. hover 已离开，重新开始计时循环
+	scare_flow_running = false
+	start_idle_timer()
+
+# =====================
+# 随机石子事件
+# =====================
+func _on_stone_walk_started() -> void:
+	if GameState.current_state == DataTypes.GameState.Dead:
+		return
+	if current_behavior == DataTypes.BehaviorState.send or \
+		current_behavior == DataTypes.BehaviorState.receive:
+		return
+	# 打断当前循环，切为 idle
+	behavior_timer.stop()
+	scare_flow_running = false
+	current_behavior = DataTypes.BehaviorState.walk
+	GameState.set_behavior(current_behavior)
+
+func _on_stone_walk_finished() -> void:
+	if GameState.current_state == DataTypes.GameState.Dead:
+		return
+	
+	# 到达后也保持 idle，等石子拾取逻辑结束后再 start_idle_timer()
+	current_behavior = DataTypes.BehaviorState.idle
+	GameState.set_behavior(current_behavior)
+	await get_tree().create_timer(3.0).timeout #后面插入gather动画
+	
+	# 重启正常循环
+	start_idle_timer()

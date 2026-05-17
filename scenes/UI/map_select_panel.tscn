@@ -64,6 +64,7 @@ icon = ExtResource("4_4rkel")
 layout_mode = 2
 script = ExtResource("3_31mp7")
 map_id = "B"
+starts_unlocked = false
 map_icon_unlocked = ExtResource("5_e4k20")
 map_icon_locked = ExtResource("5_34kuy")
 button_map = NodePath("MapButtonB")

@@ -6,16 +6,20 @@
 [node name="MapSelectPanel" type="PanelContainer"]
 offset_right = 166.0
 offset_bottom = 70.0
+size_flags_horizontal = 4
 theme = ExtResource("1_y4xpt")
-theme_type_variation = &"MapButtonPanel"
+theme_type_variation = &"TransparentPanel"
 
 [node name="MarginContainer" type="MarginContainer" parent="."]
 layout_mode = 2
-theme_type_variation = &"MarginContainer"
+size_flags_horizontal = 4
+theme = ExtResource("1_y4xpt")
+theme_type_variation = &"InformationMargin"
 
 [node name="HBoxContainer" type="HBoxContainer" parent="MarginContainer"]
+custom_minimum_size = Vector2(50, 0)
 layout_mode = 2
-size_flags_horizontal = 0
+size_flags_horizontal = 4
 
 [node name="AssignButtonA" type="Button" parent="MarginContainer/HBoxContainer" groups=["TestButton"]]
 clip_contents = true

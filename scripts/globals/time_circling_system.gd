@@ -1,17 +1,16 @@
 extends Node
 
-
 @onready var test_button_speedup = get_tree().get_first_node_in_group("TestButton")
 
 # ===============================
-# 工作 / 休息 / 死亡 / SAN时间
+# 工作 / 休息 / 死亡 / SAN / 随机石子掉落 时间
 # ===============================
-
 const WORK_DURATION := 300.0
 const REST_DURATION := 150.0
 const DEAD_DURATION := 152.5
 const work_step_duration := 2.5
 const san_step_duration := 1.0
+const random_stone_trigger_duration := 10.0
 
 # ===============================
 # Timer
@@ -21,6 +20,7 @@ var rest_timer : Timer
 var step_timer : Timer
 var san_timer : Timer
 var dead_timer : Timer
+var random_stone_trigger_timer : Timer
 
 # 时间倍率
 #var time_scale : float = 1.0
@@ -31,6 +31,7 @@ signal rest_finished
 signal dead_recovery_finished
 signal step_tick(duration)
 signal san_tick(duration)
+signal random_stone_triggered()
 # 按下assign按钮，启动timer
 var is_first_assign: bool = false;
 
@@ -78,6 +79,14 @@ func _create_timers():
 	san_timer.wait_time = san_step_duration
 	san_timer.timeout.connect(_on_san_tick)
 	add_child(san_timer)
+	
+	# random_stone Timer（每30秒触发一次）
+	random_stone_trigger_timer = Timer.new()
+	random_stone_trigger_timer.one_shot = false
+	random_stone_trigger_timer.wait_time = random_stone_trigger_duration
+	random_stone_trigger_timer.timeout.connect(_on_random_stone_triggered)
+	add_child(random_stone_trigger_timer)
+	
 
 # ===============================
 # 启动工作计时
@@ -88,6 +97,7 @@ func start_work_timer():
 	work_timer.start(WORK_DURATION)
 	step_timer.start()
 	san_timer.start()#work开，因为会降san
+	random_stone_trigger_timer.start()
 
 # ===============================
 # 启动休息计时
@@ -140,6 +150,13 @@ func _on_san_tick():
 	san_tick.emit(san_step_duration)
 	
 # ===============================
+# 每30秒触发，用于随机石头事件
+# ===============================
+func _on_random_stone_triggered():
+	random_stone_triggered.emit()
+	print("random_stone_triggered计时信号已发出")
+	
+# ===============================
 # 加速时间，engine整体加速
 # ===============================
 func _speedup_timers():
@@ -166,3 +183,4 @@ func _stop_all_timers():
 	step_timer.stop()
 	dead_timer.stop()
 	san_timer.stop()
+	random_stone_trigger_timer.stop()

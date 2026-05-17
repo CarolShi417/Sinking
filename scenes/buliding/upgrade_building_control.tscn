@@ -1,0 +1,96 @@
+[gd_scene load_steps=3 format=3 uid="uid://dyk6wuh28xf6l"]
+
+[ext_resource type="Theme" uid="uid://ddgo3b8f6fttt" path="res://scenes/UI/game_ui_theme.tres" id="1_s2414"]
+[ext_resource type="Script" uid="uid://dwwc2tdgsdfuf" path="res://scenes/buliding/upgrade_building_control.gd" id="2_d04em"]
+
+[node name="UpgradeBuildingControl" type="Control" node_paths=PackedStringArray("upgrade_panel", "level_label", "building_name_label", "main_content_label", "upgrade_button")]
+layout_mode = 3
+anchors_preset = 0
+size_flags_horizontal = 4
+size_flags_vertical = 4
+mouse_filter = 1
+theme = ExtResource("1_s2414")
+theme_type_variation = &"InformationPanelContain"
+script = ExtResource("2_d04em")
+upgrade_panel = NodePath("UpgradeBuildingPanel")
+level_label = NodePath("UpgradeBuildingPanel/MarginContainer/VBoxContainer/GrayPanel/MarginContainer/VBoxContainer/HBoxContainer/LevelLabel")
+building_name_label = NodePath("UpgradeBuildingPanel/MarginContainer/VBoxContainer/GrayPanel/MarginContainer/VBoxContainer/HBoxContainer/BuildingNameLabel")
+main_content_label = NodePath("UpgradeBuildingPanel/MarginContainer/VBoxContainer/GrayPanel/MarginContainer/VBoxContainer/MainContentLabel")
+upgrade_button = NodePath("UpgradeBuildingPanel/MarginContainer/VBoxContainer/Button")
+
+[node name="UpgradeBuildingPanel" type="PanelContainer" parent="."]
+layout_mode = 1
+offset_right = 192.0
+offset_bottom = 137.0
+mouse_filter = 1
+theme = ExtResource("1_s2414")
+theme_type_variation = &"InformationPanelContain"
+
+[node name="MarginContainer" type="MarginContainer" parent="UpgradeBuildingPanel"]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+theme = ExtResource("1_s2414")
+theme_type_variation = &"InformationMargin"
+
+[node name="VBoxContainer" type="VBoxContainer" parent="UpgradeBuildingPanel/MarginContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+
+[node name="GrayPanel" type="PanelContainer" parent="UpgradeBuildingPanel/MarginContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+theme = ExtResource("1_s2414")
+theme_type_variation = &"InformationGrayPanelContain"
+
+[node name="MarginContainer" type="MarginContainer" parent="UpgradeBuildingPanel/MarginContainer/VBoxContainer/GrayPanel"]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+theme = ExtResource("1_s2414")
+theme_type_variation = &"InformationMargin"
+
+[node name="VBoxContainer" type="VBoxContainer" parent="UpgradeBuildingPanel/MarginContainer/VBoxContainer/GrayPanel/MarginContainer"]
+layout_mode = 2
+
+[node name="HBoxContainer" type="HBoxContainer" parent="UpgradeBuildingPanel/MarginContainer/VBoxContainer/GrayPanel/MarginContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+
+[node name="LevelLabel" type="Label" parent="UpgradeBuildingPanel/MarginContainer/VBoxContainer/GrayPanel/MarginContainer/VBoxContainer/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+theme = ExtResource("1_s2414")
+theme_type_variation = &"InformationLabel_medium"
+text = "[LV. 1]"
+horizontal_alignment = 1
+
+[node name="BuildingNameLabel" type="Label" parent="UpgradeBuildingPanel/MarginContainer/VBoxContainer/GrayPanel/MarginContainer/VBoxContainer/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+theme = ExtResource("1_s2414")
+theme_type_variation = &"InformationLabel_medium"
+text = "Sofa"
+
+[node name="MainContentLabel" type="Label" parent="UpgradeBuildingPanel/MarginContainer/VBoxContainer/GrayPanel/MarginContainer/VBoxContainer"]
+z_index = 1
+layout_mode = 2
+size_flags_horizontal = 4
+mouse_filter = 1
+theme = ExtResource("1_s2414")
+theme_type_variation = &"InformationLabel_medium"
+text = "Gain ++
+Cost: Frag * 10"
+horizontal_alignment = 1
+text_direction = 1
+
+[node name="Button" type="Button" parent="UpgradeBuildingPanel/MarginContainer/VBoxContainer" groups=["UpgradeBuildingButtonGroup"]]
+z_index = 10
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+mouse_filter = 1
+theme = ExtResource("1_s2414")
+theme_type_variation = &"UpgradeBuildingButton"
+text = "[ Click To Unlock ]"

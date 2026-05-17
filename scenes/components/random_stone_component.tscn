@@ -1,10 +1,24 @@
-[gd_scene load_steps=3 format=3 uid="uid://dk7xruqxfnjos"]
+[gd_scene load_steps=5 format=3 uid="uid://dk7xruqxfnjos"]
 
 [ext_resource type="Texture2D" uid="uid://5a2bnqegcgji" path="res://assets/sprites/map/map_random_stone.png" id="1_bgfy0"]
 [ext_resource type="Script" uid="uid://cfa84rv4csl6q" path="res://scenes/components/random_stone_component.gd" id="1_wfry8"]
+[ext_resource type="Script" uid="uid://drd37gk38d2n5" path="res://scenes/components/hover_area.gd" id="3_rksw8"]
 
-[node name="StoneComponent" type="Node2D"]
+[sub_resource type="CircleShape2D" id="CircleShape2D_iuccn"]
+radius = 28.160255
+
+[node name="StoneComponent" type="Node2D" groups=["StoneComponent"]]
 script = ExtResource("1_wfry8")
+
+[node name="StoneHoverArea" type="Area2D" parent="." groups=["HoverArea"]]
+z_index = 40
+script = ExtResource("3_rksw8")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="StoneHoverArea"]
+z_index = 40
+y_sort_enabled = true
+shape = SubResource("CircleShape2D_iuccn")
+debug_color = Color(0.8825655, 0.0003398031, 0.81741947, 0.41960785)
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 z_index = 45

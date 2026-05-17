@@ -1,7 +1,11 @@
-res://scenes/Scene/overall.tscn
+res://scenes/characters/worker.tscn
 res://scenes/UI/game_ui_theme.tres
 res://Tilesets/ground_tile_set.tres
 res://scenes/shader/MaskShader.gdshader
 res://scenes/Scene/monitor_focus_area.gdshader
-res://scenes/UI/building_vacancy_info_panel.tscn
-res://Yolanda/map_information_panel_yolanda.tscn
+res://scenes/characters/behavior_controller.gd
+res://scripts/globals/random_stone_controller.gd
+res://scenes/components/random_stone_component.tscn
+res://scenes/components/random_stone_component.gd
+res://scenes/Scene/game.tscn
+res://scripts/globals/fragment_system.gd

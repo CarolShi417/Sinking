@@ -12,7 +12,7 @@ func _ready():
 
 func _on_mouse_entered():
 	hovering = true
-	print("arrow is hovered")
+	# print("arrow is hovered")
 
 func _on_mouse_exited():
 	hovering = false

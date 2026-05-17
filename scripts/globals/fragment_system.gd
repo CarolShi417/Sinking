@@ -52,7 +52,7 @@ func _on_step_tick(duration):
 
 	total_fragment_a_work_in_mapA += gained_per_5_seconds
 	
-	print("本次探索获取到碎片数量为",  total_fragment_a_work_in_mapA)
+	# print("本次探索获取到碎片数量为",  total_fragment_a_work_in_mapA)
 	
 	var speed_level := get_speed_level()	
 	fragment_gain_per_step.emit(speed_level)

@@ -1,17 +1,18 @@
-E:/Godot Projects/Export
-res://assets/sprites/worker/worker_left
-res://assets/sprites/worker/Worker_right
+E:/Godot Projects/Export/20260501
+res://scenes/components
 res://scripts/globals
+res://assets/sprites/worker/Worker_right
+res://assets/sprites/worker/worker_left
+res://assets/UI/map_fragment&timeProgress
+E:/Godot Projects/Export
 res://scenes/UI
 res://assets/sprites/main
 res://scenes/UI/start
 res://scenes/Scene
-res://scenes/components
 res://scenes/characters/animationBehavior
 E:/Godot Projects/Export/20260313_export_windows
 res://scenes/San
 res://scenes/buliding
-res://scenes/Monitor
 res://scripts
 res://scenes/characters
 res://scenes/shader
@@ -19,4 +20,3 @@ res://assets/sprites/worker
 res://assets/sprites/map
 res://Tilesets
 res://scenes/scene
-res://scenes
