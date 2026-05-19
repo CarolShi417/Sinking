@@ -22,7 +22,7 @@ func _ready() -> void:
 func _on_stone_hover_changed(active: bool) -> void:
 	if active:
 		var stone_position = stone.position
-		print("stone_position")
+		#print("stone_position")
 		go_to_stone_position.emit(stone_position.x)			
 		worker_is_walking_to_stone = true
 
@@ -43,7 +43,7 @@ func _on_random_stone_triggered() -> void:
 	is_stone_active = true
 	stone.position = Vector2(randf_range(980, 1880), 70)
 	stone.show()
-	print("石头已显示: ", stone.visible, " 位置: ", stone.position)
+	#print("石头已显示: ", stone.visible, " 位置: ", stone.position)
 	stone.launch() # 通知 component 开始运动
 	
 # component消失后重置位置，方便下一次触发

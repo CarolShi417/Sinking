@@ -154,7 +154,7 @@ func _on_san_tick():
 # ===============================
 func _on_random_stone_triggered():
 	random_stone_triggered.emit()
-	print("random_stone_triggered计时信号已发出")
+	#print("random_stone_triggered计时信号已发出")
 	
 # ===============================
 # 加速时间，engine整体加速

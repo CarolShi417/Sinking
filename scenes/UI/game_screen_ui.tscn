@@ -1,4 +1,4 @@
-[gd_scene load_steps=14 format=3 uid="uid://lkxmcbrinayj"]
+[gd_scene load_steps=15 format=3 uid="uid://lkxmcbrinayj"]
 
 [ext_resource type="Script" uid="uid://sowh2mf56xdo" path="res://scenes/UI/map_ui_management.gd" id="1_3ig11"]
 [ext_resource type="PackedScene" uid="uid://dmvgpntduh0lt" path="res://scenes/UI/time_fragment_gain_display.tscn" id="3_6vit6"]
@@ -11,6 +11,7 @@
 [ext_resource type="Texture2D" uid="uid://hs21ne444o05" path="res://assets/sprites/map/map_workplace.png" id="7_1dlqw"]
 [ext_resource type="PackedScene" uid="uid://c4m7np0j0dowy" path="res://scenes/UI/main_total_fragment_panel.tscn" id="7_afh4d"]
 [ext_resource type="PackedScene" uid="uid://x68j6y6b1aai" path="res://scenes/UI/left_arrow.tscn" id="10_plqit"]
+[ext_resource type="PackedScene" uid="uid://bpylk0eqgmsvk" path="res://scenes/UI/map&time_info_bar.tscn" id="11_ouc6w"]
 [ext_resource type="Script" uid="uid://b80whgngwr3d5" path="res://scenes/UI/ArrowScrollforMain.gd" id="11_xen8i"]
 [ext_resource type="PackedScene" uid="uid://b21hm42ju0n1r" path="res://scenes/UI/building_vacancy_info_panel.tscn" id="13_7jgoq"]
 
@@ -95,6 +96,13 @@ offset_bottom = 35.0
 [node name="RealTimeFragmentGainDisplay" parent="." instance=ExtResource("3_6vit6")]
 z_index = 50
 position = Vector2(1082, 74)
+
+[node name="Map&TimeInfoBar" parent="RealTimeFragmentGainDisplay" instance=ExtResource("11_ouc6w")]
+z_index = 1
+offset_left = -125.0
+offset_top = -74.0
+offset_right = -125.0
+offset_bottom = -74.0
 
 [node name="MapFrame" type="Sprite2D" parent="."]
 visible = false

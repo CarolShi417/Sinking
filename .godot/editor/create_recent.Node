@@ -1,9 +1,10 @@
+Control
+PanelContainer
+TextureRect
 Node
 CollisionShape2D
 Area2D
 AnimatedSprite2D
-PanelContainer
-Control
 VBoxContainer
 MarginContainer
 Panel
@@ -11,4 +12,3 @@ Label
 HBoxContainer
 Sprite2D
 Node2D
-TextureRect

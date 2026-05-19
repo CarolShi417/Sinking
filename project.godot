@@ -24,6 +24,7 @@ ExportSettingController="*res://scripts/globals/export_setting_controller.gd"
 BuildingSystem="*res://scripts/globals/building_system.gd"
 MapInfoData="*res://scripts/globals/map_info_data.gd"
 RandomStoneController="*res://scripts/globals/random_stone_controller.gd"
+HoverController="*res://scripts/globals/HoverController.gd"
 
 [display]
 

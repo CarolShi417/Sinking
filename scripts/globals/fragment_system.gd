@@ -4,8 +4,8 @@ extends Node
 # ===============================
 signal fragment_gain_per_step
 signal total_fragment_changed # 碎片总数发生了变化
+signal fragment_gained_this_exploration_updated(amount: float)
 
-#@onready var hover_area = get_tree().root.get_node("MapTexture/MapTexture/ScreenArea/maps/WorkerWorking/HoverArea")
 @onready var worker_work = get_tree().get_first_node_in_group("WorkerWorking")
 
 # ===============================
@@ -18,7 +18,7 @@ var total_fragment_c := 0.00
 # ===============================
 # 每次work状态下的碎片总数量
 # ===============================
-var total_fragment_a_work_in_mapA := 0.00
+var fragment_gained_this_exploration := 0.00
 
 # ===============================
 # 获取碎片速率
@@ -36,11 +36,12 @@ func _ready() -> void:
 	# ===============================
 	#接收鼠标悬停在小人上的signal
 	# ===============================	
-	await get_tree().process_frame
-	var hover_area = worker_work.get_node("HoverArea")	
-	if hover_area:
-		hover_area.hover_changed.connect(_speedup_gain_fragments)
-		
+	HoverController.hover_changed.connect(_speedup_gain_fragments)
+	#await get_tree().process_frame
+	#var hover_area = worker_work.get_node("HoverArea")	
+	#if hover_area:
+		#hover_area.hover_changed.connect(_speedup_gain_fragments)
+	
 		
 func _on_step_tick(duration):
 	#只有working状态才计算碎片
@@ -50,9 +51,10 @@ func _on_step_tick(duration):
 	
 	var gained_per_5_seconds : float = current_speed * duration
 
-	total_fragment_a_work_in_mapA += gained_per_5_seconds
-	
-	# print("本次探索获取到碎片数量为",  total_fragment_a_work_in_mapA)
+	fragment_gained_this_exploration += gained_per_5_seconds
+	#发送信号给RealTimeFragment面板更新
+	fragment_gained_this_exploration_updated.emit(fragment_gained_this_exploration)
+	# print("本次探索获取到碎片数量为",  fragment_gained_this_exploration)
 	
 	var speed_level := get_speed_level()	
 	fragment_gain_per_step.emit(speed_level)
@@ -61,13 +63,13 @@ func _on_step_tick(duration):
 # rest/dead state下重置碎片
 func _on_state_changed(state):
 	if state == DataTypes.GameState.Resting:
-		total_fragment_a += total_fragment_a_work_in_mapA
+		total_fragment_a += fragment_gained_this_exploration
 		#发送信号给UI，让UI更新Label，更新判定地图是否可以被解锁
 		total_fragment_changed.emit()		
 		#print("total_fragment_a数量为", total_fragment_a)
-		total_fragment_a_work_in_mapA = 0.00
+		fragment_gained_this_exploration = 0.00
 	elif state == DataTypes.GameState.Dead:
-		total_fragment_a_work_in_mapA = 0.00
+		fragment_gained_this_exploration = 0.00
 		total_fragment_a *= 0.5
 	#重置状态	
 	current_speed = work_speed_normal
