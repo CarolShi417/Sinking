@@ -28,7 +28,6 @@ offset_right = 130.0
 offset_bottom = 131.0
 theme = ExtResource("1_02e8p")
 theme_type_variation = &"HeaderMedium"
-text = "A"
 
 [node name="CurrentFragment" type="Label" parent="."]
 layout_mode = 1
@@ -40,11 +39,11 @@ text = "A"
 
 [node name="CurrentTimeLeft" type="Label" parent="."]
 layout_mode = 1
-offset_left = 577.0
-offset_top = 103.0
-offset_right = 588.0
-offset_bottom = 126.0
-text = "A"
+offset_left = 332.0
+offset_top = 102.0
+offset_right = 343.0
+offset_bottom = 125.0
+text = "00'00''"
 
 [node name="HustlingTime" type="Label" parent="."]
 layout_mode = 1
@@ -53,3 +52,18 @@ offset_top = 103.0
 offset_right = 795.0
 offset_bottom = 126.0
 text = "A"
+
+[node name="A" type="Label" parent="."]
+layout_mode = 0
+offset_left = 397.0
+offset_top = 103.0
+offset_right = 417.0
+offset_bottom = 126.0
+text = "A: "
+
+[node name="A Efficiency" type="Label" parent="A"]
+layout_mode = 0
+offset_left = 22.0
+offset_right = 33.0
+offset_bottom = 23.0
+text = "LOW"

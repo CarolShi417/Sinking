@@ -33,10 +33,7 @@ func _ready() -> void:
 	GameState.state_changed.connect(_on_state_changed)
 	
 	# 等场景树准备好后，连接 HoverArea 的信号。
-	await get_tree().process_frame
-	var hover_area = worker_work.get_node("HoverArea")#接收HoverArea信号
-	if hover_area:
-		hover_area.hover_changed.connect(set_hover_active)
+	HoverController.hover_changed.connect(set_hover_active)
 
 	# 初始化时主动广播一次 SAN，方便 UI 在开局同步显示。
 	_emit_san_changed()

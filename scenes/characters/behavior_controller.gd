@@ -42,9 +42,7 @@ func _ready() -> void:
 		start_idle_timer()
 		
 	# 鼠标hover在worker上时，为动画做准备
-	var hover_area = worker_work.get_node("HoverArea")	
-	if hover_area:
-		hover_area.hover_changed.connect(_on_hover_changed)
+	HoverController.hover_changed.connect(_on_hover_changed)
 	
 	#随机石子事件	
 	worker_work.stone_walk_started.connect(_on_stone_walk_started)

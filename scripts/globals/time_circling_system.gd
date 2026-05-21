@@ -175,6 +175,15 @@ func _on_assign_worker():
 		# 后续逻辑
 		
 # ===============================
+# 获取当前工作计时器剩余时间（秒）
+# 非Working状态时返回0
+# ===============================
+func get_work_time_left() -> float:
+	if GameState.current_state != DataTypes.GameState.Working:
+		return 0.0
+	return work_timer.time_left	
+		
+# ===============================
 # dead状态，停止所有计时器
 # ===============================
 func _stop_all_timers():

@@ -1,6 +1,5 @@
 extends Node
 
-@onready var hover_area: Area2D = $"../HoverArea"
 @onready var state_bubble: Node2D = $"../StateBubble"
 @onready var worker: CharacterBody2D = $".."
 
@@ -12,7 +11,7 @@ func _ready() -> void:
 	#接收san改变信号
 	SanSystem.san_changed.connect(_on_san_changed)
 	#接收鼠标悬停在小人上的signal
-	hover_area.hover_changed_all_state.connect(_on_hover_changed)
+	HoverController.hover_changed.connect(_on_hover_changed)
 	
 	state_bubble.hide()	
 

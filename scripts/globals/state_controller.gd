@@ -1,6 +1,5 @@
 extends Node
 
-@export var time_circling: Node
 @export var button_controller: Node
 @onready var behaviorController = get_tree().get_first_node_in_group("BehaviorController")
 var is_first_assigned : bool = false # 用于判定是否是第一次按下assign按钮
@@ -12,12 +11,12 @@ func _ready():
 	enter_resting()
 	
 	#StateController统一接收time_circling信号，再发给其他
-	time_circling.step_tick.connect(FragmentSystem._on_step_tick)# 碎片系统接收计时器信号
-	time_circling.san_tick.connect(SanSystem._on_san_tick)
-	time_circling.random_stone_triggered.connect(RandomStoneController._on_random_stone_triggered)
+	TimeCirclingSystem.step_tick.connect(FragmentSystem._on_step_tick) # 碎片系统接收计时器信号
+	TimeCirclingSystem.san_tick.connect(SanSystem._on_san_tick)
+	TimeCirclingSystem.random_stone_triggered.connect(RandomStoneController._on_random_stone_triggered)
 	
-	time_circling.work_finished.connect(_on_work_finished)
-	time_circling.rest_finished.connect(_on_rest_finished)
+	TimeCirclingSystem.work_finished.connect(_on_work_finished)
+	TimeCirclingSystem.rest_finished.connect(_on_rest_finished)
 	
 	behaviorController.dead_flow_finished.connect(_on_dead_flow_finished)#接收dea flow结束信号
 	
@@ -88,7 +87,7 @@ func enter_working():
 	GameState.set_state(DataTypes.GameState.Working)
 	print("STATE → Working")
 	# 启动工作计时
-	time_circling.start_work_timer()
+	TimeCirclingSystem.start_work_timer()
 
 
 # ===============================
@@ -98,7 +97,7 @@ func enter_resting():
 	GameState.set_state(DataTypes.GameState.Resting)
 	print("STATE → Resting")
 	# 启动休息计时
-	time_circling.start_rest_timer()
+	TimeCirclingSystem.start_rest_timer()
 	
 # ===============================
 # 真正进入 Dead
@@ -109,9 +108,9 @@ func enter_dead():
 
 	GameState.set_state(DataTypes.GameState.Dead)
 	print("STATE → Dead")
-	time_circling._stop_all_timers()
+	TimeCirclingSystem._stop_all_timers()
 	#GameState.set_behavior(DataTypes.BehaviorState.dying)
-	time_circling.start_dead_timer()
+	TimeCirclingSystem.start_dead_timer()
 # ===============================
 # dead state如何转化为resting state
 # ===============================

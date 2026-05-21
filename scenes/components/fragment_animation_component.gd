@@ -20,10 +20,7 @@ func _ready() -> void:
 	GameState.behavior_changed.connect(_on_behavior_changed)
 	
 	# 鼠标hover在worker上时，为碎片位置做准备
-	await get_tree().process_frame  # 等一帧，确保所有节点都已就绪
-	var hover_area = worker_work.get_node("HoverArea")	
-	if hover_area:
-		hover_area.hover_changed.connect(_on_hover_changed)
+	HoverController.hover_changed.connect(_on_hover_changed)
 	
 	current_position = original_position# + Vector2(-25, -25)
 	position = current_position

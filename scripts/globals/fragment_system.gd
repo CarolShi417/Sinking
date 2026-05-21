@@ -6,8 +6,6 @@ signal fragment_gain_per_step
 signal total_fragment_changed # 碎片总数发生了变化
 signal fragment_gained_this_exploration_updated(amount: float)
 
-@onready var worker_work = get_tree().get_first_node_in_group("WorkerWorking")
-
 # ===============================
 # 碎片总数量,碎片用a b c表示，map用A B C表示
 # ===============================
@@ -28,6 +26,14 @@ const work_speed_monitor_multiplier := 1.20 #monitor状态增益
 var current_speed := work_speed_normal
 var hover_active := false
 
+# ===============================
+# 效率档位判定（low / steady / high）
+# 需要在同一速度维持10秒以上才确认档位
+# ===============================
+var current_efficiency_level : String = "low" # 当前确认的效率档位
+var _pending_level : String = "low" # 正在等待确认的档位
+var _pending_level_duration : float = 0.0 # 当前待确认档位已持续的时间（秒）
+const EFFICIENCY_CONFIRM_DURATION := 10.0 # 需要维持多少秒才切换档位
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
@@ -37,10 +43,7 @@ func _ready() -> void:
 	#接收鼠标悬停在小人上的signal
 	# ===============================	
 	HoverController.hover_changed.connect(_speedup_gain_fragments)
-	#await get_tree().process_frame
-	#var hover_area = worker_work.get_node("HoverArea")	
-	#if hover_area:
-		#hover_area.hover_changed.connect(_speedup_gain_fragments)
+	
 	
 		
 func _on_step_tick(duration):
@@ -54,7 +57,9 @@ func _on_step_tick(duration):
 	fragment_gained_this_exploration += gained_per_5_seconds
 	#发送信号给RealTimeFragment面板更新
 	fragment_gained_this_exploration_updated.emit(fragment_gained_this_exploration)
-	# print("本次探索获取到碎片数量为",  fragment_gained_this_exploration)
+	
+	# 更新效率档位（每次step_tick时累加持续时间）
+	_update_efficiency_level(duration)
 	
 	var speed_level := get_speed_level()	
 	fragment_gain_per_step.emit(speed_level)
@@ -74,6 +79,10 @@ func _on_state_changed(state):
 	#重置状态	
 	current_speed = work_speed_normal
 	hover_active = false	
+	# 状态切换时重置效率档位
+	current_efficiency_level = "low"
+	_pending_level = "low"
+	_pending_level_duration = 0.0
 
 # 判断当前获取fragment speed是否高
 func get_speed_level() -> String:
@@ -150,3 +159,38 @@ func spend_fragments(costs: Dictionary) -> bool:
 	if !spend_fragment_c(costs.get("C", 0.0)):
 		return false
 	return true
+
+# ===============================
+# 效率档位更新逻辑
+# 根据当前速度计算"瞬时档位"，
+# 如果与待确认档位一致则累加时间，超过10秒则正式切换；
+# 如果不一致则重置待确认档位和计时
+# ===============================
+func _update_efficiency_level(duration: float) -> void:
+	# 根据当前速度得出瞬时档位
+	var instant_level := _get_instant_level()
+	
+	# 如果瞬时档位与待确认档位一致，累加持续时间
+	if instant_level == _pending_level:
+		_pending_level_duration += duration
+	else:
+		# 瞬时档位变了，重置待确认档位和计时
+		_pending_level = instant_level
+		_pending_level_duration = duration
+	
+	# 持续时间达到阈值，正式确认切换档位
+	if _pending_level_duration >= EFFICIENCY_CONFIRM_DURATION:
+		current_efficiency_level = _pending_level
+
+# ===============================
+# 根据当前速度返回瞬时档位
+# low = 基础速度(0.2), high = 加速状态(0.24)
+# 不在两者之间时为steady（过渡态）
+# ===============================
+func _get_instant_level() -> String:
+	if current_speed <= work_speed_normal:
+		return "low"
+	elif current_speed >= work_speed_normal * work_speed_monitor_multiplier:
+		return "high"
+	else:
+		return "steady"	
