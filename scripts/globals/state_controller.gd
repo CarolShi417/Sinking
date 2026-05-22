@@ -11,7 +11,7 @@ func _ready():
 	enter_resting()
 	
 	#StateController统一接收time_circling信号，再发给其他
-	TimeCirclingSystem.step_tick.connect(FragmentSystem._on_step_tick) # 碎片系统接收计时器信号
+	TimeCirclingSystem.step_tick.connect(_on_step_tick_relay) # 碎片系统接收计时器信号
 	TimeCirclingSystem.san_tick.connect(SanSystem._on_san_tick)
 	TimeCirclingSystem.random_stone_triggered.connect(RandomStoneController._on_random_stone_triggered)
 	
@@ -64,16 +64,13 @@ func _on_assign_worker():
 # =====================
 # Timer结束
 # =====================
-
 func _on_work_finished():
 	if GameState.current_state == DataTypes.GameState.Working:
 		enter_resting()
-
-
+		
 func _on_rest_finished():
 	if GameState.current_state == DataTypes.GameState.Resting:
 		enter_working()
-
 
 func _on_san_depleted():
 	if GameState.current_state == DataTypes.GameState.Working:
@@ -117,3 +114,11 @@ func enter_dead():
 func _on_dead_flow_finished():
 	if GameState.current_state == DataTypes.GameState.Dead:
 		enter_resting()
+
+# ===============================
+# step_tick 中继：先让 HoverController 结算有效hover，
+# 再让 FragmentSystem 用最新的 hover 状态计算碎片
+# ===============================
+func _on_step_tick_relay(duration):
+	HoverController.evaluate_step()
+	FragmentSystem._on_step_tick(duration)

@@ -9,18 +9,15 @@ func _ready() -> void:
 	GameState.state_changed.connect(_on_state_changed)
 
 
-func _on_fragment_step(level: String):
+func _on_fragment_step(_level: String):
 
 	var rect := ColorRect.new()
 
-	# 确认timeline颜色
-	match level:
-		"high":
-			rect.color = Color.RED
-		"low":
-			rect.color = Color.WHITE
-		_:
-			rect.color = Color.GRAY
+	# 确认根据本次 step 是否为有效 hover 决定颜色
+	if HoverController.is_effective_hover:
+		rect.color = Color.RED      # 有效 hover，加速采集
+	else:
+		rect.color = Color.WHITE    # 普通采集
 			
 	rect.custom_minimum_size = Vector2(7, 20)
 

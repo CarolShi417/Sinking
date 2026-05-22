@@ -1,7 +1,8 @@
-[gd_scene load_steps=8 format=3 uid="uid://dmvgpntduh0lt"]
+[gd_scene load_steps=10 format=3 uid="uid://dmvgpntduh0lt"]
 
 [ext_resource type="Texture2D" uid="uid://l7o0do0pvstt" path="res://assets/UI/map_fragment&timeProgress/map_progress_bar.png" id="1_a4hvh"]
 [ext_resource type="Script" uid="uid://ps62er5mkady" path="res://scenes/UI/map_fragment_gain_panel.gd" id="1_dkp2c"]
+[ext_resource type="Script" uid="uid://bln4uqivb0kqk" path="res://scenes/UI/real_time_frag_gain_hover_area.gd" id="3_ii846"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_m3jtv"]
 atlas = ExtResource("1_a4hvh")
@@ -39,6 +40,9 @@ animations = [{
 "speed": 8.0
 }]
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_fb8i7"]
+size = Vector2(611, 20)
+
 [node name="RealTimeFragmentGainDisplay" type="Node2D" node_paths=PackedStringArray("fragment_gain_timeline_display")]
 script = ExtResource("1_dkp2c")
 fragment_gain_timeline_display = NodePath("FragmentGainingTimeline")
@@ -56,3 +60,10 @@ offset_top = 4.0
 offset_right = 44.0
 offset_bottom = 32.0
 scale = Vector2(0.5, 0.5)
+
+[node name="RealTimeFragGainArea2D" type="Area2D" parent="."]
+script = ExtResource("3_ii846")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="RealTimeFragGainArea2D"]
+position = Vector2(354.5, 11)
+shape = SubResource("RectangleShape2D_fb8i7")

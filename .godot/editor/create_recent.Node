@@ -1,14 +1,14 @@
+CollisionShape2D
+Area2D
+HBoxContainer
 Control
 PanelContainer
 TextureRect
 Node
-CollisionShape2D
-Area2D
 AnimatedSprite2D
 VBoxContainer
 MarginContainer
 Panel
 Label
-HBoxContainer
 Sprite2D
 Node2D
