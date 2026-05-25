@@ -13,13 +13,13 @@ Map&TimeInfoBar — 纯UI面板
 # ===============================
 # 获取 MapSelectPanelController 节点（用于读取当前选中的地图）
 # ===============================
-@onready var map_select_panel: PanelContainer = get_node("/root/Game/GameScreenUI/MapSelectPanel")
+@onready var map_select_panel: PanelContainer = get_node("../../MapSelectPanel")
 
 # ===============================
 # InfoBar 专用 hover 触发区（Area2D，挂 info_bar_hover_area.gd）
 # 需要在编辑器中把该 Area2D 节点路径填到这里
 # ===============================
-@onready var info_bar_hover_area: Area2D = get_node("/root/Game/GameScreenUI/RealTimeFragmentGainDisplay/RealTimeFragGainArea2D")
+@onready var info_bar_hover_area: Area2D = get_node("../RealTimeFragGainArea2D")
 @export var hide_delay: float = 2.0 #隐藏时间，以inspector为准
 
 # Working 开始后延迟隐藏的计时器

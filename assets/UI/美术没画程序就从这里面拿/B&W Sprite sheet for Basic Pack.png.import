@@ -3,15 +3,15 @@
 importer="texture"
 type="CompressedTexture2D"
 uid="uid://8ms5d8lgftpw"
-path="res://.godot/imported/B&W Sprite sheet for Basic Pack.png-eeb4a70f64b65f493185a09700e0c4ca.ctex"
+path="res://.godot/imported/B&W Sprite sheet for Basic Pack.png-6fe09a8a9d6c72086ae2680e2b94585a.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/UI/B&W Sprite sheet for Basic Pack.png"
-dest_files=["res://.godot/imported/B&W Sprite sheet for Basic Pack.png-eeb4a70f64b65f493185a09700e0c4ca.ctex"]
+source_file="res://assets/UI/美术没画程序就从这里面拿/B&W Sprite sheet for Basic Pack.png"
+dest_files=["res://.godot/imported/B&W Sprite sheet for Basic Pack.png-6fe09a8a9d6c72086ae2680e2b94585a.ctex"]
 
 [params]
 

@@ -1,10 +1,14 @@
-[gd_scene load_steps=4 format=3 uid="uid://4btqj0mbigwe"]
+[gd_scene load_steps=8 format=3 uid="uid://4btqj0mbigwe"]
 
 [ext_resource type="Theme" uid="uid://ddgo3b8f6fttt" path="res://scenes/UI/game_ui_theme.tres" id="1_4yrja"]
 [ext_resource type="Script" uid="uid://21dcqak0gb7i" path="res://scenes/UI/start/opening_comic.gd" id="2_esvuy"]
 [ext_resource type="Texture2D" uid="uid://b2d0vd1pqybw0" path="res://assets/sprites/opening_comic/opening_comic_01.png" id="3_tkrge"]
+[ext_resource type="Texture2D" uid="uid://cw6oxwkqdven1" path="res://assets/sprites/opening_comic/opening_comic_02.png" id="4_k3dhm"]
+[ext_resource type="Texture2D" uid="uid://c6ntvic1vb576" path="res://assets/sprites/opening_comic/opening_comic_03.png" id="5_lnsro"]
+[ext_resource type="Texture2D" uid="uid://cy6owy2k0ev4i" path="res://assets/sprites/opening_comic/opening_comic_04.png" id="6_oromh"]
+[ext_resource type="Texture2D" uid="uid://b6kchjbmp2m4r" path="res://assets/sprites/opening_comic/opening_comic_05.png" id="7_6fonj"]
 
-[node name="OpeningComic" type="Control" node_paths=PackedStringArray("comic_subtitles")]
+[node name="OpeningComic" type="Control"]
 z_index = 200
 layout_mode = 3
 anchors_preset = 0
@@ -12,49 +16,30 @@ size_flags_horizontal = 4
 size_flags_vertical = 4
 theme = ExtResource("1_4yrja")
 script = ExtResource("2_esvuy")
-comic_images = Array[Texture2D]([ExtResource("3_tkrge"), ExtResource("3_tkrge"), ExtResource("3_tkrge")])
-comic_subtitles = [NodePath("CenterContainer/PanelContainer/Label"), NodePath("CenterContainer/PanelContainer/Label2"), NodePath("CenterContainer/PanelContainer/Label3")]
+comic_images = Array[Texture2D]([ExtResource("3_tkrge"), ExtResource("4_k3dhm"), ExtResource("5_lnsro"), ExtResource("6_oromh"), ExtResource("7_6fonj")])
 
 [node name="CenterContainer" type="CenterContainer" parent="."]
+z_index = 200
 layout_mode = 0
 offset_right = 40.0
 offset_bottom = 40.0
 
 [node name="TextureRect" type="TextureRect" parent="CenterContainer"]
+z_index = 200
 layout_mode = 2
 texture = ExtResource("3_tkrge")
 
 [node name="PanelContainer" type="PanelContainer" parent="CenterContainer"]
+z_index = 200
 layout_mode = 2
 theme = ExtResource("1_4yrja")
 theme_type_variation = &"TransparentPanel"
 
 [node name="Label" type="Label" parent="CenterContainer/PanelContainer"]
+z_index = 200
 layout_mode = 2
 theme = ExtResource("1_4yrja")
 theme_type_variation = &"Test_centered_label"
-text = "Comic 1 (Unfinished)
-
-Click Left Mouse to Continue"
-horizontal_alignment = 1
-vertical_alignment = 1
-
-[node name="Label2" type="Label" parent="CenterContainer/PanelContainer"]
-layout_mode = 2
-theme = ExtResource("1_4yrja")
-theme_type_variation = &"Test_centered_label"
-text = "Comic 2 (Unfinished)
-
-Click Left Mouse to Continue"
-horizontal_alignment = 1
-vertical_alignment = 1
-
-[node name="Label3" type="Label" parent="CenterContainer/PanelContainer"]
-layout_mode = 2
-theme = ExtResource("1_4yrja")
-theme_type_variation = &"Test_centered_label"
-text = "Comic 3 (Unfinished)
-
-Click Left Mouse to Continue"
+text = "Click Left Mouse to Continue"
 horizontal_alignment = 1
 vertical_alignment = 1

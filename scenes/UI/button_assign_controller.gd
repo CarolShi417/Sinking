@@ -1,11 +1,11 @@
 extends Node
 
-@onready var map_select_panel : PanelContainer = get_node("/root/Game/GameScreenUI/MapSelectPanel")
+@onready var map_select_panel : PanelContainer = get_node("../../GameScreenUI/MapSelectPanel")
 
 signal on_assign_worker
 
 func _ready():
-
+	#print(get_path())
 	map_select_panel.has_assigned.connect(_on_assigned_pressed)
 
 func _on_assigned_pressed():

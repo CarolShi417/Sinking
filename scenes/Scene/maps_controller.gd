@@ -1,7 +1,7 @@
 extends Sprite2D
 
 
-@onready var map_select_panel : PanelContainer = get_node("/root/Game/GameScreenUI/MapSelectPanel")
+@onready var map_select_panel : PanelContainer = get_node("../../../GameScreenUI/MapSelectPanel")
 var current_map_id: String = ""
 @export var mapA: Sprite2D
 @export var mapB: Sprite2D

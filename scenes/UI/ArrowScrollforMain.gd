@@ -2,7 +2,7 @@ extends Area2D
 
 @export var scroll_direction := 1      # 左箭头 = -1, 右箭头 = 1
 @export var scroll_speed := 300.0
-@onready var main_texture := get_node("/root/Game/MainZoneClip/MainTexture")  # 地图 Node2D
+@onready var main_texture := get_node("../../../MainZoneClip/MainTexture")  # 地图 Node2D
 
 var hovering := false
 

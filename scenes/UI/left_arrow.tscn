@@ -3,10 +3,12 @@
 [node name="LeftArrow" type="Area2D"]
 
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="."]
+z_index = 110
 position = Vector2(9, 116)
 polygon = PackedVector2Array(-8, 0, 18, -28, 18, 26)
 
 [node name="Polygon2D" type="Polygon2D" parent="."]
+z_index = 110
 position = Vector2(0, 116)
 color = Color(0.17641911, 0.17641908, 0.17641908, 1)
 polygon = PackedVector2Array(1, -1, 27, -28, 27, 26)

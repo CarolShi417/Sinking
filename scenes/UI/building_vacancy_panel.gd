@@ -4,7 +4,7 @@ extends PanelContainer
 @export var filled_texture: Texture2D
 
 @onready var hbox : HBoxContainer = $MarginContainer/HBoxContainer
-@onready var vacancyInfoPanel : PanelContainer = get_node("/root/Game/GameScreenUI/BuildingVacancyInfoPanel")
+@onready var vacancyInfoPanel : PanelContainer = get_node("../BuildingVacancyInfoPanel")
 
 var capacity := 5
 var occupied := 0
