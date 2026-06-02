@@ -3,7 +3,7 @@
 [ext_resource type="Script" uid="uid://dvrten3htp0t2" path="res://scenes/UI/start/overall_screen_ui.gd" id="1_ljbyj"]
 [ext_resource type="PackedScene" uid="uid://bpsyh6efc6man" path="res://scenes/UI/start/start_menu.tscn" id="1_v5kbm"]
 [ext_resource type="PackedScene" uid="uid://4btqj0mbigwe" path="res://scenes/UI/start/opening_comic.tscn" id="2_ljbyj"]
-[ext_resource type="PackedScene" uid="uid://cmld5go3ad5fc" path="res://scenes/UI/dialogue_control.tscn" id="4_m5peo"]
+[ext_resource type="PackedScene" uid="uid://cmld5go3ad5fc" path="res://scenes/UI/start/dialogue_control.tscn" id="4_m5peo"]
 
 [node name="OverallScreenUI" type="Control"]
 layout_mode = 3

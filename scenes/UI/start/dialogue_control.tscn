@@ -1,9 +1,11 @@
-[gd_scene load_steps=5 format=3 uid="uid://cmld5go3ad5fc"]
+[gd_scene load_steps=7 format=3 uid="uid://cmld5go3ad5fc"]
 
 [ext_resource type="Texture2D" uid="uid://cke6sp6c85y10" path="res://assets/UI/map_selectMapButton/map_button_mapA.png" id="1_1bdll"]
-[ext_resource type="Script" uid="uid://de0cr6ridtfek" path="res://scenes/UI/dialogue_control.gd" id="1_rpbhd"]
+[ext_resource type="Script" uid="uid://de0cr6ridtfek" path="res://scenes/UI/start/dialogue_control.gd" id="1_rpbhd"]
 [ext_resource type="Texture2D" uid="uid://hs21ne444o05" path="res://assets/sprites/map/map_workplace.png" id="1_yv5uc"]
 [ext_resource type="Theme" uid="uid://ddgo3b8f6fttt" path="res://scenes/UI/game_ui_theme.tres" id="2_s4cul"]
+[ext_resource type="Texture2D" uid="uid://b6oyq6o7g0w85" path="res://assets/sprites/opening_comic/opening_dialogue_panel.png" id="4_exmmm"]
+[ext_resource type="Texture2D" uid="uid://d3ibykdyouvpt" path="res://assets/sprites/opening_comic/opening_dialogue_panelwithtext.png" id="4_hshfd"]
 
 [node name="DialogueControl" type="Control"]
 layout_mode = 3
@@ -15,15 +17,27 @@ grow_vertical = 2
 script = ExtResource("1_rpbhd")
 
 [node name="PanelContainer" type="PanelContainer" parent="."]
+z_index = 199
 custom_minimum_size = Vector2(960, 180)
 layout_mode = 0
 offset_left = 960.0
-offset_top = 60.0
-offset_right = 1920.0
+offset_right = 1923.0
 offset_bottom = 240.0
 size_flags_horizontal = 4
+theme = ExtResource("2_s4cul")
+theme_type_variation = &"TransparentPanelContrainer"
+
+[node name="TextureRect" type="TextureRect" parent="PanelContainer"]
+layout_mode = 2
+texture = ExtResource("4_exmmm")
+
+[node name="TextureRect2" type="TextureRect" parent="PanelContainer"]
+visible = false
+layout_mode = 2
+texture = ExtResource("4_hshfd")
 
 [node name="HBoxContainer" type="HBoxContainer" parent="PanelContainer"]
+visible = false
 layout_mode = 2
 size_flags_horizontal = 0
 
@@ -44,3 +58,19 @@ z_index = 40
 position = Vector2(1920, 0)
 texture = ExtResource("1_yv5uc")
 offset = Vector2(-480, 120)
+
+[node name="Label" type="Label" parent="."]
+z_index = 199
+custom_minimum_size = Vector2(600, 80)
+layout_mode = 0
+offset_left = 1221.0
+offset_top = 99.0
+offset_right = 1821.0
+offset_bottom = 179.0
+size_flags_horizontal = 4
+theme = ExtResource("2_s4cul")
+theme_type_variation = &"Dialogue_Label"
+text = "Hey. You're the...handler, right?"
+horizontal_alignment = 1
+vertical_alignment = 1
+autowrap_mode = 3

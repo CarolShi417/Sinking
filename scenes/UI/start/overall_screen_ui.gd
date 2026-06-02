@@ -34,8 +34,10 @@ func _on_start_pressed():
 func _on_comic_finished():
 	opening_comic.hide()
 	dialogue_control.show()
-	# 👉 此时游戏自然露出来（GameScene一直在）
+	dialogue_control.start_dialogue()
+	
 	
 func _on_dialogue_finished():
 	dialogue_control.hide()
 	game_start.emit()
+	# 👉 此时游戏自然露出来（GameScene一直在）
