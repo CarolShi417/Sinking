@@ -27,6 +27,9 @@ signal has_assigned()
 var current_assigned_map_id: String = ""
 var map_panels: Array[PanelContainer] = []
 
+# 音效
+@onready var hover_sfx: AudioStreamPlayer2D = $AudioStreamPlayer_hoverButtonSFX  # 👈 新增
+
 func _ready() -> void:
 	
 	#接收ABC panel的悬停信号
@@ -70,6 +73,7 @@ func _ready() -> void:
 func _on_hover_changed(map_id: String, active: bool, unlocked: bool) -> void:
 	if active:#如果鼠标悬停，获取地图数据，通知显示info panel		
 		map_hovered.emit(map_id, true, unlocked)
+		hover_sfx.play()  # 播放鼠标悬停按钮音效
 	else:# 如果鼠标离开，通知隐藏info panel
 		map_unhovered.emit(map_id, false)
 		#print("鼠标离开")

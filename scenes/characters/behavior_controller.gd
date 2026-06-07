@@ -33,7 +33,11 @@ const scare_gather_duration := 2.0
 # 悬停判定是否切换state，供 scare - gather
 # ===============================
 var _is_hovering := false
-	
+
+#音效
+@onready var is_assigned_sfx: AudioStreamPlayer2D = $"../AudioStreamPlayer_isAssignedSFX"
+@onready var walk_sfx: AudioStreamPlayer2D = $"../AudioStreamPlayer_walkSFX"
+
 func _ready() -> void:
 	GameState.state_changed.connect(_on_state_changed)
 	GameState.behavior_changed.connect(_on_behavior_changed)
@@ -92,6 +96,7 @@ func send_and_receive_flow():
 	current_behavior = DataTypes.BehaviorState.send
 	GameState.set_behavior(current_behavior)
 	print(current_behavior)
+	is_assigned_sfx.play()
 	# 等待动画播放完成
 	await get_tree().create_timer(1.5).timeout
 	
@@ -100,6 +105,7 @@ func send_and_receive_flow():
 	print(current_behavior)
 	# 等待动画播放完成
 	await get_tree().create_timer(1.5).timeout
+	is_assigned_sfx.stop()
 	
 	start_idle_timer()
 	
@@ -107,13 +113,17 @@ func send_and_receive_flow():
 # 切换worker状态，连接不同动画
 # ===============================
 func _on_behavior_changed(new_behavior):
-
+	# 只要不是 walk，就停止走路音效
+	if new_behavior != DataTypes.BehaviorState.walk:
+		walk_sfx.stop()
+		
 	match new_behavior:
 		DataTypes.BehaviorState.idle:
 			state_machine.transition_to("Idle")
 
 		DataTypes.BehaviorState.walk:
 			state_machine.transition_to("Walk")
+			walk_sfx.play()
 
 		DataTypes.BehaviorState.gather:
 			state_machine.transition_to("Gather")

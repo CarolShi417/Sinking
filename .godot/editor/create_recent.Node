@@ -1,3 +1,4 @@
+AudioStreamPlayer2D
 MarginContainer
 Label
 PanelContainer
@@ -11,4 +12,3 @@ Node
 AnimatedSprite2D
 VBoxContainer
 Panel
-Sprite2D

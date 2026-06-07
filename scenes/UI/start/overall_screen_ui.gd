@@ -5,7 +5,7 @@ signal game_start
 @onready var start_menu: Control = $StartMenu
 @onready var opening_comic: Control = $OpeningComic
 @onready var dialogue_control: Control = $DialogueControl
-
+@onready var start_bgm: AudioStreamPlayer2D = $AudioStreamPlayer_Startbgm  # 👈 新增
 
 func _ready():
 	# 初始状态	
@@ -17,6 +17,9 @@ func _ready():
 	start_menu.start_pressed.connect(_on_start_pressed)
 	opening_comic.comic_finished.connect(_on_comic_finished)
 	dialogue_control.dialogue_finished.connect(_on_dialogue_finished)
+	
+	#播放bgm
+	start_bgm.play()
 
 # ===============================
 # 点击 StartMenu Start 
@@ -39,5 +42,6 @@ func _on_comic_finished():
 	
 func _on_dialogue_finished():
 	dialogue_control.hide()
+	start_bgm.stop()
 	game_start.emit()
 	# 👉 此时游戏自然露出来（GameScene一直在）

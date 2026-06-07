@@ -11,7 +11,7 @@ config_version=5
 [application]
 
 config/name="SINKING"
-run/main_scene="uid://3mfqqjaqst50"
+run/main_scene="uid://dov0g81akr1ae"
 config/features=PackedStringArray("4.5", "Forward Plus")
 config/icon="res://icon.svg"
 
@@ -51,6 +51,7 @@ folder_colors={
 "res://assets/UI/": "yellow",
 "res://assets/UI/美术没画程序就从这里面拿/": "blue",
 "res://assets/sprites/": "orange",
+"res://audio/": "pink",
 "res://scenes/": "green",
 "res://scripts/": "purple"
 }

@@ -1,4 +1,4 @@
-[gd_scene load_steps=167 format=3 uid="uid://iv4qvdu1lq0w"]
+[gd_scene load_steps=168 format=3 uid="uid://iv4qvdu1lq0w"]
 
 [ext_resource type="Script" uid="uid://b7g8fi0iye2eb" path="res://scenes/characters/worker_movement.gd" id="1_wtns5"]
 [ext_resource type="Texture2D" uid="uid://epltqudko18g" path="res://assets/sprites/worker/worker_left/character_die_left.png" id="2_kq2uw"]
@@ -30,6 +30,7 @@
 [ext_resource type="Texture2D" uid="uid://c28qnfqtp11r6" path="res://assets/UI/map_battery/battery_100-80.png" id="20_ee4xu"]
 [ext_resource type="Script" uid="uid://dt6f57jpe0eae" path="res://scenes/characters/assign_to_work.gd" id="22_3uemc"]
 [ext_resource type="Script" uid="uid://b2f6u3sxxp0y8" path="res://scenes/characters/arrive_shelter.gd" id="23_l03ym"]
+[ext_resource type="AudioStream" uid="uid://cw4omp8kv7ggu" path="res://audio/sound/机械臂2.mp3" id="31_c3fo5"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_ku4dj"]
 atlas = ExtResource("2_kq2uw")
@@ -1142,5 +1143,15 @@ z_index = 46
 texture = ExtResource("20_ee4xu")
 region_enabled = true
 region_rect = Rect2(0, 0, 65, 60)
+
+[node name="AudioStreamPlayer_isAssignedSFX" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("31_c3fo5")
+volume_db = -5.0
+bus = &"SFX"
+
+[node name="AudioStreamPlayer_walkSFX" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("31_c3fo5")
+volume_db = -5.0
+bus = &"SFX"
 
 [connection signal="mouse_entered" from="." to="." method="_on_mouse_entered"]

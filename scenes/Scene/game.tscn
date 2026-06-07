@@ -1,6 +1,7 @@
-[gd_scene load_steps=10 format=3 uid="uid://3mfqqjaqst50"]
+[gd_scene load_steps=12 format=3 uid="uid://3mfqqjaqst50"]
 
 [ext_resource type="PackedScene" uid="uid://crdvwcxh43g73" path="res://scenes/Scene/main_texture.tscn" id="1_dt22u"]
+[ext_resource type="Script" uid="uid://boftqg5ckrc6u" path="res://scripts/game.gd" id="1_f7bgk"]
 [ext_resource type="PackedScene" uid="uid://cw8e3mqdgtt6x" path="res://scenes/Scene/map_texture.tscn" id="2_rq6sv"]
 [ext_resource type="PackedScene" uid="uid://lkxmcbrinayj" path="res://scenes/UI/game_screen_ui.tscn" id="3_mlhe7"]
 [ext_resource type="PackedScene" uid="uid://iv4qvdu1lq0w" path="res://scenes/characters/worker.tscn" id="4_j5ily"]
@@ -9,8 +10,10 @@
 [ext_resource type="Script" uid="uid://b2uyiav6uo414" path="res://scenes/characters/worker_controller.gd" id="8_rq6sv"]
 [ext_resource type="Script" uid="uid://dvb3t28uip7i3" path="res://scripts/globals/random_stone_controller.gd" id="9_tmwkl"]
 [ext_resource type="PackedScene" uid="uid://dk7xruqxfnjos" path="res://scenes/components/random_stone_component.tscn" id="10_f7bgk"]
+[ext_resource type="AudioStream" uid="uid://by3mhvc7bdy2v" path="res://audio/bgm/MAP A白噪音2.mp3" id="11_ila35"]
 
 [node name="Game" type="Node2D" groups=["GameScene"]]
+script = ExtResource("1_f7bgk")
 
 [node name="WorkerResting" parent="." groups=["WorkerResting"] instance=ExtResource("4_j5ily")]
 position = Vector2(399, 188)
@@ -46,3 +49,7 @@ script = ExtResource("8_rq6sv")
 script = ExtResource("9_tmwkl")
 
 [node name="StoneComponent" parent="StoneController" instance=ExtResource("10_f7bgk")]
+
+[node name="AudioStreamPlayer_whiteNoisebgm" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("11_ila35")
+bus = &"Music"
