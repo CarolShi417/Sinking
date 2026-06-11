@@ -1,7 +1,7 @@
 [gd_scene load_steps=8 format=3 uid="uid://v0gl6ot6gr7y"]
 
 [ext_resource type="Texture2D" uid="uid://b2df2u1gmhrln" path="res://assets/sprites/map/map_location map_dark.png" id="1_2hxyc"]
-[ext_resource type="Script" uid="uid://bottjw54uinpc" path="res://scenes/Scene/maps_controller.gd" id="1_h5j7k"]
+[ext_resource type="Script" uid="uid://bottjw54uinpc" path="res://scenes/global scenes/maps_controller.gd" id="1_h5j7k"]
 [ext_resource type="Texture2D" uid="uid://b0gxdmaxblnpw" path="res://assets/sprites/map/map_location map_B.png" id="2_1xwrj"]
 [ext_resource type="Texture2D" uid="uid://b5cep7kga0gjp" path="res://assets/sprites/map/map_location map_A.png" id="2_lbiiq"]
 [ext_resource type="Texture2D" uid="uid://c2xabhqii8p7n" path="res://assets/sprites/map/map_location map_C.png" id="3_h5j7k"]
@@ -47,7 +47,7 @@ offset = Vector2(-960, 0)
 
 [node name="WorkerWorking" parent="." groups=["WorkerWorking"] instance=ExtResource("6_dk63h")]
 z_as_relative = false
-position = Vector2(1447, 198)
+position = Vector2(744, 198)
 
 [node name="Fragment" parent="." instance=ExtResource("9_2xxgi")]
 z_index = 45

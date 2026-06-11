@@ -78,6 +78,7 @@ func _physics_process(_delta): #Godot 每一帧“物理更新”都会自动调
 		#print("现在往左走，direction为", direction)
 		
 func _go_to_stone_position(target_x: float) -> void:
+	if not get_parent().visible: return  #禁止worker_rest/work隐藏后继续执行代码
 	x = target_x
 	is_gathering_random_stone = true
 	# 根据目标位置决定方向

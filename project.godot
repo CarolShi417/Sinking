@@ -17,15 +17,15 @@ config/icon="res://icon.svg"
 
 [autoload]
 
-GameState="*res://scripts/globals/game_state.gd"
-FragmentSystem="*res://scripts/globals/fragment_system.gd"
-SanSystem="*res://scripts/globals/san_system.gd"
-ExportSettingController="*res://scripts/globals/export_setting_controller.gd"
-BuildingSystem="*res://scripts/globals/building_system.gd"
-MapInfoData="*res://scripts/globals/map_info_data.gd"
-RandomStoneController="*res://scripts/globals/random_stone_controller.gd"
-HoverController="*res://scripts/globals/HoverController.gd"
-TimeCirclingSystem="*res://scripts/globals/time_circling_system.gd"
+GameState="*res://scenes/global scripts/game_state.gd"
+FragmentSystem="*res://scenes/global scripts/fragment_system.gd"
+SanSystem="*res://scenes/global scripts/san_system.gd"
+ExportSettingController="*res://scenes/global scripts/export_setting_controller.gd"
+BuildingSystem="*res://scenes/global scripts/building_system.gd"
+MapInfoData="*res://scenes/global scripts/map_info_data.gd"
+RandomStoneController="*res://scenes/global scripts/random_stone_controller.gd"
+HoverController="*res://scenes/global scripts/HoverController.gd"
+TimeCirclingSystem="*res://scenes/global scripts/time_circling_system.gd"
 
 [display]
 
@@ -53,7 +53,9 @@ folder_colors={
 "res://assets/sprites/": "orange",
 "res://audio/": "pink",
 "res://scenes/": "green",
-"res://scripts/": "purple"
+"res://scenes/Template/": "purple",
+"res://scenes/global scripts/": "purple",
+"res://scenes/state_machine/": "purple"
 }
 
 [global_group]

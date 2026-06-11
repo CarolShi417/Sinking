@@ -14,7 +14,7 @@
 [ext_resource type="Texture2D" uid="uid://d4kp5cefx6qj3" path="res://assets/sprites/worker/worker_left/Worker_scared_left.png" id="10_2t32e"]
 [ext_resource type="Texture2D" uid="uid://l8o03x7dlat0" path="res://assets/sprites/worker/worker_left/Worker_send_left.png" id="10_3uemc"]
 [ext_resource type="Script" uid="uid://drd37gk38d2n5" path="res://scenes/components/hover_area.gd" id="10_haaq5"]
-[ext_resource type="Script" uid="uid://dy4b0hgnyixi8" path="res://scripts/state_machine/node_state_machine.gd" id="11_2t32e"]
+[ext_resource type="Script" uid="uid://dy4b0hgnyixi8" path="res://scenes/state_machine/node_state_machine.gd" id="11_2t32e"]
 [ext_resource type="Texture2D" uid="uid://cg4r6l8iluq2x" path="res://assets/sprites/worker/Worker_right/Worker_scared_right.png" id="11_c3fo5"]
 [ext_resource type="Texture2D" uid="uid://dfpx5rreuiipt" path="res://assets/sprites/worker/Worker_right/worker_send_right.png" id="11_l03ym"]
 [ext_resource type="Script" uid="uid://dsfq0b7g2o6va" path="res://scenes/characters/animationBehavior/idle.gd" id="12_c3fo5"]
@@ -1072,7 +1072,7 @@ script = ExtResource("1_wtns5")
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 position = Vector2(0, -108)
 sprite_frames = SubResource("SpriteFrames_sb737")
-animation = &"walk_right"
+animation = &"receive_left"
 autoplay = "idle_right"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
@@ -1094,9 +1094,8 @@ debug_color = Color(0.8825655, 0.0003398031, 0.81741947, 0.41960785)
 [node name="BehaviorController" type="Node" parent="." groups=["BehaviorController"]]
 script = ExtResource("18_c8mvy")
 
-[node name="StateMachine" type="Node" parent="." node_paths=PackedStringArray("initial_node_state")]
+[node name="StateMachine" type="Node" parent="."]
 script = ExtResource("11_2t32e")
-initial_node_state = NodePath("Idle")
 
 [node name="Idle" type="Node" parent="StateMachine"]
 script = ExtResource("12_c3fo5")

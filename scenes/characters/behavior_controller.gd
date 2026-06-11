@@ -11,6 +11,8 @@ var dead_flow_running := false # 确保死亡状态不要重复执行
 
 var scare_flow_running = false # 防止 hover 抖动导致流程重复触发
 
+var flow_running := false  # 防止send_and_receive_flow()协程堆积
+
 # ===============================
 # 各Behavior持续时间
 # ===============================
@@ -67,6 +69,7 @@ func _create_behavior_timers():
 # 死亡时，状态有所不同
 # ===============================
 func _on_state_changed(state):	
+	if not get_parent().visible: return  #禁止worker_rest/work隐藏后继续执行代码
 	#停止行为计时器
 	behavior_timer.stop()
 	#确保当前状态为死亡状态
@@ -82,6 +85,7 @@ func _on_state_changed(state):
 			send_and_receive_flow()			
 
 		DataTypes.GameState.Dead:
+			flow_running = false  # 👈 死亡时强制重置
 			if dead_flow_running:
 				return
 			
@@ -91,28 +95,34 @@ func _on_state_changed(state):
 # ===============================			
 # 派遣-接收动画
 # ===============================
-func send_and_receive_flow():
+func send_and_receive_flow():	
+	if flow_running:  # 👈 已有flow在跑，直接return
+		return
+	flow_running = true
+	
 	# 行为状态为 派遣
+	print(">>> flow START, state=", GameState.current_state)
 	current_behavior = DataTypes.BehaviorState.send
 	GameState.set_behavior(current_behavior)
 	print(current_behavior)
-	is_assigned_sfx.play()
 	# 等待动画播放完成
 	await get_tree().create_timer(1.5).timeout
 	
+	print(">>> flow after first await, state=", GameState.current_state)
 	current_behavior = DataTypes.BehaviorState.receive
 	GameState.set_behavior(current_behavior)
 	print(current_behavior)
 	# 等待动画播放完成
 	await get_tree().create_timer(1.5).timeout
-	is_assigned_sfx.stop()
 	
+	print(">>> flow END, state=", GameState.current_state)
 	start_idle_timer()
 	
 # ===============================
 # 切换worker状态，连接不同动画
 # ===============================
 func _on_behavior_changed(new_behavior):
+	if not get_parent().visible: return  #禁止worker_rest/work隐藏后继续执行代码
 	# 只要不是 walk，就停止走路音效
 	if new_behavior != DataTypes.BehaviorState.walk:
 		walk_sfx.stop()
@@ -139,6 +149,7 @@ func _on_behavior_changed(new_behavior):
 		
 		DataTypes.BehaviorState.send:
 			state_machine.transition_to("Send")
+			is_assigned_sfx.play()
 
 		DataTypes.BehaviorState.receive:
 			state_machine.transition_to("Receive")
@@ -196,12 +207,11 @@ func start_gather_timer():
 # Timer结束
 # =====================
 func _on_behavior_timeout():
-
+	if not get_parent().visible: return  #禁止worker_rest/work隐藏后继续执行代码
+	
 	match GameState.current_state:
-
 		DataTypes.GameState.Resting:
 			_rest_cycle()
-
 		DataTypes.GameState.Working:
 			_work_cycle()
 
@@ -269,6 +279,7 @@ func _start_dead_flow():
 # 惊吓状态（悬停时触发）
 # =====================	
 func _on_hover_changed(is_hovering: bool) -> void:
+	if not get_parent().visible: return  #禁止worker_rest/work隐藏后继续执行代码
 	# dead， send，receive状态下不触发
 	if GameState.current_state == DataTypes.GameState.Dead:
 		return
@@ -309,6 +320,7 @@ func start_scare_flow() -> void:
 # 随机石子事件
 # =====================
 func _on_stone_walk_started() -> void:
+	if not get_parent().visible: return  #禁止worker_rest/work隐藏后继续执行代码
 	if GameState.current_state == DataTypes.GameState.Dead:
 		return
 	if current_behavior == DataTypes.BehaviorState.send or \
@@ -321,6 +333,7 @@ func _on_stone_walk_started() -> void:
 	GameState.set_behavior(current_behavior)
 
 func _on_stone_walk_finished() -> void:
+	if not get_parent().visible: return  #禁止worker_rest/work隐藏后继续执行代码
 	if GameState.current_state == DataTypes.GameState.Dead:
 		return
 	

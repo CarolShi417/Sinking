@@ -74,7 +74,6 @@ offset_right = 1008.0
 offset_bottom = 196.0
 
 [node name="TestPanel=========" parent="." instance=ExtResource("4_xbc8b")]
-visible = false
 z_index = 50
 layout_mode = 0
 offset_left = 1236.0

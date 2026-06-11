@@ -1,14 +1,11 @@
-res://default_bus_layout.tres
-res://scenes/UI/start/overall_screen_ui.tscn
+res://scenes/global scenes/game.tscn
 res://scenes/UI/game_ui_theme.tres
 res://Tilesets/ground_tile_set.tres
 res://scenes/shader/MaskShader.gdshader
-res://scenes/Scene/monitor_focus_area.gdshader
-res://scenes/UI/start/overall_screen_ui.gd
-res://scenes/Scene/overall.tscn
-res://scenes/Scene/game.tscn
-res://scripts/game.gd
-res://scenes/UI/map_select_panel.tscn
-res://scenes/UI/map_select_panel_controller.gd
+res://scenes/global scenes/monitor_focus_area.gdshader
 res://scenes/characters/worker.tscn
+res://scenes/characters/worker_controller.gd
 res://scenes/characters/behavior_controller.gd
+res://scenes/components/hover_area.gd
+res://scenes/characters/worker_movement.gd
+res://scenes/state_machine/node_state_machine.gd
