@@ -1,4 +1,4 @@
-[gd_scene load_steps=168 format=3 uid="uid://iv4qvdu1lq0w"]
+[gd_scene load_steps=169 format=3 uid="uid://iv4qvdu1lq0w"]
 
 [ext_resource type="Script" uid="uid://b7g8fi0iye2eb" path="res://scenes/characters/worker_movement.gd" id="1_wtns5"]
 [ext_resource type="Texture2D" uid="uid://epltqudko18g" path="res://assets/sprites/worker/worker_left/character_die_left.png" id="2_kq2uw"]
@@ -13,7 +13,6 @@
 [ext_resource type="Texture2D" uid="uid://r31sa0nxpbvu" path="res://assets/sprites/worker/Worker_right/Worker_walk_right.png" id="9_l03ym"]
 [ext_resource type="Texture2D" uid="uid://d4kp5cefx6qj3" path="res://assets/sprites/worker/worker_left/Worker_scared_left.png" id="10_2t32e"]
 [ext_resource type="Texture2D" uid="uid://l8o03x7dlat0" path="res://assets/sprites/worker/worker_left/Worker_send_left.png" id="10_3uemc"]
-[ext_resource type="Script" uid="uid://drd37gk38d2n5" path="res://scenes/components/hover_area.gd" id="10_haaq5"]
 [ext_resource type="Script" uid="uid://dy4b0hgnyixi8" path="res://scenes/state_machine/node_state_machine.gd" id="11_2t32e"]
 [ext_resource type="Texture2D" uid="uid://cg4r6l8iluq2x" path="res://assets/sprites/worker/Worker_right/Worker_scared_right.png" id="11_c3fo5"]
 [ext_resource type="Texture2D" uid="uid://dfpx5rreuiipt" path="res://assets/sprites/worker/Worker_right/worker_send_right.png" id="11_l03ym"]
@@ -22,6 +21,7 @@
 [ext_resource type="Script" uid="uid://cet28s35gc13x" path="res://scenes/characters/animationBehavior/gather.gd" id="14_is6ey"]
 [ext_resource type="Script" uid="uid://l1def2d8dhc8" path="res://scenes/characters/animationBehavior/dying.gd" id="15_ou4f1"]
 [ext_resource type="Script" uid="uid://dkd0ujhbs0fq1" path="res://scenes/characters/animationBehavior/dead_rest.gd" id="16_jqgsm"]
+[ext_resource type="Script" uid="uid://dnrndgjgiljxw" path="res://scenes/components/hover_area_worker.gd" id="16_ood4a"]
 [ext_resource type="Script" uid="uid://cyttufjyc3tf6" path="res://scenes/characters/animationBehavior/alive_rest.gd" id="17_uu4c5"]
 [ext_resource type="Script" uid="uid://c082wheqm0lf1" path="res://scenes/characters/behavior_controller.gd" id="18_c8mvy"]
 [ext_resource type="Script" uid="uid://cafvqd631abv0" path="res://scenes/characters/state_bubble_control.gd" id="19_kq2uw"]
@@ -31,6 +31,7 @@
 [ext_resource type="Script" uid="uid://dt6f57jpe0eae" path="res://scenes/characters/assign_to_work.gd" id="22_3uemc"]
 [ext_resource type="Script" uid="uid://b2f6u3sxxp0y8" path="res://scenes/characters/arrive_shelter.gd" id="23_l03ym"]
 [ext_resource type="AudioStream" uid="uid://cw4omp8kv7ggu" path="res://audio/sound/机械臂2.mp3" id="31_c3fo5"]
+[ext_resource type="AudioStream" uid="uid://bd51wpwluvkjr" path="res://audio/sound/脚步声2.mp3" id="32_ood4a"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_ku4dj"]
 atlas = ExtResource("2_kq2uw")
@@ -1082,7 +1083,7 @@ shape = SubResource("CapsuleShape2D_vwx2a")
 
 [node name="HoverArea" type="Area2D" parent="." groups=["HoverArea"]]
 z_index = 40
-script = ExtResource("10_haaq5")
+script = ExtResource("16_ood4a")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="HoverArea"]
 z_index = 40
@@ -1149,8 +1150,9 @@ volume_db = -5.0
 bus = &"SFX"
 
 [node name="AudioStreamPlayer_walkSFX" type="AudioStreamPlayer2D" parent="."]
-stream = ExtResource("31_c3fo5")
-volume_db = -5.0
+stream = ExtResource("32_ood4a")
+volume_db = -6.0
+pitch_scale = 1.5
 bus = &"SFX"
 
 [connection signal="mouse_entered" from="." to="." method="_on_mouse_entered"]

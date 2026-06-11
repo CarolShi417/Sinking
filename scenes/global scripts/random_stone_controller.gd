@@ -13,6 +13,7 @@ var is_stone_active := false # 保证每次只有一颗石子被触发
 var worker_is_walking_to_stone := false
 
 func _ready() -> void:
+	GameState.state_changed.connect(_on_state_changed)
 	stone.hide()
 	# 监听 component 落地等待结束的信号
 	#stone.stone_finished.connect(_on_stone_finished)	
@@ -37,22 +38,26 @@ func _on_stone_hover_changed(active: bool) -> void:
 	
 # 每30秒收到信号，10% 概率触发石子落下
 func _on_random_stone_triggered() -> void:
-	if is_stone_active: # 保证每次只有一颗石子
-		return
-	#if randf() <= trigger_chance:
+	if is_stone_active: return# 保证每次只有一颗石子		
+	if GameState.current_state != DataTypes.GameState.Working: return  # 非Working直接忽略
+	
 	is_stone_active = true
 	stone.position = Vector2(randf_range(980, 1880), 70)
 	stone.show()
 	#print("石头已显示: ", stone.visible, " 位置: ", stone.position)
 	stone.launch() # 通知 component 开始运动
 	
-# component消失后重置位置，方便下一次触发
-#func _on_stone_finished() -> void:
-	#if !worker_is_walking_to_stone:
-		#is_stone_active = false
-		#stone.hide()
-
 func _on_stone_walk_finished() -> void:
 	worker_is_walking_to_stone = false
 	is_stone_active = false
 	stone.hide()
+	
+# resting时石子状态重置
+func _on_state_changed(state) -> void:
+	print("stone controller state changed: ", state)  # 👈
+	if state == DataTypes.GameState.Resting:
+		is_stone_active = false
+		worker_is_walking_to_stone = false
+		stone.hide()
+		stone.reset()
+		print("stone controller state changed: ", state)  # 👈

@@ -20,6 +20,8 @@ func _ready():
 #
 func _on_state_changed(state):
 	if state == DataTypes.GameState.Working:
+		if current_map_id == "":  # 玩家没有选过地图，默认 A
+			current_map_id = "A"
 		_show_map(current_map_id)
 	elif state == DataTypes.GameState.Resting:
 		_hide_all_maps()

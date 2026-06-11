@@ -69,9 +69,10 @@ func _create_behavior_timers():
 # 死亡时，状态有所不同
 # ===============================
 func _on_state_changed(state):	
-	if not get_parent().visible: return  #禁止worker_rest/work隐藏后继续执行代码
+	#if not get_parent().visible: return  #禁止worker_rest/work隐藏后继续执行代码
 	#停止行为计时器
 	behavior_timer.stop()
+	flow_running = false      # 强制取消旧send_and_receive_flow流程，让新流程可以启动
 	#确保当前状态为死亡状态
 	if state != DataTypes.GameState.Dead:
 		dead_flow_running = false
@@ -122,7 +123,9 @@ func send_and_receive_flow():
 # 切换worker状态，连接不同动画
 # ===============================
 func _on_behavior_changed(new_behavior):
-	if not get_parent().visible: return  #禁止worker_rest/work隐藏后继续执行代码
+	#if not get_parent().visible: return  #禁止worker_rest/work隐藏后继续执行代码
+	# 检查动画状态
+	# print("[", get_parent().name, "] behavior → ", DataTypes.BehaviorState.keys()[new_behavior])
 	# 只要不是 walk，就停止走路音效
 	if new_behavior != DataTypes.BehaviorState.walk:
 		walk_sfx.stop()
@@ -207,7 +210,7 @@ func start_gather_timer():
 # Timer结束
 # =====================
 func _on_behavior_timeout():
-	if not get_parent().visible: return  #禁止worker_rest/work隐藏后继续执行代码
+	#if not get_parent().visible: return  #禁止worker_rest/work隐藏后继续执行代码
 	
 	match GameState.current_state:
 		DataTypes.GameState.Resting:
@@ -279,9 +282,9 @@ func _start_dead_flow():
 # 惊吓状态（悬停时触发）
 # =====================	
 func _on_hover_changed(is_hovering: bool) -> void:
-	if not get_parent().visible: return  #禁止worker_rest/work隐藏后继续执行代码
-	# dead， send，receive状态下不触发
-	if GameState.current_state == DataTypes.GameState.Dead:
+	#if not get_parent().visible: return  #禁止worker_rest/work隐藏后继续执行代码
+	# dead，rest, send，receive状态下不触发
+	if GameState.current_state != DataTypes.GameState.Working:
 		return
 	if current_behavior == DataTypes.BehaviorState.send or current_behavior == DataTypes.BehaviorState.receive:
 		return
@@ -320,8 +323,8 @@ func start_scare_flow() -> void:
 # 随机石子事件
 # =====================
 func _on_stone_walk_started() -> void:
-	if not get_parent().visible: return  #禁止worker_rest/work隐藏后继续执行代码
-	if GameState.current_state == DataTypes.GameState.Dead:
+	#if not get_parent().visible: return  #禁止worker_rest/work隐藏后继续执行代码
+	if GameState.current_state != DataTypes.GameState.Working:
 		return
 	if current_behavior == DataTypes.BehaviorState.send or \
 		current_behavior == DataTypes.BehaviorState.receive:
@@ -333,8 +336,8 @@ func _on_stone_walk_started() -> void:
 	GameState.set_behavior(current_behavior)
 
 func _on_stone_walk_finished() -> void:
-	if not get_parent().visible: return  #禁止worker_rest/work隐藏后继续执行代码
-	if GameState.current_state == DataTypes.GameState.Dead:
+	#if not get_parent().visible: return  #禁止worker_rest/work隐藏后继续执行代码
+	if GameState.current_state != DataTypes.GameState.Working:
 		return
 	
 	# 到达后也保持 idle，等石子拾取逻辑结束后再 start_idle_timer()

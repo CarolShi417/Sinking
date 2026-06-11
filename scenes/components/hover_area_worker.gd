@@ -31,6 +31,7 @@ func _on_mouse_exited():
 	#print("Mouse Exited")
 	
 func _on_state_changed(state):
+	if not get_parent().visible: return  #禁止父级节点隐藏后继续执行代码	
 	if state == DataTypes.GameState.Resting:
 		enabled = false
 	if state == DataTypes.GameState.Working:

@@ -18,11 +18,18 @@ var is_grounded := false
 func _ready():
 	pass
 
-# 石子准备好开始运动
+# 执行controller命令，石子准备好开始运动
 func launch() -> void:
 	is_grounded = false
 	rotation = 0.0
 	velocity = Vector2(1, 1).normalized() * speed
+	
+# 执行controller命令，石子在Resting状态下重置	
+func reset() -> void:
+	is_grounded = true
+	velocity = Vector2.ZERO
+	rotation = 0.0
+	
 # ===============================
 # 每帧更新
 # ===============================
