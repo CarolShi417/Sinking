@@ -1,11 +1,9 @@
-[gd_scene load_steps=7 format=3 uid="uid://cmld5go3ad5fc"]
+[gd_scene load_steps=5 format=3 uid="uid://cmld5go3ad5fc"]
 
-[ext_resource type="Texture2D" uid="uid://cke6sp6c85y10" path="res://assets/UI/map_selectMapButton/map_button_mapA.png" id="1_1bdll"]
 [ext_resource type="Script" uid="uid://de0cr6ridtfek" path="res://scenes/UI/start/dialogue_control.gd" id="1_rpbhd"]
 [ext_resource type="Texture2D" uid="uid://hs21ne444o05" path="res://assets/sprites/map/map_workplace.png" id="1_yv5uc"]
 [ext_resource type="Theme" uid="uid://ddgo3b8f6fttt" path="res://scenes/UI/game_ui_theme.tres" id="2_s4cul"]
 [ext_resource type="Texture2D" uid="uid://b6oyq6o7g0w85" path="res://assets/sprites/opening_comic/opening_dialogue_panel.png" id="4_exmmm"]
-[ext_resource type="Texture2D" uid="uid://d3ibykdyouvpt" path="res://assets/sprites/opening_comic/opening_dialogue_panelwithtext.png" id="4_hshfd"]
 
 [node name="DialogueControl" type="Control"]
 layout_mode = 3
@@ -31,29 +29,8 @@ theme_type_variation = &"TransparentPanelContrainer"
 layout_mode = 2
 texture = ExtResource("4_exmmm")
 
-[node name="TextureRect2" type="TextureRect" parent="PanelContainer"]
-visible = false
-layout_mode = 2
-texture = ExtResource("4_hshfd")
-
-[node name="HBoxContainer" type="HBoxContainer" parent="PanelContainer"]
-visible = false
-layout_mode = 2
-size_flags_horizontal = 0
-
-[node name="Avatar" type="TextureRect" parent="PanelContainer/HBoxContainer"]
-custom_minimum_size = Vector2(200, 50)
-layout_mode = 2
-size_flags_horizontal = 0
-texture = ExtResource("1_1bdll")
-
-[node name="Label" type="Label" parent="PanelContainer/HBoxContainer"]
-layout_mode = 2
-size_flags_horizontal = 0
-theme = ExtResource("2_s4cul")
-text = "There will have some dialogue here"
-
 [node name="MapFrame" type="Sprite2D" parent="."]
+visible = false
 z_index = 40
 position = Vector2(1920, 0)
 texture = ExtResource("1_yv5uc")

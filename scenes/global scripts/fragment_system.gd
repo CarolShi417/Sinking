@@ -144,7 +144,7 @@ func _update_efficiency_level(duration: float) -> void:
 # ===============================
 func _get_instant_level() -> String:
 	# 获取本轮已过工作时间（总时长 - 剩余时间）
-	var elapsed := TimeCirclingSystem.WORK_DURATION - TimeCirclingSystem.get_work_time_left()
+	var elapsed := TimeCirclingSystem.selected_work_duration - TimeCirclingSystem.get_work_time_left()
 	# 防止除以零（刚开始工作时）
 	if elapsed <= 0:
 		return "low"

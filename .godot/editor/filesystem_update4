@@ -1,17 +1,22 @@
-res://scenes/global scenes/game.tscn
+res://scenes/UI/map_select_single_panel.tscn
+res://scenes/global scenes/monitor_focus_area.gdshader
+res://scenes/shader/MaskShader.gdshader
 res://scenes/UI/game_ui_theme.tres
 res://Tilesets/ground_tile_set.tres
-res://scenes/shader/MaskShader.gdshader
-res://scenes/global scenes/monitor_focus_area.gdshader
-res://scenes/characters/worker.tscn
-res://scenes/characters/worker_controller.gd
-res://scenes/characters/behavior_controller.gd
-res://scenes/components/hover_area.gd
-res://scenes/characters/worker_movement.gd
-res://scenes/state_machine/node_state_machine.gd
-res://scenes/global scripts/random_stone_controller.gd
-res://scenes/components/random_stone_component.gd
+res://scenes/UI/map_select_panel.tscn
+res://scenes/UI/map_select_panel.gd
 res://scenes/global scripts/time_circling_system.gd
-res://scenes/global scenes/maps.tscn
-res://scenes/global scenes/maps_controller.gd
-res://scenes/components/random_stone_component.tscn
+res://scenes/global scenes/game.tscn
+res://scenes/global scripts/fragment_system.gd
+res://scenes/UI/start/overall_screen_ui.tscn
+res://scenes/UI/total_fragment_container.tscn
+res://scenes/UI/button_animation.gd
+res://scenes/UI/map_select_panel_controller.gd
+res://scenes/UI/total_fragment_container.gd
+res://scenes/UI/main_total_fragment_panel.tscn
+res://scenes/global scenes/overall.tscn
+res://scenes/global scenes/overall.gd
+res://scenes/UI/start/dialogue_control.gd
+res://scenes/UI/start/dialogue_control.tscn
+res://scenes/UI/start/opening_comic.tscn
+res://scenes/UI/start/opening_comic.gd

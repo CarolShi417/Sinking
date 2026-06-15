@@ -1,0 +1,28 @@
+[gd_scene load_steps=4 format=3 uid="uid://cyja5twb2jtip"]
+
+[ext_resource type="Script" uid="uid://cctp4p7acn150" path="res://scenes/UI/total_fragment_container.gd" id="1_e4ms5"]
+[ext_resource type="Theme" uid="uid://ddgo3b8f6fttt" path="res://scenes/UI/game_ui_theme.tres" id="2_vgq7s"]
+[ext_resource type="Script" uid="uid://bjcfss8thnjoy" path="res://scenes/UI/button_animation.gd" id="3_ojq7u"]
+
+[node name="TotalFragmentContainer" type="HBoxContainer" node_paths=PackedStringArray("fragment_button", "number_label")]
+size_flags_horizontal = 4
+size_flags_vertical = 4
+script = ExtResource("1_e4ms5")
+fragment_button = NodePath("Button")
+number_label = NodePath("NumberLabel")
+
+[node name="Button" type="Button" parent="."]
+custom_minimum_size = Vector2(50, 50)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+theme = ExtResource("2_vgq7s")
+theme_type_variation = &"TotalFragmentButton"
+script = ExtResource("3_ojq7u")
+
+[node name="NumberLabel" type="Label" parent="."]
+z_index = 1
+layout_mode = 2
+size_flags_horizontal = 4
+theme_type_variation = &"BuildingLabel"
+text = "0"

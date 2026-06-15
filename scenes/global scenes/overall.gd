@@ -26,4 +26,6 @@ func pause_game() -> void:
 # ===============================
 func resume_game() -> void:
 	# 恢复Game节点的process
+	print("resume_game 被调用，game.process_mode 改前: ", game.process_mode)
 	game.process_mode = Node.PROCESS_MODE_INHERIT
+	print("game.process_mode 改后: ", game.process_mode)

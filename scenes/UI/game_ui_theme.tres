@@ -1,4 +1,4 @@
-[gd_resource type="Theme" load_steps=17 format=3 uid="uid://ddgo3b8f6fttt"]
+[gd_resource type="Theme" load_steps=18 format=3 uid="uid://ddgo3b8f6fttt"]
 
 [ext_resource type="FontFile" uid="uid://caji7scvx16ur" path="res://assets/UI/Fonts/pixelFont-7-8x14-sproutLands.ttf" id="1_63rmd"]
 [ext_resource type="Texture2D" uid="uid://l7o0do0pvstt" path="res://assets/UI/map_fragment&timeProgress/map_progress_bar.png" id="3_vespo"]
@@ -19,6 +19,9 @@ region = Rect2(76, 460, 0, 0)
 
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_rvk2n"]
 texture = SubResource("AtlasTexture_vespo")
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_egbks"]
+bg_color = Color(0.69411767, 0.6, 0.5411765, 1)
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_vespo"]
 
@@ -99,6 +102,8 @@ Test_centered_label/base_type = &"Label"
 Test_centered_label/colors/font_color = Color(0, 0, 0, 1)
 Test_centered_label/font_sizes/font_size = 30
 Test_centered_label/fonts/font = ExtResource("1_63rmd")
+TotalFragmentButton/base_type = &"Button"
+TotalFragmentButton/styles/hover = SubResource("StyleBoxFlat_egbks")
 TransparentPanel/base_type = &"PanelContainer"
 TransparentPanel/styles/panel = SubResource("StyleBoxEmpty_vespo")
 TransparentPanelContrainer/base_type = &"PanelContainer"

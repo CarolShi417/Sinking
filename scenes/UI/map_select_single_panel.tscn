@@ -1,0 +1,69 @@
+[gd_scene load_steps=10 format=3 uid="uid://bqbb47hcuru20"]
+
+[ext_resource type="Script" uid="uid://dxienpc1r73u3" path="res://scenes/UI/map_select_panel.gd" id="1_iwdjt"]
+[ext_resource type="Texture2D" uid="uid://cke6sp6c85y10" path="res://assets/UI/map_selectMapButton/map_button_mapA.png" id="2_evo40"]
+[ext_resource type="Texture2D" uid="uid://c8jk6apvglcj3" path="res://assets/UI/map_selectMapButton/map_button_locked.png" id="3_cugk8"]
+[ext_resource type="Texture2D" uid="uid://q138gv7tdb3k" path="res://assets/UI/map_selectMapButton/map_button_mapAssign.png" id="4_dyqmq"]
+[ext_resource type="Theme" uid="uid://ddgo3b8f6fttt" path="res://scenes/UI/game_ui_theme.tres" id="5_gsuj5"]
+[ext_resource type="Script" uid="uid://bjcfss8thnjoy" path="res://scenes/UI/button_animation.gd" id="6_fsyc8"]
+
+[sub_resource type="ButtonGroup" id="ButtonGroup_fsyc8"]
+
+[sub_resource type="ButtonGroup" id="ButtonGroup_q5c56"]
+
+[sub_resource type="ButtonGroup" id="ButtonGroup_bimml"]
+
+[node name="map_select_panel" type="PanelContainer" node_paths=PackedStringArray("button_map", "button_assign", "duration_options_container", "duration_buttons") groups=["MapSelect"]]
+size_flags_horizontal = 4
+script = ExtResource("1_iwdjt")
+map_id = "A"
+map_icon_unlocked = ExtResource("2_evo40")
+map_icon_locked = ExtResource("3_cugk8")
+button_map = NodePath("VBoxContainer/MapButton")
+button_assign = NodePath("VBoxContainer/AssignButton")
+duration_options_container = NodePath("VBoxContainer/DurationOptions")
+duration_buttons = [NodePath("VBoxContainer/DurationOptions/10s"), NodePath("VBoxContainer/DurationOptions/30s"), NodePath("VBoxContainer/DurationOptions/5min")]
+
+[node name="VBoxContainer" type="VBoxContainer" parent="."]
+layout_mode = 2
+
+[node name="AssignButton" type="Button" parent="VBoxContainer"]
+visible = false
+clip_contents = true
+custom_minimum_size = Vector2(45, 45)
+layout_mode = 2
+theme_type_variation = &"MapButton"
+icon = ExtResource("4_dyqmq")
+
+[node name="MapButton" type="Button" parent="VBoxContainer"]
+clip_contents = true
+layout_mode = 2
+size_flags_horizontal = 4
+theme = ExtResource("5_gsuj5")
+theme_type_variation = &"MapButton"
+icon = ExtResource("2_evo40")
+script = ExtResource("6_fsyc8")
+
+[node name="DurationOptions" type="VBoxContainer" parent="VBoxContainer"]
+visible = false
+z_index = 50
+custom_minimum_size = Vector2(0, 30)
+layout_mode = 2
+
+[node name="10s" type="Button" parent="VBoxContainer/DurationOptions"]
+layout_mode = 2
+toggle_mode = true
+button_group = SubResource("ButtonGroup_fsyc8")
+text = "10s"
+
+[node name="30s" type="Button" parent="VBoxContainer/DurationOptions"]
+layout_mode = 2
+toggle_mode = true
+button_group = SubResource("ButtonGroup_q5c56")
+text = "30s"
+
+[node name="5min" type="Button" parent="VBoxContainer/DurationOptions"]
+layout_mode = 2
+toggle_mode = true
+button_group = SubResource("ButtonGroup_bimml")
+text = "5min"

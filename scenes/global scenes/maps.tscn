@@ -39,6 +39,7 @@ centered = false
 offset = Vector2(-960, 0)
 
 [node name="bg dark" type="Sprite2D" parent="."]
+visible = false
 z_index = 5
 position = Vector2(1920, 60)
 texture = ExtResource("1_2hxyc")

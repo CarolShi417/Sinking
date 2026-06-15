@@ -28,7 +28,7 @@ var current_assigned_map_id: String = ""
 var map_panels: Array[PanelContainer] = []
 
 # 音效
-@onready var hover_sfx: AudioStreamPlayer2D = $AudioStreamPlayer_hoverButtonSFX  # 👈 新增
+@onready var hover_sfx: AudioStreamPlayer2D = $AudioStreamPlayer_hoverButtonSFX
 
 func _ready() -> void:
 	
@@ -66,6 +66,9 @@ func _ready() -> void:
 	# 碎片数量变化时，判定是否能解锁地图
 	FragmentSystem.total_fragment_changed.connect(unlock_maps)
 	unlock_maps() #开始检测一次
+	
+	# 监听一次探索周期结束的全局信号
+	TimeCirclingSystem.exploration_finished.connect(_on_exploration_finished)
 	
 # ===============================
 # 鼠标悬停
@@ -148,3 +151,14 @@ func is_assignment_ongoing(map_id: String) -> bool:
 	if current_assigned_map_id.is_empty():
 		return false
 	return current_assigned_map_id == map_id
+
+# ===============================
+# 一次探索完成：给当前地图的探索计数 +1
+# ===============================
+func _on_exploration_finished() -> void:
+	if current_assigned_map_id.is_empty():
+		return
+
+	var panel = get_map_panel(current_assigned_map_id)
+	if panel:
+		panel.increment_exploration_count()

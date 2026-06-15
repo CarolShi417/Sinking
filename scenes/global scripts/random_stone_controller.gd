@@ -21,6 +21,7 @@ func _ready() -> void:
 	worker_work.stone_walk_finished.connect(_on_stone_walk_finished)
 		
 func _on_stone_hover_changed(active: bool) -> void:
+	if GameState.current_state != DataTypes.GameState.Working: return
 	if active:
 		var stone_position = stone.position
 		#print("stone_position")

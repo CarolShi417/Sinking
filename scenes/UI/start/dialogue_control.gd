@@ -5,6 +5,7 @@ signal dialogue_finished()
 @onready var label: Label = $Label
 
 var current_index: int = 0
+var dialogue_done: bool = false   # 标记对话是否已经结束
 
 # 逐字显示效果
 var is_typing: bool = false       # 当前是否正在打字机播放中
@@ -23,6 +24,8 @@ var dialogues: Array[String] = [
 func _ready() -> void:
 	current_index = 0
 	visible = false
+	dialogue_done = false
+	print("DialogueControl _ready, 节点路径: ", get_path())
 
 # 由外部（如 OverallScreenUI）在 opening comic 结束后调用，正式启动对话
 func start_dialogue() -> void:
@@ -32,13 +35,18 @@ func start_dialogue() -> void:
 # 根据当前索引启动打字机效果；
 # 若索引超出对话数组范围则隐藏整个节点并发出 dialogue_finished 信号
 func _show_current_dialogue() -> void:
+	print("DialogueControl _show_current_dialogue, 路径: ", get_path(), " current_index=", current_index)
 	if current_index < dialogues.size():
 		visible = true
 		_start_typewriter(dialogues[current_index])
 	else:
 		# 所有对话结束，隐藏整个 DialogueControl
+		if dialogue_done:
+			return  # 已经结束过一次了，不再重复隐藏/emit
+		dialogue_done = true
 		visible = false
 		dialogue_finished.emit()
+		set_process_input(false)  # 彻底停止接收输入，避免之后的点击再被_input拦截
 
 # 启动打字机效果：逐字符展开文本，播放完毕后标记 is_typing 为 false
 func _start_typewriter(full_text: String) -> void:

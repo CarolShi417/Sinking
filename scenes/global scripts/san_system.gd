@@ -20,7 +20,8 @@ const SAN_MAX := 100.0
 # 3. Resting：每秒回 5 SAN（第一次无效）
 # ===============================
 const working_hover_san_change_per_second := -1
-const resting_san_change_per_second := 0.083
+const resting_san_change_per_second := 1
+
 
 # ========================
 # 一些会影响san的bonus被动
@@ -81,7 +82,7 @@ func apply_san_change(amount: float) -> void:
 	if is_equal_approx(previous_san, san):
 		return
 
-	# print("SAN:", san)
+	#print("SAN:", san) 
 	_emit_san_changed()
 
 	if is_zero_approx(san) and GameState.current_state == DataTypes.GameState.Working:

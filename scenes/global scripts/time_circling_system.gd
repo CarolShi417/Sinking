@@ -5,8 +5,8 @@ extends Node
 # ===============================
 # 工作 / 休息 / 死亡 / SAN / 随机石子掉落 时间
 # ===============================
-const WORK_DURATION := 20.0
-const REST_DURATION := 10.0
+var selected_work_duration: float = 10.0 # 默认值为10，避免未收到信号时长为0
+const REST_DURATION := 60.0
 const DEAD_DURATION := 152.5
 const work_step_duration := 2.5
 const san_step_duration := 1.0
@@ -32,6 +32,7 @@ signal dead_recovery_finished
 signal step_tick(duration)
 signal san_tick(duration)
 signal random_stone_triggered()
+signal exploration_finished()
 # 按下assign按钮，启动timer
 var is_first_assign: bool = false;
 
@@ -94,7 +95,10 @@ func _create_timers():
 func start_work_timer():
 	rest_timer.stop()
 	dead_timer.stop()
-	work_timer.start(WORK_DURATION)
+	
+	# 工作时长 = 玩家在 map_select_panel 上选择的时长（10s / 30s / ...）
+	work_timer.start(selected_work_duration)
+	
 	step_timer.start()
 	san_timer.start()#work开，因为会降san
 	random_stone_trigger_timer.start()
@@ -106,7 +110,10 @@ func start_rest_timer():
 	work_timer.stop()
 	dead_timer.stop()
 	step_timer.stop()
-	rest_timer.start(REST_DURATION)
+	
+	rest_timer.start(REST_DURATION) # 休息时长暂时统一为60秒
+	is_first_assign = true
+	
 	san_timer.start()#rest开，因为会升san
 	
 # ===============================
@@ -174,6 +181,11 @@ func _on_assign_worker():
 		#print("之后按下")
 		# 后续逻辑
 		
+# ===============================
+# 接收 map_select_panel.gd 的 duration_selected 信号，获取这次探索的工作时长
+# ===============================		
+func _on_duration_selected(_map_id: String, duration: int) -> void:
+	selected_work_duration = float(duration)		
 # ===============================
 # 获取当前工作计时器剩余时间（秒）
 # 非Working状态时返回0

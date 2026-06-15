@@ -1,8 +1,7 @@
-E:/Godot Projects/Export/20260607 SINKING
-res://scenes/Scene
-res://scripts
-res://scripts/globals
+E:/Godot Projects/Export/20260614 SINKING
+res://scenes/global scripts
 res://scenes/UI
+E:/Godot Projects/Export/20260607 SINKING
 res://scenes/components
 res://assets/sprites/worker/Worker_right
 res://assets/sprites/worker/worker_left
@@ -19,4 +18,3 @@ res://scenes/shader
 res://assets/sprites/worker
 res://assets/sprites/map
 res://Tilesets
-res://scenes/scene

@@ -42,10 +42,11 @@ func reset_movement(start_dir: int) -> void:
 	
 #如何移动
 func _physics_process(_delta): #Godot 每一帧“物理更新”都会自动调用这个函数
+	# 死亡下 速度为0
 	if GameState.current_state == DataTypes.GameState.Dead:
 		velocity.x = 0
 	#如果随机石子事件发生
-	if is_gathering_random_stone:
+	elif is_gathering_random_stone:
 		velocity.x = speed * direction
 		# 到达目标附近时停止
 		if abs(position.x - x) < 5.0:

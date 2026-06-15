@@ -1,21 +1,16 @@
-[gd_scene load_steps=6 format=3 uid="uid://c4m7np0j0dowy"]
+[gd_scene load_steps=5 format=3 uid="uid://c4m7np0j0dowy"]
 
 [ext_resource type="Theme" uid="uid://ddgo3b8f6fttt" path="res://scenes/UI/game_ui_theme.tres" id="1_q4biy"]
-[ext_resource type="Script" uid="uid://cesxmrrjgvh11" path="res://scenes/UI/main_total_fragment_panel.gd" id="2_e511h"]
-[ext_resource type="Texture2D" uid="uid://cklk6kxasisph" path="res://assets/UI/main_fragments/fragment_icon_A.png" id="3_adkgj"]
+[ext_resource type="PackedScene" uid="uid://cyja5twb2jtip" path="res://scenes/UI/total_fragment_container.tscn" id="3_1cejd"]
 [ext_resource type="Texture2D" uid="uid://dun36w1qmw3p2" path="res://assets/UI/main_fragments/fragment_icon_B.png" id="4_1cejd"]
 [ext_resource type="Texture2D" uid="uid://b2m4ppjj1jrck" path="res://assets/UI/main_fragments/fragment_icon_C.png" id="5_vbffg"]
 
-[node name="MainTotalFragmentPanel" type="PanelContainer" node_paths=PackedStringArray("total_fragment_a_display", "total_fragment_b_display", "total_fragment_c_display")]
+[node name="MainTotalFragmentPanel" type="PanelContainer"]
 offset_right = 451.0
 offset_bottom = 41.0
 size_flags_horizontal = 0
 theme = ExtResource("1_q4biy")
 theme_type_variation = &"TransparentPanel"
-script = ExtResource("2_e511h")
-total_fragment_a_display = NodePath("MarginContainer/HBoxContainer/HBoxContainerA/NumberA")
-total_fragment_b_display = NodePath("MarginContainer/HBoxContainer/HBoxContainerB/NumberB")
-total_fragment_c_display = NodePath("MarginContainer/HBoxContainer/HBoxContainerC/NumberC")
 
 [node name="MarginContainer" type="MarginContainer" parent="."]
 layout_mode = 2
@@ -32,45 +27,16 @@ size_flags_horizontal = 4
 theme = ExtResource("1_q4biy")
 theme_override_constants/separation = 20
 
-[node name="HBoxContainerA" type="HBoxContainer" parent="MarginContainer/HBoxContainer"]
+[node name="HBoxContainerA" parent="MarginContainer/HBoxContainer" instance=ExtResource("3_1cejd")]
 layout_mode = 2
+icon = ExtResource("5_vbffg")
 
-[node name="FragmentAIcon" type="TextureRect" parent="MarginContainer/HBoxContainer/HBoxContainerA"]
+[node name="HBoxContainerB" parent="MarginContainer/HBoxContainer" instance=ExtResource("3_1cejd")]
 layout_mode = 2
-texture = ExtResource("3_adkgj")
+fragment_type = "B"
+icon = ExtResource("4_1cejd")
 
-[node name="NumberA" type="Label" parent="MarginContainer/HBoxContainer/HBoxContainerA"]
-z_index = 1
+[node name="HBoxContainerC" parent="MarginContainer/HBoxContainer" instance=ExtResource("3_1cejd")]
 layout_mode = 2
-size_flags_horizontal = 4
-theme_type_variation = &"BuildingLabel"
-text = "0"
-
-[node name="HBoxContainerB" type="HBoxContainer" parent="MarginContainer/HBoxContainer"]
-layout_mode = 2
-
-[node name="FragmentBIcon" type="TextureRect" parent="MarginContainer/HBoxContainer/HBoxContainerB"]
-layout_mode = 2
-texture = ExtResource("4_1cejd")
-
-[node name="NumberB" type="Label" parent="MarginContainer/HBoxContainer/HBoxContainerB"]
-z_index = 1
-layout_mode = 2
-size_flags_horizontal = 4
-theme_type_variation = &"BuildingLabel"
-text = "0"
-
-[node name="HBoxContainerC" type="HBoxContainer" parent="MarginContainer/HBoxContainer"]
-layout_mode = 2
-
-[node name="FragmentCIcon" type="TextureRect" parent="MarginContainer/HBoxContainer/HBoxContainerC"]
-layout_mode = 2
-texture = ExtResource("5_vbffg")
-expand_mode = 2
-
-[node name="NumberC" type="Label" parent="MarginContainer/HBoxContainer/HBoxContainerC"]
-z_index = 1
-layout_mode = 2
-size_flags_horizontal = 4
-theme_type_variation = &"BuildingLabel"
-text = "0"
+fragment_type = "C"
+icon = ExtResource("5_vbffg")

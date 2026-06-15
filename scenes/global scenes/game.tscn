@@ -35,9 +35,8 @@ z_index = 2
 [node name="GameScreenUI" parent="." instance=ExtResource("3_mlhe7")]
 z_index = 20
 
-[node name="StateController" type="Node" parent="." node_paths=PackedStringArray("button_controller")]
+[node name="StateController" type="Node" parent="."]
 script = ExtResource("5_mq4ji")
-button_controller = NodePath("ButtonAssignController")
 
 [node name="ButtonAssignController" type="Node" parent="StateController"]
 script = ExtResource("6_k2ewu")

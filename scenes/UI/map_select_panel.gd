@@ -19,6 +19,21 @@ extends PanelContainer
 # ===============================
 @export var button_map: Button
 @export var button_assign: Button
+
+# ===============================
+# 探索时长选项
+# ===============================
+# 时长解锁顺序：第1个一直可用，每探索1次解锁下一个
+const DURATION_OPTIONS: Array[int] = [10, 30, 300]
+# 整个"时长选项"容器
+@export var duration_options_container: Control
+# 在场景里预先放好对应数量的按钮
+# 按 DURATION_OPTIONS 的顺序，依次拖入这个数组
+@export var duration_buttons: Array[Button] = []
+
+var exploration_count: int = 0          # 该地图已探索次数
+var selected_duration: int = DURATION_OPTIONS[0]  # 当前选中的时长
+
 # ===============================
 # 信号
 # ===============================
@@ -27,6 +42,8 @@ signal map_select_pressed(map_id) #发送 点击A/B/C地图信号
 # 判断鼠标是否悬停在当前按钮上
 # active true表示鼠标悬停，false表示离开
 signal hover_changed(map_id: String, active: bool, unlocked: bool)
+# 玩家选择了某个探索时长时发出（10s / 30s / 5min 等任意选项都会发）
+signal duration_selected(map_id: String, duration: int)
 
 var is_unlocked: bool = false # 当前地图是否解锁
 var is_assigned: bool = false # 是否派出
@@ -37,6 +54,7 @@ func _ready() -> void:
 	# 按钮初始化
 	button_map.show()
 	button_assign.hide()
+	duration_options_container.hide()
 	
 	# 鼠标点击按钮事件
 	button_map.pressed.connect(_on_map_pressed)
@@ -48,6 +66,13 @@ func _ready() -> void:
 	
 	GameState.state_changed.connect(_on_state_changed)# 监听状态变化
 	
+	# 初始化时长按钮：设置文字、开启toggle、连接点击信号
+	for i in range(duration_buttons.size()):
+		var btn := duration_buttons[i]
+		btn.text = str(DURATION_OPTIONS[i]) + "s"
+		btn.toggle_mode = true
+		btn.pressed.connect(_on_duration_button_pressed.bind(i))
+		
 	set_unlocked(starts_unlocked) #设置地图初始锁定/解锁状态
 	
 # ===============================
@@ -58,7 +83,7 @@ func _on_map_pressed() -> void:
 	if is_unlocked == false:
 		return
 	#如果玩家已在其他地图被派出，return
-	
+	print("map 按钮被按下")
 	map_select_pressed.emit(map_id)
 	if blocked_by_other_assignment:
 		#显示对应地图样式
@@ -69,6 +94,8 @@ func _on_map_pressed() -> void:
 	else:
 		button_map.hide()
 		button_assign.show()
+		duration_options_container.show()
+		_update_duration_options()
 		#print("按钮按下")
 	
 # ===============================
@@ -80,8 +107,10 @@ func _on_assign_pressed() -> void:
 	
 	button_map.show()
 	button_assign.hide()
+	duration_options_container.hide()  # 👈 整体隐藏时长选项
 	#显示对应map
-	assign_pressed.emit(map_id) 
+	assign_pressed.emit(map_id)
+	duration_selected.emit(map_id, selected_duration)  # 👈 确认分配时才广播选中的时长
 	
 # ===============================
 # 只有Working状态，assign按钮才可以点击
@@ -117,6 +146,7 @@ func set_blocked_by_other_assignment(blocked: bool) -> void:
 	if blocked:
 		button_assign.hide()
 		button_map.show()
+		duration_options_container.hide()
 		
 # ===============================
 # 鼠标悬停事件
@@ -128,3 +158,32 @@ func _on_map_button_mouse_entered() -> void:
 func _on_map_button_mouse_exited() -> void:
 	hover_changed.emit(map_id, false, is_unlocked) #鼠标离开 发射离开信号
 	#print("ExitHover")
+
+# ===============================
+# 探索时长选项
+# ===============================
+
+# 根据 exploration_count 显示/隐藏对应数量的时长按钮
+func _update_duration_options() -> void:
+	# 已探索0次 -> 解锁1个选项(10s)；已探索1次 -> 解锁2个选项(10s/30s)；以此类推
+	var unlocked_count: int = clampi(exploration_count + 1, 1, duration_buttons.size())
+
+	for i in range(duration_buttons.size()):
+		duration_buttons[i].visible = i < unlocked_count
+
+	# 默认选中第一个选项（10s），并广播一次探索时长
+	selected_duration = DURATION_OPTIONS[0]
+	if duration_buttons.size() > 0:
+		duration_buttons[0].button_pressed = true
+
+
+# 时长按钮被点击时，记录当前选中的时长
+func _on_duration_button_pressed(index: int) -> void:
+	selected_duration = DURATION_OPTIONS[index]
+
+# ===============================
+# 探索完成后调用：解锁下一个时长选项
+# 需要在"探索结束"的逻辑里手动调用这个函数
+# ===============================
+func increment_exploration_count() -> void:
+	exploration_count += 1

@@ -1,6 +1,6 @@
 extends Node
 
-@export var button_controller: Node
+@onready var button_controller: Node = $ButtonAssignController
 @onready var behaviorController = get_tree().get_first_node_in_group("BehaviorController")
 var is_first_assigned : bool = false # 用于判定是否是第一次按下assign按钮
 
@@ -23,7 +23,7 @@ func _ready():
 	SanSystem.san_depleted.connect(_on_san_depleted)#接收san归零信号
 	
 	button_controller.on_assign_worker.connect(_on_assign_worker)# 碎片系统接收按钮器信号
-
+	
 # ===============================
 # 请求进入 Working
 # ===============================
@@ -67,6 +67,7 @@ func _on_assign_worker():
 func _on_work_finished():
 	if GameState.current_state == DataTypes.GameState.Working:
 		enter_resting()
+		TimeCirclingSystem.exploration_finished.emit()
 		
 func _on_rest_finished():
 	if GameState.current_state == DataTypes.GameState.Resting:
@@ -114,7 +115,7 @@ func enter_dead():
 func _on_dead_flow_finished():
 	if GameState.current_state == DataTypes.GameState.Dead:
 		enter_resting()
-
+		
 # ===============================
 # step_tick 中继：先让 HoverController 结算有效hover，
 # 再让 FragmentSystem 用最新的 hover 状态计算碎片

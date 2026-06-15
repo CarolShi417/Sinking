@@ -61,6 +61,8 @@ func _on_behavior_changed(new_behavior) -> void:
 	while loop_running:
 		if _tween:        # 加这两行
 			_tween.kill() # 确保上一轮 tween 完全停止再复位位置
+			
+		worker_current_position = worker_work.position  # 👈 每轮循环开头实时获取
 		current_position = worker_current_position + Vector2(-15, -25)
 		position = current_position
 		modulate.a = 1.0
@@ -71,6 +73,7 @@ func _on_behavior_changed(new_behavior) -> void:
 		await animated_sprite_2d.animation_finished
 		await get_tree().create_timer(0.1).timeout
 		
+		worker_current_position = worker_work.position  # 👈 每轮循环开头实时获取
 		# 播放fly动画，同步位移
 		current_position = worker_current_position + Vector2(-50, -50)
 		#print("碎片循环次数：", circlecount)
