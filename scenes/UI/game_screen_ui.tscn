@@ -66,6 +66,7 @@ offset_right = 963.0
 offset_bottom = 225.0
 
 [node name="BuildingVacancyInfoPanel" parent="." instance=ExtResource("13_7jgoq")]
+visible = false
 z_index = 120
 layout_mode = 0
 offset_left = 765.0

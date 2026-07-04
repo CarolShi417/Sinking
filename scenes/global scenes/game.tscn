@@ -15,6 +15,10 @@
 [node name="Game" type="Node2D" groups=["GameScene"]]
 script = ExtResource("1_f7bgk")
 
+[node name="Polygon2D" type="Polygon2D" parent="."]
+color = Color(1, 1, 1, 0)
+polygon = PackedVector2Array(0, 186, 180, 187, 202, 124, 242, 124, 264, 183, 423.39896, 183.91742, 435, 122, 476, 125, 502.4389, 184.37233, 579, 186, 598, 130, 642, 126, 660, 188, 777.3714, 187.60745, 796, 130, 841, 127, 860, 191, 960, 191, 960, 0, 1920, 0, 1920, 240, 0, 239)
+
 [node name="WorkerResting" parent="." groups=["WorkerResting"] instance=ExtResource("4_j5ily")]
 position = Vector2(399, 188)
 
